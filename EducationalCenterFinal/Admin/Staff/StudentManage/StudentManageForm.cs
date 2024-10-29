@@ -1,7 +1,7 @@
 ﻿using EducationalCenterFinal.Admin.CourseManage;
 using EducationalCenterFinal.Admin.CreateAccount;
 using EducationalCenterFinal.Admin.EmployeeManage;
-using EducationalCenterFinal.Admin.Staff.StudentManage;
+using EducationalCenterFinal.Admin.TeacherManage;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,13 +12,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EducationalCenterFinal.Admin.TeacherManage
+namespace EducationalCenterFinal.Admin.Staff.StudentManage
 {
-    public partial class TeacherManageForm : Form
+    public partial class StudentManageForm : Form
     {
-
         readonly EducationCenterEntities dp = new EducationCenterEntities();
-        public TeacherManageForm()
+        public StudentManageForm()
         {
             InitializeComponent();
             this.ClientSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
@@ -37,12 +36,6 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             }
         }
 
-        private void EmployeesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new EmployeeManageForm().Show();
-            this.Hide();
-        }
-
         private void LogoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new LoginForm().Show();
@@ -59,10 +52,15 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             new CreateAccountForm().Show();
             this.Hide();
         }
-
-        private void StudentsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void TeachersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new StudentManageForm().Show();
+            new TeacherManageForm().Show();
+            this.Hide();
+        }
+
+        private void EmployeesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new EmployeeManageForm().Show();
             this.Hide();
         }
 

@@ -1,8 +1,8 @@
 ﻿using System.Windows.Forms;
 
-namespace EducationalCenterFinal.Admin.TeacherManage
+namespace EducationalCenterFinal.Admin.CreateAccount
 {
-    partial class TeacherManageForm
+    partial class CreateAccountForm
     {
         /// <summary>
         /// Required designer variable.
@@ -64,6 +64,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.teachersToolStripMenuItem.Name = "teachersToolStripMenuItem";
             this.teachersToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
             this.teachersToolStripMenuItem.Text = "Teacher";
+            this.teachersToolStripMenuItem.Click += new System.EventHandler(this.TeachersToolStripMenuItem_Click);
             // 
             // studentsToolStripMenuItem
             // 
@@ -107,7 +108,6 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.createAccountToolStripMenuItem.Name = "createAccountToolStripMenuItem";
             this.createAccountToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
             this.createAccountToolStripMenuItem.Text = "Create Account";
-            this.createAccountToolStripMenuItem.Click += new System.EventHandler(this.CreateAccountToolStripMenuItem_Click);
             // 
             // forgetPasswordToolStripMenuItem
             // 
@@ -123,7 +123,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.LogoutToolStripMenuItem_Click);
             // 
-            // TeacherManageForm
+            // CreateAccountForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -131,8 +131,8 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.Name = "TeacherManageForm";
-            this.Text = "TeacherManageForm";
+            this.Name = "CreateAccountForm";
+            this.Text = "CreateAccountForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

@@ -1,7 +1,7 @@
-﻿using EducationalCenterFinal.Admin.CourseManage;
-using EducationalCenterFinal.Admin.CreateAccount;
+﻿using EducationalCenterFinal.Admin.CreateAccount;
 using EducationalCenterFinal.Admin.EmployeeManage;
 using EducationalCenterFinal.Admin.Staff.StudentManage;
+using EducationalCenterFinal.Admin.TeacherManage;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -12,13 +12,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EducationalCenterFinal.Admin.TeacherManage
+namespace EducationalCenterFinal.Admin.CourseManage
 {
-    public partial class TeacherManageForm : Form
+    public partial class CourseManageForm : Form
     {
-
         readonly EducationCenterEntities dp = new EducationCenterEntities();
-        public TeacherManageForm()
+        public CourseManageForm()
         {
             InitializeComponent();
             this.ClientSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
@@ -45,7 +44,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
 
         private void LogoutToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new LoginForm().Show();
+            //new LoginForm().Show();
             this.Hide();
         }
 
@@ -60,15 +59,15 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.Hide();
         }
 
+        private void TeachersToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new TeacherManageForm().Show();
+            this.Hide();
+        }
+        
         private void StudentsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new StudentManageForm().Show();
-            this.Hide();
-        }
-
-        private void CoursesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new CourseManageForm().Show();
             this.Hide();
         }
     }

@@ -1,4 +1,5 @@
-﻿using EducationalCenterFinal.Admin.TeacherManage;
+﻿using EducationalCenterFinal.Admin.Staff.StudentManage;
+using EducationalCenterFinal.Admin.TeacherManage;
 using EducationalCenterFinal.TeacherCourse;
 using System;
 using System.Collections.Generic;
@@ -17,27 +18,29 @@ namespace EducationalCenterFinal
         public LoginForm()
         {
             InitializeComponent();
+            //!!!!!!!!! Important Dont Remove
+            this.ClientSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            this.MaximizeBox = false;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            //!!!!!!!!! Important Dont Remove
         }
 
-        private void LoginButton_Click(object sender, EventArgs e)          //Remove
+        private void StaffButton_Click(object sender, EventArgs e)          
         {
+            new StudentManageForm().Show();
             this.Hide();
-            TeacherCourseForm teacherCourseForm = new TeacherCourseForm();
-            teacherCourseForm.Show();
         }
 
-        private void TeacherCourseButton_Click(object sender, EventArgs e)  //Remove
+        private void TeacherCourseButton_Click(object sender, EventArgs e)  
         {
+            new TeacherCourseForm().Show();
             this.Hide();
-            TeacherCourseForm teacherCourseForm = new TeacherCourseForm();
-            teacherCourseForm.Show();
         }
 
-        private void AdminButton_Click(object sender, EventArgs e)          //Remove
+        private void AdminButton_Click(object sender, EventArgs e)          
         {
+            new TeacherManageForm().Show();
             this.Hide();
-            TeacherManageForm teacherCourseForm = new TeacherManageForm();
-            teacherCourseForm.Show();
         }
     }
 }

@@ -1,8 +1,8 @@
 ﻿using System.Windows.Forms;
 
-namespace EducationalCenterFinal.Admin.TeacherManage
+namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
 {
-    partial class TeacherManageForm
+    partial class StaffCourseForm
     {
         /// <summary>
         /// Required designer variable.
@@ -64,6 +64,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.teachersToolStripMenuItem.Name = "teachersToolStripMenuItem";
             this.teachersToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
             this.teachersToolStripMenuItem.Text = "Teacher";
+            this.teachersToolStripMenuItem.Enabled = false;
             // 
             // studentsToolStripMenuItem
             // 
@@ -114,7 +115,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.forgetPasswordToolStripMenuItem.Name = "forgetPasswordToolStripMenuItem";
             this.forgetPasswordToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
             this.forgetPasswordToolStripMenuItem.Text = "Forget Password";
-            this.forgetPasswordToolStripMenuItem.Click += new System.EventHandler(this.ForgetPasswordToolStripMenuItem_Click);
+            this.forgetPasswordToolStripMenuItem.Enabled = false;
             // 
             // logoutToolStripMenuItem
             // 
@@ -123,7 +124,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.LogoutToolStripMenuItem_Click);
             // 
-            // TeacherManageForm
+            // StaffCourseForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -131,8 +132,8 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.Name = "TeacherManageForm";
-            this.Text = "TeacherManageForm";
+            this.Name = "StaffCourseForm";
+            this.Text = "StaffCourseForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();

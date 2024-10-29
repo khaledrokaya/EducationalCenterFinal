@@ -30,17 +30,12 @@ namespace EducationalCenterFinal
         /// </summary>
         private void InitializeComponent()
         {
-            //!!!!!!!!! Important Dont Remove
-            this.ClientSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-            this.MaximizeBox = false;
-            //!!!!!!!!! Important Dont Remove
-
-            this.StaffButton = new System.Windows.Forms.Button();           //Remove
-            this.AdminButton = new System.Windows.Forms.Button();           //Remove
-            this.TeacherCourseButton = new System.Windows.Forms.Button();   //Remove
+            this.StaffButton = new System.Windows.Forms.Button();
+            this.AdminButton = new System.Windows.Forms.Button();
+            this.TeacherCourseButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // StaffButton      //Remove
+            // StaffButton
             // 
             this.StaffButton.Location = new System.Drawing.Point(305, 343);
             this.StaffButton.Name = "StaffButton";
@@ -48,9 +43,9 @@ namespace EducationalCenterFinal
             this.StaffButton.TabIndex = 0;
             this.StaffButton.Text = "Staff";
             this.StaffButton.UseVisualStyleBackColor = true;
-            this.StaffButton.Click += new System.EventHandler(this.LoginButton_Click);
+            this.StaffButton.Click += new System.EventHandler(this.StaffButton_Click);
             // 
-            // AdminButton      //Remove
+            // AdminButton
             // 
             this.AdminButton.Location = new System.Drawing.Point(305, 231);
             this.AdminButton.Name = "AdminButton";
@@ -60,26 +55,30 @@ namespace EducationalCenterFinal
             this.AdminButton.UseVisualStyleBackColor = true;
             this.AdminButton.Click += new System.EventHandler(this.AdminButton_Click);
             // 
-            // TeacherCourseButton      //Remove
+            // TeacherCourseButton
             // 
             this.TeacherCourseButton.Location = new System.Drawing.Point(305, 144);
             this.TeacherCourseButton.Name = "TeacherCourseButton";
             this.TeacherCourseButton.Size = new System.Drawing.Size(151, 42);
             this.TeacherCourseButton.TabIndex = 2;
-            this.TeacherCourseButton.Text = "Teacher";
+            this.TeacherCourseButton.Text = "Teachers";
             this.TeacherCourseButton.UseVisualStyleBackColor = true;
             this.TeacherCourseButton.Click += new System.EventHandler(this.TeacherCourseButton_Click);
-
             // 
             // LoginForm
             // 
-            this.Controls.Add(this.TeacherCourseButton);    //Remove
-            this.Controls.Add(this.AdminButton);            //Remove
-            this.Controls.Add(this.StaffButton);            //Remove
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1400, 700);
+            this.Controls.Add(this.TeacherCourseButton);
+            this.Controls.Add(this.AdminButton);
+            this.Controls.Add(this.StaffButton);
+            this.MaximizeBox = false;
             this.Name = "LoginForm";
             this.Text = "LoginForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
+
         }
 
         #endregion

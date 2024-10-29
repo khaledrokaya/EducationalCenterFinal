@@ -30,15 +30,10 @@ namespace EducationalCenterFinal.TeacherCourse
         /// </summary>
         private void InitializeComponent()
         {
-            //!!!!!!!!! Important Dont Remove
-            this.ClientSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-            this.MaximizeBox = false;
-            //!!!!!!!!! Important Dont Remove
-
-            this.logoutButton = new System.Windows.Forms.Button();      //Remove
+            this.logoutButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // logoutButton     //Remove
+            // logoutButton
             // 
             this.logoutButton.Location = new System.Drawing.Point(277, 161);
             this.logoutButton.Name = "logoutButton";
@@ -47,14 +42,17 @@ namespace EducationalCenterFinal.TeacherCourse
             this.logoutButton.Text = "logout";
             this.logoutButton.UseVisualStyleBackColor = true;
             this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
-
             // 
             // TeacherCourseForm
             // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(1400, 700);
             this.Controls.Add(this.logoutButton);
+            this.MaximizeBox = false;
             this.Name = "TeacherCourseForm";
             this.Text = "TeacherCourseForm";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.ResumeLayout(false);
 
         }

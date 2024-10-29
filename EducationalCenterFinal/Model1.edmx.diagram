@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ef0e0a3387b241c6a79f5b4acd4ae5ab" Name="Diagram1" ZoomLevel="64">
+        <EntityTypeShape EntityType="EducationCenterModel.attendance" Width="1.5" PointX="7.875" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="EducationCenterModel.cours" Width="1.5" PointX="5.625" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="EducationCenterModel.enrollment" Width="1.5" PointX="7.875" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="EducationCenterModel.exam" Width="1.5" PointX="10.875" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EducationCenterModel.payment" Width="1.5" PointX="7.875" PointY="10" IsExpanded="true" />
+        <EntityTypeShape EntityType="EducationCenterModel.question" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="EducationCenterModel.staff" Width="1.5" PointX="3.375" PointY="2" IsExpanded="true" />
+        <EntityTypeShape EntityType="EducationCenterModel.student" Width="1.5" PointX="5.625" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EducationCenterModel.teacher" Width="1.5" PointX="3.375" PointY="5.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="EducationCenterModel.user" Width="1.5" PointX="1.125" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="EducationCenterModel.FK__attendanc__cours__66603565" ManuallyRouted="false" />
+        <AssociationConnector Association="EducationCenterModel.FK__attendanc__stude__656C112C" ManuallyRouted="false" />
+        <AssociationConnector Association="EducationCenterModel.FK__courses__teacher__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="EducationCenterModel.FK__enrollmen__cours__6EF57B66" ManuallyRouted="false" />
+        <AssociationConnector Association="EducationCenterModel.FK__exams__courseId__60A75C0F" ManuallyRouted="false" />
+        <AssociationConnector Association="EducationCenterModel.FK__payments__course__6B24EA82" ManuallyRouted="false" />
+        <AssociationConnector Association="EducationCenterModel.FK__enrollmen__stude__6E01572D" ManuallyRouted="false" />
+        <AssociationConnector Association="EducationCenterModel.FK__exams__studentId__619B8048" ManuallyRouted="false" />
+        <AssociationConnector Association="EducationCenterModel.FK__payments__studen__6A30C649" ManuallyRouted="false" />
+        <AssociationConnector Association="EducationCenterModel.FK__staff__userId__534D60F1" ManuallyRouted="false" />
+        <AssociationConnector Association="EducationCenterModel.FK__teachers__userId__5629CD9C" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -15,13 +15,17 @@ namespace EducationalCenterFinal.TeacherCourse
         public TeacherCourseForm()
         {
             InitializeComponent();
+            //!!!!!!!!! Important Dont Remove
+            this.ClientSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            this.MaximizeBox = false;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            //!!!!!!!!! Important Dont Remove
         }
 
         private void logoutButton_Click(object sender, EventArgs e) //Remove
         {
+            new LoginForm().Show();
             this.Hide();
-            LoginForm loginForm = new LoginForm();
-            loginForm.Show();
         }
     }
 }

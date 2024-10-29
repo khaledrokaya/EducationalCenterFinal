@@ -1,8 +1,8 @@
 ﻿using System.Windows.Forms;
 
-namespace EducationalCenterFinal.Admin.TeacherManage
+namespace EducationalCenterFinal.Admin.Staff.StudentManage
 {
-    partial class TeacherManageForm
+    partial class StudentManageForm
     {
         /// <summary>
         /// Required designer variable.
@@ -64,13 +64,13 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.teachersToolStripMenuItem.Name = "teachersToolStripMenuItem";
             this.teachersToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
             this.teachersToolStripMenuItem.Text = "Teacher";
+            this.teachersToolStripMenuItem.Click += new System.EventHandler(this.TeachersToolStripMenuItem_Click);
             // 
             // studentsToolStripMenuItem
             // 
             this.studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
             this.studentsToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.studentsToolStripMenuItem.Text = "Student";
-            this.studentsToolStripMenuItem.Click += new System.EventHandler(this.StudentsToolStripMenuItem_Click);
             // 
             // employeesToolStripMenuItem
             // 
@@ -114,7 +114,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.forgetPasswordToolStripMenuItem.Name = "forgetPasswordToolStripMenuItem";
             this.forgetPasswordToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
             this.forgetPasswordToolStripMenuItem.Text = "Forget Password";
-            this.forgetPasswordToolStripMenuItem.Click += new System.EventHandler(this.ForgetPasswordToolStripMenuItem_Click);
+
             // 
             // logoutToolStripMenuItem
             // 
@@ -123,7 +123,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.LogoutToolStripMenuItem_Click);
             // 
-            // TeacherManageForm
+            // StudentManageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -131,8 +131,8 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.Name = "TeacherManageForm";
-            this.Text = "TeacherManageForm";
+            this.Name = "StudentManageForm";
+            this.Text = "StudentManageForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
