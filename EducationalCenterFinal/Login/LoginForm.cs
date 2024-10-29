@@ -24,6 +24,7 @@ namespace EducationalCenterFinal
             this.MaximizeBox = false;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             //!!!!!!!!! Important Dont Remove
+            //this.TeacherCourseButton.Click += (sender, e) => this.TeacherCourseButton_Click(); // Uncomment and add TeacherId not UserId
         }
 
         private void StaffButton_Click(object sender, EventArgs e)          
@@ -32,9 +33,9 @@ namespace EducationalCenterFinal
             this.Hide();
         }
 
-        private void TeacherCourseButton_Click(object sender, EventArgs e)  
+        private void TeacherCourseButton_Click(int TeacherId)  
         {
-            new TeacherCourseForm().Show();
+            new TeacherCourseForm(TeacherId).Show();
             this.Hide();
         }
 

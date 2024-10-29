@@ -41,7 +41,7 @@ namespace EducationalCenterFinal.TeacherCourse
             this.logoutButton.TabIndex = 0;
             this.logoutButton.Text = "logout";
             this.logoutButton.UseVisualStyleBackColor = true;
-            this.logoutButton.Click += new System.EventHandler(this.logoutButton_Click);
+            this.logoutButton.Click += new System.EventHandler(this.LogoutButton_Click);
             // 
             // TeacherCourseForm
             // 

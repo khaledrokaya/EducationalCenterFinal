@@ -12,7 +12,7 @@ namespace EducationalCenterFinal.TeacherCourse
 {
     public partial class TeacherCourseForm : Form
     {
-        public TeacherCourseForm()
+        public TeacherCourseForm(int TeacherId)
         {
             InitializeComponent();
             //!!!!!!!!! Important Dont Remove
@@ -22,7 +22,7 @@ namespace EducationalCenterFinal.TeacherCourse
             //!!!!!!!!! Important Dont Remove
         }
 
-        private void logoutButton_Click(object sender, EventArgs e) //Remove
+        private void LogoutButton_Click(object sender, EventArgs e) //Remove
         {
             new LoginForm().Show();
             this.Hide();
