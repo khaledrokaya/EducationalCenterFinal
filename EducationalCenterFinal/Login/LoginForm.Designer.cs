@@ -33,6 +33,7 @@ namespace EducationalCenterFinal
             this.StaffButton = new System.Windows.Forms.Button();
             this.AdminButton = new System.Windows.Forms.Button();
             this.TeacherCourseButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // StaffButton
@@ -65,11 +66,21 @@ namespace EducationalCenterFinal
             this.TeacherCourseButton.UseVisualStyleBackColor = true;
             this.TeacherCourseButton.Click += new System.EventHandler(this.TeacherCourseButton_Click);
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(622, 88);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 3;
+            this.button1.Text = "button1";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1400, 700);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.TeacherCourseButton);
             this.Controls.Add(this.AdminButton);
             this.Controls.Add(this.StaffButton);
@@ -86,6 +97,7 @@ namespace EducationalCenterFinal
         private System.Windows.Forms.Button StaffButton;
         private System.Windows.Forms.Button AdminButton;
         private System.Windows.Forms.Button TeacherCourseButton;
+        private Button button1;
     }
 }
 
