@@ -1,4 +1,5 @@
-﻿using EducationalCenterFinal.Admin.Staff.StudentManage;
+﻿using EducationalCenterFinal.Admin.Dashboard;
+using EducationalCenterFinal.Admin.Staff.StudentManage;
 using EducationalCenterFinal.Admin.TeacherManage;
 using EducationalCenterFinal.TeacherCourse;
 using System;
@@ -27,7 +28,7 @@ namespace EducationalCenterFinal
 
         private void StaffButton_Click(object sender, EventArgs e)          
         {
-            new StudentManageForm().Show();
+            new StudentManageForm("staff").Show();
             this.Hide();
         }
 
@@ -39,7 +40,7 @@ namespace EducationalCenterFinal
 
         private void AdminButton_Click(object sender, EventArgs e)          
         {
-            new TeacherManageForm().Show();
+            new DashboardForm("admin").Show();
             this.Hide();
         }
     }

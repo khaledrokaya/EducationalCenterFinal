@@ -1,9 +1,9 @@
 ﻿using EducationalCenterFinal.Admin.CourseManage;
 using EducationalCenterFinal.Admin.CreateAccount;
-using EducationalCenterFinal.Admin.Dashboard;
+using EducationalCenterFinal.Admin.EmployeeManage;
 using EducationalCenterFinal.Admin.Staff.StaffCoursesManage;
-using EducationalCenterFinal.Admin.Staff;
 using EducationalCenterFinal.Admin.Staff.StudentManage;
+using EducationalCenterFinal.Admin.Staff;
 using EducationalCenterFinal.Admin.TeacherManage;
 using System;
 using System.Collections.Generic;
@@ -15,12 +15,12 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace EducationalCenterFinal.Admin.EmployeeManage
+namespace EducationalCenterFinal.Admin.Dashboard
 {
-    public partial class EmployeeManageForm : Form
+    public partial class DashboardForm : Form
     {
         readonly EducationCenterEntities dp = new EducationCenterEntities();
-        public EmployeeManageForm()
+        public DashboardForm(string role)
         {
             InitializeComponent();
 
@@ -29,9 +29,17 @@ namespace EducationalCenterFinal.Admin.EmployeeManage
             this.MaximizeBox = false;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 
-            this.questionsToolStripMenuItem.Click += (sender, e) => this.QuestionsToolStripMenuItem_Click("admin");
-            this.dashboardToolStripMenuItem.Click += (sender, e) => this.DashboardToolStripMenuItem_Click("admin");
-            this.studentsToolStripMenuItem.Click += (sender, e) => this.StudentsToolStripMenuItem_Click("admin");
+            this.questionsToolStripMenuItem.Click += (sender, e) => this.QuestionsToolStripMenuItem_Click(role);
+
+            //Disable Admin Sections
+            if (role == "staff")
+            {
+                teachersToolStripMenuItem.Enabled = false;
+                coursesToolStripMenuItem.Enabled = false;
+                forgetPasswordToolStripMenuItem.Enabled = false;
+                createAccountToolStripMenuItem.Enabled = false;
+                employeesToolStripMenuItem.Enabled = false;
+            }
 
             //Make Manage Course MenuItems
             foreach (var course in dp.courses)
@@ -42,7 +50,7 @@ namespace EducationalCenterFinal.Admin.EmployeeManage
                     Size = new System.Drawing.Size(134, 26),
                     Text = course.courseName,
                 };
-                courseMenuItem.Click += (sender, e) => CourseMenuItem_Click(course.courseId, "admin");
+                courseMenuItem.Click += (sender, e) => CourseMenuItem_Click(course.courseId, role);
                 manageToolStripMenuItem.DropDownItems.Add(courseMenuItem);
             }
         }
@@ -50,12 +58,6 @@ namespace EducationalCenterFinal.Admin.EmployeeManage
         private void CourseMenuItem_Click(int CourseId, string role)
         {
             new StaffCourseForm(CourseId, role).Show();
-            this.Hide();
-        }
-
-        private void CoursesToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            new CourseManageForm().Show();
             this.Hide();
         }
 
@@ -75,28 +77,33 @@ namespace EducationalCenterFinal.Admin.EmployeeManage
             new CreateAccountForm().Show();
             this.Hide();
         }
-
         private void TeachersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new TeacherManageForm().Show();
             this.Hide();
         }
 
-        private void DashboardToolStripMenuItem_Click(string role)
+        private void EmployeesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new DashboardForm(role).Show();
+            new EmployeeManageForm().Show();
+            this.Hide();
+        }
+
+        private void StudentsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new StudentManageForm("admin").Show();
+            this.Hide();
+        }
+
+        private void CoursesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            new CourseManageForm().Show();
             this.Hide();
         }
 
         private void QuestionsToolStripMenuItem_Click(string role)
         {
             new QuestionsForm(role).Show();
-            this.Hide();
-        }
-
-        private void StudentsToolStripMenuItem_Click(string role)
-        {
-            new StudentManageForm(role).Show();
             this.Hide();
         }
     }

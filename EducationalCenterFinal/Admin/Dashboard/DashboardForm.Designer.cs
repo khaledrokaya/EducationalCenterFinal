@@ -1,8 +1,8 @@
 ﻿using System.Windows.Forms;
 
-namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
+namespace EducationalCenterFinal.Admin.Dashboard
 {
-    partial class StaffCourseForm
+    partial class DashboardForm
     {
         /// <summary>
         /// Required designer variable.
@@ -31,17 +31,17 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.dashboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.teachersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.studentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.employeesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.coursesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.manageToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.questionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.accountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.forgetPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dashboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.questionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,12 +63,6 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // dashboardToolStripMenuItem
-            // 
-            this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
-            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
-            this.dashboardToolStripMenuItem.Text = "Dashboard";
-            // 
             // teachersToolStripMenuItem
             // 
             this.teachersToolStripMenuItem.Name = "teachersToolStripMenuItem";
@@ -81,6 +75,7 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             this.studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
             this.studentsToolStripMenuItem.Size = new System.Drawing.Size(73, 24);
             this.studentsToolStripMenuItem.Text = "Student";
+            this.studentsToolStripMenuItem.Click += new System.EventHandler(this.StudentsToolStripMenuItem_Click);
             // 
             // employeesToolStripMenuItem
             // 
@@ -101,12 +96,6 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
             this.manageToolStripMenuItem.Size = new System.Drawing.Size(76, 24);
             this.manageToolStripMenuItem.Text = "Manage";
-            // 
-            // questionsToolStripMenuItem
-            // 
-            this.questionsToolStripMenuItem.Name = "questionsToolStripMenuItem";
-            this.questionsToolStripMenuItem.Size = new System.Drawing.Size(76, 24);
-            this.questionsToolStripMenuItem.Text = "Questions";
             // 
             // accountToolStripMenuItem
             // 
@@ -130,7 +119,7 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             this.forgetPasswordToolStripMenuItem.Name = "forgetPasswordToolStripMenuItem";
             this.forgetPasswordToolStripMenuItem.Size = new System.Drawing.Size(204, 26);
             this.forgetPasswordToolStripMenuItem.Text = "Forget Password";
-            this.createAccountToolStripMenuItem.Click += new System.EventHandler(this.ForgetPasswordToolStripMenuItem_Click);
+            this.logoutToolStripMenuItem.Click += new System.EventHandler(this.ForgetPasswordToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
@@ -139,7 +128,19 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.LogoutToolStripMenuItem_Click);
             // 
-            // StaffCourseForm
+            // dashboardToolStripMenuItem
+            // 
+            this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
+            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
+            this.dashboardToolStripMenuItem.Text = "Dashboard";
+            // 
+            // questionsToolStripMenuItem
+            // 
+            this.questionsToolStripMenuItem.Name = "questionsToolStripMenuItem";
+            this.questionsToolStripMenuItem.Size = new System.Drawing.Size(76, 24);
+            this.questionsToolStripMenuItem.Text = "Questions";
+            // 
+            // DashboardForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -147,13 +148,14 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.Name = "StaffCourseForm";
-            this.Text = "StaffCourseForm";
+            this.Name = "DashboardForm";
+            this.Text = "DashboardForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
+
         }
 
         #endregion

@@ -95,11 +95,23 @@
     <Compile Include="Admin\CreateAccount\CreateAccountForm.Designer.cs">
       <DependentUpon>CreateAccountForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Dashboard\DashboardForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Dashboard\DashboardForm.Designer.cs">
+      <DependentUpon>DashboardForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\EmployeeManage\EmployeeManageForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Admin\EmployeeManage\EmployeeManageForm.Designer.cs">
       <DependentUpon>EmployeeManageForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Staff\Questions\QuestionsForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Staff\Questions\QuestionsForm.Designer.cs">
+      <DependentUpon>QuestionsForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Staff\StaffCoursesManage\StaffCourseForm.cs">
       <SubType>Form</SubType>
@@ -184,8 +196,14 @@
     <EmbeddedResource Include="Admin\CreateAccount\CreateAccountForm.resx">
       <DependentUpon>CreateAccountForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Dashboard\DashboardForm.resx">
+      <DependentUpon>DashboardForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\EmployeeManage\EmployeeManageForm.resx">
       <DependentUpon>EmployeeManageForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Staff\Questions\QuestionsForm.resx">
+      <DependentUpon>QuestionsForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Staff\StaffCoursesManage\StaffCourseForm.resx">
       <DependentUpon>StaffCourseForm.cs</DependentUpon>

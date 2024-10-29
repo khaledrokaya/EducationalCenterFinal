@@ -1,8 +1,8 @@
 ﻿using System.Windows.Forms;
 
-namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
+namespace EducationalCenterFinal.Admin.Staff
 {
-    partial class StaffCourseForm
+    partial class QuestionsForm
     {
         /// <summary>
         /// Required designer variable.
@@ -139,7 +139,7 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.LogoutToolStripMenuItem_Click);
             // 
-            // StaffCourseForm
+            // QuestionsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -147,8 +147,8 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.Name = "StaffCourseForm";
-            this.Text = "StaffCourseForm";
+            this.Name = "QuestionsForm";
+            this.Text = "QuestionsForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
