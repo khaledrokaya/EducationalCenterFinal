@@ -63,7 +63,6 @@ namespace EducationalCenterFinal
             this.TeacherCourseButton.TabIndex = 2;
             this.TeacherCourseButton.Text = "Teachers";
             this.TeacherCourseButton.UseVisualStyleBackColor = true;
-            this.TeacherCourseButton.Click += new System.EventHandler(this.TeacherCourseButton_Click);
             // 
             // LoginForm
             // 
