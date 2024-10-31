@@ -27,22 +27,58 @@ namespace EducationalCenterFinal
             //this.TeacherCourseButton.Click += (sender, e) => this.TeacherCourseButton_Click(); // Uncomment and add TeacherId not UserId
         }
 
-        private void StaffButton_Click(object sender, EventArgs e)          
+        private void StaffButton_Click(object sender, EventArgs e)
         {
             new StudentManageForm("staff").Show();
             this.Hide();
         }
 
-        private void TeacherCourseButton_Click(int TeacherId)  
+        private void TeacherCourseButton_Click(int TeacherId)
         {
             new TeacherCourseForm(TeacherId).Show();
             this.Hide();
         }
 
-        private void AdminButton_Click(object sender, EventArgs e)          
+        private void AdminButton_Click(object sender, EventArgs e)
         {
             new DashboardForm("admin").Show();
             this.Hide();
+        }
+
+        private void login_username_Enter(object sender, EventArgs e)
+        {
+            if (login_username.Text == "Username")
+            {
+                login_username.Text = "";
+                login_username.ForeColor = Color.Black;
+            }
+        }
+
+        private void login_username_Leave(object sender, EventArgs e)
+        {
+            if (login_username.Text == "")
+            {
+                login_username.Text = "Username";
+                login_username.ForeColor = Color.LightGray;
+            }
+        }
+
+        private void login_password_Enter(object sender, EventArgs e)
+        {
+            if (login_password.Text == "Password")
+            {
+                login_password.Text = "";
+                login_password.ForeColor = Color.Black;
+            }
+        }
+
+        private void login_password_Leave(object sender, EventArgs e)
+        {
+            if (login_password.Text == "")
+            {
+                login_password.Text = "Password";
+                login_password.ForeColor = Color.LightGray;
+            }
         }
     }
 }
