@@ -164,6 +164,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Model1.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Open_Source_Education_CenterDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Open_Source_Education_CenterDataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="payment.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -207,6 +212,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Staff\StaffCoursesManage\StaffCourseForm.resx">
       <DependentUpon>StaffCourseForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Staff\StudentManage\StudentManageForm.resx">
       <DependentUpon>StudentManageForm.cs</DependentUpon>
@@ -235,6 +241,17 @@
     </EntityDeploy>
     <None Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
+    </None>
+    <None Include="Open_Source_Education_CenterDataSet.xsc">
+      <DependentUpon>Open_Source_Education_CenterDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="Open_Source_Education_CenterDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>Open_Source_Education_CenterDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Open_Source_Education_CenterDataSet.xss">
+      <DependentUpon>Open_Source_Education_CenterDataSet.xsd</DependentUpon>
     </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
