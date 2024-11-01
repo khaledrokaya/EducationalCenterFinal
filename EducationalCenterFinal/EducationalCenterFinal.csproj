@@ -113,6 +113,12 @@
     <Compile Include="Admin\Staff\Questions\QuestionsForm.Designer.cs">
       <DependentUpon>QuestionsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Admin\Staff\StaffCoursesManage\CourseManageForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Staff\StaffCoursesManage\CourseManageForms.Designer.cs">
+      <DependentUpon>CourseManageForms.cs</DependentUpon>
+    </Compile>
     <Compile Include="Admin\Staff\StaffCoursesManage\StaffCourseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -177,6 +183,18 @@
     <Compile Include="question.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="SpecialForms\ForgotPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpecialForms\ForgotPassword.Designer.cs">
+      <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpecialForms\ShowStudentDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpecialForms\ShowStudentDataForm.Designer.cs">
+      <DependentUpon>ShowStudentDataForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="staff.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -210,6 +228,9 @@
     <EmbeddedResource Include="Admin\Staff\Questions\QuestionsForm.resx">
       <DependentUpon>QuestionsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Staff\StaffCoursesManage\CourseManageForms.resx">
+      <DependentUpon>CourseManageForms.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\Staff\StaffCoursesManage\StaffCourseForm.resx">
       <DependentUpon>StaffCourseForm.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -232,6 +253,12 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="SpecialForms\ForgotPassword.resx">
+      <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpecialForms\ShowStudentDataForm.resx">
+      <DependentUpon>ShowStudentDataForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TeacherCourse\TeacherCourseForm.resx">
       <DependentUpon>TeacherCourseForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -269,6 +296,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <Content Include="Admin\Staff\StaffCoursesManage\search-interface-symbol.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>
