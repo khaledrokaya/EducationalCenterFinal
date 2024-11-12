@@ -78,7 +78,7 @@ namespace EducationalCenterFinal.Admin.CreateAccount
 
         private void TeachersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new TeacherManageForm().Show();
+            new TeacherManageForm().Show(); 
             this.Hide();
         }
 

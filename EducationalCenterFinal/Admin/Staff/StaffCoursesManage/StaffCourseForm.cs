@@ -82,7 +82,7 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
         }
         private void TeachersToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            new TeacherManageForm().Show();
+            new TeacherManageForm().Show(); 
             this.Hide();
         }
         
