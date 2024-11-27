@@ -99,5 +99,10 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             new StudentManageForm(role).Show();
             this.Hide();
         }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
     }
 }
