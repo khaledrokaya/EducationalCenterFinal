@@ -296,7 +296,7 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <Content Include="Admin\Staff\StaffCoursesManage\search-interface-symbol.png" />
+    <Content Include="Images\search-interface-symbol.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>

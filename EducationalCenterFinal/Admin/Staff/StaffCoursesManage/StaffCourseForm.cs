@@ -65,7 +65,7 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             
             PictureBox pictureBox = new PictureBox
             {
-                Image = Image.FromFile(Application.StartupPath.Substring(0, 42) + "\\Admin\\Staff\\StaffCoursesManage\\search-interface-symbol.png"),
+                Image = Image.FromFile(Application.StartupPath.Substring(0, 42) + "\\Images\\search-interface-symbol.png"),
                 SizeMode = PictureBoxSizeMode.Normal,
                 Location = new Point(270, 13),
                 Size = new Size(50, 50)
