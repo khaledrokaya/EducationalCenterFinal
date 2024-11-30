@@ -17,7 +17,7 @@ namespace EducationalCenterFinal
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new CreateAccountForm());
+            Application.Run(new LoginForm());
         }
     }
 }

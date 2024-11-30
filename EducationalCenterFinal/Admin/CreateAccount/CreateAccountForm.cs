@@ -16,39 +16,35 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.SqlClient;
 using System.Runtime.Remoting.Contexts;
+using EducationalCenterFinal.SpecialForms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
+using System.Text.RegularExpressions;
 
 namespace EducationalCenterFinal.Admin.CreateAccount
 {
     public partial class CreateAccountForm : Form
     {
-        SqlConnection connect = new SqlConnection(@"Data Source=EL-AGAMY\SQLEXPRESS;Initial Catalog=Open_Source_Education_Center;Integrated Security=True;Encrypt=True;TrustServerCertificate=True");
-
-        readonly EducationCenterEntities dp = new EducationCenterEntities();
+        readonly private EducationCenterEntities dp = new EducationCenterEntities();
         public CreateAccountForm()
         {
             InitializeComponent();
-
-            //Maximize window
-            this.ClientSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-            this.MaximizeBox = false;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 
             this.questionsToolStripMenuItem.Click += (sender, e) => this.QuestionsToolStripMenuItem_Click("admin");
             this.dashboardToolStripMenuItem.Click += (sender, e) => this.DashboardToolStripMenuItem_Click("admin");
             this.studentsToolStripMenuItem.Click += (sender, e) => this.StudentsToolStripMenuItem_Click("admin");
 
             //Make Manage Course MenuItems
-            //foreach (var course in dp.courses)
-            //{
-            //    ToolStripMenuItem courseMenuItem = new ToolStripMenuItem
-            //    {
-            //        Name = $"{course.courseName}ToolStripMenuItem",
-            //        Size = new System.Drawing.Size(134, 26),
-            //        Text = course.courseName,
-            //    };
-            //    courseMenuItem.Click += (sender, e) => CourseMenuItem_Click(course.courseId, "admin");
-            //    manageToolStripMenuItem.DropDownItems.Add(courseMenuItem);
-            //}
+            foreach (var course in dp.courses)
+            {
+                ToolStripMenuItem courseMenuItem = new ToolStripMenuItem
+                {
+                    Name = $"{course.courseName}ToolStripMenuItem",
+                    Size = new System.Drawing.Size(134, 26),
+                    Text = course.courseName,
+                };
+                courseMenuItem.Click += (sender, e) => CourseMenuItem_Click(course.courseId, "admin");
+                manageToolStripMenuItem.DropDownItems.Add(courseMenuItem);
+            }
         }
 
         private void CourseMenuItem_Click(int CourseId, string role)
@@ -77,7 +73,7 @@ namespace EducationalCenterFinal.Admin.CreateAccount
 
         private void ForgetPasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            new ForgotPassword(dp).Show();
         }
 
         private void TeachersToolStripMenuItem_Click(object sender, EventArgs e)
@@ -104,80 +100,68 @@ namespace EducationalCenterFinal.Admin.CreateAccount
             this.Hide();
         }
 
-        private void dashboardToolStripMenuItem_Click(object sender, EventArgs e)
+        private void resetForm()
         {
-
+            sign_confpass.Text = "";
+            sign_password.Text = "";
+            sign_username.Text = "";
+            sign_phone.Text = "";
+            sign_role.Text = "";
         }
 
-        private void sign_btn_Click(object sender, EventArgs e)
+        private async void sign_btn_Click(object sender, EventArgs e)
         {
 
-            if (sign_username.Text == "" || sign_confpass.Text == ""
-                || sign_password.Text == "" || sign_phone.Text == "")
+            if (sign_username.Text == "" || sign_confpass.Text == "" || sign_password.Text == "" || sign_phone.Text == "" || sign_role.Text == "")
             {
                 MessageBox.Show("Please fill all blank fields", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (sign_password.Text.Trim() != sign_confpass.Text.Trim())
+            {
+                MessageBox.Show("Password and Confirm Password do not match", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (sign_phone.Text.Length != 11)
+            {
+                MessageBox.Show("Phone number must be 11 number", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (!Regex.IsMatch(sign_username.Text.Trim(), @"^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$"))
+            {
+                MessageBox.Show("Enter valid email address", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
             }
             else
             {
-                if (connect.State != ConnectionState.Open)
+                try
                 {
-                    try
+                    var existingUser = dp.users.FirstOrDefault(u => u.userEmail == sign_username.Text.Trim());
+                    if (existingUser != null)
                     {
-                        connect.Open();
-                        String checkUsername = "SELECT * FROM users WHERE userEmail = '"
-                            + sign_username.Text.Trim() + "'"; // users is the table name
-
-                        using (SqlCommand checkUser = new SqlCommand(checkUsername, connect))
-                        {
-                            SqlDataAdapter adapter = new SqlDataAdapter(checkUser);
-                            DataTable table = new DataTable();
-                            adapter.Fill(table);
-
-                            if (table.Rows.Count >= 1)
-                            {
-                                MessageBox.Show(sign_username.Text + " is already exist", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                            }
-                            else
-                            {
-                                string insertData = "INSERT INTO users ( userEmail, password, role, userPhone, createAt) " +
-                                    "VALUES( @userEmail, @password, @role, @phone, @date)";
-                                DateTime date = DateTime.Today;
-
-                                using (SqlCommand cmd = new SqlCommand(insertData, connect))
-                                {
-
-                                    cmd.Parameters.AddWithValue("@userEmail", sign_username.Text.Trim());// the first textbox is for email or name !!
-                                    cmd.Parameters.AddWithValue("@password", sign_password.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@role", sign_role.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@phone", sign_phone.Text.Trim());
-                                    cmd.Parameters.AddWithValue("@date", date);
-
-                                    cmd.ExecuteNonQuery();
-
-                                    MessageBox.Show("Registered successfully", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                                    // TO SWITCH THE FORM 
-                                    //LoginForm lForm = new LoginForm();
-                                    //lForm.Show();
-                                    //this.Hide();
-                                }
-                            }
-                        }
+                        MessageBox.Show(sign_username.Text + " already exists", "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        return;
                     }
-                    catch (Exception ex)
+
+                    var newUser = new user
                     {
-                        MessageBox.Show("Error connecting Database: " + ex, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    }
-                    finally
-                    {
-                        connect.Close();
-                    }
+                        userEmail = sign_username.Text.Trim(),
+                        password = sign_password.Text.Trim(),
+                        role = sign_role.Text.Trim(),
+                        userPhone = sign_phone.Text.Trim(),
+                        createAt = DateTime.Today
+                    };
+
+                    dp.users.Add(newUser);
+                    dp.SaveChanges();
+                    resetForm();
+                    MessageBox.Show($"Registered successfully with user ID: {dp.users.Where(u => u.userEmail == newUser.userEmail).Select(u => u.userId).FirstOrDefault()}", "Information Message", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
-
-
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error connecting to the database: " + ex.Message, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-
         }
-
     }
 }

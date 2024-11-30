@@ -63,6 +63,7 @@ namespace EducationalCenterFinal.Admin.CreateAccount
             // 
             // menuStrip1
             // 
+            this.menuStrip1.Font = new System.Drawing.Font("Arial Unicode MS", 10.8F);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dashboardToolStripMenuItem,
@@ -75,54 +76,53 @@ namespace EducationalCenterFinal.Admin.CreateAccount
             this.accountToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1400, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1400, 32);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // dashboardToolStripMenuItem
             // 
             this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
-            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
+            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(112, 28);
             this.dashboardToolStripMenuItem.Text = "Dashboard";
-            this.dashboardToolStripMenuItem.Click += new System.EventHandler(this.dashboardToolStripMenuItem_Click);
             // 
             // teachersToolStripMenuItem
             // 
             this.teachersToolStripMenuItem.Name = "teachersToolStripMenuItem";
-            this.teachersToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
+            this.teachersToolStripMenuItem.Size = new System.Drawing.Size(90, 28);
             this.teachersToolStripMenuItem.Text = "Teacher";
             this.teachersToolStripMenuItem.Click += new System.EventHandler(this.TeachersToolStripMenuItem_Click);
             // 
             // studentsToolStripMenuItem
             // 
             this.studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
-            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(74, 24);
+            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(86, 28);
             this.studentsToolStripMenuItem.Text = "Student";
             // 
             // employeesToolStripMenuItem
             // 
             this.employeesToolStripMenuItem.Name = "employeesToolStripMenuItem";
-            this.employeesToolStripMenuItem.Size = new System.Drawing.Size(89, 24);
+            this.employeesToolStripMenuItem.Size = new System.Drawing.Size(104, 28);
             this.employeesToolStripMenuItem.Text = "Employee";
             this.employeesToolStripMenuItem.Click += new System.EventHandler(this.EmployeesToolStripMenuItem_Click);
             // 
             // coursesToolStripMenuItem
             // 
             this.coursesToolStripMenuItem.Name = "coursesToolStripMenuItem";
-            this.coursesToolStripMenuItem.Size = new System.Drawing.Size(68, 24);
+            this.coursesToolStripMenuItem.Size = new System.Drawing.Size(82, 28);
             this.coursesToolStripMenuItem.Text = "Course";
             this.coursesToolStripMenuItem.Click += new System.EventHandler(this.CoursesToolStripMenuItem_Click);
             // 
             // manageToolStripMenuItem
             // 
             this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            this.manageToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
+            this.manageToolStripMenuItem.Size = new System.Drawing.Size(89, 28);
             this.manageToolStripMenuItem.Text = "Manage";
             // 
             // questionsToolStripMenuItem
             // 
             this.questionsToolStripMenuItem.Name = "questionsToolStripMenuItem";
-            this.questionsToolStripMenuItem.Size = new System.Drawing.Size(88, 24);
+            this.questionsToolStripMenuItem.Size = new System.Drawing.Size(105, 28);
             this.questionsToolStripMenuItem.Text = "Questions";
             // 
             // accountToolStripMenuItem
@@ -132,26 +132,26 @@ namespace EducationalCenterFinal.Admin.CreateAccount
             this.forgetPasswordToolStripMenuItem,
             this.logoutToolStripMenuItem});
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
-            this.accountToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
+            this.accountToolStripMenuItem.Size = new System.Drawing.Size(89, 28);
             this.accountToolStripMenuItem.Text = "Account";
             // 
             // createAccountToolStripMenuItem
             // 
             this.createAccountToolStripMenuItem.Name = "createAccountToolStripMenuItem";
-            this.createAccountToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
+            this.createAccountToolStripMenuItem.Size = new System.Drawing.Size(230, 28);
             this.createAccountToolStripMenuItem.Text = "Create Account";
-            this.createAccountToolStripMenuItem.Click += new System.EventHandler(this.ForgetPasswordToolStripMenuItem_Click);
             // 
             // forgetPasswordToolStripMenuItem
             // 
             this.forgetPasswordToolStripMenuItem.Name = "forgetPasswordToolStripMenuItem";
-            this.forgetPasswordToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
+            this.forgetPasswordToolStripMenuItem.Size = new System.Drawing.Size(230, 28);
             this.forgetPasswordToolStripMenuItem.Text = "Forget Password";
+            this.forgetPasswordToolStripMenuItem.Click += new System.EventHandler(this.ForgetPasswordToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(200, 26);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(230, 28);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.LogoutToolStripMenuItem_Click);
             // 
@@ -289,13 +289,15 @@ namespace EducationalCenterFinal.Admin.CreateAccount
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1400, 700);
+            this.MaximumSize = new System.Drawing.Size(1400, 700);
+            this.MinimumSize = new System.Drawing.Size(1400, 700);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "CreateAccountForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CreateAccountForm";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
