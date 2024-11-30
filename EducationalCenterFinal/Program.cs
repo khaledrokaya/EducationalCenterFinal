@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EducationalCenterFinal.Admin.CreateAccount;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace EducationalCenterFinal
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new LoginForm());
+            Application.Run(new CreateAccountForm());
         }
     }
 }
