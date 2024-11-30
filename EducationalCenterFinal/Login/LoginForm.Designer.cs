@@ -49,10 +49,10 @@ namespace EducationalCenterFinal
             // 
             this.panel1.Controls.Add(this.pictureBox1);
             this.panel1.Controls.Add(this.panel2);
-            this.panel1.Location = new System.Drawing.Point(1, 0);
+            this.panel1.Location = new System.Drawing.Point(-1, 0);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1403, 701);
-            this.panel1.TabIndex = 0;
+            this.panel1.TabIndex = 4;
             // 
             // pictureBox1
             // 
@@ -97,10 +97,11 @@ namespace EducationalCenterFinal
             this.login_btn.TabIndex = 4;
             this.login_btn.Text = "Log In";
             this.login_btn.UseVisualStyleBackColor = false;
+            this.login_btn.Click += new System.EventHandler(this.login_btn_Click);
             // 
             // login_password
             // 
-            this.login_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.login_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.login_password.Location = new System.Drawing.Point(47, 333);
             this.login_password.Multiline = true;
             this.login_password.Name = "login_password";
@@ -108,12 +109,10 @@ namespace EducationalCenterFinal
             this.login_password.Size = new System.Drawing.Size(600, 70);
             this.login_password.TabIndex = 3;
             this.login_password.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.login_password.Enter += new System.EventHandler(this.login_password_Enter);
-            this.login_password.Leave += new System.EventHandler(this.login_password_Leave);
             // 
             // login_username
             // 
-            this.login_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.login_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.login_username.Location = new System.Drawing.Point(47, 257);
             this.login_username.Multiline = true;
             this.login_username.Name = "login_username";
@@ -121,8 +120,6 @@ namespace EducationalCenterFinal
             this.login_username.Size = new System.Drawing.Size(600, 70);
             this.login_username.TabIndex = 2;
             this.login_username.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.login_username.Enter += new System.EventHandler(this.login_username_Enter);
-            this.login_username.Leave += new System.EventHandler(this.login_username_Leave);
             // 
             // label2
             // 
@@ -166,14 +163,14 @@ namespace EducationalCenterFinal
         #endregion
 
         private Panel panel1;
+        private PictureBox pictureBox1;
         private Panel panel2;
+        private Label label3;
         private Button login_btn;
         private TextBox login_password;
         private TextBox login_username;
         private Label label2;
         private Label label1;
-        private PictureBox pictureBox1;
-        private Label label3;
     }
 }
 

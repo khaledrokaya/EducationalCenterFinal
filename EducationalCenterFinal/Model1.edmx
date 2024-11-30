@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="EducationCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="EducationCenterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="attendance">
           <Key>
             <PropertyRef Name="attendanceId" />
@@ -26,6 +26,7 @@
           <Property Name="beginning" Type="time" Precision="7" />
           <Property Name="NoOfHours" Type="decimal" Precision="4" Scale="2" />
           <Property Name="teacherId" Type="int" Nullable="false" />
+          <Property Name="price" Type="decimal" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="enrollments">
           <Key>
@@ -110,7 +111,7 @@
           <Property Name="userPhone" Type="varchar" MaxLength="30" Nullable="false" />
           <Property Name="createAt" Type="date" />
         </EntityType>
-        <Association Name="FK__attendanc__cours__66603565">
+        <Association Name="FK__attendanc__cours__571DF1D5">
           <End Role="courses" Type="Self.courses" Multiplicity="1" />
           <End Role="attendance" Type="Self.attendance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -122,7 +123,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__attendanc__stude__656C112C">
+        <Association Name="FK__attendanc__stude__5629CD9C">
           <End Role="students" Type="Self.students" Multiplicity="1" />
           <End Role="attendance" Type="Self.attendance" Multiplicity="*" />
           <ReferentialConstraint>
@@ -134,7 +135,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__courses__teacher__5CD6CB2B">
+        <Association Name="FK__courses__teacher__4D94879B">
           <End Role="teachers" Type="Self.teachers" Multiplicity="1" />
           <End Role="courses" Type="Self.courses" Multiplicity="*" />
           <ReferentialConstraint>
@@ -146,7 +147,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__enrollmen__cours__6EF57B66">
+        <Association Name="FK__enrollmen__cours__5FB337D6">
           <End Role="courses" Type="Self.courses" Multiplicity="1" />
           <End Role="enrollments" Type="Self.enrollments" Multiplicity="*" />
           <ReferentialConstraint>
@@ -158,7 +159,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__enrollmen__stude__6E01572D">
+        <Association Name="FK__enrollmen__stude__5EBF139D">
           <End Role="students" Type="Self.students" Multiplicity="1" />
           <End Role="enrollments" Type="Self.enrollments" Multiplicity="*" />
           <ReferentialConstraint>
@@ -170,7 +171,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__exams__courseId__60A75C0F">
+        <Association Name="FK__exams__courseId__5165187F">
           <End Role="courses" Type="Self.courses" Multiplicity="1" />
           <End Role="exams" Type="Self.exams" Multiplicity="*" />
           <ReferentialConstraint>
@@ -182,7 +183,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__exams__studentId__619B8048">
+        <Association Name="FK__exams__studentId__52593CB8">
           <End Role="students" Type="Self.students" Multiplicity="1" />
           <End Role="exams" Type="Self.exams" Multiplicity="*" />
           <ReferentialConstraint>
@@ -194,7 +195,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__payments__course__6B24EA82">
+        <Association Name="FK__payments__course__5BE2A6F2">
           <End Role="courses" Type="Self.courses" Multiplicity="1" />
           <End Role="payments" Type="Self.payments" Multiplicity="*" />
           <ReferentialConstraint>
@@ -206,7 +207,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__payments__studen__6A30C649">
+        <Association Name="FK__payments__studen__5AEE82B9">
           <End Role="students" Type="Self.students" Multiplicity="1" />
           <End Role="payments" Type="Self.payments" Multiplicity="*" />
           <ReferentialConstraint>
@@ -218,7 +219,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__staff__userId__534D60F1">
+        <Association Name="FK__staff__userId__440B1D61">
           <End Role="users" Type="Self.users" Multiplicity="1" />
           <End Role="staff" Type="Self.staff" Multiplicity="*" />
           <ReferentialConstraint>
@@ -230,7 +231,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__teachers__userId__5629CD9C">
+        <Association Name="FK__teachers__userId__46E78A0C">
           <End Role="users" Type="Self.users" Multiplicity="1" />
           <End Role="teachers" Type="Self.teachers" Multiplicity="*" />
           <ReferentialConstraint>
@@ -253,53 +254,52 @@
           <EntitySet Name="students" EntityType="Self.students" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="teachers" EntityType="Self.teachers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="users" EntityType="Self.users" Schema="dbo" store:Type="Tables" />
-          <AssociationSet Name="FK__attendanc__cours__66603565" Association="Self.FK__attendanc__cours__66603565">
+          <AssociationSet Name="FK__attendanc__cours__571DF1D5" Association="Self.FK__attendanc__cours__571DF1D5">
             <End Role="courses" EntitySet="courses" />
             <End Role="attendance" EntitySet="attendance" />
           </AssociationSet>
-          <AssociationSet Name="FK__attendanc__stude__656C112C" Association="Self.FK__attendanc__stude__656C112C">
+          <AssociationSet Name="FK__attendanc__stude__5629CD9C" Association="Self.FK__attendanc__stude__5629CD9C">
             <End Role="students" EntitySet="students" />
             <End Role="attendance" EntitySet="attendance" />
           </AssociationSet>
-          <AssociationSet Name="FK__courses__teacher__5CD6CB2B" Association="Self.FK__courses__teacher__5CD6CB2B">
+          <AssociationSet Name="FK__courses__teacher__4D94879B" Association="Self.FK__courses__teacher__4D94879B">
             <End Role="teachers" EntitySet="teachers" />
             <End Role="courses" EntitySet="courses" />
           </AssociationSet>
-          <AssociationSet Name="FK__enrollmen__cours__6EF57B66" Association="Self.FK__enrollmen__cours__6EF57B66">
+          <AssociationSet Name="FK__enrollmen__cours__5FB337D6" Association="Self.FK__enrollmen__cours__5FB337D6">
             <End Role="courses" EntitySet="courses" />
             <End Role="enrollments" EntitySet="enrollments" />
           </AssociationSet>
-          <AssociationSet Name="FK__enrollmen__stude__6E01572D" Association="Self.FK__enrollmen__stude__6E01572D">
+          <AssociationSet Name="FK__enrollmen__stude__5EBF139D" Association="Self.FK__enrollmen__stude__5EBF139D">
             <End Role="students" EntitySet="students" />
             <End Role="enrollments" EntitySet="enrollments" />
           </AssociationSet>
-          <AssociationSet Name="FK__exams__courseId__60A75C0F" Association="Self.FK__exams__courseId__60A75C0F">
+          <AssociationSet Name="FK__exams__courseId__5165187F" Association="Self.FK__exams__courseId__5165187F">
             <End Role="courses" EntitySet="courses" />
             <End Role="exams" EntitySet="exams" />
           </AssociationSet>
-          <AssociationSet Name="FK__exams__studentId__619B8048" Association="Self.FK__exams__studentId__619B8048">
+          <AssociationSet Name="FK__exams__studentId__52593CB8" Association="Self.FK__exams__studentId__52593CB8">
             <End Role="students" EntitySet="students" />
             <End Role="exams" EntitySet="exams" />
           </AssociationSet>
-          <AssociationSet Name="FK__payments__course__6B24EA82" Association="Self.FK__payments__course__6B24EA82">
+          <AssociationSet Name="FK__payments__course__5BE2A6F2" Association="Self.FK__payments__course__5BE2A6F2">
             <End Role="courses" EntitySet="courses" />
             <End Role="payments" EntitySet="payments" />
           </AssociationSet>
-          <AssociationSet Name="FK__payments__studen__6A30C649" Association="Self.FK__payments__studen__6A30C649">
+          <AssociationSet Name="FK__payments__studen__5AEE82B9" Association="Self.FK__payments__studen__5AEE82B9">
             <End Role="students" EntitySet="students" />
             <End Role="payments" EntitySet="payments" />
           </AssociationSet>
-          <AssociationSet Name="FK__staff__userId__534D60F1" Association="Self.FK__staff__userId__534D60F1">
+          <AssociationSet Name="FK__staff__userId__440B1D61" Association="Self.FK__staff__userId__440B1D61">
             <End Role="users" EntitySet="users" />
             <End Role="staff" EntitySet="staff" />
           </AssociationSet>
-          <AssociationSet Name="FK__teachers__userId__5629CD9C" Association="Self.FK__teachers__userId__5629CD9C">
+          <AssociationSet Name="FK__teachers__userId__46E78A0C" Association="Self.FK__teachers__userId__46E78A0C">
             <End Role="users" EntitySet="users" />
             <End Role="teachers" EntitySet="teachers" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="EducationCenterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -331,6 +331,7 @@
           <NavigationProperty Name="enrollments" Relationship="Self.FK__enrollmen__cours__6EF57B66" FromRole="courses" ToRole="enrollments" />
           <NavigationProperty Name="exams" Relationship="Self.FK__exams__courseId__60A75C0F" FromRole="courses" ToRole="exams" />
           <NavigationProperty Name="payments" Relationship="Self.FK__payments__course__6B24EA82" FromRole="courses" ToRole="payments" />
+          <Property Name="price" Type="Decimal" Precision="10" Scale="2" />
         </EntityType>
         <EntityType Name="enrollment">
           <Key>
@@ -638,6 +639,7 @@
           <EntitySetMapping Name="courses">
             <EntityTypeMapping TypeName="EducationCenterModel.cours">
               <MappingFragment StoreEntitySet="courses">
+                <ScalarProperty Name="price" ColumnName="price" />
                 <ScalarProperty Name="courseId" ColumnName="courseId" />
                 <ScalarProperty Name="courseName" ColumnName="courseName" />
                 <ScalarProperty Name="Description" ColumnName="Description" />
