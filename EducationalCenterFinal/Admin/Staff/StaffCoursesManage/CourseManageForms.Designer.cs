@@ -45,10 +45,10 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             this.searchBox.Font = new System.Drawing.Font("Arial", 12F);
             this.searchBox.Location = new System.Drawing.Point(12, 16);
             this.searchBox.Margin = new System.Windows.Forms.Padding(0);
+            this.searchBox.MaximumSize = new System.Drawing.Size(383, 23);
+            this.searchBox.MinimumSize = new System.Drawing.Size(383, 23);
             this.searchBox.Name = "searchBox";
             this.searchBox.Size = new System.Drawing.Size(383, 23);
-            this.searchBox.MinimumSize = new System.Drawing.Size(383, 23);
-            this.searchBox.MaximumSize = new System.Drawing.Size(383, 23);
             this.searchBox.TabIndex = 0;
             this.searchBox.Text = "Student Id";
             // 

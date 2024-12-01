@@ -36,13 +36,17 @@ namespace EducationalCenterFinal
             this.panel2 = new System.Windows.Forms.Panel();
             this.label3 = new System.Windows.Forms.Label();
             this.login_btn = new System.Windows.Forms.Button();
-            this.login_password = new System.Windows.Forms.TextBox();
-            this.login_username = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.login_username = new System.Windows.Forms.TextBox();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.login_password = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.panel2.SuspendLayout();
+            this.panel3.SuspendLayout();
+            this.panel4.SuspendLayout();
             this.SuspendLayout();
             // 
             // panel1
@@ -66,21 +70,22 @@ namespace EducationalCenterFinal
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.panel4);
+            this.panel2.Controls.Add(this.panel3);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.login_btn);
-            this.panel2.Controls.Add(this.login_password);
-            this.panel2.Controls.Add(this.login_username);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
+            this.panel2.Padding = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.panel2.Size = new System.Drawing.Size(702, 701);
             this.panel2.TabIndex = 0;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(236, 89);
+            this.label3.Location = new System.Drawing.Point(238, 89);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(154, 16);
             this.label3.TabIndex = 8;
@@ -88,10 +93,10 @@ namespace EducationalCenterFinal
             // 
             // login_btn
             // 
-            this.login_btn.BackColor = System.Drawing.Color.Purple;
+            this.login_btn.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
             this.login_btn.Font = new System.Drawing.Font("Microsoft Sans Serif", 19.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.login_btn.ForeColor = System.Drawing.Color.Transparent;
-            this.login_btn.Location = new System.Drawing.Point(47, 409);
+            this.login_btn.Location = new System.Drawing.Point(47, 413);
             this.login_btn.Name = "login_btn";
             this.login_btn.Size = new System.Drawing.Size(600, 90);
             this.login_btn.TabIndex = 4;
@@ -99,33 +104,11 @@ namespace EducationalCenterFinal
             this.login_btn.UseVisualStyleBackColor = false;
             this.login_btn.Click += new System.EventHandler(this.login_btn_Click);
             // 
-            // login_password
-            // 
-            this.login_password.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.login_password.Location = new System.Drawing.Point(47, 333);
-            this.login_password.Multiline = true;
-            this.login_password.Name = "login_password";
-            this.login_password.PasswordChar = '*';
-            this.login_password.Size = new System.Drawing.Size(600, 70);
-            this.login_password.TabIndex = 3;
-            this.login_password.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
-            // login_username
-            // 
-            this.login_username.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.login_username.Location = new System.Drawing.Point(47, 257);
-            this.login_username.Multiline = true;
-            this.login_username.Name = "login_username";
-            this.login_username.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.login_username.Size = new System.Drawing.Size(600, 70);
-            this.login_username.TabIndex = 2;
-            this.login_username.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Andalus", 36F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(184, 128);
+            this.label2.Location = new System.Drawing.Point(186, 128);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(273, 91);
             this.label2.TabIndex = 1;
@@ -135,21 +118,67 @@ namespace EducationalCenterFinal
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(271, 57);
+            this.label1.Location = new System.Drawing.Point(273, 57);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "Log in";
             // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            this.panel3.Controls.Add(this.login_username);
+            this.panel3.Location = new System.Drawing.Point(47, 251);
+            this.panel3.Margin = new System.Windows.Forms.Padding(0, 1, 0, 0);
+            this.panel3.Name = "panel3";
+            this.panel3.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.panel3.Size = new System.Drawing.Size(600, 70);
+            this.panel3.TabIndex = 9;
+            // 
+            // login_username
+            // 
+            this.login_username.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            this.login_username.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.login_username.Font = new System.Drawing.Font("Arial", 12F);
+            this.login_username.Location = new System.Drawing.Point(16, 20);
+            this.login_username.Margin = new System.Windows.Forms.Padding(0);
+            this.login_username.Name = "login_username";
+            this.login_username.Size = new System.Drawing.Size(345, 23);
+            this.login_username.TabIndex = 0;
+            this.login_username.Text = "User Email";
+            // 
+            // panel4
+            // 
+            this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            this.panel4.Controls.Add(this.login_password);
+            this.panel4.Location = new System.Drawing.Point(47, 331);
+            this.panel4.Margin = new System.Windows.Forms.Padding(0);
+            this.panel4.Name = "panel4";
+            this.panel4.Padding = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.panel4.Size = new System.Drawing.Size(600, 70);
+            this.panel4.TabIndex = 10;
+            // 
+            // login_password
+            // 
+            this.login_password.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            this.login_password.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.login_password.Font = new System.Drawing.Font("Arial", 12F);
+            this.login_password.Location = new System.Drawing.Point(12, 16);
+            this.login_password.Margin = new System.Windows.Forms.Padding(0);
+            this.login_password.Name = "login_password";
+            this.login_password.Size = new System.Drawing.Size(345, 23);
+            this.login_password.TabIndex = 0;
+            this.login_password.Text = "Password";
+            // 
             // LoginForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1400, 700);
-            this.MaximumSize = new System.Drawing.Size(1400, 700);
-            this.MinimumSize = new System.Drawing.Size(1400, 700);
+            this.ClientSize = new System.Drawing.Size(1382, 653);
             this.Controls.Add(this.panel1);
             this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1400, 700);
+            this.MinimumSize = new System.Drawing.Size(1400, 700);
             this.Name = "LoginForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "LoginForm";
@@ -157,6 +186,10 @@ namespace EducationalCenterFinal
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            this.panel4.ResumeLayout(false);
+            this.panel4.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -168,10 +201,12 @@ namespace EducationalCenterFinal
         private Panel panel2;
         private Label label3;
         private Button login_btn;
-        private TextBox login_password;
-        private TextBox login_username;
         private Label label2;
         private Label label1;
+        private Panel panel4;
+        private TextBox login_password;
+        private Panel panel3;
+        private TextBox login_username;
     }
 }
 
