@@ -204,6 +204,18 @@
     <Compile Include="teacher.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="TeacherCourse\TeacherCourseQuiz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeacherCourse\TeacherCourseQuiz.Designer.cs">
+      <DependentUpon>TeacherCourseQuiz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TeacherCourse\TeacherCourseAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeacherCourse\TeacherCourseAttendance.Designer.cs">
+      <DependentUpon>TeacherCourseAttendance.cs</DependentUpon>
+    </Compile>
     <Compile Include="TeacherCourse\TeacherCourseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -258,6 +270,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SpecialForms\ShowStudentDataForm.resx">
       <DependentUpon>ShowStudentDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeacherCourse\TeacherCourseQuiz.resx">
+      <DependentUpon>TeacherCourseQuiz.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeacherCourse\TeacherCourseAttendance.resx">
+      <DependentUpon>TeacherCourseAttendance.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TeacherCourse\TeacherCourseForm.resx">
       <DependentUpon>TeacherCourseForm.cs</DependentUpon>
