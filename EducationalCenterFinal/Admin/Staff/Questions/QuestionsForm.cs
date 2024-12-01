@@ -7,6 +7,7 @@ using EducationalCenterFinal.Admin.Staff;
 using EducationalCenterFinal.Admin.Staff.StaffCoursesManage;
 using EducationalCenterFinal.Admin.Staff.StudentManage;
 using EducationalCenterFinal.Admin.TeacherManage;
+using EducationalCenterFinal.SpecialForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -129,7 +130,7 @@ namespace EducationalCenterFinal.Admin.Staff
 
         private void ForgetPasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            new ForgotPassword(dp).Show();
         }
 
         private void CreateAccountToolStripMenuItem_Click(object sender, EventArgs e)
