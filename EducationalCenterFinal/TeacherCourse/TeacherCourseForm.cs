@@ -14,7 +14,7 @@ namespace EducationalCenterFinal.TeacherCourse
 {
     public partial class TeacherCourseForm : Form
     {
-        private teacher Teacher { get; set; }
+        private teachers Teacher { get; set; }
         readonly private EducationCenterEntities dp = new EducationCenterEntities();
         public TeacherCourseForm(int TeacherId)
         {
@@ -43,7 +43,7 @@ namespace EducationalCenterFinal.TeacherCourse
             button1.Location = new System.Drawing.Point((this.ClientSize.Width - button1.Width - quizButton.Width - 20) / 2, 30);
         }
 
-        private void LoadStudentData(cours firstCourse, int? filterId = null)
+        private void LoadStudentData(courses firstCourse, int? filterId = null)
         {
             try
             {
@@ -86,7 +86,7 @@ namespace EducationalCenterFinal.TeacherCourse
             }
         }
 
-        private void DataGridView1_CellContentClick(teacher Teacher, int stu)
+        private void DataGridView1_CellContentClick(teachers Teacher, int stu)
         {
             new ShowStudentDataForm(dp.students.Where(s => s.studentId == stu).FirstOrDefault(), Teacher.courses.FirstOrDefault().courseId).Show();
         }

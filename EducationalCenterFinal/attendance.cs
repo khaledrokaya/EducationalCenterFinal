@@ -20,7 +20,7 @@ namespace EducationalCenterFinal
         public System.DateTime attendanceDate { get; set; }
         public Nullable<bool> isPresent { get; set; }
     
-        public virtual cours cours { get; set; }
-        public virtual student student { get; set; }
+        public virtual courses courses { get; set; }
+        public virtual students students { get; set; }
     }
 }

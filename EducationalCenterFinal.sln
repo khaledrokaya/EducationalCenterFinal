@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.11.35327.3
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EducationalCenterFinal", "EducationalCenterFinal\EducationalCenterFinal.csproj", "{9EB2D904-5F19-42F9-B329-8A826EC8F35F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EducationalCenterFinal", "EducationalCenterFinal\EducationalCenterFinal.csproj", "{10FB6289-D337-4570-AFAE-0321F4DCEFC4}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,15 +11,15 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9EB2D904-5F19-42F9-B329-8A826EC8F35F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9EB2D904-5F19-42F9-B329-8A826EC8F35F}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9EB2D904-5F19-42F9-B329-8A826EC8F35F}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9EB2D904-5F19-42F9-B329-8A826EC8F35F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10FB6289-D337-4570-AFAE-0321F4DCEFC4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10FB6289-D337-4570-AFAE-0321F4DCEFC4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10FB6289-D337-4570-AFAE-0321F4DCEFC4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10FB6289-D337-4570-AFAE-0321F4DCEFC4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {477EE7B7-996F-4CCD-8E1C-885BF3E62CFF}
+		SolutionGuid = {3E142111-977D-4998-8186-3F49A916C7F7}
 	EndGlobalSection
 EndGlobal

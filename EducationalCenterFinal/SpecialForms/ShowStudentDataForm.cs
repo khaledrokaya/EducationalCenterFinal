@@ -12,7 +12,7 @@ namespace EducationalCenterFinal.SpecialForms
 {
     public partial class ShowStudentDataForm : Form
     {
-        public ShowStudentDataForm(student dp, int CourseId)
+        public ShowStudentDataForm(students dp, int CourseId)
         {
             InitializeComponent();
             this.Load += (_sender, _e) => ShowStudentDataForm_Load(dp, CourseId);
@@ -23,7 +23,7 @@ namespace EducationalCenterFinal.SpecialForms
             LoadForm(dp);
         }
 
-        private void LoadForm(student dp)
+        private void LoadForm(students dp)
         {
             string[] studentData =
             {
@@ -70,29 +70,29 @@ namespace EducationalCenterFinal.SpecialForms
             }
         }
 
-        private void ShowStudentDataForm_Load(student stu, int CourseId)
+        private void ShowStudentDataForm_Load(students stu, int CourseId)
         {
-            this.AttendMonthCombo.DataSource = stu.attendances.Where(a => a.courseId == CourseId).Select(a => a.attendanceDate.Month).Distinct().ToList();
+            this.AttendMonthCombo.DataSource = stu.attendance.Where(a => a.courseId == CourseId).Select(a => a.attendanceDate.Month).Distinct().ToList();
             this.PayMonthCombo.DataSource = stu.payments.Where(p => p.courseId == CourseId).Select(p => p.paymentDate.Month).ToList();
             this.QuizCombo.DataSource = stu.exams.Where(q => q.courseId == CourseId).Select(q => q.examName).ToList();
         }
 
-        private void AttendMonthCombo_SelectedIndexChanged(student stu, int CourseId)
+        private void AttendMonthCombo_SelectedIndexChanged(students stu, int CourseId)
         {
-            this.AttendDayCombo.DataSource = stu.attendances.Where(a => a.attendanceDate.Month == int.Parse(AttendMonthCombo.Text) && a.courseId == CourseId).Select(a => a.attendanceDate.Day).ToList();
+            this.AttendDayCombo.DataSource = stu.attendance.Where(a => a.attendanceDate.Month == int.Parse(AttendMonthCombo.Text) && a.courseId == CourseId).Select(a => a.attendanceDate.Day).ToList();
         }
 
-        private void AttendDayCombo_SelectedIndexChanged(student stu, int CourseId)
+        private void AttendDayCombo_SelectedIndexChanged(students stu, int CourseId)
         {
-            AttendanceLabel.Text = stu.attendances.Where(a => a.attendanceDate.Month == int.Parse(AttendMonthCombo.Text) && a.attendanceDate.Day == int.Parse(AttendDayCombo.Text) && a.courseId == CourseId).Select(a => a.isPresent).FirstOrDefault().ToString();
+            AttendanceLabel.Text = stu.attendance.Where(a => a.attendanceDate.Month == int.Parse(AttendMonthCombo.Text) && a.attendanceDate.Day == int.Parse(AttendDayCombo.Text) && a.courseId == CourseId).Select(a => a.isPresent).FirstOrDefault().ToString();
         }
 
-        private void PayMonthCombo_SelectedIndexChanged(student stu, int CourseId)
+        private void PayMonthCombo_SelectedIndexChanged(students stu, int CourseId)
         {
             PaymentLabel.Text = stu.payments.Where(p => p.paymentDate.Month == int.Parse(PayMonthCombo.Text) && p.courseId == CourseId).Select(p => p.isPaid).FirstOrDefault().ToString();
         }
 
-        private void QuizCombo_SelectedIndexChanged(student stu, int CourseId)
+        private void QuizCombo_SelectedIndexChanged(students stu, int CourseId)
         {
             QuizLabel.Text = stu.exams.Where(q => q.examName == QuizCombo.Text && q.courseId == CourseId).Select(q => q.score).FirstOrDefault().ToString();
         }

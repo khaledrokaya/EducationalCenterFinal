@@ -54,14 +54,14 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
                 if (isEnrolled)
                 {
                     var today = DateTime.Today;
-                    var existingAttendance = dp.attendances
+                    var existingAttendance = dp.attendance
                         .FirstOrDefault(a => a.studentId == studentId && a.courseId == CourseID && DbFunctions.TruncateTime(a.attendanceDate) == today);
 
                     try
                     {
                         if (existingAttendance == null)
                         {
-                            dp.attendances.Add(new attendance
+                            dp.attendance.Add(new attendance
                             {
                                 studentId = studentId,
                                 courseId = CourseID,
@@ -112,12 +112,12 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
                         .ToList();
                     foreach (var studentId in enrolledStudents)
                     {
-                        var existingAttendance = dp.attendances
+                        var existingAttendance = dp.attendance
                             .FirstOrDefault(a => a.studentId == studentId && a.courseId == CourseID && DbFunctions.TruncateTime(a.attendanceDate) == today);
 
                         if (existingAttendance == null)
                         {
-                            dp.attendances.Add(new attendance
+                            dp.attendance.Add(new attendance
                             {
                                 studentId = studentId,
                                 courseId = CourseID,

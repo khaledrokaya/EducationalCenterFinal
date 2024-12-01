@@ -143,7 +143,7 @@ namespace EducationalCenterFinal.Admin.CreateAccount
                         return;
                     }
 
-                    var newUser = new user
+                    var newUser = new users
                     {
                         userEmail = sign_username.Text.Trim(),
                         password = sign_password.Text.Trim(),

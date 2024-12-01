@@ -109,7 +109,7 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
                     {
                         if (existingQuiz == null)
                         {
-                            dp.exams.Add(new exam
+                            dp.exams.Add(new exams
                             {
                                 studentId = studentId,
                                 courseId = CourseID,
@@ -169,7 +169,7 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
 
                             if (existingQuiz == null)
                             {
-                                dp.exams.Add(new exam
+                                dp.exams.Add(new exams
                                 {
                                     studentId = studentId,
                                     courseId = CourseID,

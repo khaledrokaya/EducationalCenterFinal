@@ -97,14 +97,14 @@ namespace EducationalCenterFinal.Admin.Staff
             {
                 if (index == 0)
                 {
-                    _questions = dp.questions
-                                       .Where(x => x.isAnswered == false)
+                    _questions = dp.question
+                                       .Where(x => x.IsAnswered == false)
                                        .ToList();
                 }
                 else
                 {
-                    _questions = dp.questions
-                                   .Where(x => x.isAnswered == true)
+                    _questions = dp.question
+                                   .Where(x => x.IsAnswered == true)
                                    .ToList();
                 }
                 QuestionsLstBox.DataSource = _questions;
@@ -173,8 +173,8 @@ namespace EducationalCenterFinal.Admin.Staff
         {
             if (QuestionsLstBox.SelectedItem is question selectedQuestion)
             {
-                SelectedQuestionLbl.Text = selectedQuestion.questionContent;
-                AnswerTxtBox.Text = selectedQuestion.questionAnswer;
+                SelectedQuestionLbl.Text = selectedQuestion.QuestionContent;
+                AnswerTxtBox.Text = selectedQuestion.QuestionAnswer;
             }
             else
             {
@@ -197,8 +197,8 @@ namespace EducationalCenterFinal.Admin.Staff
 
                 try
                 {
-                    selectedQuestion.questionAnswer = answer;
-                    selectedQuestion.isAnswered = true;
+                    selectedQuestion.QuestionAnswer = answer;
+                    selectedQuestion.IsAnswered = true;
                     dp.SaveChanges();
                     MessageBox.Show("Answer submitted successfully.");
                     AnswerTxtBox.Clear();

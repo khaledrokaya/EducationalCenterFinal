@@ -65,7 +65,7 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             
             PictureBox pictureBox = new PictureBox
             {
-                Image = Image.FromFile(Application.StartupPath.Substring(0, 42) + "\\Images\\search-interface-symbol.png"),
+                Image = Image.FromFile(Application.StartupPath.Substring(0, 48) + "\\Images\\search-interface-symbol.png"),
                 SizeMode = PictureBoxSizeMode.Normal,
                 Location = new Point(270, 13),
                 Size = new Size(50, 50)
@@ -106,17 +106,17 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
         {
             var studentsInCourse = dp.students
                 .Join(dp.enrollments,
-                    student => student.studentId,
-                    enrollment => enrollment.studentId,
-                    (student, enrollment) => new { student, enrollment })
-                .Where(result => result.enrollment.courseId == CourseId)
+                    students => students.studentId,
+                    enrollments => enrollments.studentId,
+                    (students, enrollments) => new { students, enrollments })
+                .Where(result => result.enrollments.courseId == CourseId)
                 .Select(result => new
                 {
-                    ID = result.student.studentId,
-                    Name = result.student.studentName,
-                    Phone = result.student.studentPhone,
-                    Address = result.student.studentAddress,
-                    Email = result.student.studentEmail,
+                    ID = result.students.studentId,
+                    Name = result.students.studentName,
+                    Phone = result.students.studentPhone,
+                    Address = result.students.studentAddress,
+                    Email = result.students.studentEmail,
                 });
             if (filterId.HasValue)
             {
