@@ -69,9 +69,9 @@ namespace EducationalCenterFinal.Admin.Staff
             this.QuestionsLstBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.QuestionsLstBox.FormattingEnabled = true;
             this.QuestionsLstBox.ItemHeight = 31;
-            this.QuestionsLstBox.Location = new System.Drawing.Point(747, 80);
+            this.QuestionsLstBox.Location = new System.Drawing.Point(654, 80);
             this.QuestionsLstBox.Name = "QuestionsLstBox";
-            this.QuestionsLstBox.Size = new System.Drawing.Size(645, 560);
+            this.QuestionsLstBox.Size = new System.Drawing.Size(565, 560);
             this.QuestionsLstBox.TabIndex = 1;
             this.QuestionsLstBox.ValueMember = "questionAnswer";
             this.QuestionsLstBox.SelectedIndexChanged += new System.EventHandler(this.QuestionsLstBox_SelectedIndexChanged);
@@ -90,9 +90,9 @@ namespace EducationalCenterFinal.Admin.Staff
             // 
             this.richTextBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.richTextBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.richTextBox1.Location = new System.Drawing.Point(8, 35);
+            this.richTextBox1.Location = new System.Drawing.Point(7, 35);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(733, 654);
+            this.richTextBox1.Size = new System.Drawing.Size(641, 654);
             this.richTextBox1.TabIndex = 2;
             this.richTextBox1.Text = "";
             // 
@@ -100,9 +100,9 @@ namespace EducationalCenterFinal.Admin.Staff
             // 
             this.SelectedQuestionLbl.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.SelectedQuestionLbl.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.SelectedQuestionLbl.Location = new System.Drawing.Point(14, 76);
+            this.SelectedQuestionLbl.Location = new System.Drawing.Point(12, 76);
             this.SelectedQuestionLbl.Name = "SelectedQuestionLbl";
-            this.SelectedQuestionLbl.Size = new System.Drawing.Size(658, 236);
+            this.SelectedQuestionLbl.Size = new System.Drawing.Size(576, 236);
             this.SelectedQuestionLbl.TabIndex = 3;
             this.SelectedQuestionLbl.Text = "";
             // 
@@ -110,9 +110,9 @@ namespace EducationalCenterFinal.Admin.Staff
             // 
             this.AnswerTxtBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.AnswerTxtBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.AnswerTxtBox.Location = new System.Drawing.Point(14, 369);
+            this.AnswerTxtBox.Location = new System.Drawing.Point(12, 369);
             this.AnswerTxtBox.Name = "AnswerTxtBox";
-            this.AnswerTxtBox.Size = new System.Drawing.Size(658, 236);
+            this.AnswerTxtBox.Size = new System.Drawing.Size(576, 236);
             this.AnswerTxtBox.TabIndex = 4;
             this.AnswerTxtBox.Text = "";
             // 
@@ -121,7 +121,7 @@ namespace EducationalCenterFinal.Admin.Staff
             this.label2.AutoSize = true;
             this.label2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.label2.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(14, 45);
+            this.label2.Location = new System.Drawing.Point(12, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(125, 28);
             this.label2.TabIndex = 5;
@@ -132,7 +132,7 @@ namespace EducationalCenterFinal.Admin.Staff
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.label3.Font = new System.Drawing.Font("Tahoma", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(14, 338);
+            this.label3.Location = new System.Drawing.Point(12, 338);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(107, 28);
             this.label3.TabIndex = 6;
@@ -144,9 +144,9 @@ namespace EducationalCenterFinal.Admin.Staff
             this.SubmitAnswerBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.SubmitAnswerBtn.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.SubmitAnswerBtn.ForeColor = System.Drawing.Color.White;
-            this.SubmitAnswerBtn.Location = new System.Drawing.Point(219, 618);
+            this.SubmitAnswerBtn.Location = new System.Drawing.Point(192, 618);
             this.SubmitAnswerBtn.Name = "SubmitAnswerBtn";
-            this.SubmitAnswerBtn.Size = new System.Drawing.Size(183, 44);
+            this.SubmitAnswerBtn.Size = new System.Drawing.Size(160, 44);
             this.SubmitAnswerBtn.TabIndex = 7;
             this.SubmitAnswerBtn.Text = "Submit";
             this.SubmitAnswerBtn.UseVisualStyleBackColor = true;
@@ -155,7 +155,7 @@ namespace EducationalCenterFinal.Admin.Staff
             // menuStrip1
             // 
             this.menuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.menuStrip1.Font = new System.Drawing.Font("Arial Unicode MS", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(25, 25);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dashboardToolStripMenuItem,
@@ -168,53 +168,54 @@ namespace EducationalCenterFinal.Admin.Staff
             this.accountToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1406, 32);
+            this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
+            this.menuStrip1.Size = new System.Drawing.Size(1230, 30);
             this.menuStrip1.TabIndex = 8;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // dashboardToolStripMenuItem
             // 
             this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
-            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(112, 28);
+            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(112, 26);
             this.dashboardToolStripMenuItem.Text = "Dashboard";
             // 
             // teachersToolStripMenuItem
             // 
             this.teachersToolStripMenuItem.Name = "teachersToolStripMenuItem";
-            this.teachersToolStripMenuItem.Size = new System.Drawing.Size(90, 28);
+            this.teachersToolStripMenuItem.Size = new System.Drawing.Size(91, 26);
             this.teachersToolStripMenuItem.Text = "Teacher";
             this.teachersToolStripMenuItem.Click += new System.EventHandler(this.TeachersToolStripMenuItem_Click);
             // 
             // studentsToolStripMenuItem
             // 
             this.studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
-            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(86, 28);
+            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(86, 26);
             this.studentsToolStripMenuItem.Text = "Student";
             // 
             // employeesToolStripMenuItem
             // 
             this.employeesToolStripMenuItem.Name = "employeesToolStripMenuItem";
-            this.employeesToolStripMenuItem.Size = new System.Drawing.Size(104, 28);
+            this.employeesToolStripMenuItem.Size = new System.Drawing.Size(103, 26);
             this.employeesToolStripMenuItem.Text = "Employee";
             this.employeesToolStripMenuItem.Click += new System.EventHandler(this.EmployeesToolStripMenuItem_Click);
             // 
             // coursesToolStripMenuItem
             // 
             this.coursesToolStripMenuItem.Name = "coursesToolStripMenuItem";
-            this.coursesToolStripMenuItem.Size = new System.Drawing.Size(82, 28);
+            this.coursesToolStripMenuItem.Size = new System.Drawing.Size(82, 26);
             this.coursesToolStripMenuItem.Text = "Course";
             this.coursesToolStripMenuItem.Click += new System.EventHandler(this.CoursesToolStripMenuItem_Click);
             // 
             // manageToolStripMenuItem
             // 
             this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            this.manageToolStripMenuItem.Size = new System.Drawing.Size(89, 28);
+            this.manageToolStripMenuItem.Size = new System.Drawing.Size(88, 26);
             this.manageToolStripMenuItem.Text = "Manage";
             // 
             // questionsToolStripMenuItem
             // 
             this.questionsToolStripMenuItem.Name = "questionsToolStripMenuItem";
-            this.questionsToolStripMenuItem.Size = new System.Drawing.Size(105, 28);
+            this.questionsToolStripMenuItem.Size = new System.Drawing.Size(105, 26);
             this.questionsToolStripMenuItem.Text = "Questions";
             // 
             // accountToolStripMenuItem
@@ -224,36 +225,36 @@ namespace EducationalCenterFinal.Admin.Staff
             this.forgetPasswordToolStripMenuItem,
             this.logoutToolStripMenuItem});
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
-            this.accountToolStripMenuItem.Size = new System.Drawing.Size(89, 28);
+            this.accountToolStripMenuItem.Size = new System.Drawing.Size(89, 26);
             this.accountToolStripMenuItem.Text = "Account";
             // 
             // createAccountToolStripMenuItem
             // 
             this.createAccountToolStripMenuItem.Name = "createAccountToolStripMenuItem";
-            this.createAccountToolStripMenuItem.Size = new System.Drawing.Size(230, 28);
+            this.createAccountToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
             this.createAccountToolStripMenuItem.Text = "Create Account";
             this.createAccountToolStripMenuItem.Click += new System.EventHandler(this.CreateAccountToolStripMenuItem_Click);
             // 
             // forgetPasswordToolStripMenuItem
             // 
             this.forgetPasswordToolStripMenuItem.Name = "forgetPasswordToolStripMenuItem";
-            this.forgetPasswordToolStripMenuItem.Size = new System.Drawing.Size(230, 28);
+            this.forgetPasswordToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
             this.forgetPasswordToolStripMenuItem.Text = "Forget Password";
             this.forgetPasswordToolStripMenuItem.Click += new System.EventHandler(this.ForgetPasswordToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(230, 28);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.LogoutToolStripMenuItem_Click);
             // 
             // panel1
             // 
             this.panel1.Controls.Add(this.comboBox1);
-            this.panel1.Location = new System.Drawing.Point(818, 35);
+            this.panel1.Location = new System.Drawing.Point(716, 35);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(506, 38);
+            this.panel1.Size = new System.Drawing.Size(443, 38);
             this.panel1.TabIndex = 9;
             // 
             // comboBox1
@@ -270,7 +271,7 @@ namespace EducationalCenterFinal.Admin.Staff
             "Answered"});
             this.comboBox1.Location = new System.Drawing.Point(0, 0);
             this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(506, 39);
+            this.comboBox1.Size = new System.Drawing.Size(443, 39);
             this.comboBox1.TabIndex = 0;
             this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
@@ -280,10 +281,10 @@ namespace EducationalCenterFinal.Admin.Staff
             // 
             // QuestionsForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.ClientSize = new System.Drawing.Size(1406, 701);
+            this.ClientSize = new System.Drawing.Size(1230, 701);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
