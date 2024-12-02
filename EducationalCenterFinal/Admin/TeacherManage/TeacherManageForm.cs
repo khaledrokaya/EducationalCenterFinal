@@ -43,10 +43,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             //ربط الاحداث 
             this.textBox1_search.Enter += new System.EventHandler(this.textBox1_search_Enter);
             this.textBox1_search.Leave += new System.EventHandler(this.textBox1_search_Leave);
-            //Maximize window
-            //this.ClientSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-            //this.MaximizeBox = false;
-            //this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            
 
             this.questionsToolStripMenuItem.Click += (sender, e) => this.QuestionsToolStripMenuItem_Click("admin");
             this.dashboardToolStripMenuItem.Click += (sender, e) => this.DashboardToolStripMenuItem_Click("admin");
