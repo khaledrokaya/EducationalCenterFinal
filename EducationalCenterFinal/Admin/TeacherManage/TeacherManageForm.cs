@@ -14,6 +14,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ToolBar;
 
 namespace EducationalCenterFinal.Admin.TeacherManage
 {
@@ -23,15 +26,27 @@ namespace EducationalCenterFinal.Admin.TeacherManage
         public TeacherManageForm()
         {
             InitializeComponent();
+            setUpForm();
+            setUpComponents();
+            SearchPlaceHolder();
+            //   style DataGridView 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridView1.EnableHeadersVisualStyles = false;
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(118, 41, 82);
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic Italic", 9, FontStyle.Bold);
+            dataGridView1.ColumnHeadersDefaultCellStyle.Padding = new Padding(4);
+
+
+
             //ربط الاحداث 
             this.textBox1_search.Enter += new System.EventHandler(this.textBox1_search_Enter);
             this.textBox1_search.Leave += new System.EventHandler(this.textBox1_search_Leave);
             //Maximize window
-            this.ClientSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-            this.MaximizeBox = false;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            //this.ClientSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            //this.MaximizeBox = false;
+            //this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 
             this.questionsToolStripMenuItem.Click += (sender, e) => this.QuestionsToolStripMenuItem_Click("admin");
             this.dashboardToolStripMenuItem.Click += (sender, e) => this.DashboardToolStripMenuItem_Click("admin");
@@ -49,6 +64,14 @@ namespace EducationalCenterFinal.Admin.TeacherManage
                 courseMenuItem.Click += (sender, e) => CourseMenuItem_Click(course.courseId, "admin");
                 manageToolStripMenuItem.DropDownItems.Add(courseMenuItem);
             }
+            //PictureBox pictureBox = new PictureBox
+            //{
+            //    Image = Image.FromFile(Application.StartupPath.Substring(0, 42) + "\\Images\\search-interface-symbol.png"),
+            //    SizeMode = PictureBoxSizeMode.Normal,
+            //    Location = new Point(270, 13),
+            //    Size = new Size(50, 50)
+            //};
+            //textBox1_search.Controls.Add(pictureBox);
             //,تغيير لون الخلفية ,تغيير لون النص  
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(118, 41, 82);
@@ -68,8 +91,67 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             dataGridView1.Columns["userId"].Visible = false;
             dataGridView1.Columns["courses"].Visible = false;
             dataGridView1.Columns["user"].Visible = false;
-        }
 
+
+        }
+        private void setUpForm()
+        {
+           
+            this.ClientSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+            this.MaximizeBox = false;
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+        }
+        private void setUpComponents()
+        {
+            //search
+            textBox1_search.Size = new Size(200, 30);
+            textBox1_search.Location = new Point(ClientSize.Width - 220, 40);
+           
+            // DataGridView 
+            dataGridView1.Size = new Size(ClientSize.Width - 400, ClientSize.Height - 120);
+            dataGridView1.Location = new Point(20, 80);
+
+            // panel 
+            panel1.Size = new Size(320, ClientSize.Height - 120);
+            panel1.Location = new Point(ClientSize.Width - 340, 80);
+
+            // Labels and TextBoxes 
+            int yOffset = 30;
+            int padding = 70;
+
+            label2.Location = new Point(20, yOffset);
+            textBox1.Location = new Point(20, yOffset + 25);
+            textBox1.Size = new Size(280, 30);
+
+            label3.Location = new Point(20, yOffset + padding);
+            textBox2.Location = new Point(20, yOffset + padding + 25);
+            textBox2.Size = new Size(280, 30);
+
+            label4.Location = new Point(20, yOffset + padding * 2);
+            textBox3.Location = new Point(20, yOffset + padding * 2 + 25);
+            textBox3.Size = new Size(280, 30);
+
+            label5.Location = new Point(20, yOffset + padding * 3);
+            textBox4.Location = new Point(20, yOffset + padding * 3 + 25);
+            textBox4.Size = new Size(280, 30);
+
+            label6.Location = new Point(20, yOffset + padding * 4);
+            textBox5.Location = new Point(20, yOffset + padding * 4 + 25);
+            textBox5.Size = new Size(280, 30);
+
+            // Buttons 
+            int buttonY = yOffset + padding * 5;
+            button1.Location = new Point(20, buttonY);
+
+            button2.Location = new Point(170, buttonY);
+            button3.Location = new Point(20, buttonY + 40);
+            button4.Location = new Point(170, buttonY + 40);
+
+            button1.Size = new Size(120, 30);
+            button2.Size = new Size(120, 30);
+            button3.Size = new Size(120, 30);
+            button4.Size = new Size(120, 30);
+        }
         private void CourseMenuItem_Click(int CourseId, string role)
         {
             new StaffCourseForm(CourseId, role).Show();
@@ -121,7 +203,6 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.Hide();
         }
 
-       
         private void textBox1_search_GotFocus(object sender, EventArgs e)
         {
         }
@@ -131,29 +212,36 @@ namespace EducationalCenterFinal.Admin.TeacherManage
         private void label5_Click(object sender, EventArgs e)
         {
         }
-        private void button5_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void button7_Click(object sender, EventArgs e)
-        {
-            if (this.WindowState == FormWindowState.Normal)
-            {
-                this.WindowState = FormWindowState.Maximized;
-            }
-            else
-            {
-                this.WindowState = FormWindowState.Normal;
-            }
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-            this.WindowState = FormWindowState.Minimized;
-        }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
+        }
+        private void SearchPlaceHolder()
+        {
+            textBox1_search.Text = "Search";
+            textBox1_search.ForeColor = Color.Gray;
+            textBox1_search.Enter += (sender, e) =>
+            {
+                if (textBox1_search.Text == "Search")
+                {
+                    textBox1_search.Text = "";
+                    textBox1_search.ForeColor = Color.Black;
+                }
+            };
+            textBox1_search.Leave += (sender, e) =>
+            {
+                if (string.IsNullOrWhiteSpace(textBox1_search.Text))
+                {
+                    textBox1_search.Text = "Search";
+                    textBox1_search.ForeColor = Color.Gray;
+                }
+            };
+            textBox1_search.TextChanged += (sender, e) =>
+            {
+                if (textBox1_search.Text != "Search" && textBox1_search.ForeColor == Color.Gray)
+                {
+                    textBox1_search.ForeColor = Color.Black;
+                }
+            };
         }
         private void button1_Click(object sender, EventArgs e)
         {
@@ -183,7 +271,6 @@ namespace EducationalCenterFinal.Admin.TeacherManage
 
 
         }
-
         private void resetForm()
         {
             textBox1.Text = "";
@@ -200,10 +287,16 @@ namespace EducationalCenterFinal.Admin.TeacherManage
         }
         private void TeacherManageForm_Load_1(object sender, EventArgs e)
         {
-            textBox1_search.Text = "Search";
-            textBox1_search.ForeColor = Color.Gray;
-        }
+            //textBox1_search.Text = "Search";
+            //textBox1_search.ForeColor = Color.Gray;
 
+
+            dataGridView1.DefaultCellStyle.ForeColor = Color.Black; // اللون الاسود للنص
+
+            // تغيير نوع الخط وحجمه
+            dataGridView1.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
+            
+        }
         private void button2_Click(object sender, EventArgs e)
         {
            
@@ -254,25 +347,12 @@ namespace EducationalCenterFinal.Admin.TeacherManage
                 }
                 
         }
-
         private void textBox1_search_Enter(object sender, EventArgs e)
         {
-            if (textBox1_search.Text == "Search")
-            {
-                textBox1_search.Text = "";
-                textBox1_search.ForeColor = Color.Black;
-            }
         }
-
         private void textBox1_search_Leave(object sender, EventArgs e)
         {
-            if (textBox1_search.Text == "")
-            {
-                textBox1_search.Text = "Search";
-                textBox1_search.ForeColor = Color.Gray;
-            }
         }
-
         private void button3_Click_1(object sender, EventArgs e)
         {
             if (int.TryParse(textBox1_search.Text, out int ID))
@@ -285,11 +365,13 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             }
 
         }
-
         private void button4_Click(object sender, EventArgs e)
         {
             resetForm();
             button1.Enabled = true;
+        }
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
         }
     }
 }

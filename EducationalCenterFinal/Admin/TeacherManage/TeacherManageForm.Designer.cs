@@ -46,7 +46,6 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.forgetPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1_search = new System.Windows.Forms.TextBox();
             this.panel1 = new System.Windows.Forms.Panel();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
@@ -62,22 +61,19 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.label3 = new System.Windows.Forms.Label();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.button7 = new System.Windows.Forms.Button();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button5 = new System.Windows.Forms.Button();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.open_Source_Education_CenterDataSet1 = new EducationalCenterFinal.Open_Source_Education_CenterDataSet();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.textBox1_search = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.open_Source_Education_CenterDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
+            this.menuStrip1.BackColor = System.Drawing.Color.White;
+            this.menuStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dashboardToolStripMenuItem,
@@ -93,6 +89,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.menuStrip1.Size = new System.Drawing.Size(1876, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // dashboardToolStripMenuItem
             // 
@@ -202,26 +199,12 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Tahoma", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(27, 43);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(205, 52);
+            this.label1.Size = new System.Drawing.Size(202, 48);
             this.label1.TabIndex = 2;
             this.label1.Text = "Teachers";
-            // 
-            // textBox1_search
-            // 
-            this.textBox1_search.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox1_search.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1_search.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1_search.Location = new System.Drawing.Point(1455, 43);
-            this.textBox1_search.Multiline = true;
-            this.textBox1_search.Name = "textBox1_search";
-            this.textBox1_search.Size = new System.Drawing.Size(359, 56);
-            this.textBox1_search.TabIndex = 3;
-            this.textBox1_search.TextChanged += new System.EventHandler(this.textBox1_search_TextChanged);
-            this.textBox1_search.Enter += new System.EventHandler(this.textBox1_search_Enter);
-            this.textBox1_search.Leave += new System.EventHandler(this.textBox1_search_Leave);
             // 
             // panel1
             // 
@@ -240,19 +223,19 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.panel1.Controls.Add(this.label3);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label2);
-            this.panel1.Location = new System.Drawing.Point(1475, 112);
+            this.panel1.Location = new System.Drawing.Point(1355, 112);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(339, 752);
+            this.panel1.Size = new System.Drawing.Size(456, 720);
             this.panel1.TabIndex = 5;
             // 
             // textBox5
             // 
             this.textBox5.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox5.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox5.Location = new System.Drawing.Point(7, 494);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(317, 51);
+            this.textBox5.Size = new System.Drawing.Size(418, 58);
             this.textBox5.TabIndex = 13;
             // 
             // label6
@@ -272,9 +255,9 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.button4.FlatAppearance.BorderSize = 0;
             this.button4.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
             this.button4.Font = new System.Drawing.Font("Century Gothic", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.Location = new System.Drawing.Point(187, 669);
+            this.button4.Location = new System.Drawing.Point(285, 648);
             this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(94, 46);
+            this.button4.Size = new System.Drawing.Size(130, 54);
             this.button4.TabIndex = 11;
             this.button4.Text = "Reset";
             this.button4.UseVisualStyleBackColor = false;
@@ -286,9 +269,9 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.button3.FlatAppearance.BorderSize = 0;
             this.button3.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
             this.button3.Font = new System.Drawing.Font("Century Gothic", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.Location = new System.Drawing.Point(51, 669);
+            this.button3.Location = new System.Drawing.Point(56, 648);
             this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(94, 46);
+            this.button3.Size = new System.Drawing.Size(136, 54);
             this.button3.TabIndex = 10;
             this.button3.Text = "Delete";
             this.button3.UseVisualStyleBackColor = false;
@@ -300,9 +283,9 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.button2.FlatAppearance.BorderSize = 0;
             this.button2.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
             this.button2.Font = new System.Drawing.Font("Century Gothic", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(187, 596);
+            this.button2.Location = new System.Drawing.Point(285, 575);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(94, 46);
+            this.button2.Size = new System.Drawing.Size(130, 56);
             this.button2.TabIndex = 9;
             this.button2.Text = "Edit";
             this.button2.UseVisualStyleBackColor = false;
@@ -314,9 +297,9 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.button1.FlatAppearance.BorderSize = 0;
             this.button1.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
             this.button1.Font = new System.Drawing.Font("Century Gothic", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(51, 596);
+            this.button1.Location = new System.Drawing.Point(56, 575);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 46);
+            this.button1.Size = new System.Drawing.Size(136, 56);
             this.button1.TabIndex = 8;
             this.button1.Text = "Add";
             this.button1.UseVisualStyleBackColor = false;
@@ -325,11 +308,11 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             // textBox4
             // 
             this.textBox4.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox4.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.Location = new System.Drawing.Point(7, 379);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(317, 51);
+            this.textBox4.Size = new System.Drawing.Size(418, 56);
             this.textBox4.TabIndex = 7;
             // 
             // label5
@@ -347,11 +330,11 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             // textBox3
             // 
             this.textBox3.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox3.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox3.Location = new System.Drawing.Point(7, 282);
             this.textBox3.Multiline = true;
             this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(319, 48);
+            this.textBox3.Size = new System.Drawing.Size(418, 53);
             this.textBox3.TabIndex = 5;
             // 
             // label4
@@ -368,11 +351,11 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             // textBox2
             // 
             this.textBox2.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox2.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(7, 165);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(315, 51);
+            this.textBox2.Size = new System.Drawing.Size(418, 58);
             this.textBox2.TabIndex = 3;
             // 
             // label3
@@ -380,7 +363,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Century Gothic", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.ForeColor = System.Drawing.Color.White;
-            this.label3.Location = new System.Drawing.Point(13, 140);
+            this.label3.Location = new System.Drawing.Point(5, 140);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(56, 22);
             this.label3.TabIndex = 2;
@@ -389,11 +372,11 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.textBox1.Font = new System.Drawing.Font("Segoe UI Semibold", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(7, 62);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(315, 50);
+            this.textBox1.Size = new System.Drawing.Size(418, 55);
             this.textBox1.TabIndex = 1;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -407,62 +390,6 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.label2.Size = new System.Drawing.Size(64, 22);
             this.label2.TabIndex = 0;
             this.label2.Text = "Name";
-            // 
-            // button7
-            // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
-            this.button7.BackgroundImage = global::EducationalCenterFinal.Properties.Resources.icons8_maximize_button_32;
-            this.button7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button7.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Location = new System.Drawing.Point(1751, 0);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(40, 30);
-            this.button7.TabIndex = 9;
-            this.button7.UseVisualStyleBackColor = false;
-            this.button7.Click += new System.EventHandler(this.button7_Click);
-            // 
-            // button6
-            // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
-            this.button6.BackgroundImage = global::EducationalCenterFinal.Properties.Resources.icons8_macos_minimize_32;
-            this.button6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button6.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Location = new System.Drawing.Point(1705, 0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(40, 30);
-            this.button6.TabIndex = 8;
-            this.button6.UseVisualStyleBackColor = false;
-            this.button6.Click += new System.EventHandler(this.button6_Click);
-            // 
-            // button5
-            // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
-            this.button5.BackgroundImage = global::EducationalCenterFinal.Properties.Resources.icons8_close_button_32;
-            this.button5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.button5.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Location = new System.Drawing.Point(1797, 0);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(40, 30);
-            this.button5.TabIndex = 7;
-            this.button5.UseVisualStyleBackColor = false;
-            this.button5.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.pictureBox1.Image = global::EducationalCenterFinal.Properties.Resources.search1;
-            this.pictureBox1.Location = new System.Drawing.Point(1767, 64);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(43, 31);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 4;
-            this.pictureBox1.TabStop = false;
             // 
             // open_Source_Education_CenterDataSet1
             // 
@@ -487,25 +414,35 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToDisplayedHeaders;
             this.dataGridView1.RowTemplate.Height = 24;
-            this.dataGridView1.Size = new System.Drawing.Size(1422, 752);
+            this.dataGridView1.Size = new System.Drawing.Size(1295, 720);
             this.dataGridView1.TabIndex = 10;
+            // 
+            // textBox1_search
+            // 
+            this.textBox1_search.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.textBox1_search.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox1_search.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1_search.Location = new System.Drawing.Point(1393, 33);
+            this.textBox1_search.Multiline = true;
+            this.textBox1_search.Name = "textBox1_search";
+            this.textBox1_search.Size = new System.Drawing.Size(357, 44);
+            this.textBox1_search.TabIndex = 3;
+            this.textBox1_search.TextChanged += new System.EventHandler(this.textBox1_search_TextChanged);
+            this.textBox1_search.Enter += new System.EventHandler(this.textBox1_search_Enter);
+            this.textBox1_search.Leave += new System.EventHandler(this.textBox1_search_Leave);
             // 
             // TeacherManageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.ClientSize = new System.Drawing.Size(1876, 911);
-            this.Controls.Add(this.dataGridView1);
-            this.Controls.Add(this.button7);
-            this.Controls.Add(this.button6);
-            this.Controls.Add(this.button5);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.pictureBox1);
+            this.ClientSize = new System.Drawing.Size(1876, 848);
             this.Controls.Add(this.textBox1_search);
+            this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "TeacherManageForm";
@@ -516,7 +453,6 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.menuStrip1.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.open_Source_Education_CenterDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
@@ -539,8 +475,6 @@ namespace EducationalCenterFinal.Admin.TeacherManage
         private ToolStripMenuItem forgetPasswordToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
         private Label label1;
-        private TextBox textBox1_search;
-        private PictureBox pictureBox1;
         private Panel panel1;
         private TextBox textBox1;
         private Label label2;
@@ -556,12 +490,10 @@ namespace EducationalCenterFinal.Admin.TeacherManage
         private Button button1;
         private ToolStripMenuItem arabicToolStripMenuItem;
         private ToolStripMenuItem englishToolStripMenuItem;
-        private Button button5;
-        private Button button6;
-        private Button button7;
         private Open_Source_Education_CenterDataSet open_Source_Education_CenterDataSet1;
         private DataGridView dataGridView1;
         private TextBox textBox5;
         private Label label6;
+        private TextBox textBox1_search;
     }
     }
