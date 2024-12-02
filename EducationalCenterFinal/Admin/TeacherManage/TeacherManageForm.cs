@@ -28,6 +28,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             InitializeComponent();
             setUpForm();
             setUpComponents();
+            SearchPlaceHolder();
             //   style DataGridView 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
@@ -36,7 +37,10 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic Italic", 9, FontStyle.Bold);
             dataGridView1.ColumnHeadersDefaultCellStyle.Padding = new Padding(4);
-             //ربط الاحداث 
+
+
+
+            //ربط الاحداث 
             this.textBox1_search.Enter += new System.EventHandler(this.textBox1_search_Enter);
             this.textBox1_search.Leave += new System.EventHandler(this.textBox1_search_Leave);
             
@@ -207,7 +211,34 @@ namespace EducationalCenterFinal.Admin.TeacherManage
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
         }
-       
+        private void SearchPlaceHolder()
+        {
+            textBox1_search.Text = "Search";
+            textBox1_search.ForeColor = Color.Gray;
+            textBox1_search.Enter += (sender, e) =>
+            {
+                if (textBox1_search.Text == "Search")
+                {
+                    textBox1_search.Text = "";
+                    textBox1_search.ForeColor = Color.Black;
+                }
+            };
+            textBox1_search.Leave += (sender, e) =>
+            {
+                if (string.IsNullOrWhiteSpace(textBox1_search.Text))
+                {
+                    textBox1_search.Text = "Search";
+                    textBox1_search.ForeColor = Color.Gray;
+                }
+            };
+            textBox1_search.TextChanged += (sender, e) =>
+            {
+                if (textBox1_search.Text != "Search" && textBox1_search.ForeColor == Color.Gray)
+                {
+                    textBox1_search.ForeColor = Color.Black;
+                }
+            };
+        }
         private void button1_Click(object sender, EventArgs e)
         {
            if(textBox1.Text==""||textBox2.Text=="" || textBox3.Text == "" || textBox4.Text == "")
@@ -252,8 +283,8 @@ namespace EducationalCenterFinal.Admin.TeacherManage
         }
         private void TeacherManageForm_Load_1(object sender, EventArgs e)
         {
-            textBox1_search.Text = "Search";
-            textBox1_search.ForeColor = Color.Gray;
+            //textBox1_search.Text = "Search";
+            //textBox1_search.ForeColor = Color.Gray;
 
 
             dataGridView1.DefaultCellStyle.ForeColor = Color.Black; // اللون الاسود للنص
