@@ -106,17 +106,17 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
         {
             var studentsInCourse = dp.students
                 .Join(dp.enrollments,
-                    student => student.studentId,
-                    enrollment => enrollment.studentId,
-                    (student, enrollment) => new { student, enrollment })
-                .Where(result => result.enrollment.courseId == CourseId)
+                    students => students.studentId,
+                    enrollments => enrollments.studentId,
+                    (students, enrollments) => new { students, enrollments })
+                .Where(result => result.enrollments.courseId == CourseId)
                 .Select(result => new
                 {
-                    ID = result.student.studentId,
-                    Name = result.student.studentName,
-                    Phone = result.student.studentPhone,
-                    Address = result.student.studentAddress,
-                    Email = result.student.studentEmail,
+                    ID = result.students.studentId,
+                    Name = result.students.studentName,
+                    Phone = result.students.studentPhone,
+                    Address = result.students.studentAddress,
+                    Email = result.students.studentEmail,
                 });
             if (filterId.HasValue)
             {

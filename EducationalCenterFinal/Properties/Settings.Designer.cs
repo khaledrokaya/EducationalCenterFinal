@@ -26,8 +26,9 @@ namespace EducationalCenterFinal.Properties {
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
-        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=KHALEDROKAYA;Initial Catalog=Open_Source_Education_Center;Integrated " +
-            "Security=True;Encrypt=True;TrustServerCertificate=True")]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=db10692.public.databaseasp.net;Initial Catalog=db10692;Persist Securi" +
+            "ty Info=True;User ID=db10692;Password=k%6W!Dg4Tb7@;Encrypt=True;TrustServerCerti" +
+            "ficate=True")]
         public string Open_Source_Education_CenterConnectionString {
             get {
                 return ((string)(this["Open_Source_Education_CenterConnectionString"]));

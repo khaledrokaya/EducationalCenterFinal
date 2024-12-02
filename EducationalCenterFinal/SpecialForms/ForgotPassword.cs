@@ -30,7 +30,7 @@ namespace EducationalCenterFinal.SpecialForms
             }
             try
             {
-                user us = dp.users.Where(u => u.userId == userID).FirstOrDefault();
+                users us = dp.users.Where(u => u.userId == userID).FirstOrDefault();
                 if (us == null)
                 {
                     MessageBox.Show("UserId Not Found!");

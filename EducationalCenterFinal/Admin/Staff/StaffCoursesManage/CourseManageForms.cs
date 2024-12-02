@@ -53,9 +53,9 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
         {
             if (int.TryParse(searchBox.Text, out int studentId))
             {
-                student stu = dp.students.Where(s => s.studentId == studentId).FirstOrDefault();
-                enrollment enr = dp.enrollments.Where(e => e.studentId == studentId && e.courseId == CourseID).FirstOrDefault();
-                payment pay = dp.payments.Where(p => p.studentId == studentId && p.paymentDate.Month == DateTime.Now.Month && p.courseId == CourseID).FirstOrDefault();
+                students stu = dp.students.Where(s => s.studentId == studentId).FirstOrDefault();
+                enrollments enr = dp.enrollments.Where(e => e.studentId == studentId && e.courseId == CourseID).FirstOrDefault();
+                payments pay = dp.payments.Where(p => p.studentId == studentId && p.paymentDate.Month == DateTime.Now.Month && p.courseId == CourseID).FirstOrDefault();
                 if ((Type == "assign" && stu != null) || (Type == "remove" && enr != null) || (Type == "pay"))
                 {
                     try
@@ -65,7 +65,7 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
                             if (enr == null)
                             {
                                 dp.enrollments.Add(
-                                    new enrollment
+                                    new enrollments
                                     {
                                         courseId = CourseID,
                                         studentId = int.Parse(searchBox.Text)
@@ -93,7 +93,7 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
                             {
                                 if (pay == null)
                                 {
-                                    dp.payments.Add(new payment
+                                    dp.payments.Add(new payments
                                     {
                                         courseId = CourseID,
                                         studentId = int.Parse(searchBox.Text),

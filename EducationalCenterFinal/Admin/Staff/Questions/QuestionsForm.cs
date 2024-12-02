@@ -7,6 +7,7 @@ using EducationalCenterFinal.Admin.Staff;
 using EducationalCenterFinal.Admin.Staff.StaffCoursesManage;
 using EducationalCenterFinal.Admin.Staff.StudentManage;
 using EducationalCenterFinal.Admin.TeacherManage;
+using EducationalCenterFinal.SpecialForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -65,18 +66,18 @@ namespace EducationalCenterFinal.Admin.Staff
         {
             this.ClientSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            richTextBox1.Size = new Size((ClientSize.Width - 44 )/ 2, ClientSize.Height - 22);
+            richTextBox1.Size = new Size((ClientSize.Width - 44) / 2, ClientSize.Height - 22);
             richTextBox1.Location = new Point(12, 20);
-            SelectedQuestionLbl.Size = new Size(richTextBox1.Width - 40, richTextBox1.Height/3);
+            SelectedQuestionLbl.Size = new Size(richTextBox1.Width - 40, richTextBox1.Height / 3);
             SelectedQuestionLbl.Location = new Point(12, 75);
             AnswerTxtBox.Size = new Size(richTextBox1.Width - 40, richTextBox1.Height / 3);
             AnswerTxtBox.Location = new Point(12, SelectedQuestionLbl.Height + 130);
             QuestionsLstBox.Size = new Size((ClientSize.Width - 44) / 2, richTextBox1.Height - 120);
-            QuestionsLstBox.Location = new Point(richTextBox1.Width+20, 70);
-            SubmitAnswerBtn.Location = new Point((richTextBox1.Width-250)/2, (AnswerTxtBox.Height+SelectedQuestionLbl.Height + 150));
+            QuestionsLstBox.Location = new Point(richTextBox1.Width + 20, 70);
+            SubmitAnswerBtn.Location = new Point((richTextBox1.Width - 250) / 2, (AnswerTxtBox.Height + SelectedQuestionLbl.Height + 150));
             panel1.Width = QuestionsLstBox.Width / 2;
-            panel1.Location = new Point(richTextBox1.Width+200, 30);
-            label3.Location = new Point(12,SelectedQuestionLbl.Height+85);
+            panel1.Location = new Point(richTextBox1.Width + 200, 30);
+            label3.Location = new Point(12, SelectedQuestionLbl.Height + 85);
             comboBox1.DrawItem += ComboBox1_DrawItem;
         }
 
@@ -85,7 +86,7 @@ namespace EducationalCenterFinal.Admin.Staff
             if (e.Index < 0)
                 return;
             e.DrawBackground();
-            e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(118,41,84)), e.Bounds);
+            e.Graphics.FillRectangle(new SolidBrush(Color.FromArgb(118, 41, 84)), e.Bounds);
             e.Graphics.DrawString(comboBox1.Items[e.Index].ToString(), e.Font, Brushes.White, e.Bounds);
             e.DrawFocusRectangle();
         }
@@ -96,14 +97,14 @@ namespace EducationalCenterFinal.Admin.Staff
             {
                 if (index == 0)
                 {
-                    _questions = dp.questions
-                                       .Where(x => x.isAnswered == false)
+                    _questions = dp.question
+                                       .Where(x => x.IsAnswered == false)
                                        .ToList();
                 }
                 else
                 {
-                    _questions = dp.questions
-                                   .Where(x => x.isAnswered == true)
+                    _questions = dp.question
+                                   .Where(x => x.IsAnswered == true)
                                    .ToList();
                 }
                 QuestionsLstBox.DataSource = _questions;
@@ -129,7 +130,7 @@ namespace EducationalCenterFinal.Admin.Staff
 
         private void ForgetPasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            new ForgotPassword(dp).Show();
         }
 
         private void CreateAccountToolStripMenuItem_Click(object sender, EventArgs e)
@@ -172,8 +173,8 @@ namespace EducationalCenterFinal.Admin.Staff
         {
             if (QuestionsLstBox.SelectedItem is question selectedQuestion)
             {
-                SelectedQuestionLbl.Text = selectedQuestion.questionContent;
-                AnswerTxtBox.Text = selectedQuestion.questionAnswer;
+                SelectedQuestionLbl.Text = selectedQuestion.QuestionContent;
+                AnswerTxtBox.Text = selectedQuestion.QuestionAnswer;
             }
             else
             {
@@ -196,8 +197,9 @@ namespace EducationalCenterFinal.Admin.Staff
 
                 try
                 {
-                    selectedQuestion.questionAnswer = answer;
-                    selectedQuestion.isAnswered = true;
+                    selectedQuestion.QuestionAnswer = answer;
+                    selectedQuestion.IsAnswered = true;
+                    selectedQuestion.AnswerCreatedAt = DateTime.Now;
                     dp.SaveChanges();
                     MessageBox.Show("Answer submitted successfully.");
                     AnswerTxtBox.Clear();

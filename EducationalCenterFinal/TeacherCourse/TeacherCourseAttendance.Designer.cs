@@ -3,7 +3,7 @@ using System.Windows.Forms;
 
 namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
 {
-    partial class CourseManageForms
+    partial class TeacherCourseAttendance
     {
         /// <summary>
         /// Required designer variable.
@@ -35,6 +35,7 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             this.panel1 = new System.Windows.Forms.Panel();
             this.CancelButton = new System.Windows.Forms.Button();
             this.SubmitButton = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -90,19 +91,33 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             this.SubmitButton.Text = "Assign";
             this.SubmitButton.UseVisualStyleBackColor = false;
             // 
-            // CourseManageForms
+            // button1
+            // 
+            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
+            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.button1.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Bold);
+            this.button1.ForeColor = System.Drawing.Color.White;
+            this.button1.Location = new System.Drawing.Point(161, 200);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(205, 53);
+            this.button1.TabIndex = 6;
+            this.button1.Text = "Mark Rest";
+            this.button1.UseVisualStyleBackColor = false;
+            // 
+            // TeacherCourseAttendance
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
-            this.ClientSize = new System.Drawing.Size(530, 231);
+            this.ClientSize = new System.Drawing.Size(530, 265);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.SubmitButton);
             this.Controls.Add(this.CancelButton);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "CourseManageForms";
+            this.Name = "TeacherCourseAttendance";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Assign Student";
             this.TopMost = true;
@@ -118,5 +133,6 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
         private System.Windows.Forms.Panel panel1;
         private new System.Windows.Forms.Button CancelButton;
         private System.Windows.Forms.Button SubmitButton;
+        private Button button1;
     }
 }

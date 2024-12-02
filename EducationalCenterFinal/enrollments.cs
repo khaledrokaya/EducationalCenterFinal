@@ -12,17 +12,13 @@ namespace EducationalCenterFinal
     using System;
     using System.Collections.Generic;
     
-    public partial class staff
+    public partial class enrollments
     {
-        public int staffId { get; set; }
-        public string staffName { get; set; }
-        public string staffEmail { get; set; }
-        public string staffPhone { get; set; }
-        public string staffAddress { get; set; }
-        public string role { get; set; }
-        public Nullable<decimal> staffSalary { get; set; }
-        public int userId { get; set; }
+        public int enrollmentId { get; set; }
+        public int studentId { get; set; }
+        public int courseId { get; set; }
     
-        public virtual users users { get; set; }
+        public virtual courses courses { get; set; }
+        public virtual students students { get; set; }
     }
 }

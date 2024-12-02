@@ -12,17 +12,9 @@ namespace EducationalCenterFinal
     using System;
     using System.Collections.Generic;
     
-    public partial class staff
+    public partial class C__EFMigrationsHistory
     {
-        public int staffId { get; set; }
-        public string staffName { get; set; }
-        public string staffEmail { get; set; }
-        public string staffPhone { get; set; }
-        public string staffAddress { get; set; }
-        public string role { get; set; }
-        public Nullable<decimal> staffSalary { get; set; }
-        public int userId { get; set; }
-    
-        public virtual users users { get; set; }
+        public string MigrationId { get; set; }
+        public string ProductVersion { get; set; }
     }
 }
