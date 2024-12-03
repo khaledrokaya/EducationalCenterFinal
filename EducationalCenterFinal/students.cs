@@ -12,34 +12,30 @@ namespace EducationalCenterFinal
     using System;
     using System.Collections.Generic;
     
-    public partial class cours
+    public partial class students
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public cours()
+        public students()
         {
-            this.attendances = new HashSet<attendance>();
-            this.enrollments = new HashSet<enrollment>();
-            this.exams = new HashSet<exam>();
-            this.payments = new HashSet<payment>();
+            this.attendance = new HashSet<attendance>();
+            this.enrollments = new HashSet<enrollments>();
+            this.exams = new HashSet<exams>();
+            this.payments = new HashSet<payments>();
         }
     
-        public int courseId { get; set; }
-        public string courseName { get; set; }
-        public string Description { get; set; }
-        public string WorkOn { get; set; }
-        public Nullable<System.TimeSpan> beginning { get; set; }
-        public Nullable<decimal> NoOfHours { get; set; }
-        public int teacherId { get; set; }
-        public Nullable<decimal> price { get; set; }
+        public int studentId { get; set; }
+        public string studentName { get; set; }
+        public string studentEmail { get; set; }
+        public string studentPhone { get; set; }
+        public string studentAddress { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<attendance> attendances { get; set; }
-        public virtual teacher teacher { get; set; }
+        public virtual ICollection<attendance> attendance { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<enrollment> enrollments { get; set; }
+        public virtual ICollection<enrollments> enrollments { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<exam> exams { get; set; }
+        public virtual ICollection<exams> exams { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<payment> payments { get; set; }
+        public virtual ICollection<payments> payments { get; set; }
     }
 }

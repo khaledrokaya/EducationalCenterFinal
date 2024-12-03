@@ -14,9 +14,11 @@ namespace EducationalCenterFinal
     
     public partial class question
     {
-        public int questionId { get; set; }
-        public string questionContent { get; set; }
-        public string questionAnswer { get; set; }
-        public Nullable<bool> isAnswered { get; set; }
+        public int QuestionId { get; set; }
+        public string QuestionContent { get; set; }
+        public string QuestionAnswer { get; set; }
+        public bool IsAnswered { get; set; }
+        public Nullable<System.DateTime> AnswerCreatedAt { get; set; }
+        public System.DateTime QuestionCreatedAt { get; set; }
     }
 }
