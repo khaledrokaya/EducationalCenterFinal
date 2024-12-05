@@ -281,16 +281,23 @@ namespace EducationalCenterFinal.Admin.TeacherManage
         {
            
             teachers t_add = new teachers();
+
             t_add.teacherName = textBox1.Text;
+
             t_add.teacherEmail = textBox2.Text;
+
             t_add.teacherSpecialization = textBox3.Text;
+
             t_add.teacherPhone = textBox4.Text;
+
             t_add.userId = int.Parse(textBox5.Text);
 
             dp.teachers.Add(t_add);
+
             dp.SaveChanges();
 
             MessageBox.Show("Teacher Saved Successfully");
+
             dataGridView1.DataSource = dp.teachers.ToList();
         }
 
@@ -311,9 +318,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
 
         private void TeacherManageForm_Load_1(object sender, EventArgs e)
         {
-            textBox1_search.Text = "Search";
-            textBox1_search.ForeColor = Color.Gray;
-
+            
             dataGridView1.DefaultCellStyle.ForeColor = Color.Black; // اللون الاسود للنص
 
             // تغيير نوع الخط وحجمه
@@ -324,56 +329,62 @@ namespace EducationalCenterFinal.Admin.TeacherManage
         {
             if (int.TryParse(textBox1_search.Text, out int ID))
             {
-                teachers t= dp.teachers.FirstOrDefault(x => x.teacherId == ID);
+                teachers t = dp.teachers.FirstOrDefault(x => x.teacherId == ID);
+
                 t.teacherName = textBox1.Text;
+
                 t.teacherEmail = textBox2.Text;
+
                 t.teacherSpecialization = textBox3.Text;
+
                 t.teacherPhone = textBox4.Text;
+
                 t.userId = int.Parse(textBox5.Text);
+
                 dp.SaveChanges();
-                dataGridView1.DataSource = dp.teachers.ToList();
+
                 MessageBox.Show("Data Is Edited");
+
+                dataGridView1.DataSource = dp.teachers.ToList();
+
+                resetForm();
             }
 
         }
 
         private void textBox1_search_TextChanged(object sender, EventArgs e)
         {
-                //Search With Name Or TeacherID
-                if (!string.IsNullOrWhiteSpace(textBox1_search.Text))
+            //Search With TeacherID
+            if (int.TryParse(textBox1_search.Text, out int ID))
+            {
+                teachers t = dp.teachers.FirstOrDefault(x => x.teacherId == ID);
+                if (t != null)
                 {
-                    teachers t;
-
-                    if (int.TryParse(textBox1_search.Text, out int ID))
-                    {
-                        t = dp.teachers.FirstOrDefault(x => x.teacherId == ID);
-                    }
-                    else
-                    {
-                        string name = textBox1_search.Text.ToLower();
-                        t = dp.teachers.FirstOrDefault(x => x.teacherName.ToLower().Contains(name));
-                    }
-                    if (t != null)
-                    {
-                        textBox1.Text = t.teacherName;
-                        textBox2.Text = t.teacherEmail;
-                        textBox3.Text = t.teacherSpecialization;
-                        textBox4.Text = t.teacherPhone;
-                        textBox5.Text = t.userId.ToString();
-                        button1.Enabled = false;
-                    }
+                    textBox1.Text = t.teacherName;
+                    textBox2.Text = t.teacherEmail;
+                    textBox3.Text = t.teacherSpecialization;
+                    textBox4.Text = t.teacherPhone;
+                    textBox5.Text = t.userId.ToString();
+                    button1.Enabled = false;
                 }
+            }
         }
 
-        private void button3_Click_1(object sender, EventArgs e)
+            private void button3_Click_1(object sender, EventArgs e)
         {
             if (int.TryParse(textBox1_search.Text, out int ID))
             {
                 teachers t = dp.teachers.FirstOrDefault(x => x.teacherId == ID);
+
                 dp.teachers.Remove(t);
+
                 dp.SaveChanges();
-                dataGridView1.DataSource = dp.teachers.ToList();
+
                 MessageBox.Show("Data Is Deleted");
+
+                dataGridView1.DataSource = dp.teachers.ToList();
+
+                resetForm();
             }
 
         }
@@ -383,5 +394,6 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             resetForm();
             button1.Enabled = true;
         }
+
     }
 }
