@@ -21,11 +21,6 @@ namespace EducationalCenterFinal.Admin.CourseManage
     public partial class CourseManageForm : Form
     {
         readonly EducationCenterEntities dp = new EducationCenterEntities();
-
-         cours c = new cours();
-       
-        
-       
         public CourseManageForm()
         {
             InitializeComponent();

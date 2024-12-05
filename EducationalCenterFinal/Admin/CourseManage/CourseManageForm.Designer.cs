@@ -138,7 +138,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
             this.createAccountToolStripMenuItem.Name = "createAccountToolStripMenuItem";
             this.createAccountToolStripMenuItem.Size = new System.Drawing.Size(251, 28);
             this.createAccountToolStripMenuItem.Text = "Create Account";
-            this.createAccountToolStripMenuItem.Click += new System.EventHandler(this.ForgetPasswordToolStripMenuItem_Click);
+            this.createAccountToolStripMenuItem.Click += new System.EventHandler(this.CreateAccountToolStripMenuItem_Click);
             // 
             // forgetPasswordToolStripMenuItem
             // 
@@ -434,5 +434,25 @@ namespace EducationalCenterFinal.Admin.CourseManage
         private ToolStripMenuItem createAccountToolStripMenuItem;
         private ToolStripMenuItem forgetPasswordToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
+        private TextBox txtSearch;
+        private Label label1;
+        private Panel panel1;
+        private Label label2;
+        private TextBox textBox8;
+        private TextBox textBox7;
+        private TextBox textBox6;
+        private TextBox textBox5;
+        private TextBox textBox4;
+        private Label label7;
+        private Label label6;
+        private Label label5;
+        private Label label4;
+        private Label label3;
+        private TextBox textBox2;
+        private Button button1;
+        private Button button4;
+        private Button button3;
+        private Button button2;
+        private DataGridView dataGridView1;
     }
 }

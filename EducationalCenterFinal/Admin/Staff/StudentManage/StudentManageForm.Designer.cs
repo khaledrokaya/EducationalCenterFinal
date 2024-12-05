@@ -136,7 +136,7 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             this.createAccountToolStripMenuItem.Name = "createAccountToolStripMenuItem";
             this.createAccountToolStripMenuItem.Size = new System.Drawing.Size(230, 28);
             this.createAccountToolStripMenuItem.Text = "Create Account";
-            this.createAccountToolStripMenuItem.Click += new System.EventHandler(this.ForgetPasswordToolStripMenuItem_Click);
+            this.createAccountToolStripMenuItem.Click += new System.EventHandler(this.CreateAccountToolStripMenuItem_Click);
             // 
             // forgetPasswordToolStripMenuItem
             // 
