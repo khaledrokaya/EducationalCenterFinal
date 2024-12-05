@@ -1,9 +1,8 @@
-﻿using System.Drawing;
-using System.Windows.Forms;
+﻿using System.Windows.Forms;
 
-namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
+namespace EducationalCenterFinal.Admin.EmployeeManage
 {
-    partial class StaffCourseForm
+    partial class EmployeeManageForm
     {
         /// <summary>
         /// Required designer variable.
@@ -34,6 +33,7 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.dashboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.teachersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.studentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.employeesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -44,21 +44,22 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             this.createAccountToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.forgetPasswordToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.logoutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.panel1 = new System.Windows.Forms.Panel();
             this.searchBox = new System.Windows.Forms.TextBox();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.menuStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.menuStrip1.Font = new System.Drawing.Font("Arial Unicode MS", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(25, 25);
+            this.menuStrip1.Font = new System.Drawing.Font("Arial Unicode MS", 10.8F);
+            this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.dashboardToolStripMenuItem,
             this.teachersToolStripMenuItem,
             this.studentsToolStripMenuItem,
             this.employeesToolStripMenuItem,
@@ -71,6 +72,12 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             this.menuStrip1.Size = new System.Drawing.Size(1400, 32);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
+            // 
+            // dashboardToolStripMenuItem
+            // 
+            this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
+            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(112, 28);
+            this.dashboardToolStripMenuItem.Text = "Dashboard";
             // 
             // teachersToolStripMenuItem
             // 
@@ -90,7 +97,6 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             this.employeesToolStripMenuItem.Name = "employeesToolStripMenuItem";
             this.employeesToolStripMenuItem.Size = new System.Drawing.Size(104, 28);
             this.employeesToolStripMenuItem.Text = "Employee";
-            this.employeesToolStripMenuItem.Click += new System.EventHandler(this.EmployeesToolStripMenuItem_Click);
             // 
             // coursesToolStripMenuItem
             // 
@@ -133,7 +139,7 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             this.forgetPasswordToolStripMenuItem.Name = "forgetPasswordToolStripMenuItem";
             this.forgetPasswordToolStripMenuItem.Size = new System.Drawing.Size(230, 28);
             this.forgetPasswordToolStripMenuItem.Text = "Forget Password";
-            this.forgetPasswordToolStripMenuItem.Click += new System.EventHandler(this.ForgetPasswordToolStripMenuItem_Click_1);
+            this.forgetPasswordToolStripMenuItem.Click += new System.EventHandler(this.ForgetPasswordToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
@@ -141,6 +147,48 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             this.logoutToolStripMenuItem.Size = new System.Drawing.Size(230, 28);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.LogoutToolStripMenuItem_Click);
+            // 
+            // panel1
+            // 
+            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            this.panel1.Controls.Add(this.searchBox);
+            this.panel1.Location = new System.Drawing.Point(995, 49);
+            this.panel1.Margin = new System.Windows.Forms.Padding(0);
+            this.panel1.Name = "panel1";
+            this.panel1.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
+            this.panel1.Size = new System.Drawing.Size(393, 53);
+            this.panel1.TabIndex = 4;
+            // 
+            // searchBox
+            // 
+            this.searchBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
+            this.searchBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.searchBox.Font = new System.Drawing.Font("Arial", 12F);
+            this.searchBox.Location = new System.Drawing.Point(12, 16);
+            this.searchBox.Margin = new System.Windows.Forms.Padding(0);
+            this.searchBox.Name = "searchBox";
+            this.searchBox.Size = new System.Drawing.Size(345, 23);
+            this.searchBox.TabIndex = 0;
+            this.searchBox.Text = "Search By ID";
+            this.searchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged_1);
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(41)))), ((int)(((byte)(81)))));
+            this.panel2.Location = new System.Drawing.Point(957, 118);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(431, 570);
+            this.panel2.TabIndex = 5;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Arial", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(12, 58);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(216, 44);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "Employees";
             // 
             // dataGridView1
             // 
@@ -162,7 +210,7 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
             this.dataGridView1.EnableHeadersVisualStyles = false;
             this.dataGridView1.GridColor = System.Drawing.Color.Black;
-            this.dataGridView1.Location = new System.Drawing.Point(12, 197);
+            this.dataGridView1.Location = new System.Drawing.Point(12, 118);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.ReadOnly = true;
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
@@ -177,62 +225,31 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             this.dataGridView1.RowHeadersWidth = 40;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.RowTemplate.Height = 45;
-            this.dataGridView1.Size = new System.Drawing.Size(1310, 383);
+            this.dataGridView1.Size = new System.Drawing.Size(939, 570);
             this.dataGridView1.TabIndex = 2;
+            this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // panel1
-            // 
-            this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
-            this.panel1.Controls.Add(this.searchBox);
-            this.panel1.Location = new System.Drawing.Point(955, 145);
-            this.panel1.Margin = new System.Windows.Forms.Padding(0);
-            this.panel1.Name = "panel1";
-            this.panel1.Padding = new System.Windows.Forms.Padding(5, 0, 5, 0);
-            this.panel1.Size = new System.Drawing.Size(400, 50);
-            this.panel1.TabIndex = 3;
-            // 
-            // searchBox
-            // 
-            this.searchBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(236)))), ((int)(((byte)(236)))), ((int)(((byte)(236)))));
-            this.searchBox.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.searchBox.Font = new System.Drawing.Font("Arial", 12F);
-            this.searchBox.Location = new System.Drawing.Point(12, 16);
-            this.searchBox.Margin = new System.Windows.Forms.Padding(0);
-            this.searchBox.Name = "searchBox";
-            this.searchBox.Size = new System.Drawing.Size(345, 23);
-            this.searchBox.TabIndex = 0;
-            this.searchBox.Text = "Search By ID";
-            this.searchBox.TextChanged += new System.EventHandler(this.SearchBox_TextChanged_1);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Arial", 22F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 45);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 44);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "label1";
-            // 
-            // StaffCourseForm
+            // EmployeeManageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1400, 700);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.dataGridView1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.panel2);
+            this.Controls.Add(this.panel1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
-            this.Name = "StaffCourseForm";
-            this.Text = "StaffCourseForm";
+            this.MaximizeBox = false;
+            this.Name = "EmployeeManageForm";
+            this.Text = "EmployeeManageForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -241,6 +258,7 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
         #endregion
 
         private MenuStrip menuStrip1;
+        private ToolStripMenuItem dashboardToolStripMenuItem;
         private ToolStripMenuItem teachersToolStripMenuItem;
         private ToolStripMenuItem studentsToolStripMenuItem;
         private ToolStripMenuItem employeesToolStripMenuItem;
@@ -251,9 +269,10 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
         private ToolStripMenuItem createAccountToolStripMenuItem;
         private ToolStripMenuItem forgetPasswordToolStripMenuItem;
         private ToolStripMenuItem logoutToolStripMenuItem;
-        private DataGridView dataGridView1;
         private Panel panel1;
         private TextBox searchBox;
+        private Panel panel2;
         private Label label1;
+        private DataGridView dataGridView1;
     }
 }

@@ -1,5 +1,6 @@
 ﻿using EducationalCenterFinal.Admin.CourseManage;
 using EducationalCenterFinal.Admin.CreateAccount;
+using EducationalCenterFinal.Admin.Dashboard;
 using EducationalCenterFinal.Admin.Staff.StaffCoursesManage;
 using EducationalCenterFinal.Admin.Staff;
 using EducationalCenterFinal.Admin.Staff.StudentManage;
@@ -39,6 +40,7 @@ namespace EducationalCenterFinal.Admin.EmployeeManage
         private void SetupComponents()
         {
             this.questionsToolStripMenuItem.Click += (sender, e) => this.QuestionsToolStripMenuItem_Click("admin");
+            this.dashboardToolStripMenuItem.Click += (sender, e) => this.DashboardToolStripMenuItem_Click("admin");
             this.studentsToolStripMenuItem.Click += (sender, e) => this.StudentsToolStripMenuItem_Click("admin");
 
             foreach (var course in dp.courses)
@@ -55,9 +57,9 @@ namespace EducationalCenterFinal.Admin.EmployeeManage
 
             PictureBox pictureBox = new PictureBox
             {
-                Image = Image.FromFile(Application.StartupPath.Remove(Application.StartupPath.Length - 10) + "\\Images\\search-interface-symbol.png"),
+                Image = Image.FromFile(Application.StartupPath.Substring(0, 42) + "\\Images\\search-interface-symbol.png"),
                 SizeMode = PictureBoxSizeMode.Normal,
-                Location = new Point(panel1.Width - 30, 13),
+                Location = new Point(panel1.Width-30, 13),
                 Size = new Size(50, 50)
             };
             panel1.Controls.Add(pictureBox);
@@ -102,7 +104,7 @@ namespace EducationalCenterFinal.Admin.EmployeeManage
                 label.Text = placeholderText;
                 Panel panel = new Panel();
                 panel.BackColor = Color.FromArgb(236, 236, 236);
-                panel.Size = new Size(panel2.Width - 24, 40);
+                panel.Size = new Size(panel2.Width-24, 40);
                 panel.Padding = new Padding(5, 0, 5, 0);
                 panel.Margin = new Padding(0);
                 panel.Location = new Point(12, yOffset);
@@ -113,7 +115,7 @@ namespace EducationalCenterFinal.Admin.EmployeeManage
                     Font = new Font("Arial", 12F),
                     ForeColor = Color.Black,
                     Location = new Point(5, 10),
-                    Size = new Size(panel.Width - 10, 30),
+                    Size = new Size(panel.Width-10, 30),
                     Margin = new Padding(0),
                 };
                 textBoxes.Add(input);
@@ -128,15 +130,15 @@ namespace EducationalCenterFinal.Admin.EmployeeManage
         private void LoadEmployeeData(int? filterId = null)
         {
             var employees = dp.staff.Select(s => new {
-                ID = s.staffId,
-                U_ID = s.userId,
-                Name = s.staffName,
-                Role = s.role,
-                Email = s.staffEmail,
-                Phone = s.staffPhone,
-                Salary = s.staffSalary,
-                Address = s.staffAddress,
-            });
+                    ID=s.staffId,
+                    U_ID=s.userId,
+                    Name=s.staffName,
+                    Role=s.role,
+                    Email=s.staffEmail,
+                    Phone=s.staffPhone,
+                    Salary=s.staffSalary,
+                    Address=s.staffAddress,
+                });
             if (filterId.HasValue)
             {
                 employees = employees.Where(s => s.ID == filterId.Value);
@@ -239,6 +241,12 @@ namespace EducationalCenterFinal.Admin.EmployeeManage
             this.Hide();
         }
 
+        private void DashboardToolStripMenuItem_Click(string role)
+        {
+            new DashboardForm(role).Show();
+            this.Hide();
+        }
+
         private void QuestionsToolStripMenuItem_Click(string role)
         {
             new QuestionsForm(role).Show();
@@ -263,13 +271,13 @@ namespace EducationalCenterFinal.Admin.EmployeeManage
                 string address = row.Cells["Address"].Value.ToString();
                 string salary = row.Cells["Salary"].Value.ToString();
                 string phone = row.Cells["Phone"].Value.ToString();
-                textBoxes[0].Text = U_ID;
-                textBoxes[1].Text = name;
-                textBoxes[2].Text = email;
-                textBoxes[3].Text = role;
+                textBoxes[0].Text = U_ID;  
+                textBoxes[1].Text = name;  
+                textBoxes[2].Text = email; 
+                textBoxes[3].Text = role;  
                 textBoxes[4].Text = address;
-                textBoxes[5].Text = salary;
-                textBoxes[6].Text = phone;
+                textBoxes[5].Text = salary; 
+                textBoxes[6].Text = phone;  
             }
         }
 

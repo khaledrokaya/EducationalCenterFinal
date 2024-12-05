@@ -1,6 +1,5 @@
 ﻿using EducationalCenterFinal.Admin.CourseManage;
 using EducationalCenterFinal.Admin.CreateAccount;
-using EducationalCenterFinal.Admin.Dashboard;
 using EducationalCenterFinal.Admin.EmployeeManage;
 using EducationalCenterFinal.Admin.Staff;
 using EducationalCenterFinal.Admin.Staff.StaffCoursesManage;
@@ -34,7 +33,6 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             styleDataGridView();
 
             this.questionsToolStripMenuItem.Click += (sender, e) => this.QuestionsToolStripMenuItem_Click("admin");
-            this.dashboardToolStripMenuItem.Click += (sender, e) => this.DashboardToolStripMenuItem_Click("admin");
             this.studentsToolStripMenuItem.Click += (sender, e) => this.StudentsToolStripMenuItem_Click("admin");
 
             //Make Manage Course MenuItems
@@ -51,16 +49,14 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             }
             PictureBox pictureBox = new PictureBox
             {
-                Image = Image.FromFile(Application.StartupPath.Remove(Application.StartupPath.Length-10) + "\\Images\\search-interface-symbol.png"),
+                Image = Image.FromFile(Application.StartupPath.Remove(Application.StartupPath.Length - 10) + "\\Images\\search-interface-symbol.png"),
                 SizeMode = PictureBoxSizeMode.Normal,
                 Location = new Point(270, 13),
                 Size = new Size(20, 20)
             };
             textBox1_search.Controls.Add(pictureBox);
-
-
-
         }
+
         private void styleDataGridView()
         {
             dataGridView1.DataSource = dp.teachers.ToList();
@@ -118,9 +114,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
                     column.HeaderCell.Style.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
                     column.DefaultCellStyle.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
                 }
-
             }
-
         }
 
         private void setUpForm()
@@ -220,12 +214,6 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.Hide();
         }
 
-        private void DashboardToolStripMenuItem_Click(string role)
-        {
-            new DashboardForm(role).Show();
-            this.Hide();
-        }
-
         private void QuestionsToolStripMenuItem_Click(string role)
         {
             new QuestionsForm(role).Show();
@@ -269,17 +257,17 @@ namespace EducationalCenterFinal.Admin.TeacherManage
 
         private void button1_Click(object sender, EventArgs e)
         {
-           if(textBox1.Text==""||textBox2.Text=="" || textBox3.Text == "" || textBox4.Text == "")
-           {
+            if (textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "" || textBox4.Text == "")
+            {
                 MessageBox.Show("Enter Data First.");
                 return;
-           }
-           addData();
+            }
+            addData();
         }
 
         private void addData()
         {
-           
+
             teachers t_add = new teachers();
 
             t_add.teacherName = textBox1.Text;
@@ -318,7 +306,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
 
         private void TeacherManageForm_Load_1(object sender, EventArgs e)
         {
-            
+
             dataGridView1.DefaultCellStyle.ForeColor = Color.Black; // اللون الاسود للنص
 
             // تغيير نوع الخط وحجمه
@@ -370,7 +358,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             }
         }
 
-            private void button3_Click_1(object sender, EventArgs e)
+        private void button3_Click_1(object sender, EventArgs e)
         {
             if (int.TryParse(textBox1_search.Text, out int ID))
             {

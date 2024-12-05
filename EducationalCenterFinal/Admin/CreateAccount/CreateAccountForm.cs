@@ -1,5 +1,4 @@
 ﻿using EducationalCenterFinal.Admin.CourseManage;
-using EducationalCenterFinal.Admin.Dashboard;
 using EducationalCenterFinal.Admin.EmployeeManage;
 using EducationalCenterFinal.Admin.Staff.StaffCoursesManage;
 using EducationalCenterFinal.Admin.Staff.StudentManage;
@@ -37,7 +36,6 @@ namespace EducationalCenterFinal.Admin.CreateAccount
             PhonePlaceHolder();
 
             this.questionsToolStripMenuItem.Click += (sender, e) => this.QuestionsToolStripMenuItem_Click("admin");
-            this.dashboardToolStripMenuItem.Click += (sender, e) => this.DashboardToolStripMenuItem_Click("admin");
             this.studentsToolStripMenuItem.Click += (sender, e) => this.StudentsToolStripMenuItem_Click("admin");
 
             //Make Manage Course MenuItems
@@ -86,12 +84,6 @@ namespace EducationalCenterFinal.Admin.CreateAccount
         private void TeachersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new TeacherManageForm().Show();
-            this.Hide();
-        }
-
-        private void DashboardToolStripMenuItem_Click(string role)
-        {
-            new DashboardForm(role).Show();
             this.Hide();
         }
 

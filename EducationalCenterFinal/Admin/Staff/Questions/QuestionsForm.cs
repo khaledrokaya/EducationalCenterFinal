@@ -1,7 +1,6 @@
 ﻿using EducationalCenterFinal;
 using EducationalCenterFinal.Admin.CourseManage;
 using EducationalCenterFinal.Admin.CreateAccount;
-using EducationalCenterFinal.Admin.Dashboard;
 using EducationalCenterFinal.Admin.EmployeeManage;
 using EducationalCenterFinal.Admin.Staff;
 using EducationalCenterFinal.Admin.Staff.StaffCoursesManage;
@@ -32,7 +31,6 @@ namespace EducationalCenterFinal.Admin.Staff
             this.comboBox1.SelectedIndex = 0;
             LoadUnansweredQuestions(comboBox1.SelectedIndex);
 
-            this.dashboardToolStripMenuItem.Click += (sender, e) => this.DashboardToolStripMenuItem_Click(role);
             this.studentsToolStripMenuItem.Click += (sender, e) => this.StudentsToolStripMenuItem_Click(role);
 
             //Disable Admin Sections
@@ -43,7 +41,6 @@ namespace EducationalCenterFinal.Admin.Staff
                 forgetPasswordToolStripMenuItem.Enabled = false;
                 createAccountToolStripMenuItem.Enabled = false;
                 employeesToolStripMenuItem.Enabled = false;
-                dashboardToolStripMenuItem.Enabled = false;
             }
 
             //Make Manage Course MenuItems
@@ -163,10 +160,61 @@ namespace EducationalCenterFinal.Admin.Staff
             this.Hide();
         }
 
-        private void DashboardToolStripMenuItem_Click(string role)
+        private void QuestionsLstBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            new DashboardForm(role).Show();
-            this.Hide();
+            if (QuestionsLstBox.SelectedItem is question selectedQuestion)
+            {
+                SelectedQuestionLbl.Text = selectedQuestion.QuestionContent;
+                AnswerTxtBox.Text = selectedQuestion.QuestionAnswer;
+            }
+            else
+            {
+                SelectedQuestionLbl.Text = string.Empty;
+            }
+        }
+
+        private void SubmitAnswerBtn_Click(object sender, EventArgs e)
+        {
+            Color.FromArgb(118, 41, 82);
+
+            if (QuestionsLstBox.SelectedItem is question selectedQuestion)
+            {
+                string answer = AnswerTxtBox.Text.Trim();
+                if (string.IsNullOrEmpty(answer))
+                {
+                    MessageBox.Show("Please enter an answer.");
+                    return;
+                }
+
+                try
+                {
+                    selectedQuestion.QuestionAnswer = answer;
+                    selectedQuestion.IsAnswered = true;
+                    selectedQuestion.AnswerCreatedAt = DateTime.Now;
+                    dp.SaveChanges();
+                    MessageBox.Show("Answer submitted successfully.");
+                    AnswerTxtBox.Clear();
+                    LoadUnansweredQuestions(comboBox1.SelectedIndex);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error submitting answer: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a question to answer.");
+            }
+        }
+
+        private void QuestionsForm_Load(object sender, EventArgs e)
+        {
+            LoadUnansweredQuestions(comboBox1.SelectedIndex);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadUnansweredQuestions(comboBox1.SelectedIndex);
         }
 
         private void QuestionsLstBox_SelectedIndexChanged(object sender, EventArgs e)

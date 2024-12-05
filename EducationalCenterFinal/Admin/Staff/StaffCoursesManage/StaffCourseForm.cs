@@ -1,6 +1,5 @@
 ﻿using EducationalCenterFinal.Admin.CourseManage;
 using EducationalCenterFinal.Admin.CreateAccount;
-using EducationalCenterFinal.Admin.Dashboard;
 using EducationalCenterFinal.Admin.EmployeeManage;
 using EducationalCenterFinal.Admin.Staff.StudentManage;
 using EducationalCenterFinal.Admin.TeacherManage;
@@ -36,7 +35,6 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
         private void SetupComponents(string role)
         {
             this.questionsToolStripMenuItem.Click += (sender, e) => this.QuestionsToolStripMenuItem_Click(role);
-            this.dashboardToolStripMenuItem.Click += (sender, e) => this.DashboardToolStripMenuItem_Click(role);
             this.studentsToolStripMenuItem.Click += (sender, e) => this.StudentsToolStripMenuItem_Click(role);
             this.dataGridView1.RowHeaderMouseDoubleClick += (sender, e) => DataGridView1_CellContentClick((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
 
@@ -47,7 +45,6 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
                 forgetPasswordToolStripMenuItem.Enabled = false;
                 createAccountToolStripMenuItem.Enabled = false;
                 employeesToolStripMenuItem.Enabled = false;
-                dashboardToolStripMenuItem.Enabled = false;
             }
 
             foreach (var course in dp.courses)
@@ -62,10 +59,10 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
                 courseMenuItem.Click += (sender, e) => CourseMenuItem_Click(course.courseId, role);
                 manageToolStripMenuItem.DropDownItems.Add(courseMenuItem);
             }
-
+            
             PictureBox pictureBox = new PictureBox
             {
-                Image = Image.FromFile(Application.StartupPath.Remove(Application.StartupPath.Length-10) + "\\Images\\search-interface-symbol.png"),
+                Image = Image.FromFile(Application.StartupPath.Remove(Application.StartupPath.Length - 10) + "\\Images\\search-interface-symbol.png"),
                 SizeMode = PictureBoxSizeMode.Normal,
                 Location = new Point(270, 13),
                 Size = new Size(50, 50)
@@ -100,6 +97,72 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
                 Controls.Add(button);
                 idx += 130;
             }
+        }
+
+        private void LoadStudentData(int? filterId = null)
+        {
+            var studentsInCourse = dp.students
+                .Join(dp.enrollments,
+                    students => students.studentId,
+                    enrollments => enrollments.studentId,
+                    (students, enrollments) => new { students, enrollments })
+                .Where(result => result.enrollments.courseId == CourseId)
+                .Select(result => new
+                {
+                    ID = result.students.studentId,
+                    Name = result.students.studentName,
+                    Phone = result.students.studentPhone,
+                    Address = result.students.studentAddress,
+                    Email = result.students.studentEmail,
+                });
+            if (filterId.HasValue)
+            {
+                studentsInCourse = studentsInCourse.Where(s => s.ID == filterId.Value);
+            }
+
+            dataGridView1.DataSource = studentsInCourse.ToList();
+        }
+
+        private void ApplyStyling()
+        {
+            dataGridView1.Size = new Size(ClientSize.Width - 24, ClientSize.Height - 100);
+            dataGridView1.MinimumSize = new Size(ClientSize.Width - 24, ClientSize.Height - 100);
+            dataGridView1.MaximumSize = new Size(ClientSize.Width - 24, ClientSize.Height - 100);
+            dataGridView1.Location = new Point(12, ClientSize.Height - 12 - dataGridView1.Height);
+
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                column.DefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 236, 236);
+                column.DefaultCellStyle.SelectionForeColor = Color.Black;
+                column.DefaultCellStyle.Font = new Font("Arial", 11F, FontStyle.Regular);
+                column.Width = column.HeaderText == "ID" ? 40 : ((dataGridView1.Width - dataGridView1.RowHeadersWidth - 40) / 4);
+                column.HeaderCell.Style.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
+                column.DefaultCellStyle.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
+            }
+
+            panel1.Location = new Point(ClientSize.Width - 12 - panel1.Width, ClientSize.Height - dataGridView1.Height - 12 - 50);
+        }
+
+        private void SearchBoxPlaceHolder()
+        {
+            searchBox.Text = "Search By ID...";
+            searchBox.ForeColor = Color.Gray;
+            searchBox.Enter += (sender, e) =>
+            {
+                if (searchBox.Text == "Search By ID...")
+                {
+                    searchBox.Text = "";
+                    searchBox.ForeColor = Color.Black;
+                }
+            };
+            searchBox.Leave += (sender, e) =>
+            {
+                if (string.IsNullOrWhiteSpace(searchBox.Text))
+                {
+                    searchBox.Text = "Search By ID...";
+                    searchBox.ForeColor = Color.Gray;
+                }
+            };
         }
 
         private void LoadStudentData(int? filterId = null)
@@ -216,10 +279,47 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             this.Hide();
         }
 
-        private void DashboardToolStripMenuItem_Click(string role)
+        private void SearchBox_TextChanged_1(object sender, EventArgs e)
         {
-            new DashboardForm(role).Show();
-            this.Hide();
+            if (int.TryParse(searchBox.Text, out int id))
+            {
+                LoadStudentData(id);
+            }
+            else
+            {
+                LoadStudentData();
+            }
+        }
+
+        private void AssignButton_Click()
+        {
+            var Form = new CourseManageForms(dp, CourseId, "assign");
+            Form.Show();
+            Form.FormClosed += (sender, e) => LoadStudentData();
+        }
+
+        private void RemoveButton_Click()
+        {
+            var Form = new CourseManageForms(dp, CourseId, "remove");
+            Form.Show();
+            Form.FormClosed += (sender, e) => LoadStudentData();
+        }
+
+        private void PayButton_Click()
+        {
+            var Form = new CourseManageForms(dp, CourseId, "pay");
+            Form.Show();
+            Form.FormClosed += (sender, e) => LoadStudentData();
+        }
+
+        private void DataGridView1_CellContentClick(int stu)
+        {
+            new ShowStudentDataForm(dp.students.Where(s=> s.studentId == stu).FirstOrDefault(), CourseId).Show();
+        }
+
+        private void ForgetPasswordToolStripMenuItem_Click_1(object sender, EventArgs e)
+        {
+            new ForgotPassword(dp).Show();
         }
 
         private void SearchBox_TextChanged_1(object sender, EventArgs e)

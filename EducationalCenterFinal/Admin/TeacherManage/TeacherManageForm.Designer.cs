@@ -32,7 +32,6 @@ namespace EducationalCenterFinal.Admin.TeacherManage
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.dashboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.teachersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.studentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.employeesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -74,7 +73,6 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.menuStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dashboardToolStripMenuItem,
             this.teachersToolStripMenuItem,
             this.studentsToolStripMenuItem,
             this.employeesToolStripMenuItem,
@@ -87,14 +85,6 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.menuStrip1.Size = new System.Drawing.Size(1876, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // dashboardToolStripMenuItem
-            // 
-            this.dashboardToolStripMenuItem.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
-            this.dashboardToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
-            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(112, 26);
-            this.dashboardToolStripMenuItem.Text = "Dashboard";
             // 
             // teachersToolStripMenuItem
             // 
@@ -449,7 +439,6 @@ namespace EducationalCenterFinal.Admin.TeacherManage
         #endregion
 
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem dashboardToolStripMenuItem;
         private ToolStripMenuItem teachersToolStripMenuItem;
         private ToolStripMenuItem studentsToolStripMenuItem;
         private ToolStripMenuItem employeesToolStripMenuItem;

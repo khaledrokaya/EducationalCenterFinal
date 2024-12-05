@@ -85,12 +85,6 @@
     <Compile Include="Admin\CreateAccount\CreateAccountForm.Designer.cs">
       <DependentUpon>CreateAccountForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Dashboard\DashboardForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Admin\Dashboard\DashboardForm.Designer.cs">
-      <DependentUpon>DashboardForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Admin\EmployeeManage\EmployeeManageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -200,6 +194,9 @@
     <Compile Include="TeacherCourse\TeacherCourseAttendance.Designer.cs">
       <DependentUpon>TeacherCourseAttendance.cs</DependentUpon>
     </Compile>
+    <Compile Include="TeacherCourse\TeacherCourseAttendance.Designer.cs">
+      <DependentUpon>TeacherCourseAttendance.cs</DependentUpon>
+    </Compile>
     <Compile Include="TeacherCourse\TeacherCourseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -224,9 +221,6 @@
     <EmbeddedResource Include="Admin\CreateAccount\CreateAccountForm.resx">
       <DependentUpon>CreateAccountForm.cs</DependentUpon>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Dashboard\DashboardForm.resx">
-      <DependentUpon>DashboardForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\EmployeeManage\EmployeeManageForm.resx">
       <DependentUpon>EmployeeManageForm.cs</DependentUpon>
