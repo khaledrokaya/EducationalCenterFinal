@@ -22,13 +22,15 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
     {
         readonly EducationCenterEntities dp = new EducationCenterEntities();
         student s = new student();
+
        
         public StudentManageForm(string role)
         {
             InitializeComponent();
+            dgvStudent.DataSource = dp.students.ToList();
             setUpForm();
             setUpComponents();
-            //ApplyStyling();
+           
 
             //Maximize window
             this.ClientSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
@@ -64,34 +66,7 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             }
 
 
-            //Editing the DataGrideView HeaderText and Hiding 4 Columns (attendences , enrollment , exams , payments )
-            dgvStudent.DataSource= dp.students.ToList();
-            var columnHeaders = new Dictionary<string, string>
-            {
-                { "studentId", "ID" },
-               { "studentName", "Name" },
-               { "studentEmail", "Email" },
-               { "studentPhone", "Phone" },
-                { "studentAddress", "Address" }
-            };
-
-            foreach (var column in columnHeaders)
-            {
-                if (dgvStudent.Columns[column.Key] != null)
-                {
-                    dgvStudent.Columns[column.Key].HeaderText = column.Value;
-                }
-            }
-
-            string[] hiddenColumns = { "attendances", "enrollments", "exams", "payments" };
-
-            foreach (var columnName in hiddenColumns)
-            {
-                if (dgvStudent.Columns[columnName] != null)
-                {
-                    dgvStudent.Columns[columnName].Visible = false;
-                }
-            }
+            
 
         }
         private void setUpForm()
@@ -120,24 +95,24 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             label5.Location = new Point(20, 35);
 
             
-            label1.Location = new Point(20, 40);
+            label1.Location = new Point(20, 65);
             label1.Size = new Size(panel1.Width - 120, panel1.Height / 8);
-            txtName.Location = new Point(20, label2.Height + 60);
+            txtName.Location = new Point(20, label2.Height + 80);
             txtName.Size = new Size(panel1.Width - 55, panel1.Height / 18);
 
-            label2.Location = new Point(20, 130);
+            label2.Location = new Point(20, 155);
             label2.Size = new Size(panel1.Width - 120, panel1.Height / 8);
-            txtEmail.Location = new Point(20, 175);
+            txtEmail.Location = new Point(20, 195);
             txtEmail.Size = new Size(panel1.Width - 55, panel1.Height / 18);
 
-            label3.Location = new Point(20, 230);
+            label3.Location = new Point(20, 255);
             label3.Size = new Size(panel1.Width - 120, panel1.Height / 8);
-            txtAddress.Location = new Point(20, 275);
+            txtAddress.Location = new Point(20, 295);
             txtAddress.Size = new Size(panel1.Width - 55, panel1.Height / 18);
 
-            label4.Location = new Point(20, 330);
+            label4.Location = new Point(20, 355);
             label4.Size = new Size(panel1.Width - 120, panel1.Height / 8);
-            txtPhone.Location = new Point(20, 375);
+            txtPhone.Location = new Point(20, 395);
             txtPhone.Size = new Size(panel1.Width - 55, panel1.Height / 18);
 
             
@@ -157,35 +132,103 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
 
             //setting placeholder for searching textBox
             SetPlaceholder();
+            customizeDataGridView();
+           
 
-            //custmize column Headers Back Color , color , font 
-            dgvStudent.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(118, 41, 82);
-            dgvStudent.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dgvStudent.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic", 12, FontStyle.Bold); 
-
-            // Ensure the header style applies
-             dgvStudent.EnableHeadersVisualStyles = false;
-
-            // Other DataGridView configurations, if needed
-            dgvStudent.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dgvStudent.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvStudent.ReadOnly = true; //  setting for readonly cells
         }
 
-        //private void ApplyStyling()
-        //{
 
-        //    foreach (DataGridViewColumn column in dgvStudent.Columns)
-        //    {
-        //        column.DefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 236, 236);
-        //        column.DefaultCellStyle.SelectionForeColor = Color.Black;
-        //        column.DefaultCellStyle.Font = new Font("Arial", 11F, FontStyle.Regular);
-        //        column.Width = column.HeaderText == "ID" ? 20 : ((dgvStudent.Width - dgvStudent.RowHeadersWidth - 40) / 3);
-        //        column.HeaderCell.Style.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter :  DataGridViewContentAlignment.MiddleLeft;
-        //        column.DefaultCellStyle.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter :  DataGridViewContentAlignment.MiddleLeft;
-        //    }
-        //}
 
+        private void customizeDataGridView()
+        {
+            //Editing the DataGrideView HeaderText and Hiding 4 Columns (attendences , enrollment , exams , payments )
+            
+            var columnHeaders = new Dictionary<string, string>
+            {
+                { "studentId", "ID" },
+               { "studentName", "Name" },
+               { "studentEmail", "Email" },
+               { "studentPhone", "Phone" },
+                { "studentAddress", "Address" }
+            };
+
+            foreach (var column in columnHeaders)
+            {
+                if (dgvStudent.Columns[column.Key] != null)
+                {
+                    dgvStudent.Columns[column.Key].HeaderText = column.Value;
+                }
+            }
+
+            string[] hiddenColumns = { "attendances", "enrollments", "exams", "payments" };
+
+            foreach (var columnName in hiddenColumns)
+            {
+                if (dgvStudent.Columns[columnName] != null)
+                {
+                    dgvStudent.Columns[columnName].Visible = false;
+                }
+            }
+
+            // Other DataGridView configurations 
+            dgvStudent.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvStudent.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
+            dgvStudent.ReadOnly = true; //  setting for readonly cells
+
+
+            // Customize column headers
+            dgvStudent.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvStudent.ColumnHeadersDefaultCellStyle = new DataGridViewCellStyle
+            {
+                Alignment = DataGridViewContentAlignment.MiddleCenter,
+                BackColor = Color.FromArgb(118, 41, 81),
+                Font = new Font("Arial", 13F, FontStyle.Bold),
+                ForeColor = Color.White,
+                WrapMode = DataGridViewTriState.True
+            };
+            dgvStudent.ColumnHeadersHeight = 40;
+            dgvStudent.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+
+            // General settings
+            dgvStudent.EnableHeadersVisualStyles = false;
+            dgvStudent.GridColor = Color.Black;
+            
+
+            // Customize row headers
+            dgvStudent.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dgvStudent.RowHeadersDefaultCellStyle = new DataGridViewCellStyle
+            {
+                Alignment = DataGridViewContentAlignment.MiddleLeft,
+                BackColor = Color.White,
+                Font = new Font("Arial", 14F, FontStyle.Regular),
+                ForeColor = Color.Black,
+                SelectionBackColor = Color.FromArgb(236, 236, 236),
+                SelectionForeColor = Color.Black,
+                WrapMode = DataGridViewTriState.True
+            };
+            dgvStudent.RowHeadersWidth = 30;
+            dgvStudent.RowHeadersWidthSizeMode = DataGridViewRowHeadersWidthSizeMode.DisableResizing;
+
+            // Customize row appearance
+            dgvStudent.RowTemplate.Height = 55;
+
+            
+
+
+
+            foreach (DataGridViewColumn column in dgvStudent.Columns)
+            {
+                column.DefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 236, 236);
+                column.DefaultCellStyle.SelectionForeColor = Color.Black;
+                column.DefaultCellStyle.Font = new Font("Arial", 11F, FontStyle.Bold);
+                column.Width = column.HeaderText == "ID" ? 40 : ((dgvStudent.Width - dgvStudent.RowHeadersWidth - 40) / 4);
+                column.HeaderCell.Style.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
+                column.DefaultCellStyle.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
+            }
+
+        }
+
+        
 
         private void CourseMenuItem_Click(int CourseId, string role)
         {
@@ -335,7 +378,7 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             s.studentPhone = txtPhone.Text;
             dp.students.Add(s);
             dp.SaveChanges();
-            //dgvStudent.DataSource = db.Students.ToList();
+            dgvStudent.DataSource = dp.students.ToList();
             MessageBox.Show("Student Saved Successfully");
         }
 
@@ -374,7 +417,7 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
 
                 dp.SaveChanges();
                 MessageBox.Show("Data Edited Successfully");
-                //dgvStudent.DataSource = db.Students.ToList();
+                dgvStudent.DataSource = dp.students.ToList();
                 Reset();
 
 
@@ -399,7 +442,7 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
                 dp.students.Remove(s);
                 dp.SaveChanges();
                 MessageBox.Show("Data Deleted Successfully");
-                //dgvStudent.DataSource = db.Students.ToList();
+                dgvStudent.DataSource = dp.students.ToList();
                 Reset();
 
 
@@ -411,6 +454,11 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dgvStudent_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
         }
