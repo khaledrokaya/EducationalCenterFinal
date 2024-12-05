@@ -58,16 +58,15 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             this.dgvStudent = new System.Windows.Forms.DataGridView();
             this.label5 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
+            this.menuStrip1.BackColor = System.Drawing.Color.White;
             this.menuStrip1.Font = new System.Drawing.Font("Century Gothic", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -81,7 +80,7 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             this.accountToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1924, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1665, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -175,21 +174,22 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             this.panel1.Controls.Add(this.txtAddress);
             this.panel1.Controls.Add(this.addBtn);
             this.panel1.Controls.Add(this.txtName);
-            this.panel1.Location = new System.Drawing.Point(1671, 114);
+            this.panel1.Location = new System.Drawing.Point(1304, 114);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(336, 704);
+            this.panel1.Size = new System.Drawing.Size(336, 652);
             this.panel1.TabIndex = 32;
+            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Century Gothic", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.ForeColor = System.Drawing.Color.White;
-            this.label4.Location = new System.Drawing.Point(29, 157);
+            this.label4.Location = new System.Drawing.Point(29, 390);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(56, 22);
+            this.label4.Size = new System.Drawing.Size(66, 22);
             this.label4.TabIndex = 20;
-            this.label4.Text = "Email";
+            this.label4.Text = "Phone";
             // 
             // label3
             // 
@@ -207,11 +207,11 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Gothic", 10.8F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.ForeColor = System.Drawing.Color.White;
-            this.label2.Location = new System.Drawing.Point(29, 399);
+            this.label2.Location = new System.Drawing.Point(37, 162);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(66, 22);
+            this.label2.Size = new System.Drawing.Size(56, 22);
             this.label2.TabIndex = 18;
-            this.label2.Text = "Phone";
+            this.label2.Text = "Email";
             // 
             // label1
             // 
@@ -228,7 +228,7 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             // 
             this.btnEdit.BackColor = System.Drawing.Color.White;
             this.btnEdit.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnEdit.Location = new System.Drawing.Point(172, 544);
+            this.btnEdit.Location = new System.Drawing.Point(173, 538);
             this.btnEdit.Name = "btnEdit";
             this.btnEdit.Size = new System.Drawing.Size(95, 40);
             this.btnEdit.TabIndex = 16;
@@ -240,7 +240,7 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             // 
             this.resetBtn.BackColor = System.Drawing.Color.White;
             this.resetBtn.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.resetBtn.Location = new System.Drawing.Point(48, 615);
+            this.resetBtn.Location = new System.Drawing.Point(32, 585);
             this.resetBtn.Name = "resetBtn";
             this.resetBtn.Size = new System.Drawing.Size(93, 40);
             this.resetBtn.TabIndex = 15;
@@ -252,7 +252,7 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             // 
             this.btnDelete.BackColor = System.Drawing.Color.White;
             this.btnDelete.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(172, 615);
+            this.btnDelete.Location = new System.Drawing.Point(172, 597);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(95, 40);
             this.btnDelete.TabIndex = 14;
@@ -294,7 +294,7 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             // 
             this.addBtn.BackColor = System.Drawing.Color.White;
             this.addBtn.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.addBtn.Location = new System.Drawing.Point(48, 544);
+            this.addBtn.Location = new System.Drawing.Point(33, 529);
             this.addBtn.Name = "addBtn";
             this.addBtn.Size = new System.Drawing.Size(93, 40);
             this.addBtn.TabIndex = 4;
@@ -321,7 +321,7 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             this.dgvStudent.Name = "dgvStudent";
             this.dgvStudent.RowHeadersWidth = 51;
             this.dgvStudent.RowTemplate.Height = 24;
-            this.dgvStudent.Size = new System.Drawing.Size(1603, 704);
+            this.dgvStudent.Size = new System.Drawing.Size(1221, 637);
             this.dgvStudent.TabIndex = 33;
             // 
             // label5
@@ -338,32 +338,28 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             // 
             this.txtSearch.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
             this.txtSearch.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtSearch.Location = new System.Drawing.Point(1642, 52);
+            this.txtSearch.Location = new System.Drawing.Point(1336, 54);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(365, 44);
+            this.txtSearch.Size = new System.Drawing.Size(269, 44);
             this.txtSearch.TabIndex = 36;
             this.txtSearch.Enter += new System.EventHandler(this.txtSearch_GotFocus);
             this.txtSearch.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearch_KeyDown);
             this.txtSearch.Leave += new System.EventHandler(this.txtSearch_LostFocus);
             // 
-            // pictureBox1
+            // entityCommand1
             // 
-            this.pictureBox1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(244)))), ((int)(((byte)(244)))), ((int)(((byte)(244)))));
-            this.pictureBox1.Image = global::EducationalCenterFinal.Properties.Resources.search;
-            this.pictureBox1.Location = new System.Drawing.Point(1955, 57);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(34, 33);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBox1.TabIndex = 37;
-            this.pictureBox1.TabStop = false;
+            this.entityCommand1.CommandTimeout = 0;
+            this.entityCommand1.CommandTree = null;
+            this.entityCommand1.Connection = null;
+            this.entityCommand1.EnablePlanCaching = true;
+            this.entityCommand1.Transaction = null;
             // 
             // StudentManageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1924, 849);
-            this.Controls.Add(this.pictureBox1);
+            this.ClientSize = new System.Drawing.Size(1665, 778);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dgvStudent);
@@ -383,7 +379,6 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStudent)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -419,6 +414,6 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
         private DataGridView dgvStudent;
         private Label label5;
         private TextBox txtSearch;
-        private PictureBox pictureBox1;
+        private System.Data.Entity.Core.EntityClient.EntityCommand entityCommand1;
     }
 }

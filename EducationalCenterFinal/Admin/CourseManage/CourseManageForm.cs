@@ -20,6 +20,11 @@ namespace EducationalCenterFinal.Admin.CourseManage
     public partial class CourseManageForm : Form
     {
         readonly EducationCenterEntities dp = new EducationCenterEntities();
+
+         cours c = new cours();
+       
+        
+       
         public CourseManageForm()
         {
             InitializeComponent();
@@ -98,6 +103,36 @@ namespace EducationalCenterFinal.Admin.CourseManage
         {
             new StudentManageForm(role).Show();
             this.Hide();
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void CourseManageForm_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void label6_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
