@@ -31,7 +31,6 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
         private void InitializeComponent()
         {
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.dashboardToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.teachersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.studentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.employeesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -67,10 +66,9 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.White;
-            this.menuStrip1.Font = new System.Drawing.Font("Century Gothic", 10.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.Font = new System.Drawing.Font("Arial Unicode MS", 10.8F);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dashboardToolStripMenuItem,
             this.teachersToolStripMenuItem,
             this.studentsToolStripMenuItem,
             this.employeesToolStripMenuItem,
@@ -80,53 +78,47 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             this.accountToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1665, 29);
+            this.menuStrip1.Size = new System.Drawing.Size(1665, 32);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
-            // 
-            // dashboardToolStripMenuItem
-            // 
-            this.dashboardToolStripMenuItem.Name = "dashboardToolStripMenuItem";
-            this.dashboardToolStripMenuItem.Size = new System.Drawing.Size(112, 25);
-            this.dashboardToolStripMenuItem.Text = "Dashboard";
             // 
             // teachersToolStripMenuItem
             // 
             this.teachersToolStripMenuItem.Name = "teachersToolStripMenuItem";
-            this.teachersToolStripMenuItem.Size = new System.Drawing.Size(90, 25);
+            this.teachersToolStripMenuItem.Size = new System.Drawing.Size(90, 28);
             this.teachersToolStripMenuItem.Text = "Teacher";
             this.teachersToolStripMenuItem.Click += new System.EventHandler(this.TeachersToolStripMenuItem_Click);
             // 
             // studentsToolStripMenuItem
             // 
             this.studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
-            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(84, 25);
+            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(86, 28);
             this.studentsToolStripMenuItem.Text = "Student";
             // 
             // employeesToolStripMenuItem
             // 
             this.employeesToolStripMenuItem.Name = "employeesToolStripMenuItem";
-            this.employeesToolStripMenuItem.Size = new System.Drawing.Size(107, 25);
+            this.employeesToolStripMenuItem.Size = new System.Drawing.Size(104, 28);
             this.employeesToolStripMenuItem.Text = "Employee";
             this.employeesToolStripMenuItem.Click += new System.EventHandler(this.EmployeesToolStripMenuItem_Click);
             // 
             // coursesToolStripMenuItem
             // 
             this.coursesToolStripMenuItem.Name = "coursesToolStripMenuItem";
-            this.coursesToolStripMenuItem.Size = new System.Drawing.Size(81, 25);
+            this.coursesToolStripMenuItem.Size = new System.Drawing.Size(82, 28);
             this.coursesToolStripMenuItem.Text = "Course";
             this.coursesToolStripMenuItem.Click += new System.EventHandler(this.CoursesToolStripMenuItem_Click);
             // 
             // manageToolStripMenuItem
             // 
             this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            this.manageToolStripMenuItem.Size = new System.Drawing.Size(93, 25);
+            this.manageToolStripMenuItem.Size = new System.Drawing.Size(89, 28);
             this.manageToolStripMenuItem.Text = "Manage";
             // 
             // questionsToolStripMenuItem
             // 
             this.questionsToolStripMenuItem.Name = "questionsToolStripMenuItem";
-            this.questionsToolStripMenuItem.Size = new System.Drawing.Size(103, 25);
+            this.questionsToolStripMenuItem.Size = new System.Drawing.Size(105, 28);
             this.questionsToolStripMenuItem.Text = "Questions";
             // 
             // accountToolStripMenuItem
@@ -136,26 +128,27 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             this.forgetPasswordToolStripMenuItem,
             this.logoutToolStripMenuItem});
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
-            this.accountToolStripMenuItem.Size = new System.Drawing.Size(95, 25);
+            this.accountToolStripMenuItem.Size = new System.Drawing.Size(89, 28);
             this.accountToolStripMenuItem.Text = "Account";
             // 
             // createAccountToolStripMenuItem
             // 
             this.createAccountToolStripMenuItem.Name = "createAccountToolStripMenuItem";
-            this.createAccountToolStripMenuItem.Size = new System.Drawing.Size(226, 26);
+            this.createAccountToolStripMenuItem.Size = new System.Drawing.Size(230, 28);
             this.createAccountToolStripMenuItem.Text = "Create Account";
             this.createAccountToolStripMenuItem.Click += new System.EventHandler(this.ForgetPasswordToolStripMenuItem_Click);
             // 
             // forgetPasswordToolStripMenuItem
             // 
             this.forgetPasswordToolStripMenuItem.Name = "forgetPasswordToolStripMenuItem";
-            this.forgetPasswordToolStripMenuItem.Size = new System.Drawing.Size(226, 26);
+            this.forgetPasswordToolStripMenuItem.Size = new System.Drawing.Size(230, 28);
             this.forgetPasswordToolStripMenuItem.Text = "Forget Password";
+            this.forgetPasswordToolStripMenuItem.Click += new System.EventHandler(this.ForgetPasswordToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(226, 26);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(230, 28);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.LogoutToolStripMenuItem_Click);
             // 
@@ -178,7 +171,6 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(336, 652);
             this.panel1.TabIndex = 32;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
             // 
             // label4
             // 
@@ -328,7 +320,6 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             this.dgvStudent.RowTemplate.Height = 55;
             this.dgvStudent.Size = new System.Drawing.Size(1221, 637);
             this.dgvStudent.TabIndex = 2;
-            this.dgvStudent.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudent_CellContentClick);
             // 
             // label5
             // 
@@ -394,7 +385,6 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
         #endregion
 
         private MenuStrip menuStrip1;
-        private ToolStripMenuItem dashboardToolStripMenuItem;
         private ToolStripMenuItem teachersToolStripMenuItem;
         private ToolStripMenuItem studentsToolStripMenuItem;
         private ToolStripMenuItem employeesToolStripMenuItem;
