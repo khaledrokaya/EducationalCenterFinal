@@ -216,5 +216,62 @@ namespace EducationalCenterFinal.Admin.Staff
         {
             LoadUnansweredQuestions(comboBox1.SelectedIndex);
         }
+
+        private void QuestionsLstBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (QuestionsLstBox.SelectedItem is question selectedQuestion)
+            {
+                SelectedQuestionLbl.Text = selectedQuestion.QuestionContent;
+                AnswerTxtBox.Text = selectedQuestion.QuestionAnswer;
+            }
+            else
+            {
+                SelectedQuestionLbl.Text = string.Empty;
+            }
+        }
+
+        private void SubmitAnswerBtn_Click(object sender, EventArgs e)
+        {
+            Color.FromArgb(118, 41, 82);
+
+            if (QuestionsLstBox.SelectedItem is question selectedQuestion)
+            {
+                string answer = AnswerTxtBox.Text.Trim();
+                if (string.IsNullOrEmpty(answer))
+                {
+                    MessageBox.Show("Please enter an answer.");
+                    return;
+                }
+
+                try
+                {
+                    selectedQuestion.QuestionAnswer = answer;
+                    selectedQuestion.IsAnswered = true;
+                    selectedQuestion.AnswerCreatedAt = DateTime.Now;
+                    dp.SaveChanges();
+                    MessageBox.Show("Answer submitted successfully.");
+                    AnswerTxtBox.Clear();
+                    LoadUnansweredQuestions(comboBox1.SelectedIndex);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Error submitting answer: " + ex.Message);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Please select a question to answer.");
+            }
+        }
+
+        private void QuestionsForm_Load(object sender, EventArgs e)
+        {
+            LoadUnansweredQuestions(comboBox1.SelectedIndex);
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            LoadUnansweredQuestions(comboBox1.SelectedIndex);
+        }
     }
 }

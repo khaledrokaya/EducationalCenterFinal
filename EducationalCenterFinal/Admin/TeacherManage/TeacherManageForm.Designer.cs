@@ -469,4 +469,4 @@ namespace EducationalCenterFinal.Admin.TeacherManage
         private Label label6;
         private TextBox textBox1_search;
     }
-}
+    }

@@ -179,6 +179,9 @@
     <Compile Include="TeacherCourse\TeacherCourseAttendance.Designer.cs">
       <DependentUpon>TeacherCourseAttendance.cs</DependentUpon>
     </Compile>
+    <Compile Include="TeacherCourse\TeacherCourseAttendance.Designer.cs">
+      <DependentUpon>TeacherCourseAttendance.cs</DependentUpon>
+    </Compile>
     <Compile Include="TeacherCourse\TeacherCourseForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -202,6 +205,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\CreateAccount\CreateAccountForm.resx">
       <DependentUpon>CreateAccountForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\EmployeeManage\EmployeeManageForm.resx">
       <DependentUpon>EmployeeManageForm.cs</DependentUpon>
@@ -223,6 +227,7 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Login\LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -295,6 +300,18 @@
     </Content>
     <None Include="Resources\png-clipart-computer-icons-x-mark-sign-symbol-miscellaneous-angle.png" />
     <None Include="Resources\search.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.8">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4.8 %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
