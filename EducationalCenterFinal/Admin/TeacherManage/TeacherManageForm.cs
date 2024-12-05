@@ -14,6 +14,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Timers;
 using System.Windows.Forms;
 using System.Xml;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement;
@@ -30,15 +31,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             setUpForm();
             setUpComponents();
             SearchPlaceHolder();
-            //   style DataGridView 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
-            dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(118, 41, 82);
-            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic Italic", 9, FontStyle.Bold);
-            dataGridView1.ColumnHeadersDefaultCellStyle.Padding = new Padding(4);
-
+            styleDataGridView();
 
             this.questionsToolStripMenuItem.Click += (sender, e) => this.QuestionsToolStripMenuItem_Click("admin");
             this.dashboardToolStripMenuItem.Click += (sender, e) => this.DashboardToolStripMenuItem_Click("admin");
@@ -61,29 +54,73 @@ namespace EducationalCenterFinal.Admin.TeacherManage
                 Image = Image.FromFile(Application.StartupPath.Remove(Application.StartupPath.Length-10) + "\\Images\\search-interface-symbol.png"),
                 SizeMode = PictureBoxSizeMode.Normal,
                 Location = new Point(270, 13),
-                Size = new Size(50, 50)
+                Size = new Size(20, 20)
             };
             textBox1_search.Controls.Add(pictureBox);
 
-            //,تغيير لون الخلفية ,تغيير لون النص  
+
+
+        }
+        private void styleDataGridView()
+        {
+            dataGridView1.DataSource = dp.teachers.ToList();
+
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             dataGridView1.EnableHeadersVisualStyles = false;
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(118, 41, 82);
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic Italic", 9, FontStyle.Bold);
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 13F, System.Drawing.FontStyle.Bold);
             dataGridView1.ColumnHeadersDefaultCellStyle.Padding = new Padding(4);
-            
-
+            this.dataGridView1.ColumnHeadersHeight = 40;
+            this.dataGridView1.GridColor = System.Drawing.Color.Black;
+            this.dataGridView1.RowTemplate.Height = 55;
             //لتغيير اسماء الاعمدة عن الا موجودة في DataBase
-            dataGridView1.DataSource= dp.teachers.ToList();
-            dataGridView1.Columns["teacherId"].HeaderText = "ID";
-            dataGridView1.Columns["teacherName"].HeaderText = "Name";
-            dataGridView1.Columns["teacherEmail"].HeaderText = "Email";
-            dataGridView1.Columns["teacherSpecialization"].HeaderText = "Specialization";
-            dataGridView1.Columns["teacherPhone"].HeaderText ="Phone";
-            //لاخفاء اعمدة معينة
-            dataGridView1.Columns["userId"].Visible = false;
-            dataGridView1.Columns["courses"].Visible = false;
-            dataGridView1.Columns["users"].Visible = false;
+            var columnHeaders = new Dictionary<string, string>
+            {
+              { "teacherId", "ID" },
+              { "teacherName", "Name" },
+              { "teacherEmail", "Email" },
+              { "teacherSpecialization", "Specialization" },
+              { "teacherPhone", "Phone" }
+            };
+
+            foreach (var column in columnHeaders)
+            {
+                if (dataGridView1.Columns[column.Key] != null)
+                {
+                    dataGridView1.Columns[column.Key].HeaderText = column.Value;
+                }
+            }
+
+            string[] hiddenColumns = { "userId", "courses", "users" };
+
+            // لوب لإخفاء الأعمدة
+            foreach (var columnName in hiddenColumns)
+            {
+                if (dataGridView1.Columns[columnName] != null)
+                {
+                    dataGridView1.Columns[columnName].Visible = false;
+                }
+            }
+
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                if (column != null)
+                {
+
+                    column.DefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 236, 236);
+                    column.DefaultCellStyle.SelectionForeColor = Color.Black;
+                    dataGridView1.RowHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 236, 236);
+                    dataGridView1.RowHeadersDefaultCellStyle.SelectionForeColor = Color.Black;
+                    column.DefaultCellStyle.Font = new Font("Arial", 11F, FontStyle.Regular);
+                    column.Width = column.HeaderText == "ID" ? 50 : ((dataGridView1.Width - dataGridView1.RowHeadersWidth - 40) / 3);
+                    column.HeaderCell.Style.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
+                    column.DefaultCellStyle.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
+                }
+
+            }
+
         }
 
         private void setUpForm()
@@ -96,58 +133,58 @@ namespace EducationalCenterFinal.Admin.TeacherManage
         private void setUpComponents()
         {
             //search
-            textBox1_search.Size = new Size(((ClientSize.Width - 440) * 1 / 4), 50);
+            textBox1_search.Size = new Size(((ClientSize.Width - 360) * 1 / 4), 50);
             textBox1_search.Location = new Point(ClientSize.Width - 320, 20);
-           
+
             // DataGridView 
-            dataGridView1.Size = new Size(((ClientSize.Width - 44)*3/4), ClientSize.Height - 120);
+            dataGridView1.Size = new Size(((ClientSize.Width - 44) * 3 / 4), ClientSize.Height - 120);
             dataGridView1.Location = new Point(20, 80);
 
             // panel 
-            panel1.Size = new Size(((ClientSize.Width-250)*1/4), ClientSize.Height - 120);
+            panel1.Size = new Size(((ClientSize.Width - 250) * 1 / 4), ClientSize.Height - 120);
             panel1.Location = new Point(ClientSize.Width - 340, 80);
 
             // Labels and TextBoxes 
             label1.Size = new Size(((ClientSize.Width - 300) * 1 / 4), ClientSize.Height - 600);
-            label1.Location = new Point(20,25);
+            label1.Location = new Point(20, 25);
 
             label2.Location = new Point(20, 30);
-            label2.Size = new Size(panel1.Width -120,panel1.Height/8);
+            label2.Size = new Size(panel1.Width - 120, panel1.Height / 8);
             textBox1.Location = new Point(20, label2.Height + 40);
             textBox1.Size = new Size(panel1.Width - 55, panel1.Height / 18);
 
-            label3.Location = new Point(20,120);
+            label3.Location = new Point(20, 120);
             label3.Size = new Size(panel1.Width - 120, panel1.Height / 8);
             textBox2.Location = new Point(20, 155);
             textBox2.Size = new Size(panel1.Width - 55, panel1.Height / 18);
-            
-            label4.Location = new Point(20,210);
+
+            label4.Location = new Point(20, 210);
             label4.Size = new Size(panel1.Width - 120, panel1.Height / 8);
             textBox3.Location = new Point(20, 245);
             textBox3.Size = new Size(panel1.Width - 55, panel1.Height / 18);
 
-            label5.Location = new Point(20,300);
+            label5.Location = new Point(20, 300);
             label5.Size = new Size(panel1.Width - 120, panel1.Height / 8);
             textBox4.Location = new Point(20, 335);
             textBox4.Size = new Size(panel1.Width - 55, panel1.Height / 18);
 
-            label6.Location = new Point(20,390);
+            label6.Location = new Point(20, 390);
             label6.Size = new Size(panel1.Width - 120, panel1.Height / 8);
             textBox5.Location = new Point(20, 425);
             textBox5.Size = new Size(panel1.Width - 55, panel1.Height / 18);
 
             // Buttons 
             button1.Location = new Point(20, 500);
-            button2.Location = new Point(170,500 );
-            button3.Location = new Point(20,600);
-            button4.Location = new Point(170,600);
-            
-            button1.Size = new Size(panel1.Width-200, panel1.Height/14);
-            button2.Size = new Size(panel1.Width - 200, panel1.Height /14);
-            button3.Size = new Size(panel1.Width - 200, panel1.Height /14);
-            button4.Size = new Size(panel1.Width - 200, panel1.Height /14);
-        }
+            button2.Location = new Point(170, 500);
+            button3.Location = new Point(20, 600);
+            button4.Location = new Point(170, 600);
 
+            button1.Size = new Size(panel1.Width - 200, panel1.Height / 14);
+            button2.Size = new Size(panel1.Width - 200, panel1.Height / 14);
+            button3.Size = new Size(panel1.Width - 200, panel1.Height / 14);
+            button4.Size = new Size(panel1.Width - 200, panel1.Height / 14);
+
+        }
         private void CourseMenuItem_Click(int CourseId, string role)
         {
             new StaffCourseForm(CourseId, role).Show();
@@ -302,7 +339,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
 
         private void textBox1_search_TextChanged(object sender, EventArgs e)
         {
-           //Search With Name Or TeacherID
+                //Search With Name Or TeacherID
                 if (!string.IsNullOrWhiteSpace(textBox1_search.Text))
                 {
                     teachers t;
