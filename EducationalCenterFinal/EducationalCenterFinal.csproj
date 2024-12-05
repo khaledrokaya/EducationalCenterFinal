@@ -5,7 +5,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{9EB2D904-5F19-42F9-B329-8A826EC8F35F}</ProjectGuid>
+    <ProjectGuid>{10FB6289-D337-4570-AFAE-0321F4DCEFC4}</ProjectGuid>
     <OutputType>WinExe</OutputType>
     <RootNamespace>EducationalCenterFinal</RootNamespace>
     <AssemblyName>EducationalCenterFinal</AssemblyName>
@@ -42,39 +42,11 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.5.1\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.8.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
-    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
-    </Reference>
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Numerics" />
-    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
-    <Reference Include="System.Text.Encodings.Web, Version=8.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Encodings.Web.8.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Text.Json, Version=8.0.0.5, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Text.Json.8.0.5\lib\net462\System.Text.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -98,12 +70,6 @@
     <Compile Include="Admin\CreateAccount\CreateAccountForm.Designer.cs">
       <DependentUpon>CreateAccountForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Admin\Dashboard\DashboardForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Admin\Dashboard\DashboardForm.Designer.cs">
-      <DependentUpon>DashboardForm.cs</DependentUpon>
-    </Compile>
     <Compile Include="Admin\EmployeeManage\EmployeeManageForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,6 +81,12 @@
     </Compile>
     <Compile Include="Admin\Staff\Questions\QuestionsForm.Designer.cs">
       <DependentUpon>QuestionsForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Admin\Staff\StaffCoursesManage\CourseManageForms.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Admin\Staff\StaffCoursesManage\CourseManageForms.Designer.cs">
+      <DependentUpon>CourseManageForms.cs</DependentUpon>
     </Compile>
     <Compile Include="Admin\Staff\StaffCoursesManage\StaffCourseForm.cs">
       <SubType>Form</SubType>
@@ -137,13 +109,16 @@
     <Compile Include="attendance.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="cours.cs">
+    <Compile Include="courses.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="enrollment.cs">
+    <Compile Include="C__EFMigrationsHistory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="exam.cs">
+    <Compile Include="enrollments.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="exams.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Login\LoginForm.cs">
@@ -172,7 +147,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Open_Source_Education_CenterDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="payment.cs">
+    <Compile Include="payments.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -180,14 +155,29 @@
     <Compile Include="question.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="SpecialForms\ForgotPassword.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpecialForms\ForgotPassword.Designer.cs">
+      <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SpecialForms\ShowStudentDataForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SpecialForms\ShowStudentDataForm.Designer.cs">
+      <DependentUpon>ShowStudentDataForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="staff.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="student.cs">
+    <Compile Include="students.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="teacher.cs">
-      <DependentUpon>Model1.tt</DependentUpon>
+    <Compile Include="TeacherCourse\TeacherCourseAttendance.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeacherCourse\TeacherCourseAttendance.Designer.cs">
+      <DependentUpon>TeacherCourseAttendance.cs</DependentUpon>
     </Compile>
     <Compile Include="TeacherCourse\TeacherCourseForm.cs">
       <SubType>Form</SubType>
@@ -195,7 +185,16 @@
     <Compile Include="TeacherCourse\TeacherCourseForm.Designer.cs">
       <DependentUpon>TeacherCourseForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="user.cs">
+    <Compile Include="TeacherCourse\TeacherCourseQuiz.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TeacherCourse\TeacherCourseQuiz.Designer.cs">
+      <DependentUpon>TeacherCourseQuiz.cs</DependentUpon>
+    </Compile>
+    <Compile Include="teachers.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
+    <Compile Include="users.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Admin\CourseManage\CourseManageForm.resx">
@@ -204,18 +203,17 @@
     <EmbeddedResource Include="Admin\CreateAccount\CreateAccountForm.resx">
       <DependentUpon>CreateAccountForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Admin\Dashboard\DashboardForm.resx">
-      <DependentUpon>DashboardForm.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Admin\EmployeeManage\EmployeeManageForm.resx">
       <DependentUpon>EmployeeManageForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Staff\Questions\QuestionsForm.resx">
       <DependentUpon>QuestionsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Admin\Staff\StaffCoursesManage\CourseManageForms.resx">
+      <DependentUpon>CourseManageForms.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Admin\Staff\StaffCoursesManage\StaffCourseForm.resx">
       <DependentUpon>StaffCourseForm.cs</DependentUpon>
-      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Admin\Staff\StudentManage\StudentManageForm.resx">
       <DependentUpon>StudentManageForm.cs</DependentUpon>
@@ -236,8 +234,20 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="SpecialForms\ForgotPassword.resx">
+      <DependentUpon>ForgotPassword.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SpecialForms\ShowStudentDataForm.resx">
+      <DependentUpon>ShowStudentDataForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeacherCourse\TeacherCourseAttendance.resx">
+      <DependentUpon>TeacherCourseAttendance.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="TeacherCourse\TeacherCourseForm.resx">
       <DependentUpon>TeacherCourseForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TeacherCourse\TeacherCourseQuiz.resx">
+      <DependentUpon>TeacherCourseQuiz.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Model1.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
@@ -271,8 +281,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
+    <Content Include="Images\search-interface-symbol.png" />
     <Content Include="Model1.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Model1.Context.cs</LastGenOutput>

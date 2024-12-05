@@ -23,6 +23,6 @@ namespace EducationalCenterFinal
         public Nullable<decimal> staffSalary { get; set; }
         public int userId { get; set; }
     
-        public virtual user user { get; set; }
+        public virtual users users { get; set; }
     }
 }

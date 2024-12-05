@@ -1,10 +1,10 @@
 ﻿using EducationalCenterFinal.Admin.CreateAccount;
-using EducationalCenterFinal.Admin.Dashboard;
 using EducationalCenterFinal.Admin.EmployeeManage;
 using EducationalCenterFinal.Admin.Staff;
 using EducationalCenterFinal.Admin.Staff.StaffCoursesManage;
 using EducationalCenterFinal.Admin.Staff.StudentManage;
 using EducationalCenterFinal.Admin.TeacherManage;
+using EducationalCenterFinal.SpecialForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -33,7 +33,6 @@ namespace EducationalCenterFinal.Admin.CourseManage
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 
             this.questionsToolStripMenuItem.Click += (sender, e) => this.QuestionsToolStripMenuItem_Click("admin");
-            this.dashboardToolStripMenuItem.Click += (sender, e) => this.DashboardToolStripMenuItem_Click("admin");
             this.studentsToolStripMenuItem.Click += (sender, e) => this.StudentsToolStripMenuItem_Click("admin");
 
             //Make Manage Course MenuItems
@@ -61,14 +60,14 @@ namespace EducationalCenterFinal.Admin.CourseManage
             dataGridView1.Columns["courseName"].HeaderText = "Name";
             dataGridView1.Columns["Description"].HeaderText = "Description";
             dataGridView1.Columns["WorkOn"].HeaderText = "Day Of Week";
-            //dataGridView1.Columns["price"].HeaderText = "Price";
+            dataGridView1.Columns["price"].HeaderText = "Price";
             dataGridView1.Columns["NoOfHours"].HeaderText = "Hour";
             dataGridView1.Columns["teacherId"].HeaderText = "Teacher ID";
 
             //لاخفاء اعمدة معينة
             dataGridView1.Columns["beginning"].Visible = false;
-            dataGridView1.Columns["attendances"].Visible = false;
-            dataGridView1.Columns["teacher"].Visible = false;
+            dataGridView1.Columns["attendance"].Visible = false;
+            dataGridView1.Columns["teacherId"].Visible = false;
             dataGridView1.Columns["enrollments"].Visible = false;
             dataGridView1.Columns["exams"].Visible = false;
             dataGridView1.Columns["payments"].Visible = false;
@@ -94,7 +93,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
 
         private void ForgetPasswordToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            new ForgotPassword(dp).Show();
         }
 
         private void CreateAccountToolStripMenuItem_Click(object sender, EventArgs e)
@@ -106,12 +105,6 @@ namespace EducationalCenterFinal.Admin.CourseManage
         private void TeachersToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new TeacherManageForm().Show();
-            this.Hide();
-        }
-
-        private void DashboardToolStripMenuItem_Click(string role)
-        {
-            new DashboardForm(role).Show();
             this.Hide();
         }
 
@@ -164,7 +157,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
         private void addData()
         {
 
-            cours c_add = new cours();
+            courses c_add = new courses();
             c_add.courseName = textBox2.Text;
             c_add.Description = textBox8.Text;
             c_add.WorkOn = textBox7.Text;
@@ -199,7 +192,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
         {
             if (int.TryParse(txtSearch.Text, out int ID))
             {
-                cours c = dp.courses.FirstOrDefault(x => x.courseId == ID);
+                courses c = dp.courses.FirstOrDefault(x => x.courseId == ID);
                 c.courseName = textBox2.Text;
                 c.Description = textBox8.Text;
                 c.WorkOn = textBox7.Text;
@@ -216,7 +209,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
         {
             if (!string.IsNullOrWhiteSpace(txtSearch.Text))
             {
-                cours c;
+                courses c;
                 if (int.TryParse(txtSearch.Text, out int ID))
                 {
                     c = dp.courses.FirstOrDefault(x => x.courseId == ID);
@@ -243,7 +236,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
         {
             if (int.TryParse(txtSearch.Text, out int ID))
             {
-                cours c = dp.courses.FirstOrDefault(x => x.courseId == ID);
+                courses c = dp.courses.FirstOrDefault(x => x.courseId == ID);
                 dp.courses.Remove(c);
                 dp.SaveChanges();
                 dataGridView1.DataSource = dp.courses.ToList();

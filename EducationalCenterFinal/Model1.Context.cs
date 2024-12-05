@@ -25,15 +25,16 @@ namespace EducationalCenterFinal
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<attendance> attendances { get; set; }
-        public virtual DbSet<cours> courses { get; set; }
-        public virtual DbSet<enrollment> enrollments { get; set; }
-        public virtual DbSet<exam> exams { get; set; }
-        public virtual DbSet<payment> payments { get; set; }
-        public virtual DbSet<question> questions { get; set; }
-        public virtual DbSet<staff> staffs { get; set; }
-        public virtual DbSet<student> students { get; set; }
-        public virtual DbSet<teacher> teachers { get; set; }
-        public virtual DbSet<user> users { get; set; }
+        public virtual DbSet<C__EFMigrationsHistory> C__EFMigrationsHistory { get; set; }
+        public virtual DbSet<attendance> attendance { get; set; }
+        public virtual DbSet<courses> courses { get; set; }
+        public virtual DbSet<enrollments> enrollments { get; set; }
+        public virtual DbSet<exams> exams { get; set; }
+        public virtual DbSet<payments> payments { get; set; }
+        public virtual DbSet<question> question { get; set; }
+        public virtual DbSet<staff> staff { get; set; }
+        public virtual DbSet<students> students { get; set; }
+        public virtual DbSet<teachers> teachers { get; set; }
+        public virtual DbSet<users> users { get; set; }
     }
 }
