@@ -1,7 +1,6 @@
 ﻿using EducationalCenterFinal;
 using EducationalCenterFinal.Admin.CourseManage;
 using EducationalCenterFinal.Admin.CreateAccount;
-using EducationalCenterFinal.Admin.Dashboard;
 using EducationalCenterFinal.Admin.EmployeeManage;
 using EducationalCenterFinal.Admin.Staff;
 using EducationalCenterFinal.Admin.Staff.StaffCoursesManage;
@@ -32,7 +31,6 @@ namespace EducationalCenterFinal.Admin.Staff
             this.comboBox1.SelectedIndex = 0;
             LoadUnansweredQuestions(comboBox1.SelectedIndex);
 
-            this.dashboardToolStripMenuItem.Click += (sender, e) => this.DashboardToolStripMenuItem_Click(role);
             this.studentsToolStripMenuItem.Click += (sender, e) => this.StudentsToolStripMenuItem_Click(role);
 
             //Disable Admin Sections
@@ -43,7 +41,6 @@ namespace EducationalCenterFinal.Admin.Staff
                 forgetPasswordToolStripMenuItem.Enabled = false;
                 createAccountToolStripMenuItem.Enabled = false;
                 employeesToolStripMenuItem.Enabled = false;
-                dashboardToolStripMenuItem.Enabled = false;
             }
 
             //Make Manage Course MenuItems
@@ -160,12 +157,6 @@ namespace EducationalCenterFinal.Admin.Staff
         private void CoursesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             new CourseManageForm().Show();
-            this.Hide();
-        }
-
-        private void DashboardToolStripMenuItem_Click(string role)
-        {
-            new DashboardForm(role).Show();
             this.Hide();
         }
 

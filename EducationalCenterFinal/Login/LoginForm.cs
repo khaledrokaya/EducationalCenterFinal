@@ -1,5 +1,4 @@
-﻿using EducationalCenterFinal.Admin.Dashboard;
-using EducationalCenterFinal.Admin.Staff.StudentManage;
+﻿using EducationalCenterFinal.Admin.Staff.StudentManage;
 using EducationalCenterFinal.Admin.TeacherManage;
 using EducationalCenterFinal.TeacherCourse;
 using System;
@@ -90,7 +89,7 @@ namespace EducationalCenterFinal
                         string role = user.role;
                         if (role == "admin")
                         {
-                            new DashboardForm("admin").Show();
+                            new TeacherManageForm().Show();
                             this.Hide();
                         }
                         else if (role == "staff")
@@ -116,8 +115,5 @@ namespace EducationalCenterFinal
                 MessageBox.Show("Error: " + ex.Message, "Error Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-
-        
     }
 }

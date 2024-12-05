@@ -6273,7 +6273,7 @@ SELECT MigrationId, ProductVersion FROM __EFMigrationsHistory WHERE (MigrationId
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::EducationalCenterFinal.Properties.Settings.Default.Open_Source_Education_CenterConnectionString;
+            this._connection.ConnectionString = global::EducationalCenterFinal.Properties.Settings.Default.db10692ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -6627,7 +6627,7 @@ SELECT attendanceId, studentId, courseId, attendanceDate, isPresent FROM attenda
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::EducationalCenterFinal.Properties.Settings.Default.Open_Source_Education_CenterConnectionString;
+            this._connection.ConnectionString = global::EducationalCenterFinal.Properties.Settings.Default.db10692ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7000,7 +7000,7 @@ SELECT courseId, courseName, Description, WorkOn, beginning, NoOfHours, teacherI
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::EducationalCenterFinal.Properties.Settings.Default.Open_Source_Education_CenterConnectionString;
+            this._connection.ConnectionString = global::EducationalCenterFinal.Properties.Settings.Default.db10692ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7484,7 +7484,7 @@ SELECT enrollmentId, studentId, courseId FROM enrollments WHERE (enrollmentId = 
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::EducationalCenterFinal.Properties.Settings.Default.Open_Source_Education_CenterConnectionString;
+            this._connection.ConnectionString = global::EducationalCenterFinal.Properties.Settings.Default.db10692ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -7808,7 +7808,7 @@ SELECT examId, examName, courseId, examDate, score, studentId FROM exams WHERE (
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::EducationalCenterFinal.Properties.Settings.Default.Open_Source_Education_CenterConnectionString;
+            this._connection.ConnectionString = global::EducationalCenterFinal.Properties.Settings.Default.db10692ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8183,7 +8183,7 @@ SELECT paymentId, studentId, courseId, paymentDate, isPaid FROM payments WHERE (
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::EducationalCenterFinal.Properties.Settings.Default.Open_Source_Education_CenterConnectionString;
+            this._connection.ConnectionString = global::EducationalCenterFinal.Properties.Settings.Default.db10692ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8539,7 +8539,7 @@ SELECT QuestionId, QuestionContent, QuestionAnswer, IsAnswered, AnswerCreatedAt,
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::EducationalCenterFinal.Properties.Settings.Default.Open_Source_Education_CenterConnectionString;
+            this._connection.ConnectionString = global::EducationalCenterFinal.Properties.Settings.Default.db10692ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -8958,7 +8958,7 @@ SELECT staffId, staffName, staffEmail, staffPhone, staffAddress, role, staffSala
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::EducationalCenterFinal.Properties.Settings.Default.Open_Source_Education_CenterConnectionString;
+            this._connection.ConnectionString = global::EducationalCenterFinal.Properties.Settings.Default.db10692ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9446,7 +9446,7 @@ SELECT studentId, studentName, studentEmail, studentPhone, studentAddress FROM s
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::EducationalCenterFinal.Properties.Settings.Default.Open_Source_Education_CenterConnectionString;
+            this._connection.ConnectionString = global::EducationalCenterFinal.Properties.Settings.Default.db10692ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -9861,7 +9861,7 @@ SELECT teacherId, userId, teacherName, teacherSpecialization, teacherEmail, teac
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::EducationalCenterFinal.Properties.Settings.Default.Open_Source_Education_CenterConnectionString;
+            this._connection.ConnectionString = global::EducationalCenterFinal.Properties.Settings.Default.db10692ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -10292,7 +10292,7 @@ SELECT userId, userEmail, password, role, userPhone, createAt FROM users WHERE (
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         private void InitConnection() {
             this._connection = new global::System.Data.SqlClient.SqlConnection();
-            this._connection.ConnectionString = global::EducationalCenterFinal.Properties.Settings.Default.Open_Source_Education_CenterConnectionString;
+            this._connection.ConnectionString = global::EducationalCenterFinal.Properties.Settings.Default.db10692ConnectionString;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]

@@ -1,6 +1,5 @@
 ﻿using EducationalCenterFinal.Admin.CourseManage;
 using EducationalCenterFinal.Admin.CreateAccount;
-using EducationalCenterFinal.Admin.Dashboard;
 using EducationalCenterFinal.Admin.EmployeeManage;
 using EducationalCenterFinal.Admin.Staff.StudentManage;
 using EducationalCenterFinal.Admin.TeacherManage;
@@ -36,7 +35,6 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
         private void SetupComponents(string role)
         {
             this.questionsToolStripMenuItem.Click += (sender, e) => this.QuestionsToolStripMenuItem_Click(role);
-            this.dashboardToolStripMenuItem.Click += (sender, e) => this.DashboardToolStripMenuItem_Click(role);
             this.studentsToolStripMenuItem.Click += (sender, e) => this.StudentsToolStripMenuItem_Click(role);
             this.dataGridView1.RowHeaderMouseDoubleClick += (sender, e) => DataGridView1_CellContentClick((int)dataGridView1.Rows[e.RowIndex].Cells[0].Value);
 
@@ -47,7 +45,6 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
                 forgetPasswordToolStripMenuItem.Enabled = false;
                 createAccountToolStripMenuItem.Enabled = false;
                 employeesToolStripMenuItem.Enabled = false;
-                dashboardToolStripMenuItem.Enabled = false;
             }
 
             foreach (var course in dp.courses)
@@ -65,7 +62,7 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             
             PictureBox pictureBox = new PictureBox
             {
-                Image = Image.FromFile(Application.StartupPath.Substring(0, 42) + "\\Images\\search-interface-symbol.png"),
+                Image = Image.FromFile(Application.StartupPath.Remove(Application.StartupPath.Length - 10) + "\\Images\\search-interface-symbol.png"),
                 SizeMode = PictureBoxSizeMode.Normal,
                 Location = new Point(270, 13),
                 Size = new Size(50, 50)
@@ -213,12 +210,6 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
         private void QuestionsToolStripMenuItem_Click(string role)
         {
             new QuestionsForm(role).Show();
-            this.Hide();
-        }
-
-        private void DashboardToolStripMenuItem_Click(string role)
-        {
-            new DashboardForm(role).Show();
             this.Hide();
         }
 

@@ -583,7 +583,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="EducationCenterEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="C__EFMigrationsHistory" EntityType="Self.C__EFMigrationsHistory" />
           <EntitySet Name="attendance" EntityType="Self.attendance" />
           <EntitySet Name="courses" EntityType="Self.courses" />
@@ -645,7 +645,7 @@
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Open_Source_Education_CenterModelStoreContainer" CdmEntityContainer="Entities">
+        <EntityContainerMapping StorageEntityContainer="Open_Source_Education_CenterModelStoreContainer" CdmEntityContainer="EducationCenterEntities">
           <EntitySetMapping Name="C__EFMigrationsHistory">
             <EntityTypeMapping TypeName="Open_Source_Education_CenterModel.C__EFMigrationsHistory">
               <MappingFragment StoreEntitySet="__EFMigrationsHistory">
