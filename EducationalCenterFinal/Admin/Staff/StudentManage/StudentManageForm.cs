@@ -35,6 +35,7 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             this.MaximizeBox = false;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
 
+
             this.questionsToolStripMenuItem.Click += (sender, e) => this.QuestionsToolStripMenuItem_Click(role);
 
             //Disable Admin Sections
@@ -59,6 +60,10 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
                 courseMenuItem.Click += (sender, e) => CourseMenuItem_Click(course.courseId, role);
                 manageToolStripMenuItem.DropDownItems.Add(courseMenuItem);
             }
+
+
+            
+
         }
         private void setUpForm()
         {
@@ -406,6 +411,187 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             {
                 MessageBox.Show("No Data to Delete");
             }
+        }
+
+        private void SetPlaceholder()
+        {
+            if (string.IsNullOrWhiteSpace(txtSearch.Text))
+            {
+                txtSearch.Text = "Search By ID...";
+                txtSearch.ForeColor = Color.Gray;
+            }
+        }
+
+        private void txtSearch_GotFocus(object sender, EventArgs e)
+        {
+            if (txtSearch.Text == "Search By ID...")
+            {
+                txtSearch.Text = "";
+                txtSearch.ForeColor = Color.Black;
+            }
+
+        }
+
+        private void txtSearch_LostFocus(object sender, EventArgs e)
+        {
+            SetPlaceholder(); // Restore placeholder if textbox is empty
+
+        }
+
+        private void Search()
+        {
+
+            
+
+            if (int.TryParse(txtSearch.Text, out int id))
+            {
+                student s = dp.students.FirstOrDefault(x => x.studentId == id);
+
+                if (s != null)
+                {
+                    txtName.Text = s.studentName;
+                    txtEmail.Text = s.studentEmail;
+                    txtAddress.Text = s.studentAddress;
+                    txtPhone.Text = s.studentPhone;
+                    txtSearch.Enabled = false;
+                    addBtn.Enabled = false;
+
+                }
+                else
+                {
+                    MessageBox.Show("Student Not Found");
+                }
+
+
+
+            }
+            else
+            {
+                MessageBox.Show("Enter a Valid Student Id");
+            }
+
+        }
+
+        //Searching after clicking Enter
+        private void txtSearch_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+
+                e.SuppressKeyPress = true;
+
+                Search();
+            }
+        }
+
+        private void addBtn_Click_1(object sender, EventArgs e)
+        {
+
+          if (txtName.Text == "" || txtPhone.Text == "" || txtEmail.Text == "" || txtAddress.Text == "")
+          {
+                MessageBox.Show("Missing Information");
+          }
+            else
+            {
+                addStudent();
+
+                ClearStudentTextBox();
+
+            }
+        }
+
+
+        private void addStudent()
+        {
+            s.studentName = txtName.Text;
+            s.studentEmail = txtEmail.Text;
+            s.studentAddress = txtAddress.Text;
+            s.studentPhone = txtPhone.Text;
+            dp.students.Add(s);
+            dp.SaveChanges();
+            dgvStudent.DataSource = dp.students.ToList();
+            MessageBox.Show("Student Saved Successfully");
+        }
+
+        private void ClearStudentTextBox()
+        {
+
+            txtName.Text = "";
+            txtEmail.Text = "";
+            txtAddress.Text = "";
+            txtPhone.Text = "";
+
+        }
+        private void Reset()
+        {
+            if (txtSearch.Text != "Search By ID...")
+            {
+                txtSearch.Enabled = true;
+                addBtn.Enabled=true;
+                txtSearch.Text = "";
+                SetPlaceholder();
+
+            }
+            ClearStudentTextBox();
+        }
+
+        private void btnEdit_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(txtSearch.Text, out int id))
+            {
+
+                student s = dp.students.FirstOrDefault(x => x.studentId == id);
+                s.studentName = txtName.Text;
+                s.studentEmail = txtEmail.Text;
+                s.studentAddress = txtAddress.Text;
+                s.studentPhone = txtPhone.Text;
+
+                dp.SaveChanges();
+                MessageBox.Show("Data Edited Successfully");
+                dgvStudent.DataSource = dp.students.ToList();
+                Reset();
+
+
+            }
+            else
+            {
+                MessageBox.Show("No Data to Edit");
+            }
+        }
+
+        private void resetBtn_Click(object sender, EventArgs e)
+        {
+            Reset();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (int.TryParse(txtSearch.Text, out int id))
+            {
+
+                student s = dp.students.FirstOrDefault(x => x.studentId == id);
+                dp.students.Remove(s);
+                dp.SaveChanges();
+                MessageBox.Show("Data Deleted Successfully");
+                dgvStudent.DataSource = dp.students.ToList();
+                Reset();
+
+
+            }
+            else
+            {
+                MessageBox.Show("No Data to Delete");
+            }
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void dgvStudent_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
