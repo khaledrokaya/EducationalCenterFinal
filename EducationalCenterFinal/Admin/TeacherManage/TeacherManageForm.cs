@@ -63,22 +63,40 @@ namespace EducationalCenterFinal.Admin.TeacherManage
         {
             dataGridView1.DataSource = dp.teachers.ToList();
 
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridView1.ScrollBars = ScrollBars.Both;
+
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+
             dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
             dataGridView1.EnableHeadersVisualStyles = false;
+
             dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(118, 41, 82);
+
             dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+
             dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 13F, System.Drawing.FontStyle.Bold);
+
             dataGridView1.ColumnHeadersDefaultCellStyle.Padding = new Padding(4);
+
             this.dataGridView1.ColumnHeadersHeight = 40;
-            this.dataGridView1.GridColor = System.Drawing.Color.Black;
+
+            dataGridView1.AdvancedColumnHeadersBorderStyle.All = DataGridViewAdvancedCellBorderStyle.Single;
+
+            dataGridView1.GridColor = Color.Black;
+
             this.dataGridView1.RowTemplate.Height = 55;
+
             dataGridView1.DefaultCellStyle.ForeColor = Color.Black; 
+
             dataGridView1.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
+
             //لتغيير اسماء الاعمدة عن الا موجودة في DataBase
             var columnHeaders = new Dictionary<string, string>
             {
                 { "teacherId", "ID" },
+
+                { "userId", "U_ID" },
 
                 { "teacherName", "Name" },
 
@@ -86,7 +104,9 @@ namespace EducationalCenterFinal.Admin.TeacherManage
 
                 { "teacherEmail", "Email" },
 
-                { "teacherPhone", "Phone" }
+                { "teacherPhone", "Phone" },
+
+                
             };
 
             foreach (var column in columnHeaders)
@@ -97,7 +117,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
                 }
             }
 
-            string[] hiddenColumns = { "userId", "courses", "users" };
+            string[] hiddenColumns = { "courses", "users" };
 
             // لوب لإخفاء الأعمدة
             foreach (var columnName in hiddenColumns)
@@ -114,13 +134,20 @@ namespace EducationalCenterFinal.Admin.TeacherManage
                 {
 
                     column.DefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 236, 236);
+
                     column.DefaultCellStyle.SelectionForeColor = Color.Black;
+
                     dataGridView1.RowHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 236, 236);
+
                     dataGridView1.RowHeadersDefaultCellStyle.SelectionForeColor = Color.Black;
+
                     column.DefaultCellStyle.Font = new Font("Arial", 11F, FontStyle.Regular);
-                    column.Width = column.HeaderText == "ID" ? 50 : ((dataGridView1.Width - dataGridView1.RowHeadersWidth - 40) / 3);
-                    column.HeaderCell.Style.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
-                    column.DefaultCellStyle.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
+
+                    column.Width = column.HeaderText == "ID" ? 50 : column.HeaderText == "U_ID" ? 90: ((dataGridView1.Width - dataGridView1.RowHeadersWidth - 40) / 3);
+
+                    column.HeaderCell.Style.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : column.HeaderText == "U_ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
+
+                    column.DefaultCellStyle.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : column.HeaderText == "U_ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
                 }
             }
         }
@@ -128,11 +155,16 @@ namespace EducationalCenterFinal.Admin.TeacherManage
         {
             var teachers = dp.teachers.Select(t => new {
                 ID = t.teacherId,
+
+                U_ID = t.userId,
+
                 Name = t.teacherName,
-                Email = t.teacherEmail,
-                Phone = t.teacherPhone,
+
                 Specialization = t.teacherSpecialization,
-                UserId = t.userId,
+
+                Email = t.teacherEmail,
+
+                Phone = t.teacherPhone,
             });
             if (filterId.HasValue)
             {
@@ -147,7 +179,9 @@ namespace EducationalCenterFinal.Admin.TeacherManage
         private void setUpForm()
         {
             this.ClientSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+
             this.MaximizeBox = false;
+
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
         }
 
@@ -256,12 +290,15 @@ namespace EducationalCenterFinal.Admin.TeacherManage
         private void SearchPlaceHolder()
         {
             textBox1_search.Text = "Search";
+
             textBox1_search.ForeColor = Color.Gray;
+
             textBox1_search.Enter += (sender, e) =>
             {
                 if (textBox1_search.Text == "Search")
                 {
                     textBox1_search.Text = "";
+
                     textBox1_search.ForeColor = Color.Black;
                 }
             };
@@ -270,6 +307,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
                 if (string.IsNullOrWhiteSpace(textBox1_search.Text))
                 {
                     textBox1_search.Text = "Search";
+
                     textBox1_search.ForeColor = Color.Gray;
                 }
             };
@@ -284,7 +322,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "" || textBox4.Text == "")
+            if (textBox1.Text == "" || textBox2.Text == "" || textBox3.Text == "" || textBox4.Text == ""||textBox5.Text=="")
             {
                 MessageBox.Show("Enter Data First.");
                 return;
@@ -298,15 +336,16 @@ namespace EducationalCenterFinal.Admin.TeacherManage
 
             teachers t_add = new teachers();
 
-            t_add.teacherName = textBox1.Text;
+            t_add.userId = int.Parse(textBox5.Text);
 
-            t_add.teacherEmail = textBox2.Text;
+            t_add.teacherName = textBox1.Text;
 
             t_add.teacherSpecialization = textBox3.Text;
 
+            t_add.teacherEmail = textBox2.Text;
+
             t_add.teacherPhone = textBox4.Text;
 
-            t_add.userId = int.Parse(textBox5.Text);
 
             dp.teachers.Add(t_add);
 
@@ -318,21 +357,27 @@ namespace EducationalCenterFinal.Admin.TeacherManage
 
             dataGridView1.DataSource = dp.teachers.ToList();
 
-
             resetForm();
         }
 
         private void resetForm()
         {
             textBox1.Text = "";
+
             textBox2.Text = "";
+
             textBox3.Text = "";
+
             textBox4.Text = "";
+
             textBox5.Text = "";
+
             textBox1_search.Text = "";
+
             if (textBox1_search.Text == "")
             {
                 textBox1_search.Text = "Search";
+
                 textBox1_search.ForeColor = Color.Gray;
             }
         }
@@ -350,15 +395,16 @@ namespace EducationalCenterFinal.Admin.TeacherManage
 
                 if (t != null)
                 {
-                    t.teacherName = textBox1.Text;
+                    t.userId = int.Parse(textBox5.Text);
 
-                    t.teacherEmail = textBox2.Text;
+                    t.teacherName = textBox1.Text;
 
                     t.teacherSpecialization = textBox3.Text;
 
+                    t.teacherEmail = textBox2.Text;
+
                     t.teacherPhone = textBox4.Text;
 
-                    t.userId = int.Parse(textBox5.Text);
 
                     button1.Enabled = false;
 
@@ -411,23 +457,42 @@ namespace EducationalCenterFinal.Admin.TeacherManage
 
             ID = t.teacherId,
 
+            U_ID = t.userId,
+
             Name = t.teacherName,
 
             Specialization = t.teacherSpecialization,
 
             Email = t.teacherEmail,
 
-            Phone = t.teacherPhone
+            Phone = t.teacherPhone,
+
+           
         })
         .ToList();
             // عرض البيانات في DataGridView
             if (result.Any())
             {
                 dataGridView1.DataSource = result;
+                var teacher = result.FirstOrDefault();
+                if (teacher != null)
+                {
+                    textBox5.Text = teacher.U_ID.ToString();
 
+                    textBox1.Text = teacher.Name;
+
+                    textBox2.Text = teacher.Specialization;
+
+                    textBox3.Text = teacher.Email;
+
+                    textBox4.Text = teacher.Phone;
+                    
+                }
                 var columnHeaders = new Dictionary<string, string>
                 {
                    { "teacherId", "ID" },
+
+                   { "userId", "U_ID" },
 
                    { "teacherName", "Name" },
 
@@ -435,7 +500,8 @@ namespace EducationalCenterFinal.Admin.TeacherManage
 
                    { "teacherEmail", "Email" },
 
-                   { "teacherPhone", "Phone" }
+                   { "teacherPhone", "Phone" },
+
 
                 };
 
@@ -453,15 +519,25 @@ namespace EducationalCenterFinal.Admin.TeacherManage
                     {
                         
                         this.dataGridView1.ColumnHeadersHeight = 40;
+
+                        dataGridView1.AdvancedColumnHeadersBorderStyle.All = DataGridViewAdvancedCellBorderStyle.Single;
+
                         this.dataGridView1.GridColor = System.Drawing.Color.Black;
+
                         this.dataGridView1.RowTemplate.Height = 55;
+
                         dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
+
                         dataGridView1.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
 
                         row.DefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 236, 236);
+
                         row.DefaultCellStyle.SelectionForeColor = Color.Black;
+
                         dataGridView1.RowHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 236, 236);
+
                         dataGridView1.RowHeadersDefaultCellStyle.SelectionForeColor = Color.Black;
+
                         row.DefaultCellStyle.Font = new Font("Arial", 11F, FontStyle.Regular);
                        
                     }
@@ -473,13 +549,21 @@ namespace EducationalCenterFinal.Admin.TeacherManage
                     {
 
                         column.DefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 236, 236);
+
                         column.DefaultCellStyle.SelectionForeColor = Color.Black;
+
                         dataGridView1.RowHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 236, 236);
+
                         dataGridView1.RowHeadersDefaultCellStyle.SelectionForeColor = Color.Black;
+
                         column.DefaultCellStyle.Font = new Font("Arial", 11F, FontStyle.Regular);
-                        column.Width = column.HeaderText == "ID" ? 50 : ((dataGridView1.Width - dataGridView1.RowHeadersWidth - 40) / 3);
-                        column.HeaderCell.Style.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
-                        column.DefaultCellStyle.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
+
+                        column.Width = column.HeaderText == "ID" ? 50 : column.HeaderText == "U_ID" ? 90 : ((dataGridView1.Width - dataGridView1.RowHeadersWidth - 40) / 3);
+
+                        column.HeaderCell.Style.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : column.HeaderText == "U_ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
+
+                        column.DefaultCellStyle.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : column.HeaderText == "U_ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
+
                     }
                 }
 
@@ -506,6 +590,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             if (e.RowIndex >= 0)
             {
                 var row = dataGridView1.Rows[e.RowIndex];
+                string id = row.Cells["ID"].Value.ToString();
 
                 string name = row.Cells["Name"].Value.ToString();
 
@@ -515,14 +600,20 @@ namespace EducationalCenterFinal.Admin.TeacherManage
 
                 string phone = row.Cells["Phone"].Value.ToString();
 
-                textBox1.Text = name;
+                string userID = row.Cells["U_ID"].Value.ToString();
 
-                textBox2.Text = email;
+                textBox1.Text = id;
+
+                textBox5.Text = userID;
+
+                textBox1.Text = name;
 
                 textBox3.Text = specialization;
 
+                textBox2.Text = email;
+
                 textBox4.Text = phone;
-                
+
             }
         }
 

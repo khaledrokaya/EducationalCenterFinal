@@ -69,7 +69,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.White;
-            this.menuStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.teachersToolStripMenuItem,
@@ -81,46 +81,46 @@ namespace EducationalCenterFinal.Admin.CourseManage
             this.accountToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1791, 30);
+            this.menuStrip1.Size = new System.Drawing.Size(1791, 28);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // teachersToolStripMenuItem
             // 
             this.teachersToolStripMenuItem.Name = "teachersToolStripMenuItem";
-            this.teachersToolStripMenuItem.Size = new System.Drawing.Size(91, 26);
+            this.teachersToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
             this.teachersToolStripMenuItem.Text = "Teacher";
             this.teachersToolStripMenuItem.Click += new System.EventHandler(this.TeachersToolStripMenuItem_Click);
             // 
             // studentsToolStripMenuItem
             // 
             this.studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
-            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(87, 26);
+            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(80, 24);
             this.studentsToolStripMenuItem.Text = "Student";
             // 
             // employeesToolStripMenuItem
             // 
             this.employeesToolStripMenuItem.Name = "employeesToolStripMenuItem";
-            this.employeesToolStripMenuItem.Size = new System.Drawing.Size(104, 26);
+            this.employeesToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
             this.employeesToolStripMenuItem.Text = "Employee";
             this.employeesToolStripMenuItem.Click += new System.EventHandler(this.EmployeesToolStripMenuItem_Click);
             // 
             // coursesToolStripMenuItem
             // 
             this.coursesToolStripMenuItem.Name = "coursesToolStripMenuItem";
-            this.coursesToolStripMenuItem.Size = new System.Drawing.Size(83, 26);
+            this.coursesToolStripMenuItem.Size = new System.Drawing.Size(77, 24);
             this.coursesToolStripMenuItem.Text = "Course";
             // 
             // manageToolStripMenuItem
             // 
             this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            this.manageToolStripMenuItem.Size = new System.Drawing.Size(88, 26);
+            this.manageToolStripMenuItem.Size = new System.Drawing.Size(82, 24);
             this.manageToolStripMenuItem.Text = "Manage";
             // 
             // questionsToolStripMenuItem
             // 
             this.questionsToolStripMenuItem.Name = "questionsToolStripMenuItem";
-            this.questionsToolStripMenuItem.Size = new System.Drawing.Size(108, 26);
+            this.questionsToolStripMenuItem.Size = new System.Drawing.Size(99, 24);
             this.questionsToolStripMenuItem.Text = "Questions";
             // 
             // accountToolStripMenuItem
@@ -130,27 +130,27 @@ namespace EducationalCenterFinal.Admin.CourseManage
             this.forgetPasswordToolStripMenuItem,
             this.logoutToolStripMenuItem});
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
-            this.accountToolStripMenuItem.Size = new System.Drawing.Size(91, 26);
+            this.accountToolStripMenuItem.Size = new System.Drawing.Size(84, 24);
             this.accountToolStripMenuItem.Text = "Account";
             // 
             // createAccountToolStripMenuItem
             // 
             this.createAccountToolStripMenuItem.Name = "createAccountToolStripMenuItem";
-            this.createAccountToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
+            this.createAccountToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
             this.createAccountToolStripMenuItem.Text = "Create Account";
             this.createAccountToolStripMenuItem.Click += new System.EventHandler(this.CreateAccountToolStripMenuItem_Click);
             // 
             // forgetPasswordToolStripMenuItem
             // 
             this.forgetPasswordToolStripMenuItem.Name = "forgetPasswordToolStripMenuItem";
-            this.forgetPasswordToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
+            this.forgetPasswordToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
             this.forgetPasswordToolStripMenuItem.Text = "Forget Password";
             this.forgetPasswordToolStripMenuItem.Click += new System.EventHandler(this.ForgetPasswordToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(219, 26);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.LogoutToolStripMenuItem_Click);
             // 
@@ -206,6 +206,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
             // button4
             // 
             this.button4.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button4.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Century Gothic", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Location = new System.Drawing.Point(49, 608);
@@ -219,6 +220,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
             // button3
             // 
             this.button3.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Century Gothic", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Location = new System.Drawing.Point(186, 608);
@@ -232,6 +234,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button2.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(186, 523);
@@ -245,6 +248,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
             // button1
             // 
             this.button1.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(49, 523);
@@ -401,11 +405,12 @@ namespace EducationalCenterFinal.Admin.CourseManage
             this.dataGridView1.Location = new System.Drawing.Point(30, 134);
             this.dataGridView1.Name = "dataGridView1";
             this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
-            this.dataGridView1.RowHeadersWidth = 40;
+            this.dataGridView1.RowHeadersWidth = 20;
             this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1387, 687);
             this.dataGridView1.TabIndex = 6;
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // CourseManageForm
             // 

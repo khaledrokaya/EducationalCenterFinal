@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -24,18 +25,11 @@ namespace EducationalCenterFinal.Admin.CourseManage
         public CourseManageForm()
         {
             InitializeComponent();
-            //setUpForm();
-            //setUpComponents();
-            //SearchPlaceHolder();
-            //styleDataGridView();
-            //ربط الاحداث 
-            this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
-            this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
-            //Maximize window
-            this.ClientSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
-            this.MaximizeBox = false;
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-
+            setUpForm();
+            setUpComponents();
+            SearchPlaceHolder();
+            styleDataGridView();
+            
             this.questionsToolStripMenuItem.Click += (sender, e) => this.QuestionsToolStripMenuItem_Click("admin");
             this.studentsToolStripMenuItem.Click += (sender, e) => this.StudentsToolStripMenuItem_Click("admin");
 
@@ -51,33 +45,217 @@ namespace EducationalCenterFinal.Admin.CourseManage
                 courseMenuItem.Click += (sender, e) => CourseMenuItem_Click(course.courseId, "admin");
                 manageToolStripMenuItem.DropDownItems.Add(courseMenuItem);
             }
-            //,تغيير لون الخلفية ,تغيير لون النص  
-            dataGridView1.EnableHeadersVisualStyles = false;
-            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(118, 41, 82);
-            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
-            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Century Gothic Italic", 9, FontStyle.Bold);
-            dataGridView1.ColumnHeadersDefaultCellStyle.Padding = new Padding(4);
+           
+            PictureBox pictureBox = new PictureBox
+            {
+                Image = Image.FromFile(Application.StartupPath.Remove(Application.StartupPath.Length - 10) + "\\Images\\search-interface-symbol.png"),
 
-            //لتغيير اسماء الاعمدة عن الا موجودة في DataBase
-            dataGridView1.DataSource = dp.courses.ToList();
-            dataGridView1.Columns["courseId"].HeaderText = "ID";
-            dataGridView1.Columns["courseName"].HeaderText = "Name";
-            dataGridView1.Columns["Description"].HeaderText = "Description";
-            dataGridView1.Columns["WorkOn"].HeaderText = "Day Of Week";
-            dataGridView1.Columns["price"].HeaderText = "Price";
-            dataGridView1.Columns["NoOfHours"].HeaderText = "Hour";
-            dataGridView1.Columns["teacherId"].HeaderText = "Teacher ID";
+                SizeMode = PictureBoxSizeMode.Normal,
 
-            //لاخفاء اعمدة معينة
-            dataGridView1.Columns["beginning"].Visible = false;
-            dataGridView1.Columns["attendance"].Visible = false;
-            dataGridView1.Columns["teacherId"].Visible = false;
-            dataGridView1.Columns["enrollments"].Visible = false;
-            dataGridView1.Columns["exams"].Visible = false;
-            dataGridView1.Columns["payments"].Visible = false;
-            dataGridView1.Columns["teachers"].Visible = false;
+                Location = new Point(270, 13),
+
+                Size = new Size(20, 20)
+            };
+            txtSearch.Controls.Add(pictureBox);
         }
 
+        private void styleDataGridView()
+        {
+            dataGridView1.DataSource = dp.courses.ToList();
+
+
+            dataGridView1.ScrollBars = ScrollBars.Both;
+
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.None;
+
+            dataGridView1.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            dataGridView1.EnableHeadersVisualStyles = false;
+
+            dataGridView1.ColumnHeadersDefaultCellStyle.BackColor = Color.FromArgb(118, 41, 82);
+
+            dataGridView1.ColumnHeadersDefaultCellStyle.ForeColor = Color.White;
+
+            dataGridView1.ColumnHeadersDefaultCellStyle.Font = new Font("Arial", 13F, System.Drawing.FontStyle.Bold);
+
+            dataGridView1.ColumnHeadersDefaultCellStyle.Padding = new Padding(4);
+
+            this.dataGridView1.ColumnHeadersHeight = 40;
+
+            dataGridView1.AdvancedColumnHeadersBorderStyle.All = DataGridViewAdvancedCellBorderStyle.Single;
+
+            dataGridView1.GridColor = Color.Black;
+
+            this.dataGridView1.RowTemplate.Height = 40;
+
+            dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
+
+            dataGridView1.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
+
+            //لتغيير اسماء الاعمدة عن الا موجودة في DataBase
+            var columnHeaders = new Dictionary<string, string>
+                {
+                    { "courseId", "ID" },
+
+                    {"teacherId","T_ID" },
+
+                    { "courseName", "Name" },
+
+                    { "Description", "Description" },
+
+                    { "WorkOn", "DayOfWeek" },
+
+                    { "price", "Price" },
+
+                    { "NoOfHours", "Hour" },
+
+                };
+
+            foreach (var column in columnHeaders)
+            {
+                if (dataGridView1.Columns[column.Key] != null)
+                {
+                    dataGridView1.Columns[column.Key].HeaderText = column.Value;
+                }
+            }
+
+            //لاخفاء اعمدة معينة
+
+            string[] hiddenColumns = { "beginning", "attendance", "enrollments", "exams", "payments", "teachers" };
+
+            foreach (var columnName in hiddenColumns)
+            {
+                if (dataGridView1.Columns[columnName] != null)
+                {
+                    dataGridView1.Columns[columnName].Visible = false;
+                }
+            }
+
+            foreach (DataGridViewColumn column in dataGridView1.Columns)
+            {
+                if (column != null)
+                {
+
+                    column.DefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 236, 236);
+
+                    column.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+                    dataGridView1.RowHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 236, 236);
+
+                    dataGridView1.RowHeadersDefaultCellStyle.SelectionForeColor = Color.Black;
+
+                    column.DefaultCellStyle.Font = new Font("Arial", 11F, FontStyle.Regular);
+
+                    column.Width = column.HeaderText == "ID" ? 50 : column.HeaderText=="T_ID"? 70: ((dataGridView1.Width - dataGridView1.RowHeadersWidth - 40) / 3);
+
+                    column.HeaderCell.Style.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : column.HeaderText == "T_ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
+
+                    column.DefaultCellStyle.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : column.HeaderText == "T_ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
+
+                }
+            }
+        }
+        private void LoadCourseData(int? filterId = null)
+        {
+            var courses = dp.courses.Select(c => new {
+
+                ID = c.courseId,
+
+                T_ID=c.teacherId,
+
+                Name =c.courseName,
+
+                Description = c.Description,
+
+                DayOfWeek=c.WorkOn,
+
+                Price = c.price,
+
+                Hour=c.NoOfHours,
+
+
+            });
+            if (filterId.HasValue)
+            {
+                courses = courses.Where(c => c.ID == filterId.Value);
+            }
+          
+
+            dataGridView1.DataSource = courses.ToList();
+
+
+            styleDataGridView();
+        }
+
+        private void setUpForm()
+        {
+            this.ClientSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
+
+            this.MaximizeBox = false;
+
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+        }
+
+        private void setUpComponents()
+        {
+            //search
+            txtSearch.Size = new Size(((ClientSize.Width - 360) * 1 / 4), 50);
+            txtSearch.Location = new Point(ClientSize.Width - 320, 20);
+
+            // DataGridView 
+            dataGridView1.Size = new Size(((ClientSize.Width - 44) * 3 / 4), ClientSize.Height - 160);
+            dataGridView1.Location = new Point(20, 80);
+
+            // panel 
+            panel1.Size = new Size(((ClientSize.Width - 250) * 1 / 4), ClientSize.Height - 160);
+            panel1.Location = new Point(ClientSize.Width - 340, 80);
+
+            // Labels and TextBoxes 
+            label1.Size = new Size(((ClientSize.Width - 300) * 1 / 4), ClientSize.Height - 600);
+            label1.Location = new Point(20, 25);
+
+            label2.Location = new Point(20, 30);
+            label2.Size = new Size(panel1.Width - 120, panel1.Height / 8);
+            textBox2.Location = new Point(20, label2.Height + 40);
+            textBox2.Size = new Size(panel1.Width - 55, panel1.Height / 18);
+
+            label7.Location = new Point(20, 120);
+            label7.Size = new Size(panel1.Width - 120, panel1.Height / 8);
+            textBox8.Location = new Point(20, 155);
+            textBox8.Size = new Size(panel1.Width - 55, panel1.Height / 18);
+
+            label6.Location = new Point(20, 210);
+            label6.Size = new Size(panel1.Width - 120, panel1.Height / 8);
+            textBox7.Location = new Point(20, 245);
+            textBox7.Size = new Size(panel1.Width - 55, panel1.Height / 18);
+
+            label5.Location = new Point(20, 300);
+            label5.Size = new Size(panel1.Width - 120, panel1.Height / 8);
+            textBox5.Location = new Point(20, 335);
+            textBox5.Size = new Size(panel1.Width - 55, panel1.Height / 18);
+
+            label4.Location = new Point(20, 390);
+            label4.Size = new Size(panel1.Width - 120, panel1.Height / 8);
+            textBox6.Location = new Point(20, 425);
+            textBox6.Size = new Size(panel1.Width - 55, panel1.Height / 18);
+
+            label3.Location = new Point(20, 480);
+            label3.Size = new Size(panel1.Width - 120, panel1.Height / 8);
+            textBox4.Location = new Point(20, 515);
+            textBox4.Size = new Size(panel1.Width - 55, panel1.Height / 18);
+
+            // Buttons 
+            button1.Location = new Point(20, 590);
+            button2.Location = new Point(170, 590);
+            button4.Location = new Point(20, 650);
+            button3.Location = new Point(170, 650);
+
+            button1.Size = new Size(panel1.Width - 200, panel1.Height / 14);
+            button2.Size = new Size(panel1.Width - 200, panel1.Height / 14);
+            button4.Size = new Size(panel1.Width - 200, panel1.Height / 14);
+            button3.Size = new Size(panel1.Width - 200, panel1.Height / 14);
+
+        }
         private void CourseMenuItem_Click(int CourseId, string role)
         {
             new StaffCourseForm(CourseId, role).Show();
@@ -125,34 +303,55 @@ namespace EducationalCenterFinal.Admin.CourseManage
             this.Hide();
         }
 
+        private void SearchPlaceHolder()
+        {
+            txtSearch.Text = "Search";
+
+            txtSearch.ForeColor = Color.Gray;
+
+            txtSearch.Enter += (sender, e) =>
+            {
+                if (txtSearch.Text == "Search")
+                {
+                   txtSearch.Text = "";
+
+                   txtSearch.ForeColor = Color.Black;
+                }
+            };
+            txtSearch.Leave += (sender, e) =>
+            {
+                if (string.IsNullOrWhiteSpace(txtSearch.Text))
+                {
+                    txtSearch.Text = "Search";
+
+                    txtSearch.ForeColor = Color.Gray;
+                }
+            };
+            txtSearch.TextChanged += (sender, e) =>
+            {
+                if (txtSearch.Text != "Search" && txtSearch.ForeColor == Color.Gray)
+                {
+                    txtSearch.ForeColor = Color.Black;
+                }
+            };
+        }
         private void CourseManageForm_Load(object sender, EventArgs e)
         {
-            
-            txtSearch.Text = "Search";
-            txtSearch.ForeColor = Color.Gray;
         }
 
         private void txtSearch_Leave(object sender, EventArgs e)
         {
-            if (txtSearch.Text == "")
-            {
-                txtSearch.Text = "Search";
-                txtSearch.ForeColor = Color.Gray;
-            }
+            
         }
 
         private void txtSearch_Enter(object sender, EventArgs e)
         {
-            if (txtSearch.Text == "Search")
-            {
-                txtSearch.Text = "";
-                txtSearch.ForeColor = Color.Black;
-            }
+           
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text == "" || textBox8.Text == "" || textBox7.Text == "" || textBox5.Text == "" || textBox6.Text == "" || textBox4.Text == "")
+            if (textBox2.Text == "" || textBox8.Text == "" || textBox7.Text == "" || textBox5.Text == "" || textBox6.Text == ""||textBox4.Text=="")
             {
                 MessageBox.Show("Enter Data First.");
                 return;
@@ -163,89 +362,250 @@ namespace EducationalCenterFinal.Admin.CourseManage
         {
 
             courses c_add = new courses();
-            c_add.courseName = textBox2.Text;
-            c_add.Description = textBox8.Text;
-            c_add.WorkOn = textBox7.Text;
-            c_add.NoOfHours = int.Parse(textBox6.Text);
+
             c_add.teacherId = int.Parse(textBox4.Text);
-            c_add.price = int.Parse(textBox5.Text);
+
+            c_add.courseName = textBox2.Text;
+
+            c_add.Description = textBox8.Text;
+
+            c_add.WorkOn = textBox7.Text;
+
+            c_add.price = decimal.Parse(textBox5.Text);
+
+            c_add.NoOfHours = decimal.Parse(textBox6.Text);
+
             dp.courses.Add(c_add);
+
             dp.SaveChanges();
+
             MessageBox.Show("Course Data Saved Successfully");
+
+            LoadCourseData();
+
             dataGridView1.DataSource = dp.courses.ToList();
 
+            resetForm();
 
         }
         private void resetForm()
         {
             textBox2.Text = "";
+
             textBox8.Text = "";
+
             textBox7.Text = "";
+
             textBox5.Text = "";
+
             textBox6.Text = "";
+
             textBox4.Text = "";
+
             txtSearch.Text = "";
             if (txtSearch.Text == "")
             {
                 txtSearch.Text = "Search";
+
                 txtSearch.ForeColor = Color.Gray;
             }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(txtSearch.Text, out int ID))
+            if (int.TryParse(textBox4.Text, out int teacherId))
             {
-                courses c = dp.courses.FirstOrDefault(x => x.courseId == ID);
-                c.courseName = textBox2.Text;
-                c.Description = textBox8.Text;
-                c.WorkOn = textBox7.Text;
-                c.price= int.Parse(textBox5.Text);
-                c.NoOfHours = int.Parse(textBox6.Text);
-                c.teacherId = int.Parse(textBox4.Text);
-                dp.SaveChanges();
-                dataGridView1.DataSource = dp.courses.ToList();
-                MessageBox.Show("Data Is Edited");
+                courses x = dp.courses.FirstOrDefault(m => m.teacherId == teacherId);
+
+                if (x != null)
+                {
+                    x.teacherId = int.Parse(textBox4.Text);
+
+                    x.courseName = textBox2.Text;
+
+                    x.Description = textBox8.Text;
+
+                    x.WorkOn = textBox7.Text;
+
+                    x.price = decimal.Parse(textBox5.Text);
+
+                    x.NoOfHours = decimal.Parse(textBox6.Text);
+
+                    button1.Enabled = false;
+
+                    dp.SaveChanges();
+
+                    MessageBox.Show("Data Is Edited");
+
+                    LoadCourseData();
+
+                    dataGridView1.DataSource = dp.teachers.ToList();
+
+
+                    resetForm();
+
+                }
             }
         }
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(txtSearch.Text))
+            //Search With courseId
+            string searchTerm = txtSearch.Text.Trim();
+
+            if (!string.IsNullOrEmpty(searchTerm))
             {
-                courses c;
-                if (int.TryParse(txtSearch.Text, out int ID))
+                int courseId;
+                if (int.TryParse(searchTerm, out courseId))
                 {
-                    c = dp.courses.FirstOrDefault(x => x.courseId == ID);
+
+                    searchByCourseId(courseId);
                 }
-                else
-                {
-                    string name = txtSearch.Text.ToLower();
-                    c = dp.courses.FirstOrDefault(x => x.courseName.ToLower().Contains(name));
-                }
-                if (c != null)
-                {
-                    textBox2.Text = c.courseName;
-                    textBox8.Text = c.Description;
-                    textBox7.Text = c.WorkOn;
-                    textBox5.Text = c.price.ToString();
-                    textBox6.Text = c.NoOfHours.ToString();
-                    textBox4.Text = c.teacherId.ToString();
-                    button1.Enabled = false;
-                }
+            }
+            else
+            {
+                // لو البحث فارغ، يتم تحميل كل البيانات
+                LoadCourseData();
             }
         }
 
+        private void searchByCourseId(int courseId)
+        {
+
+            var result = dp.courses
+
+           .Where(c => c.courseId == courseId)
+           
+           .Select(c => new
+           {
+           
+               ID = c.courseId,
+               
+               T_ID=c.teacherId,
+
+               Name = c.courseName,
+           
+               Description = c.Description,
+           
+               DayOfWeek = c.WorkOn,
+           
+               Price = c.price,
+           
+               Hour = c.NoOfHours,
+           
+           })
+           .ToList();
+            // عرض البيانات في DataGridView
+            if (result.Any())
+            {
+                dataGridView1.DataSource = result;
+
+                var course = result.FirstOrDefault();
+                if (course != null)
+                {
+                    textBox4.Text = course.T_ID.ToString();
+
+                    textBox2.Text = course.Name;
+
+                    textBox8.Text = course.Description;
+
+                    textBox7.Text = course.DayOfWeek;
+
+                    textBox5.Text = course.Price.ToString();
+
+                    textBox6.Text = course.Hour.ToString();
+
+                }
+                var columnHeaders = new Dictionary<string, string>
+                {
+                    { "courseId", "ID" },
+
+                    {"teacherId","T_ID" },
+
+                    { "courseName", "Name" },
+                
+                    { "Description", "Description" },
+                
+                    { "WorkOn", "DayOfWeek" },
+                
+                    { "price", "Price" },
+                
+                    { "NoOfHours", "Hour" },
+                
+                };
+                
+                foreach (var column in columnHeaders)
+                {
+                    if (dataGridView1.Columns[column.Key] != null)
+                    {
+                        dataGridView1.Columns[column.Key].HeaderText = column.Value;
+                    }
+                }
+
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (row.Cells["ID"].Value != null && (int)row.Cells["ID"].Value == courseId)
+                    {
+
+                        this.dataGridView1.ColumnHeadersHeight = 40;
+
+                        dataGridView1.AdvancedColumnHeadersBorderStyle.All = DataGridViewAdvancedCellBorderStyle.Single;
+
+                        this.dataGridView1.GridColor = System.Drawing.Color.Black;
+
+                        this.dataGridView1.RowTemplate.Height = 55;
+
+                        dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
+
+                        dataGridView1.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
+
+
+                        row.DefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 236, 236);
+
+                        row.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+                        dataGridView1.RowHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 236, 236);
+
+                        dataGridView1.RowHeadersDefaultCellStyle.SelectionForeColor = Color.Black;
+
+                        row.DefaultCellStyle.Font = new Font("Arial", 11F, FontStyle.Regular);
+
+                    }
+                }
+
+                foreach (DataGridViewColumn column in dataGridView1.Columns)
+                {
+                    if (column != null)
+                    {
+
+                        column.DefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 236, 236);
+
+                        column.DefaultCellStyle.SelectionForeColor = Color.Black;
+
+                        dataGridView1.RowHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 236, 236);
+
+                        dataGridView1.RowHeadersDefaultCellStyle.SelectionForeColor = Color.Black;
+
+                        column.DefaultCellStyle.Font = new Font("Arial", 11F, FontStyle.Regular);
+
+                        column.Width = column.HeaderText == "ID" ? 50 : column.HeaderText=="T_ID"? 70: ((dataGridView1.Width - dataGridView1.RowHeadersWidth - 40) / 3);
+
+                        column.HeaderCell.Style.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : column.HeaderText == "T_ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
+
+                        column.DefaultCellStyle.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : column.HeaderText == "T_ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
+                    }                                                                                                                                     
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Course not found.");
+            }
+        }
         private void button4_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(txtSearch.Text, out int ID))
-            {
-                courses c = dp.courses.FirstOrDefault(x => x.courseId == ID);
-                dp.courses.Remove(c);
-                dp.SaveChanges();
-                dataGridView1.DataSource = dp.courses.ToList();
-                MessageBox.Show("Data Is Deleted");
-            }
+            deleteButton();
+
 
         }
 
@@ -253,6 +613,76 @@ namespace EducationalCenterFinal.Admin.CourseManage
         {
             resetForm();
             button1.Enabled = true;
+        }
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var row = dataGridView1.Rows[e.RowIndex];
+
+                string teacherid = row.Cells["T_ID"].Value.ToString();
+
+                string name = row.Cells["Name"].Value.ToString();
+
+                string description = row.Cells["Description"].Value.ToString();
+
+                string dayofweek = row.Cells["DayOfWeek"].Value.ToString();
+
+                string price = row.Cells["Price"].Value.ToString();
+                
+                string hour = row.Cells["Hour"].Value.ToString();
+
+                textBox4.Text = teacherid;
+
+                textBox2.Text = name;
+
+                textBox8.Text = description;
+
+                textBox7.Text = dayofweek;
+
+                textBox5.Text = price;
+
+                textBox6.Text = hour;
+
+            }
+        }
+
+        private void deleteButton()
+        {
+            try
+            {
+                if (dataGridView1.SelectedRows.Count != 1)
+                {
+                    MessageBox.Show("Please select one course to delete.");
+
+                    return;
+                }
+                var selectedRow = dataGridView1.SelectedRows[0];
+
+                int courseId = int.Parse(selectedRow.Cells["ID"].Value.ToString());
+
+                var course = dp.courses.SingleOrDefault(c => c.courseId == courseId);
+
+                if (course != null)
+                {
+                    dp.courses.Remove(course);
+
+                    dp.SaveChanges();
+
+                    MessageBox.Show("Course deleted successfully.");
+
+                    LoadCourseData();
+                }
+                else
+                {
+                    MessageBox.Show("Course not found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
         }
     }
 }
