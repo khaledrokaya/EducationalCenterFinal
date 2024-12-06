@@ -68,8 +68,8 @@ namespace EducationalCenterFinal.Admin.CourseManage
             // 
             // menuStrip1
             // 
-            this.menuStrip1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
-            this.menuStrip1.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.menuStrip1.BackColor = System.Drawing.Color.White;
+            this.menuStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.teachersToolStripMenuItem,
@@ -81,46 +81,46 @@ namespace EducationalCenterFinal.Admin.CourseManage
             this.accountToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1791, 31);
+            this.menuStrip1.Size = new System.Drawing.Size(1791, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // teachersToolStripMenuItem
             // 
             this.teachersToolStripMenuItem.Name = "teachersToolStripMenuItem";
-            this.teachersToolStripMenuItem.Size = new System.Drawing.Size(102, 27);
+            this.teachersToolStripMenuItem.Size = new System.Drawing.Size(91, 26);
             this.teachersToolStripMenuItem.Text = "Teacher";
             this.teachersToolStripMenuItem.Click += new System.EventHandler(this.TeachersToolStripMenuItem_Click);
             // 
             // studentsToolStripMenuItem
             // 
             this.studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
-            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(96, 27);
+            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(87, 26);
             this.studentsToolStripMenuItem.Text = "Student";
             // 
             // employeesToolStripMenuItem
             // 
             this.employeesToolStripMenuItem.Name = "employeesToolStripMenuItem";
-            this.employeesToolStripMenuItem.Size = new System.Drawing.Size(122, 27);
+            this.employeesToolStripMenuItem.Size = new System.Drawing.Size(104, 26);
             this.employeesToolStripMenuItem.Text = "Employee";
             this.employeesToolStripMenuItem.Click += new System.EventHandler(this.EmployeesToolStripMenuItem_Click);
             // 
             // coursesToolStripMenuItem
             // 
             this.coursesToolStripMenuItem.Name = "coursesToolStripMenuItem";
-            this.coursesToolStripMenuItem.Size = new System.Drawing.Size(93, 27);
+            this.coursesToolStripMenuItem.Size = new System.Drawing.Size(83, 26);
             this.coursesToolStripMenuItem.Text = "Course";
             // 
             // manageToolStripMenuItem
             // 
             this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            this.manageToolStripMenuItem.Size = new System.Drawing.Size(106, 27);
+            this.manageToolStripMenuItem.Size = new System.Drawing.Size(88, 26);
             this.manageToolStripMenuItem.Text = "Manage";
             // 
             // questionsToolStripMenuItem
             // 
             this.questionsToolStripMenuItem.Name = "questionsToolStripMenuItem";
-            this.questionsToolStripMenuItem.Size = new System.Drawing.Size(120, 27);
+            this.questionsToolStripMenuItem.Size = new System.Drawing.Size(108, 26);
             this.questionsToolStripMenuItem.Text = "Questions";
             // 
             // accountToolStripMenuItem
@@ -130,35 +130,35 @@ namespace EducationalCenterFinal.Admin.CourseManage
             this.forgetPasswordToolStripMenuItem,
             this.logoutToolStripMenuItem});
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
-            this.accountToolStripMenuItem.Size = new System.Drawing.Size(108, 27);
+            this.accountToolStripMenuItem.Size = new System.Drawing.Size(91, 26);
             this.accountToolStripMenuItem.Text = "Account";
             // 
             // createAccountToolStripMenuItem
             // 
             this.createAccountToolStripMenuItem.Name = "createAccountToolStripMenuItem";
-            this.createAccountToolStripMenuItem.Size = new System.Drawing.Size(251, 28);
+            this.createAccountToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
             this.createAccountToolStripMenuItem.Text = "Create Account";
             this.createAccountToolStripMenuItem.Click += new System.EventHandler(this.CreateAccountToolStripMenuItem_Click);
             // 
             // forgetPasswordToolStripMenuItem
             // 
             this.forgetPasswordToolStripMenuItem.Name = "forgetPasswordToolStripMenuItem";
-            this.forgetPasswordToolStripMenuItem.Size = new System.Drawing.Size(251, 28);
+            this.forgetPasswordToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
             this.forgetPasswordToolStripMenuItem.Text = "Forget Password";
             this.forgetPasswordToolStripMenuItem.Click += new System.EventHandler(this.ForgetPasswordToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(251, 28);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(234, 26);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.LogoutToolStripMenuItem_Click);
             // 
             // txtSearch
             // 
-            this.txtSearch.BackColor = System.Drawing.SystemColors.ControlLight;
-            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.txtSearch.Font = new System.Drawing.Font("Century Gothic", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtSearch.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.txtSearch.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txtSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtSearch.Location = new System.Drawing.Point(1450, 43);
             this.txtSearch.Multiline = true;
             this.txtSearch.Name = "txtSearch";
@@ -171,10 +171,10 @@ namespace EducationalCenterFinal.Admin.CourseManage
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Century Gothic", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Tahoma", 28.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.Location = new System.Drawing.Point(21, 44);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(160, 50);
+            this.label1.Size = new System.Drawing.Size(187, 57);
             this.label1.TabIndex = 4;
             this.label1.Text = "Course";
             // 
@@ -205,7 +205,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
             // 
             // button4
             // 
-            this.button4.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button4.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button4.Font = new System.Drawing.Font("Century Gothic", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button4.Location = new System.Drawing.Point(49, 608);
@@ -218,7 +218,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
             // 
             // button3
             // 
-            this.button3.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button3.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button3.Font = new System.Drawing.Font("Century Gothic", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Location = new System.Drawing.Point(186, 608);
@@ -231,7 +231,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
             // 
             // button2
             // 
-            this.button2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button2.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button2.Font = new System.Drawing.Font("Century Gothic", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button2.Location = new System.Drawing.Point(186, 523);
@@ -244,7 +244,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
             // 
             // button1
             // 
-            this.button1.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.button1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.button1.Font = new System.Drawing.Font("Century Gothic", 12F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(49, 523);
@@ -257,8 +257,9 @@ namespace EducationalCenterFinal.Admin.CourseManage
             // 
             // textBox8
             // 
-            this.textBox8.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.textBox8.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox8.Location = new System.Drawing.Point(18, 121);
             this.textBox8.Multiline = true;
             this.textBox8.Name = "textBox8";
@@ -267,8 +268,9 @@ namespace EducationalCenterFinal.Admin.CourseManage
             // 
             // textBox7
             // 
-            this.textBox7.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.textBox7.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox7.Location = new System.Drawing.Point(18, 207);
             this.textBox7.Multiline = true;
             this.textBox7.Name = "textBox7";
@@ -277,8 +279,9 @@ namespace EducationalCenterFinal.Admin.CourseManage
             // 
             // textBox6
             // 
-            this.textBox6.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.textBox6.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox6.Location = new System.Drawing.Point(18, 371);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
@@ -287,8 +290,9 @@ namespace EducationalCenterFinal.Admin.CourseManage
             // 
             // textBox5
             // 
-            this.textBox5.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.textBox5.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox5.Location = new System.Drawing.Point(18, 289);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
@@ -297,8 +301,9 @@ namespace EducationalCenterFinal.Admin.CourseManage
             // 
             // textBox4
             // 
-            this.textBox4.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.textBox4.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.Location = new System.Drawing.Point(18, 460);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
@@ -362,8 +367,9 @@ namespace EducationalCenterFinal.Admin.CourseManage
             // 
             // textBox2
             // 
-            this.textBox2.BackColor = System.Drawing.SystemColors.ControlLight;
+            this.textBox2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(18, 40);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
@@ -383,12 +389,20 @@ namespace EducationalCenterFinal.Admin.CourseManage
             // 
             // dataGridView1
             // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
             this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ControlLight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(30, 135);
+            this.dataGridView1.BackgroundColor = System.Drawing.Color.WhiteSmoke;
+            this.dataGridView1.ColumnHeadersHeight = 35;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dataGridView1.GridColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView1.Location = new System.Drawing.Point(30, 134);
             this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dataGridView1.RowHeadersWidth = 40;
+            this.dataGridView1.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(1387, 687);
             this.dataGridView1.TabIndex = 6;
@@ -404,7 +418,6 @@ namespace EducationalCenterFinal.Admin.CourseManage
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.menuStrip1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
             this.Name = "CourseManageForm";

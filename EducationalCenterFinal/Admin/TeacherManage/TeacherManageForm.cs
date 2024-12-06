@@ -9,6 +9,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.Common;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -27,6 +28,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
         public TeacherManageForm()
         {
             InitializeComponent();
+            LoadTeacherData();
             setUpForm();
             setUpComponents();
             SearchPlaceHolder();
@@ -56,7 +58,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             };
             textBox1_search.Controls.Add(pictureBox);
         }
-
+        
         private void styleDataGridView()
         {
             dataGridView1.DataSource = dp.teachers.ToList();
@@ -71,14 +73,20 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             this.dataGridView1.ColumnHeadersHeight = 40;
             this.dataGridView1.GridColor = System.Drawing.Color.Black;
             this.dataGridView1.RowTemplate.Height = 55;
+            dataGridView1.DefaultCellStyle.ForeColor = Color.Black; 
+            dataGridView1.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
             //لتغيير اسماء الاعمدة عن الا موجودة في DataBase
             var columnHeaders = new Dictionary<string, string>
             {
-              { "teacherId", "ID" },
-              { "teacherName", "Name" },
-              { "teacherEmail", "Email" },
-              { "teacherSpecialization", "Specialization" },
-              { "teacherPhone", "Phone" }
+                { "teacherId", "ID" },
+
+                { "teacherName", "Name" },
+
+                { "teacherSpecialization", "Specialization" },
+
+                { "teacherEmail", "Email" },
+
+                { "teacherPhone", "Phone" }
             };
 
             foreach (var column in columnHeaders)
@@ -116,7 +124,26 @@ namespace EducationalCenterFinal.Admin.TeacherManage
                 }
             }
         }
+        private void LoadTeacherData(int? filterId = null)
+        {
+            var teachers = dp.teachers.Select(t => new {
+                ID = t.teacherId,
+                Name = t.teacherName,
+                Email = t.teacherEmail,
+                Phone = t.teacherPhone,
+                Specialization = t.teacherSpecialization,
+                UserId = t.userId,
+            });
+            if (filterId.HasValue)
+            {
+                teachers = teachers.Where(t => t.ID == filterId.Value);
+            }
+            
 
+            dataGridView1.DataSource = teachers.ToList();
+
+            styleDataGridView();
+        }
         private void setUpForm()
         {
             this.ClientSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
@@ -263,6 +290,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
                 return;
             }
             addData();
+
         }
 
         private void addData()
@@ -286,7 +314,12 @@ namespace EducationalCenterFinal.Admin.TeacherManage
 
             MessageBox.Show("Teacher Saved Successfully");
 
+            LoadTeacherData();
+
             dataGridView1.DataSource = dp.teachers.ToList();
+
+
+            resetForm();
         }
 
         private void resetForm()
@@ -307,74 +340,159 @@ namespace EducationalCenterFinal.Admin.TeacherManage
         private void TeacherManageForm_Load_1(object sender, EventArgs e)
         {
 
-            dataGridView1.DefaultCellStyle.ForeColor = Color.Black; // اللون الاسود للنص
-
-            // تغيير نوع الخط وحجمه
-            dataGridView1.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(textBox1_search.Text, out int ID))
+            if (int.TryParse(textBox5.Text, out int userId))
             {
-                teachers t = dp.teachers.FirstOrDefault(x => x.teacherId == ID);
+                teachers t = dp.teachers.FirstOrDefault(x => x.userId == userId);
 
-                t.teacherName = textBox1.Text;
+                if (t != null)
+                {
+                    t.teacherName = textBox1.Text;
 
-                t.teacherEmail = textBox2.Text;
+                    t.teacherEmail = textBox2.Text;
 
-                t.teacherSpecialization = textBox3.Text;
+                    t.teacherSpecialization = textBox3.Text;
 
-                t.teacherPhone = textBox4.Text;
+                    t.teacherPhone = textBox4.Text;
 
-                t.userId = int.Parse(textBox5.Text);
+                    t.userId = int.Parse(textBox5.Text);
 
-                dp.SaveChanges();
+                    button1.Enabled = false;
 
-                MessageBox.Show("Data Is Edited");
+                    dp.SaveChanges();
 
-                dataGridView1.DataSource = dp.teachers.ToList();
+                    MessageBox.Show("Data Is Edited");
 
-                resetForm();
+                    LoadTeacherData();
+
+                    dataGridView1.DataSource = dp.teachers.ToList();
+
+
+                    resetForm();
+
+                }
+               
             }
-
+            
         }
 
         private void textBox1_search_TextChanged(object sender, EventArgs e)
         {
             //Search With TeacherID
-            if (int.TryParse(textBox1_search.Text, out int ID))
+            string searchTerm = textBox1_search.Text.Trim();
+
+            if (!string.IsNullOrEmpty(searchTerm))
             {
-                teachers t = dp.teachers.FirstOrDefault(x => x.teacherId == ID);
-                if (t != null)
+                int teacherId;
+                if (int.TryParse(searchTerm, out teacherId))
                 {
-                    textBox1.Text = t.teacherName;
-                    textBox2.Text = t.teacherEmail;
-                    textBox3.Text = t.teacherSpecialization;
-                    textBox4.Text = t.teacherPhone;
-                    textBox5.Text = t.userId.ToString();
-                    button1.Enabled = false;
+
+                    searchByTeacherId(teacherId);
                 }
+            }
+            else
+            {
+                // لو البحث فارغ، يتم تحميل كل البيانات
+                LoadTeacherData();
+            }
+        }
+
+        private void searchByTeacherId(int teacherId)
+        {
+
+            var result = dp.teachers
+
+        .Where(t => t.teacherId == teacherId)
+
+        .Select(t => new {
+
+            ID = t.teacherId,
+
+            Name = t.teacherName,
+
+            Specialization = t.teacherSpecialization,
+
+            Email = t.teacherEmail,
+
+            Phone = t.teacherPhone
+        })
+        .ToList();
+            // عرض البيانات في DataGridView
+            if (result.Any())
+            {
+                dataGridView1.DataSource = result;
+
+                var columnHeaders = new Dictionary<string, string>
+                {
+                   { "teacherId", "ID" },
+
+                   { "teacherName", "Name" },
+
+                   { "teacherSpecialization", "Specialization" },
+
+                   { "teacherEmail", "Email" },
+
+                   { "teacherPhone", "Phone" }
+
+                };
+
+                foreach (var column in columnHeaders)
+                {
+                    if (dataGridView1.Columns[column.Key] != null)
+                    {
+                        dataGridView1.Columns[column.Key].HeaderText = column.Value;
+                    }
+                }
+
+                foreach (DataGridViewRow row in dataGridView1.Rows)
+                {
+                    if (row.Cells["ID"].Value != null && (int)row.Cells["ID"].Value == teacherId)
+                    {
+                        
+                        this.dataGridView1.ColumnHeadersHeight = 40;
+                        this.dataGridView1.GridColor = System.Drawing.Color.Black;
+                        this.dataGridView1.RowTemplate.Height = 55;
+                        dataGridView1.DefaultCellStyle.ForeColor = Color.Black;
+                        dataGridView1.DefaultCellStyle.Font = new Font("Microsoft Sans Serif", 12, FontStyle.Regular);
+
+                        row.DefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 236, 236);
+                        row.DefaultCellStyle.SelectionForeColor = Color.Black;
+                        dataGridView1.RowHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 236, 236);
+                        dataGridView1.RowHeadersDefaultCellStyle.SelectionForeColor = Color.Black;
+                        row.DefaultCellStyle.Font = new Font("Arial", 11F, FontStyle.Regular);
+                       
+                    }
+                }
+
+                foreach (DataGridViewColumn column in dataGridView1.Columns)
+                {
+                    if (column != null)
+                    {
+
+                        column.DefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 236, 236);
+                        column.DefaultCellStyle.SelectionForeColor = Color.Black;
+                        dataGridView1.RowHeadersDefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 236, 236);
+                        dataGridView1.RowHeadersDefaultCellStyle.SelectionForeColor = Color.Black;
+                        column.DefaultCellStyle.Font = new Font("Arial", 11F, FontStyle.Regular);
+                        column.Width = column.HeaderText == "ID" ? 50 : ((dataGridView1.Width - dataGridView1.RowHeadersWidth - 40) / 3);
+                        column.HeaderCell.Style.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
+                        column.DefaultCellStyle.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
+                    }
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("Teacher not found.");
             }
         }
 
         private void button3_Click_1(object sender, EventArgs e)
         {
-            if (int.TryParse(textBox1_search.Text, out int ID))
-            {
-                teachers t = dp.teachers.FirstOrDefault(x => x.teacherId == ID);
-
-                dp.teachers.Remove(t);
-
-                dp.SaveChanges();
-
-                MessageBox.Show("Data Is Deleted");
-
-                dataGridView1.DataSource = dp.teachers.ToList();
-
-                resetForm();
-            }
-
+            deleteButton();
         }
 
         private void button4_Click(object sender, EventArgs e)
@@ -383,5 +501,66 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             button1.Enabled = true;
         }
 
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                var row = dataGridView1.Rows[e.RowIndex];
+
+                string name = row.Cells["Name"].Value.ToString();
+
+                string email = row.Cells["Email"].Value.ToString();
+
+                string specialization = row.Cells["Specialization"].Value.ToString();
+
+                string phone = row.Cells["Phone"].Value.ToString();
+
+                textBox1.Text = name;
+
+                textBox2.Text = email;
+
+                textBox3.Text = specialization;
+
+                textBox4.Text = phone;
+                
+            }
+        }
+
+        private void deleteButton()
+        {
+            try
+            {
+                if (dataGridView1.SelectedRows.Count != 1)
+                {
+                    MessageBox.Show("Please select one teacher to delete.");
+
+                    return;
+                }
+                var selectedRow = dataGridView1.SelectedRows[0];
+
+                int teacherId = int.Parse(selectedRow.Cells["ID"].Value.ToString());
+
+                var teacher = dp.teachers.SingleOrDefault(t => t.teacherId == teacherId);
+
+                if (teacher != null)
+                {
+                    dp.teachers.Remove(teacher);
+
+                    dp.SaveChanges();
+
+                    MessageBox.Show("Teacher deleted successfully.");
+
+                    LoadTeacherData();
+                }
+                else
+                {
+                    MessageBox.Show("Teacher not found.");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
+        }
     }
 }

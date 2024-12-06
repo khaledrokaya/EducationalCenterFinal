@@ -24,6 +24,10 @@ namespace EducationalCenterFinal.Admin.CourseManage
         public CourseManageForm()
         {
             InitializeComponent();
+            //setUpForm();
+            //setUpComponents();
+            //SearchPlaceHolder();
+            //styleDataGridView();
             //ربط الاحداث 
             this.txtSearch.Enter += new System.EventHandler(this.txtSearch_Enter);
             this.txtSearch.Leave += new System.EventHandler(this.txtSearch_Leave);
@@ -71,6 +75,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
             dataGridView1.Columns["enrollments"].Visible = false;
             dataGridView1.Columns["exams"].Visible = false;
             dataGridView1.Columns["payments"].Visible = false;
+            dataGridView1.Columns["teachers"].Visible = false;
         }
 
         private void CourseMenuItem_Click(int CourseId, string role)
@@ -163,10 +168,9 @@ namespace EducationalCenterFinal.Admin.CourseManage
             c_add.WorkOn = textBox7.Text;
             c_add.NoOfHours = int.Parse(textBox6.Text);
             c_add.teacherId = int.Parse(textBox4.Text);
-            //c_add.price = int.Parse(textBox5.text);
+            c_add.price = int.Parse(textBox5.Text);
             dp.courses.Add(c_add);
             dp.SaveChanges();
-
             MessageBox.Show("Course Data Saved Successfully");
             dataGridView1.DataSource = dp.courses.ToList();
 
@@ -196,7 +200,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
                 c.courseName = textBox2.Text;
                 c.Description = textBox8.Text;
                 c.WorkOn = textBox7.Text;
-                //c.price= int.Parse(textBox5.Text);
+                c.price= int.Parse(textBox5.Text);
                 c.NoOfHours = int.Parse(textBox6.Text);
                 c.teacherId = int.Parse(textBox4.Text);
                 dp.SaveChanges();
@@ -224,7 +228,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
                     textBox2.Text = c.courseName;
                     textBox8.Text = c.Description;
                     textBox7.Text = c.WorkOn;
-                    //textBox5.Text = c.price.ToString();
+                    textBox5.Text = c.price.ToString();
                     textBox6.Text = c.NoOfHours.ToString();
                     textBox4.Text = c.teacherId.ToString();
                     button1.Enabled = false;
