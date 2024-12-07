@@ -305,13 +305,13 @@ namespace EducationalCenterFinal.Admin.CourseManage
 
         private void SearchPlaceHolder()
         {
-            txtSearch.Text = "Search";
+            txtSearch.Text = "Search By ID...";
 
             txtSearch.ForeColor = Color.Gray;
 
             txtSearch.Enter += (sender, e) =>
             {
-                if (txtSearch.Text == "Search")
+                if (txtSearch.Text == "Search By ID...")
                 {
                    txtSearch.Text = "";
 
@@ -322,14 +322,14 @@ namespace EducationalCenterFinal.Admin.CourseManage
             {
                 if (string.IsNullOrWhiteSpace(txtSearch.Text))
                 {
-                    txtSearch.Text = "Search";
+                    txtSearch.Text = "Search By ID...";
 
                     txtSearch.ForeColor = Color.Gray;
                 }
             };
             txtSearch.TextChanged += (sender, e) =>
             {
-                if (txtSearch.Text != "Search" && txtSearch.ForeColor == Color.Gray)
+                if (txtSearch.Text != "Search By ID..." && txtSearch.ForeColor == Color.Gray)
                 {
                     txtSearch.ForeColor = Color.Black;
                 }
@@ -337,6 +337,9 @@ namespace EducationalCenterFinal.Admin.CourseManage
         }
         private void CourseManageForm_Load(object sender, EventArgs e)
         {
+            this.ActiveControl = label1;
+
+            SearchPlaceHolder();
         }
 
         private void txtSearch_Leave(object sender, EventArgs e)
@@ -405,10 +408,11 @@ namespace EducationalCenterFinal.Admin.CourseManage
             txtSearch.Text = "";
             if (txtSearch.Text == "")
             {
-                txtSearch.Text = "Search";
+                txtSearch.Text = "Search By ID...";
 
                 txtSearch.ForeColor = Color.Gray;
             }
+            button1.Enabled = true;
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -435,7 +439,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
 
                     dp.SaveChanges();
 
-                    MessageBox.Show("Data Is Edited");
+                    MessageBox.Show("Course Data is Edited");
 
                     LoadCourseData();
 

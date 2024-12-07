@@ -289,13 +289,13 @@ namespace EducationalCenterFinal.Admin.TeacherManage
 
         private void SearchPlaceHolder()
         {
-            textBox1_search.Text = "Search";
+            textBox1_search.Text = "Search By ID...";
 
             textBox1_search.ForeColor = Color.Gray;
 
             textBox1_search.Enter += (sender, e) =>
             {
-                if (textBox1_search.Text == "Search")
+                if (textBox1_search.Text == "Search By ID...")
                 {
                     textBox1_search.Text = "";
 
@@ -306,14 +306,14 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             {
                 if (string.IsNullOrWhiteSpace(textBox1_search.Text))
                 {
-                    textBox1_search.Text = "Search";
+                    textBox1_search.Text = "Search By ID...";
 
                     textBox1_search.ForeColor = Color.Gray;
                 }
             };
             textBox1_search.TextChanged += (sender, e) =>
             {
-                if (textBox1_search.Text != "Search" && textBox1_search.ForeColor == Color.Gray)
+                if (textBox1_search.Text != "Search By ID..." && textBox1_search.ForeColor == Color.Gray)
                 {
                     textBox1_search.ForeColor = Color.Black;
                 }
@@ -376,15 +376,19 @@ namespace EducationalCenterFinal.Admin.TeacherManage
 
             if (textBox1_search.Text == "")
             {
-                textBox1_search.Text = "Search";
+                textBox1_search.Text = "Search By ID...";
 
                 textBox1_search.ForeColor = Color.Gray;
             }
+            button1.Enabled = true;
         }
 
         private void TeacherManageForm_Load_1(object sender, EventArgs e)
         {
+            
+            this.ActiveControl = label1;
 
+            SearchPlaceHolder();
         }
 
         private void button2_Click(object sender, EventArgs e)
