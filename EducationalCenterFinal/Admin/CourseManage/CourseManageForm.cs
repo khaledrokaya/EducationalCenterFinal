@@ -97,17 +97,20 @@ namespace EducationalCenterFinal.Admin.CourseManage
                 {
                     { "courseId", "ID" },
 
-                    {"teacherId","T_ID" },
-
                     { "courseName", "Name" },
 
                     { "Description", "Description" },
 
                     { "WorkOn", "DayOfWeek" },
 
-                    { "price", "Price" },
-
                     { "NoOfHours", "Hour" },
+
+                     {"teacherId","T_ID" },
+
+                    { "price", "Price" },                 
+
+                   
+
 
                 };
 
@@ -161,17 +164,23 @@ namespace EducationalCenterFinal.Admin.CourseManage
 
                 ID = c.courseId,
 
-                T_ID=c.teacherId,
-
                 Name =c.courseName,
 
                 Description = c.Description,
 
                 DayOfWeek=c.WorkOn,
 
-                Price = c.price,
+                Hour = c.NoOfHours,
 
-                Hour=c.NoOfHours,
+                T_ID = c.teacherId,
+
+                Price = c.price
+
+               
+               
+
+
+   
 
 
             });
@@ -203,11 +212,11 @@ namespace EducationalCenterFinal.Admin.CourseManage
             txtSearch.Location = new Point(ClientSize.Width - 320, 20);
 
             // DataGridView 
-            dataGridView1.Size = new Size(((ClientSize.Width - 44) * 3 / 4), ClientSize.Height - 160);
+            dataGridView1.Size = new Size(((ClientSize.Width - 44) * 3 / 4), ClientSize.Height - 150);
             dataGridView1.Location = new Point(20, 80);
 
             // panel 
-            panel1.Size = new Size(((ClientSize.Width - 250) * 1 / 4), ClientSize.Height - 160);
+            panel1.Size = new Size(((ClientSize.Width - 250) * 1 / 4), ClientSize.Height - 150);
             panel1.Location = new Point(ClientSize.Width - 340, 80);
 
             // Labels and TextBoxes 
@@ -485,18 +494,22 @@ namespace EducationalCenterFinal.Admin.CourseManage
            
                ID = c.courseId,
                
-               T_ID=c.teacherId,
-
                Name = c.courseName,
            
                Description = c.Description,
            
                DayOfWeek = c.WorkOn,
-           
+
+               Hour = c.NoOfHours,
+
+               T_ID = c.teacherId,
+
                Price = c.price,
            
-               Hour = c.NoOfHours,
-           
+              
+               
+
+
            })
            .ToList();
             // عرض البيانات في DataGridView
@@ -505,37 +518,25 @@ namespace EducationalCenterFinal.Admin.CourseManage
                 dataGridView1.DataSource = result;
 
                 var course = result.FirstOrDefault();
-                if (course != null)
-                {
-                    textBox4.Text = course.T_ID.ToString();
-
-                    textBox2.Text = course.Name;
-
-                    textBox8.Text = course.Description;
-
-                    textBox7.Text = course.DayOfWeek;
-
-                    textBox5.Text = course.Price.ToString();
-
-                    textBox6.Text = course.Hour.ToString();
-
-                }
+                
                 var columnHeaders = new Dictionary<string, string>
                 {
+
                     { "courseId", "ID" },
 
-                    {"teacherId","T_ID" },
-
                     { "courseName", "Name" },
-                
+
                     { "Description", "Description" },
-                
+
                     { "WorkOn", "DayOfWeek" },
-                
-                    { "price", "Price" },
-                
+
                     { "NoOfHours", "Hour" },
-                
+
+                     {"teacherId","T_ID" },
+
+                    { "price", "Price" },
+
+
                 };
                 
                 foreach (var column in columnHeaders)
@@ -619,52 +620,14 @@ namespace EducationalCenterFinal.Admin.CourseManage
             button1.Enabled = true;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                var row = dataGridView1.Rows[e.RowIndex];
-
-                string teacherid = row.Cells["T_ID"].Value.ToString();
-
-                string name = row.Cells["Name"].Value.ToString();
-
-                string description = row.Cells["Description"].Value.ToString();
-
-                string dayofweek = row.Cells["DayOfWeek"].Value.ToString();
-
-                string price = row.Cells["Price"].Value.ToString();
-                
-                string hour = row.Cells["Hour"].Value.ToString();
-
-                textBox4.Text = teacherid;
-
-                textBox2.Text = name;
-
-                textBox8.Text = description;
-
-                textBox7.Text = dayofweek;
-
-                textBox5.Text = price;
-
-                textBox6.Text = hour;
-
-            }
-        }
+       
 
         private void deleteButton()
         {
-            try
-            {
-                if (dataGridView1.SelectedRows.Count != 1)
-                {
-                    MessageBox.Show("Please select one course to delete.");
-
-                    return;
-                }
+                
                 var selectedRow = dataGridView1.SelectedRows[0];
 
-                int courseId = int.Parse(selectedRow.Cells["ID"].Value.ToString());
+                int courseId = int.Parse(selectedRow.Cells[0].Value.ToString());
 
                 var course = dp.courses.SingleOrDefault(c => c.courseId == courseId);
 
@@ -682,11 +645,47 @@ namespace EducationalCenterFinal.Admin.CourseManage
                 {
                     MessageBox.Show("Course not found.");
                 }
-            }
-            catch (Exception ex)
+            
+           
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+
+            if (e.RowIndex >= 0)
             {
-                MessageBox.Show($"Error: {ex.Message}");
+                var row = dataGridView1.Rows[e.RowIndex];
+
+                
+                string courseid = row.Cells[0].Value.ToString();
+
+                string name = row.Cells[1].Value.ToString();
+
+                string description = row.Cells[2].Value.ToString();
+
+                string dayofweek = row.Cells[3].Value.ToString();
+
+                string price = row.Cells[7].Value.ToString();
+
+                string hour = row.Cells[5].Value.ToString();
+
+                string teacherid = row.Cells[6].Value.ToString();
+
+                textBox4.Text = teacherid;
+
+                textBox2.Text = name;
+
+                textBox8.Text = description;
+
+                textBox7.Text = dayofweek;
+
+                textBox5.Text = price;
+
+                textBox6.Text = hour;
+
             }
+
         }
     }
 }

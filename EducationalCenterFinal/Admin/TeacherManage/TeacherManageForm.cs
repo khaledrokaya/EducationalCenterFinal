@@ -94,7 +94,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             //لتغيير اسماء الاعمدة عن الا موجودة في DataBase
             var columnHeaders = new Dictionary<string, string>
             {
-                { "teacherId", "ID" },
+                { "teacherId","ID" },
 
                 { "userId", "U_ID" },
 
@@ -154,6 +154,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
         private void LoadTeacherData(int? filterId = null)
         {
             var teachers = dp.teachers.Select(t => new {
+
                 ID = t.teacherId,
 
                 U_ID = t.userId,
@@ -192,11 +193,11 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             textBox1_search.Location = new Point(ClientSize.Width - 320, 20);
 
             // DataGridView 
-            dataGridView1.Size = new Size(((ClientSize.Width - 44) * 3 / 4), ClientSize.Height - 120);
+            dataGridView1.Size = new Size(((ClientSize.Width - 44) * 3 / 4), ClientSize.Height - 150);
             dataGridView1.Location = new Point(20, 80);
 
             // panel 
-            panel1.Size = new Size(((ClientSize.Width - 250) * 1 / 4), ClientSize.Height - 120);
+            panel1.Size = new Size(((ClientSize.Width - 250) * 1 / 4), ClientSize.Height - 150);
             panel1.Location = new Point(ClientSize.Width - 340, 80);
 
             // Labels and TextBoxes 
@@ -445,7 +446,7 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             }
             else
             {
-                // لو البحث فارغ، يتم تحميل كل البيانات
+               
                 LoadTeacherData();
             }
         }
@@ -455,9 +456,9 @@ namespace EducationalCenterFinal.Admin.TeacherManage
 
             var result = dp.teachers
 
-        .Where(t => t.teacherId == teacherId)
+           .Where(t => t.teacherId == teacherId)
 
-        .Select(t => new {
+           .Select(t => new {
 
             ID = t.teacherId,
 
@@ -472,26 +473,15 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             Phone = t.teacherPhone,
 
            
-        })
-        .ToList();
-            // عرض البيانات في DataGridView
+           }).ToList();
+
             if (result.Any())
             {
                 dataGridView1.DataSource = result;
+
                 var teacher = result.FirstOrDefault();
-                if (teacher != null)
-                {
-                    textBox5.Text = teacher.U_ID.ToString();
 
-                    textBox1.Text = teacher.Name;
-
-                    textBox2.Text = teacher.Specialization;
-
-                    textBox3.Text = teacher.Email;
-
-                    textBox4.Text = teacher.Phone;
-                    
-                }
+              
                 var columnHeaders = new Dictionary<string, string>
                 {
                    { "teacherId", "ID" },
@@ -589,51 +579,11 @@ namespace EducationalCenterFinal.Admin.TeacherManage
             button1.Enabled = true;
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if (e.RowIndex >= 0)
-            {
-                var row = dataGridView1.Rows[e.RowIndex];
-                string id = row.Cells["ID"].Value.ToString();
-
-                string name = row.Cells["Name"].Value.ToString();
-
-                string email = row.Cells["Email"].Value.ToString();
-
-                string specialization = row.Cells["Specialization"].Value.ToString();
-
-                string phone = row.Cells["Phone"].Value.ToString();
-
-                string userID = row.Cells["U_ID"].Value.ToString();
-
-                textBox1.Text = id;
-
-                textBox5.Text = userID;
-
-                textBox1.Text = name;
-
-                textBox3.Text = specialization;
-
-                textBox2.Text = email;
-
-                textBox4.Text = phone;
-
-            }
-        }
-
         private void deleteButton()
         {
-            try
-            {
-                if (dataGridView1.SelectedRows.Count != 1)
-                {
-                    MessageBox.Show("Please select one teacher to delete.");
-
-                    return;
-                }
                 var selectedRow = dataGridView1.SelectedRows[0];
 
-                int teacherId = int.Parse(selectedRow.Cells["ID"].Value.ToString());
+                int teacherId = int.Parse(selectedRow.Cells[0].Value.ToString());
 
                 var teacher = dp.teachers.SingleOrDefault(t => t.teacherId == teacherId);
 
@@ -651,11 +601,43 @@ namespace EducationalCenterFinal.Admin.TeacherManage
                 {
                     MessageBox.Show("Teacher not found.");
                 }
-            }
-            catch (Exception ex)
+            
+        }
+
+        private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+
+            if (e.RowIndex >= 0)
             {
-                MessageBox.Show($"Error: {ex.Message}");
+                var row = dataGridView1.Rows[e.RowIndex];
+
+                string id = row.Cells[0].Value.ToString();
+
+                string userID = row.Cells[1].Value.ToString();
+
+                string name = row.Cells[2].Value.ToString();
+
+                string specialization = row.Cells[3].Value.ToString();
+
+                string email = row.Cells[4].Value.ToString();
+
+                string phone = row.Cells[5].Value.ToString();
+
+               
+
+                textBox5.Text = userID;
+
+                textBox1.Text = name;
+
+                textBox3.Text = specialization;
+
+                textBox2.Text = email;
+
+                textBox4.Text = phone;
+
             }
+
         }
     }
 }

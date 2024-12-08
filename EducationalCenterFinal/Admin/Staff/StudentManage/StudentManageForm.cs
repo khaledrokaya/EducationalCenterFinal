@@ -29,14 +29,16 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             dgvStudent.DataSource = dp.students.ToList();
             setUpForm();
             setUpComponents();
+            LoadStudentData();
+            customizeDataGridView();   
+           
 
             //Maximize window
             this.ClientSize = new System.Drawing.Size(Screen.PrimaryScreen.Bounds.Width, Screen.PrimaryScreen.Bounds.Height);
             this.MaximizeBox = false;
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-
             this.questionsToolStripMenuItem.Click += (sender, e) => this.QuestionsToolStripMenuItem_Click(role);
-
+           
             //Disable Admin Sections
             if (role == "staff")
             {
@@ -59,6 +61,20 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
                 courseMenuItem.Click += (sender, e) => CourseMenuItem_Click(course.courseId, role);
                 manageToolStripMenuItem.DropDownItems.Add(courseMenuItem);
             }
+
+            PictureBox pictureBox = new PictureBox
+            {
+                Image = Image.FromFile(Application.StartupPath.Remove(Application.StartupPath.Length - 10) + "\\Images\\search-interface-symbol.png"),
+                SizeMode = PictureBoxSizeMode.Normal,
+                Location = new Point(260,12),
+                Size = new Size(20,20)
+
+
+
+            };
+            txtSearch.Controls.Add(pictureBox);
+
+
         }
         private void setUpForm()
         {
@@ -69,15 +85,15 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
         private void setUpComponents()
         {
             //search
-            txtSearch.Size = new Size(((ClientSize.Width - 440) * 1 / 4), 40);
-            txtSearch.Location = new Point(ClientSize.Width - 320, 35);
+            txtSearch.Size = new Size(((ClientSize.Width - 400) * 1 / 4), 40);
+            txtSearch.Location = new Point(ClientSize.Width - 310, 35);
 
             // DataGridView 
-            dgvStudent.Size = new Size(((ClientSize.Width - 44) * 3 / 4), ClientSize.Height - 120);
+            dgvStudent.Size = new Size(((ClientSize.Width - 44) * 3 / 4), ClientSize.Height - 160);
             dgvStudent.Location = new Point(20, 90);
 
             // panel 
-            panel1.Size = new Size(((ClientSize.Width - 250) * 1 / 4), ClientSize.Height - 120);
+            panel1.Size = new Size(((ClientSize.Width - 250) * 1 / 4), ClientSize.Height - 160);
             panel1.Location = new Point(ClientSize.Width - 340, 90);
 
             // Labels and TextBoxes 
@@ -107,8 +123,8 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             // Buttons 
             addBtn.Location = new Point(20, 500);
             btnEdit.Location = new Point(170, 500);
-            resetBtn.Location = new Point(20, 600);
-            btnDelete.Location = new Point(170, 600);
+            btnDelete.Location = new Point(20, 600);
+            resetBtn.Location = new Point(170, 600);
 
             addBtn.Size = new Size(panel1.Width - 200, panel1.Height / 14);
             btnEdit.Size = new Size(panel1.Width - 200, panel1.Height / 14);
@@ -127,11 +143,16 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             //Editing the DataGrideView HeaderText and Hiding 4 Columns (attendences , enrollment , exams , payments )
             var columnHeaders = new Dictionary<string, string>
             {
-                { "studentId", "ID" },
+               { "studentId", "ID" },
+
                { "studentName", "Name" },
+
                { "studentEmail", "Email" },
+
                { "studentPhone", "Phone" },
-                { "studentAddress", "Address" }
+
+               { "studentAddress", "Address" }
+
             };
 
             foreach (var column in columnHeaders)
@@ -142,7 +163,7 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
                 }
             }
 
-            string[] hiddenColumns = { "attendances", "enrollments", "exams", "payments" };
+            string[] hiddenColumns = { "attendance", "enrollments", "exams", "payments" };
 
             foreach (var columnName in hiddenColumns)
             {
@@ -153,7 +174,9 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             }
 
             // Other DataGridView configurations 
+            
             dgvStudent.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvStudent.ScrollBars = ScrollBars.Both;
             dgvStudent.SelectionMode = DataGridViewSelectionMode.RowHeaderSelect;
             dgvStudent.ReadOnly = true; //  setting for readonly cells
 
@@ -173,6 +196,8 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             // General settings
             dgvStudent.EnableHeadersVisualStyles = false;
             dgvStudent.GridColor = Color.Black;
+
+            
 
             // Customize row headers
             dgvStudent.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
@@ -196,11 +221,38 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             {
                 column.DefaultCellStyle.SelectionBackColor = Color.FromArgb(236, 236, 236);
                 column.DefaultCellStyle.SelectionForeColor = Color.Black;
-                column.DefaultCellStyle.Font = new Font("Arial", 11F, FontStyle.Bold);
+                column.DefaultCellStyle.Font = new Font("Arial", 11F, FontStyle.Regular);
                 column.Width = column.HeaderText == "ID" ? 40 : ((dgvStudent.Width - dgvStudent.RowHeadersWidth - 40) / 4);
                 column.HeaderCell.Style.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
                 column.DefaultCellStyle.Alignment = column.HeaderText == "ID" ? DataGridViewContentAlignment.MiddleCenter : DataGridViewContentAlignment.MiddleLeft;
             }
+        }
+
+        private void LoadStudentData(int? filterId = null)
+        {
+            var student = dp.students.Select(s => new {
+
+                ID = s.studentId,
+
+                Name = s.studentName,
+
+                Email = s.studentEmail,
+
+                Phone = s.studentPhone,
+
+                Address = s.studentAddress,
+            });
+            if (filterId.HasValue)
+            {
+                student = student.Where(s => s.ID == filterId.Value);
+            }
+
+
+            dgvStudent.DataSource = student.ToList();
+
+            customizeDataGridView();
+
+
         }
 
         private void CourseMenuItem_Click(int CourseId, string role)
@@ -277,18 +329,17 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
 
         private void Search()
         {
-            if (int.TryParse(txtSearch.Text, out int id))
+
+            string searchTerm = txtSearch.Text.Trim();
+
+
+            if (int.TryParse(searchTerm, out int id))
             {
                 students s = dp.students.FirstOrDefault(x => x.studentId == id);
 
                 if (s != null)
                 {
-                    txtName.Text = s.studentName;
-                    txtEmail.Text = s.studentEmail;
-                    txtAddress.Text = s.studentAddress;
-                    txtPhone.Text = s.studentPhone;
-                    txtSearch.Enabled = false;
-                    addBtn.Enabled = false;
+                    searchByStudentId(id);
                 }
                 else
                 {
@@ -298,6 +349,37 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             else
             {
                 MessageBox.Show("Enter a Valid Student Id");
+                LoadStudentData();
+
+            }
+        }
+        private void searchByStudentId(int StudentId)
+        {
+
+            var result = dp.students
+
+           .Where(s => s.studentId == StudentId)
+
+           .Select(s => new {
+
+               ID = s.studentId,
+
+               Name = s.studentName,
+
+               Email = s.studentEmail,
+
+               Phone = s.studentPhone,
+
+               Address = s.studentAddress,
+
+
+           }).ToList();
+
+            if (result.Any())
+            {
+                dgvStudent.DataSource = result;
+
+                customizeDataGridView();
             }
         }
 
@@ -332,21 +414,33 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
         private void addStudent()
         {
             s.studentName = txtName.Text;
+
             s.studentEmail = txtEmail.Text;
+
             s.studentAddress = txtAddress.Text;
+
             s.studentPhone = txtPhone.Text;
+
             dp.students.Add(s);
+
             dp.SaveChanges();
-            dgvStudent.DataSource = dp.students.ToList();
+            
             MessageBox.Show("Student Saved Successfully");
+
+            dgvStudent.DataSource = dp.students.ToList();
+
+            LoadStudentData();
         }
 
         private void ClearStudentTextBox()
         {
 
             txtName.Text = "";
+
             txtEmail.Text = "";
+
             txtAddress.Text = "";
+
             txtPhone.Text = "";
 
         }
@@ -356,12 +450,19 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             if (txtSearch.Text != "Search By ID...")
             {
                 txtSearch.Enabled = true;
+
                 addBtn.Enabled = true;
+
                 txtSearch.Text = "";
+
                 SetPlaceholder();
 
             }
+
             ClearStudentTextBox();
+
+            LoadStudentData();
+
         }
 
         private void btnEdit_Click(object sender, EventArgs e)
@@ -370,15 +471,24 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             {
 
                 students s = dp.students.FirstOrDefault(x => x.studentId == id);
+
                 s.studentName = txtName.Text;
+
                 s.studentEmail = txtEmail.Text;
+
                 s.studentAddress = txtAddress.Text;
+
                 s.studentPhone = txtPhone.Text;
 
                 dp.SaveChanges();
-                MessageBox.Show("Data Edited Successfully");
+
                 dgvStudent.DataSource = dp.students.ToList();
+
                 Reset();
+
+                MessageBox.Show("Data Edited Successfully");
+
+                
             }
             else
             {
@@ -393,19 +503,68 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(txtSearch.Text, out int id))
+
+            var selectedRow = dgvStudent.SelectedRows[0];
+
+            int studentid = int.Parse(selectedRow.Cells["ID"].Value.ToString());
+
+            var student = dp.students.SingleOrDefault(s => s.studentId == studentid);
+
+            if (student != null)
             {
-                students s = dp.students.FirstOrDefault(x => x.studentId == id);
-                dp.students.Remove(s);
+
+                dp.students.Remove(student);
+
                 dp.SaveChanges();
-                MessageBox.Show("Data Deleted Successfully");
+
                 dgvStudent.DataSource = dp.students.ToList();
+
                 Reset();
+
+                MessageBox.Show("Data Deleted Successfully");
+               
+               
             }
             else
             {
                 MessageBox.Show("No Data to Delete");
             }
+        }
+       
+        private void dgvStudent_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            
+        }
+
+        private void dgvStudent_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+            if (e.RowIndex >= 0)
+            {
+                var row = dgvStudent.Rows[e.RowIndex];
+
+                string id = row.Cells["ID"].Value.ToString();
+
+                string Name = row.Cells["Name"].Value.ToString();
+
+                string Email = row.Cells["Email"].Value.ToString();
+
+                string Phone = row.Cells["Phone"].Value.ToString();
+
+                string Address = row.Cells["Address"].Value.ToString();
+
+
+                txtName.Text = Name;
+
+                txtEmail.Text = Email;
+
+                txtAddress.Text = Address;
+
+                txtPhone.Text = Phone;
+
+
+            }
+
         }
     }
 }

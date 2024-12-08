@@ -30,6 +30,7 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.teachersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.studentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -66,7 +67,7 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             // menuStrip1
             // 
             this.menuStrip1.BackColor = System.Drawing.Color.White;
-            this.menuStrip1.Font = new System.Drawing.Font("Arial Unicode MS", 10.8F);
+            this.menuStrip1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.8F);
             this.menuStrip1.ImageScalingSize = new System.Drawing.Size(20, 20);
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.teachersToolStripMenuItem,
@@ -78,47 +79,47 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             this.accountToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1665, 32);
+            this.menuStrip1.Size = new System.Drawing.Size(1665, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
             // teachersToolStripMenuItem
             // 
             this.teachersToolStripMenuItem.Name = "teachersToolStripMenuItem";
-            this.teachersToolStripMenuItem.Size = new System.Drawing.Size(90, 28);
+            this.teachersToolStripMenuItem.Size = new System.Drawing.Size(91, 26);
             this.teachersToolStripMenuItem.Text = "Teacher";
             this.teachersToolStripMenuItem.Click += new System.EventHandler(this.TeachersToolStripMenuItem_Click);
             // 
             // studentsToolStripMenuItem
             // 
             this.studentsToolStripMenuItem.Name = "studentsToolStripMenuItem";
-            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(86, 28);
+            this.studentsToolStripMenuItem.Size = new System.Drawing.Size(86, 26);
             this.studentsToolStripMenuItem.Text = "Student";
             // 
             // employeesToolStripMenuItem
             // 
             this.employeesToolStripMenuItem.Name = "employeesToolStripMenuItem";
-            this.employeesToolStripMenuItem.Size = new System.Drawing.Size(104, 28);
+            this.employeesToolStripMenuItem.Size = new System.Drawing.Size(103, 26);
             this.employeesToolStripMenuItem.Text = "Employee";
             this.employeesToolStripMenuItem.Click += new System.EventHandler(this.EmployeesToolStripMenuItem_Click);
             // 
             // coursesToolStripMenuItem
             // 
             this.coursesToolStripMenuItem.Name = "coursesToolStripMenuItem";
-            this.coursesToolStripMenuItem.Size = new System.Drawing.Size(82, 28);
+            this.coursesToolStripMenuItem.Size = new System.Drawing.Size(82, 26);
             this.coursesToolStripMenuItem.Text = "Course";
             this.coursesToolStripMenuItem.Click += new System.EventHandler(this.CoursesToolStripMenuItem_Click);
             // 
             // manageToolStripMenuItem
             // 
             this.manageToolStripMenuItem.Name = "manageToolStripMenuItem";
-            this.manageToolStripMenuItem.Size = new System.Drawing.Size(89, 28);
+            this.manageToolStripMenuItem.Size = new System.Drawing.Size(88, 26);
             this.manageToolStripMenuItem.Text = "Manage";
             // 
             // questionsToolStripMenuItem
             // 
             this.questionsToolStripMenuItem.Name = "questionsToolStripMenuItem";
-            this.questionsToolStripMenuItem.Size = new System.Drawing.Size(105, 28);
+            this.questionsToolStripMenuItem.Size = new System.Drawing.Size(105, 26);
             this.questionsToolStripMenuItem.Text = "Questions";
             // 
             // accountToolStripMenuItem
@@ -128,27 +129,27 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             this.forgetPasswordToolStripMenuItem,
             this.logoutToolStripMenuItem});
             this.accountToolStripMenuItem.Name = "accountToolStripMenuItem";
-            this.accountToolStripMenuItem.Size = new System.Drawing.Size(89, 28);
+            this.accountToolStripMenuItem.Size = new System.Drawing.Size(89, 26);
             this.accountToolStripMenuItem.Text = "Account";
             // 
             // createAccountToolStripMenuItem
             // 
             this.createAccountToolStripMenuItem.Name = "createAccountToolStripMenuItem";
-            this.createAccountToolStripMenuItem.Size = new System.Drawing.Size(230, 28);
+            this.createAccountToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
             this.createAccountToolStripMenuItem.Text = "Create Account";
             this.createAccountToolStripMenuItem.Click += new System.EventHandler(this.CreateAccountToolStripMenuItem_Click);
             // 
             // forgetPasswordToolStripMenuItem
             // 
             this.forgetPasswordToolStripMenuItem.Name = "forgetPasswordToolStripMenuItem";
-            this.forgetPasswordToolStripMenuItem.Size = new System.Drawing.Size(230, 28);
+            this.forgetPasswordToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
             this.forgetPasswordToolStripMenuItem.Text = "Forget Password";
             this.forgetPasswordToolStripMenuItem.Click += new System.EventHandler(this.ForgetPasswordToolStripMenuItem_Click);
             // 
             // logoutToolStripMenuItem
             // 
             this.logoutToolStripMenuItem.Name = "logoutToolStripMenuItem";
-            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(230, 28);
+            this.logoutToolStripMenuItem.Size = new System.Drawing.Size(230, 26);
             this.logoutToolStripMenuItem.Text = "Logout";
             this.logoutToolStripMenuItem.Click += new System.EventHandler(this.LogoutToolStripMenuItem_Click);
             // 
@@ -219,6 +220,7 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             // btnEdit
             // 
             this.btnEdit.BackColor = System.Drawing.Color.White;
+            this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnEdit.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEdit.Location = new System.Drawing.Point(173, 538);
             this.btnEdit.Name = "btnEdit";
@@ -231,6 +233,7 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             // resetBtn
             // 
             this.resetBtn.BackColor = System.Drawing.Color.White;
+            this.resetBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.resetBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.resetBtn.Location = new System.Drawing.Point(32, 585);
             this.resetBtn.Name = "resetBtn";
@@ -243,6 +246,7 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             // btnDelete
             // 
             this.btnDelete.BackColor = System.Drawing.Color.White;
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnDelete.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.Location = new System.Drawing.Point(172, 597);
             this.btnDelete.Name = "btnDelete";
@@ -285,6 +289,7 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             // addBtn
             // 
             this.addBtn.BackColor = System.Drawing.Color.White;
+            this.addBtn.Cursor = System.Windows.Forms.Cursors.Hand;
             this.addBtn.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.addBtn.Location = new System.Drawing.Point(33, 529);
             this.addBtn.Name = "addBtn";
@@ -313,6 +318,15 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             this.dgvStudent.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.dgvStudent.ColumnHeadersHeight = 35;
             this.dgvStudent.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing;
+            this.dgvStudent.Cursor = System.Windows.Forms.Cursors.Hand;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Century Gothic", 10.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dgvStudent.DefaultCellStyle = dataGridViewCellStyle1;
             this.dgvStudent.Location = new System.Drawing.Point(20, 114);
             this.dgvStudent.Name = "dgvStudent";
             this.dgvStudent.RowHeadersWidth = 40;
@@ -320,16 +334,17 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
             this.dgvStudent.RowTemplate.Height = 55;
             this.dgvStudent.Size = new System.Drawing.Size(1221, 637);
             this.dgvStudent.TabIndex = 2;
+            this.dgvStudent.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStudent_CellClick);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 22.2F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 24F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(12, 41);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(248, 46);
+            this.label5.Size = new System.Drawing.Size(185, 50);
             this.label5.TabIndex = 34;
-            this.label5.Text = "Student Data";
+            this.label5.Text = "Students";
             // 
             // txtSearch
             // 
