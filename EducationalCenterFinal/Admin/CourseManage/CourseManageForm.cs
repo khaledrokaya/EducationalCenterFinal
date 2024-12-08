@@ -103,6 +103,8 @@ namespace EducationalCenterFinal.Admin.CourseManage
 
                     { "WorkOn", "DayOfWeek" },
 
+                    { "beginning", "Beginning" },
+
                     { "NoOfHours", "Hour" },
 
                      {"teacherId","T_ID" },
@@ -124,7 +126,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
 
             //لاخفاء اعمدة معينة
 
-            string[] hiddenColumns = { "beginning", "attendance", "enrollments", "exams", "payments", "teachers" };
+            string[] hiddenColumns = { "attendance", "enrollments", "exams", "payments", "teachers" };
 
             foreach (var columnName in hiddenColumns)
             {
@@ -169,6 +171,8 @@ namespace EducationalCenterFinal.Admin.CourseManage
                 Description = c.Description,
 
                 DayOfWeek=c.WorkOn,
+
+                Beginning=c.beginning,
 
                 Hour = c.NoOfHours,
 
@@ -500,6 +504,8 @@ namespace EducationalCenterFinal.Admin.CourseManage
            
                DayOfWeek = c.WorkOn,
 
+               Beginning=c.beginning,
+
                Hour = c.NoOfHours,
 
                T_ID = c.teacherId,
@@ -525,17 +531,18 @@ namespace EducationalCenterFinal.Admin.CourseManage
                     { "courseId", "ID" },
 
                     { "courseName", "Name" },
-
+                    
                     { "Description", "Description" },
-
+                    
                     { "WorkOn", "DayOfWeek" },
-
+                    
+                    { "beginning", "Beginning" },
+                    
                     { "NoOfHours", "Hour" },
-
+                    
                      {"teacherId","T_ID" },
-
+                    
                     { "price", "Price" },
-
 
                 };
                 
@@ -665,6 +672,8 @@ namespace EducationalCenterFinal.Admin.CourseManage
                 string description = row.Cells[2].Value.ToString();
 
                 string dayofweek = row.Cells[3].Value.ToString();
+
+                string begining = row.Cells[4].Value.ToString();
 
                 string price = row.Cells[7].Value.ToString();
 
