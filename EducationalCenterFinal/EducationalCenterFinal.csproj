@@ -115,6 +115,11 @@
     <Compile Include="C__EFMigrationsHistory.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="db10692DataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>db10692DataSet.xsd</DependentUpon>
+    </Compile>
     <Compile Include="enrollments.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -252,6 +257,17 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Model1.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="db10692DataSet.xsc">
+      <DependentUpon>db10692DataSet.xsd</DependentUpon>
+    </None>
+    <None Include="db10692DataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>db10692DataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="db10692DataSet.xss">
+      <DependentUpon>db10692DataSet.xsd</DependentUpon>
+    </None>
     <None Include="Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </None>
