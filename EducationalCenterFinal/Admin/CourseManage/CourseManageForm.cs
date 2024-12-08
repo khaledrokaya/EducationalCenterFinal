@@ -227,46 +227,51 @@ namespace EducationalCenterFinal.Admin.CourseManage
             label1.Size = new Size(((ClientSize.Width - 300) * 1 / 4), ClientSize.Height - 600);
             label1.Location = new Point(20, 25);
 
-            label2.Location = new Point(20, 30);
-            label2.Size = new Size(panel1.Width - 120, panel1.Height / 8);
-            textBox2.Location = new Point(20, label2.Height + 40);
-            textBox2.Size = new Size(panel1.Width - 55, panel1.Height / 18);
+            label2.Location = new Point(25, 20);
+            label2.Size = new Size(panel1.Width - 120, panel1.Height / 10);
+            textBox2.Location = new Point(25, label2.Height + 33);
+            textBox2.Size = new Size(panel1.Width - 55, panel1.Height / 20);
 
-            label7.Location = new Point(20, 120);
-            label7.Size = new Size(panel1.Width - 120, panel1.Height / 8);
-            textBox8.Location = new Point(20, 155);
-            textBox8.Size = new Size(panel1.Width - 55, panel1.Height / 18);
-
-            label6.Location = new Point(20, 210);
-            label6.Size = new Size(panel1.Width - 120, panel1.Height / 8);
-            textBox7.Location = new Point(20, 245);
-            textBox7.Size = new Size(panel1.Width - 55, panel1.Height / 18);
-
-            label5.Location = new Point(20, 300);
-            label5.Size = new Size(panel1.Width - 120, panel1.Height / 8);
-            textBox5.Location = new Point(20, 335);
-            textBox5.Size = new Size(panel1.Width - 55, panel1.Height / 18);
-
-            label4.Location = new Point(20, 390);
-            label4.Size = new Size(panel1.Width - 120, panel1.Height / 8);
-            textBox6.Location = new Point(20, 425);
-            textBox6.Size = new Size(panel1.Width - 55, panel1.Height / 18);
-
-            label3.Location = new Point(20, 480);
-            label3.Size = new Size(panel1.Width - 120, panel1.Height / 8);
-            textBox4.Location = new Point(20, 515);
-            textBox4.Size = new Size(panel1.Width - 55, panel1.Height / 18);
-
+            label7.Location = new Point(25, 100);
+            label7.Size = new Size(panel1.Width - 120, panel1.Height / 10);
+            textBox8.Location = new Point(25, 133);
+            textBox8.Size = new Size(panel1.Width - 55, panel1.Height / 20);
+            
+            label6.Location = new Point(25, 180);
+            label6.Size = new Size(panel1.Width - 120, panel1.Height / 10);
+            textBox7.Location = new Point(25, 213);
+            textBox7.Size = new Size(panel1.Width - 55, panel1.Height / 20);
+            
+            label5.Location = new Point(25, 260);
+            label5.Size = new Size(panel1.Width - 120, panel1.Height / 10);
+            textBox5.Location = new Point(25, 293);
+            textBox5.Size = new Size(panel1.Width - 55, panel1.Height / 20);
+            
+            label4.Location = new Point(25, 340);
+            label4.Size = new Size(panel1.Width - 120, panel1.Height / 10);
+            textBox6.Location = new Point(25, 373);
+            textBox6.Size = new Size(panel1.Width - 55, panel1.Height / 20);
+            
+            label3.Location = new Point(25, 420);
+            label3.Size = new Size(panel1.Width - 120, panel1.Height / 10);
+            textBox4.Location = new Point(25, 453);
+            textBox4.Size = new Size(panel1.Width - 55, panel1.Height / 20);
+            
+            label8.Location = new Point(25,500);
+            label8.Size = new Size(panel1.Width - 120, panel1.Height / 10);
+            textBox1.Location = new Point(25, 533);                    
+            textBox1.Size = new Size(panel1.Width - 55, panel1.Height /20);
+            
             // Buttons 
-            button1.Location = new Point(20, 590);
-            button2.Location = new Point(170, 590);
-            button4.Location = new Point(20, 650);
+            button1.Location = new Point(25, 580);
+            button2.Location = new Point(170, 580);
+            button4.Location = new Point(25, 650);
             button3.Location = new Point(170, 650);
 
-            button1.Size = new Size(panel1.Width - 200, panel1.Height / 14);
-            button2.Size = new Size(panel1.Width - 200, panel1.Height / 14);
-            button4.Size = new Size(panel1.Width - 200, panel1.Height / 14);
-            button3.Size = new Size(panel1.Width - 200, panel1.Height / 14);
+            button1.Size = new Size(panel1.Width - 210, panel1.Height / 14);
+            button2.Size = new Size(panel1.Width - 210, panel1.Height / 14);
+            button4.Size = new Size(panel1.Width - 210, panel1.Height / 14);
+            button3.Size = new Size(panel1.Width - 210, panel1.Height / 14);
 
         }
         private void CourseMenuItem_Click(int CourseId, string role)
@@ -367,7 +372,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text == "" || textBox8.Text == "" || textBox7.Text == "" || textBox5.Text == "" || textBox6.Text == ""||textBox4.Text=="")
+            if (textBox2.Text == "" || textBox8.Text == "" || textBox7.Text == "" || textBox5.Text == "" || textBox6.Text == ""||textBox4.Text==""||textBox1.Text=="")
             {
                 MessageBox.Show("Enter Data First.");
                 return;
@@ -391,6 +396,18 @@ namespace EducationalCenterFinal.Admin.CourseManage
 
             c_add.NoOfHours = decimal.Parse(textBox6.Text);
 
+            if (TimeSpan.TryParse(textBox1.Text, out TimeSpan beginningTime))
+            {
+                if (beginningTime >= TimeSpan.Zero && beginningTime < TimeSpan.FromHours(24))
+                {
+                    c_add.beginning = beginningTime; 
+                }
+                else
+                {
+                    MessageBox.Show("Begining  is between 00:00:00  and  23:59:59");
+                    return; 
+                }
+            }
             dp.courses.Add(c_add);
 
             dp.SaveChanges();
@@ -418,6 +435,8 @@ namespace EducationalCenterFinal.Admin.CourseManage
 
             textBox4.Text = "";
 
+            textBox1.Text = "";
+
             txtSearch.Text = "";
             if (txtSearch.Text == "")
             {
@@ -443,6 +462,8 @@ namespace EducationalCenterFinal.Admin.CourseManage
                     x.Description = textBox8.Text;
 
                     x.WorkOn = textBox7.Text;
+
+                    x.beginning = TimeSpan.Parse(textBox1.Text);
 
                     x.price = decimal.Parse(textBox5.Text);
 
@@ -631,9 +652,9 @@ namespace EducationalCenterFinal.Admin.CourseManage
 
         private void deleteButton()
         {
-                
-                var selectedRow = dataGridView1.SelectedRows[0];
 
+
+                var selectedRow = dataGridView1.SelectedRows[0];
                 int courseId = int.Parse(selectedRow.Cells[0].Value.ToString());
 
                 var course = dp.courses.SingleOrDefault(c => c.courseId == courseId);
@@ -692,6 +713,8 @@ namespace EducationalCenterFinal.Admin.CourseManage
                 textBox5.Text = price;
 
                 textBox6.Text = hour;
+
+                textBox1.Text = begining;
 
             }
 
