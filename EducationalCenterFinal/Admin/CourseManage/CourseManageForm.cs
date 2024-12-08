@@ -398,16 +398,24 @@ namespace EducationalCenterFinal.Admin.CourseManage
 
             if (TimeSpan.TryParse(textBox1.Text, out TimeSpan beginningTime))
             {
-                if (beginningTime >= TimeSpan.Zero && beginningTime < TimeSpan.FromHours(24))
+               
+                if (beginningTime >= TimeSpan.FromHours(8) && beginningTime <= TimeSpan.FromHours(22))
                 {
-                    c_add.beginning = beginningTime; 
+                    c_add.beginning = beginningTime;
                 }
                 else
                 {
-                    MessageBox.Show("Begining  is between 00:00:00  and  23:59:59");
-                    return; 
+                    MessageBox.Show("Beginning time must be between 08:00:00 and 22:00:00.");
+                    return;
                 }
+               
             }
+            else
+            {
+                MessageBox.Show("Invalid Format : Beginning time must be between 08:00:00 and 22:00:00.");
+                return;
+            }
+ 
             dp.courses.Add(c_add);
 
             dp.SaveChanges();
@@ -639,7 +647,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
         {
             deleteButton();
 
-
+            resetForm();
         }
 
         private void button3_Click(object sender, EventArgs e)
