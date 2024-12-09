@@ -1,4 +1,5 @@
-# **Educational Center Desktop App**
+# Educational Center Desktop App
+This is a desktop application designed to manage the activities of an educational center. The application includes a comprehensive Admin Dashboard that handles various functionalities such as Teacher Management, Course Management, Student Management, and more. Additionally, it provides a Q&A section for student-teacher interaction and tracking attendance and grades.
 
 ---
 
