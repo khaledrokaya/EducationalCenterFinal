@@ -12,7 +12,7 @@ This is a desktop application designed to manage the activities of an educationa
 - **Staff Management**: Manage staff data, including adding, deleting, and updating staff members 🧑‍💼.
 - **Attendance Tracking**: Monitor class attendance for students 📅.
 - **Grade Management**: Manage and track historical grade records for students 📈.
-- **Q&A Section**: Communication between students and teachers 💬 (See below for details).
+- **Q&A Section**: Communication between students and teachers .
 
 ### Website (Student Interaction)
 - **Frontend**: The website is built with **HTML**, **CSS**, and **JavaScript** to offer an interactive experience for students 🌐.
