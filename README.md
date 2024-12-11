@@ -54,11 +54,11 @@ This is a desktop application designed to manage the activities of an educationa
 
 ## **Links**
 
-- [Art Done by Khaled Rokaya(الرسمه يعني)](https://view.ziteboard.com/shared/30110024003714)
+- [Art Done by Khaled Rokaya](https://view.ziteboard.com/shared/30110024003714)
 - [Project workflow](https://drive.google.com/drive/folders/1hqS885dnlGvlmQp3A7qeJkqHeye3cNoc?usp=sharing) __Video__
 - [DataBase Schema](https://drawsql.app/teams/open-source-project/diagrams/test)
 - [How To Install Sql Server & SSMS](https://www.youtube.com/watch?v=4o3sy5E0wA4) __Video__
-- [SQL Code](https://raw.githubusercontent.com/khaledrokaya/topics/refs/heads/main/SQLQuery3.sql?token=GHSAT0AAAAAACZFYZMP6PLAZ5L6BATDFR7QZZBIJUA)
+- [SQL Code](https://drive.google.com/file/d/1bOo4sRnInZieRNCLHsjEZDGERtBj785p/view?usp=drive_link)
 - [How To Start With The Project](https://drive.google.com/drive/folders/1hqS885dnlGvlmQp3A7qeJkqHeye3cNoc?usp=sharing) __Video__
 - [How To Deal With Git In VS](https://www.youtube.com/watch?v=8zSVvTQXSIc) __Video__
 - [Design On Figma](https://www.figma.com/design/wSvhYSi9lLCIPAjtTiFvmR/EducationalCenterDesgin?m=auto&t=ZC6e1sLvgoBVYwXI-1)
