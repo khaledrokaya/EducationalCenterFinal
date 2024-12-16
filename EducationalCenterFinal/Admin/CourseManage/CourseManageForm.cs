@@ -239,8 +239,8 @@ namespace EducationalCenterFinal.Admin.CourseManage
             
             label6.Location = new Point(25, 180);
             label6.Size = new Size(panel1.Width - 120, panel1.Height / 10);
-            comboBox1.Location = new Point(25, 213);
-            comboBox1.Size = new Size(panel1.Width - 55, panel1.Height / 20);
+            textBox7.Location = new Point(25, 213);
+            textBox7.Size = new Size(panel1.Width - 55, panel1.Height / 20);
             
             label5.Location = new Point(25, 260);
             label5.Size = new Size(panel1.Width - 120, panel1.Height / 10);
@@ -355,7 +355,6 @@ namespace EducationalCenterFinal.Admin.CourseManage
         }
         private void CourseManageForm_Load(object sender, EventArgs e)
         {
-            
             this.ActiveControl = label1;
 
             SearchPlaceHolder();
@@ -373,7 +372,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
 
         private void button1_Click(object sender, EventArgs e)
         {
-            if (textBox2.Text == "" || textBox8.Text == "" || comboBox1.Text == "" || textBox5.Text == "" || textBox6.Text == ""||textBox4.Text==""||textBox1.Text=="")
+            if (textBox2.Text == "" || textBox8.Text == "" || textBox7.Text == "" || textBox5.Text == "" || textBox6.Text == ""||textBox4.Text==""||textBox1.Text=="")
             {
                 MessageBox.Show("Enter Data First.");
                 return;
@@ -391,7 +390,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
 
             c_add.Description = textBox8.Text;
 
-            c_add.WorkOn = comboBox1.Text;
+            c_add.WorkOn = textBox7.Text;
 
             c_add.price = decimal.Parse(textBox5.Text);
 
@@ -436,7 +435,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
 
             textBox8.Text = "";
 
-            comboBox1.Text = "";
+            textBox7.Text = "";
 
             textBox5.Text = "";
 
@@ -470,7 +469,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
 
                     x.Description = textBox8.Text;
 
-                    x.WorkOn = comboBox1.Text;
+                    x.WorkOn = textBox7.Text;
 
                     x.beginning = TimeSpan.Parse(textBox1.Text);
 
@@ -717,7 +716,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
 
                 textBox8.Text = description;
 
-                comboBox1.Text = dayofweek;
+                textBox7.Text = dayofweek;
 
                 textBox5.Text = price;
 

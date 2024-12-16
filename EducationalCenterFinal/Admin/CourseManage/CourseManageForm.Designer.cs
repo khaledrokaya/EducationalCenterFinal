@@ -30,7 +30,6 @@ namespace EducationalCenterFinal.Admin.CourseManage
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.teachersToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.studentsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -45,7 +44,6 @@ namespace EducationalCenterFinal.Admin.CourseManage
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
@@ -53,6 +51,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
             this.button2 = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.textBox8 = new System.Windows.Forms.TextBox();
+            this.textBox7 = new System.Windows.Forms.TextBox();
             this.textBox6 = new System.Windows.Forms.TextBox();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.textBox4 = new System.Windows.Forms.TextBox();
@@ -64,19 +63,9 @@ namespace EducationalCenterFinal.Admin.CourseManage
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.open_Source_Education_CenterDataSet = new EducationalCenterFinal.Open_Source_Education_CenterDataSet();
-            this.openSourceEducationCenterDataSetBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.entityCommand1 = new System.Data.Entity.Core.EntityClient.EntityCommand();
-            this.db10692DataSet = new EducationalCenterFinal.db10692DataSet();
-            this.coursesBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.coursesTableAdapter = new EducationalCenterFinal.db10692DataSetTableAdapters.coursesTableAdapter();
             this.menuStrip1.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.open_Source_Education_CenterDataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.openSourceEducationCenterDataSetBindingSource)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.db10692DataSet)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.coursesBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -194,7 +183,6 @@ namespace EducationalCenterFinal.Admin.CourseManage
             // panel1
             // 
             this.panel1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(118)))), ((int)(((byte)(41)))), ((int)(((byte)(82)))));
-            this.panel1.Controls.Add(this.comboBox1);
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label8);
             this.panel1.Controls.Add(this.button4);
@@ -202,6 +190,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
             this.panel1.Controls.Add(this.button2);
             this.panel1.Controls.Add(this.button1);
             this.panel1.Controls.Add(this.textBox8);
+            this.panel1.Controls.Add(this.textBox7);
             this.panel1.Controls.Add(this.textBox6);
             this.panel1.Controls.Add(this.textBox5);
             this.panel1.Controls.Add(this.textBox4);
@@ -218,34 +207,11 @@ namespace EducationalCenterFinal.Admin.CourseManage
             this.panel1.Size = new System.Drawing.Size(329, 687);
             this.panel1.TabIndex = 5;
             // 
-            // comboBox1
-            // 
-            this.comboBox1.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.comboBox1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.comboBox1.DropDownHeight = 130;
-            this.comboBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.IntegralHeight = false;
-            this.comboBox1.Items.AddRange(new object[] {
-            "fri",
-            "mon",
-            "sat",
-            "sun",
-            "thu",
-            "tue",
-            "wed"});
-            this.comboBox1.Location = new System.Drawing.Point(19, 196);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(296, 33);
-            this.comboBox1.Sorted = true;
-            this.comboBox1.TabIndex = 7;
-            // 
             // textBox1
             // 
             this.textBox1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox1.Location = new System.Drawing.Point(19, 496);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -323,18 +289,29 @@ namespace EducationalCenterFinal.Admin.CourseManage
             // 
             this.textBox8.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox8.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox8.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox8.Location = new System.Drawing.Point(18, 121);
             this.textBox8.Multiline = true;
             this.textBox8.Name = "textBox8";
             this.textBox8.Size = new System.Drawing.Size(297, 40);
             this.textBox8.TabIndex = 12;
             // 
+            // textBox7
+            // 
+            this.textBox7.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.textBox7.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textBox7.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox7.Location = new System.Drawing.Point(18, 196);
+            this.textBox7.Multiline = true;
+            this.textBox7.Name = "textBox7";
+            this.textBox7.Size = new System.Drawing.Size(297, 40);
+            this.textBox7.TabIndex = 11;
+            // 
             // textBox6
             // 
             this.textBox6.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox6.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox6.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox6.Location = new System.Drawing.Point(18, 346);
             this.textBox6.Multiline = true;
             this.textBox6.Name = "textBox6";
@@ -345,7 +322,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
             // 
             this.textBox5.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox5.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox5.Location = new System.Drawing.Point(18, 271);
             this.textBox5.Multiline = true;
             this.textBox5.Name = "textBox5";
@@ -356,7 +333,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
             // 
             this.textBox4.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox4.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox4.Location = new System.Drawing.Point(18, 421);
             this.textBox4.Multiline = true;
             this.textBox4.Name = "textBox4";
@@ -422,7 +399,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
             // 
             this.textBox2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.textBox2.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.textBox2.Location = new System.Drawing.Point(18, 40);
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
@@ -462,38 +439,6 @@ namespace EducationalCenterFinal.Admin.CourseManage
             this.dataGridView1.TabIndex = 6;
             this.dataGridView1.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellClick);
             // 
-            // open_Source_Education_CenterDataSet
-            // 
-            this.open_Source_Education_CenterDataSet.DataSetName = "Open_Source_Education_CenterDataSet";
-            this.open_Source_Education_CenterDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // openSourceEducationCenterDataSetBindingSource
-            // 
-            this.openSourceEducationCenterDataSetBindingSource.DataSource = this.open_Source_Education_CenterDataSet;
-            this.openSourceEducationCenterDataSetBindingSource.Position = 0;
-            // 
-            // entityCommand1
-            // 
-            this.entityCommand1.CommandTimeout = 0;
-            this.entityCommand1.CommandTree = null;
-            this.entityCommand1.Connection = null;
-            this.entityCommand1.EnablePlanCaching = true;
-            this.entityCommand1.Transaction = null;
-            // 
-            // db10692DataSet
-            // 
-            this.db10692DataSet.DataSetName = "db10692DataSet";
-            this.db10692DataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // coursesBindingSource
-            // 
-            this.coursesBindingSource.DataMember = "courses";
-            this.coursesBindingSource.DataSource = this.db10692DataSet;
-            // 
-            // coursesTableAdapter
-            // 
-            this.coursesTableAdapter.ClearBeforeFill = true;
-            // 
             // CourseManageForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -516,10 +461,6 @@ namespace EducationalCenterFinal.Admin.CourseManage
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.open_Source_Education_CenterDataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.openSourceEducationCenterDataSetBindingSource)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.db10692DataSet)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.coursesBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -543,6 +484,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
         private Panel panel1;
         private Label label2;
         private TextBox textBox8;
+        private TextBox textBox7;
         private TextBox textBox6;
         private TextBox textBox5;
         private TextBox textBox4;
@@ -559,12 +501,5 @@ namespace EducationalCenterFinal.Admin.CourseManage
         private DataGridView dataGridView1;
         private TextBox textBox1;
         private Label label8;
-        private ComboBox comboBox1;
-        private Open_Source_Education_CenterDataSet open_Source_Education_CenterDataSet;
-        private BindingSource openSourceEducationCenterDataSetBindingSource;
-        private System.Data.Entity.Core.EntityClient.EntityCommand entityCommand1;
-        private db10692DataSet db10692DataSet;
-        private BindingSource coursesBindingSource;
-        private db10692DataSetTableAdapters.coursesTableAdapter coursesTableAdapter;
     }
 }
