@@ -450,11 +450,8 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
 
                 MessageBox.Show("Student Saved Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                dgvStudent.DataSource = dp.students.ToList();
-                txtName.Clear();
-                txtEmail.Clear();
-                txtAddress.Clear();
-                txtPhone.Clear();
+                LoadStudentData();
+                Reset();
                 txtName.Focus();
             }
             catch (Exception ex)
@@ -545,7 +542,7 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
 
                         dp.SaveChanges();
 
-                        dgvStudent.DataSource = dp.students.ToList();
+                        LoadStudentData();
                         Reset();
 
                         MessageBox.Show("Data Edited Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
