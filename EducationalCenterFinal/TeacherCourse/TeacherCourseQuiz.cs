@@ -18,7 +18,6 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             SubmitButton.Text = "Mark Quiz";
             this.Text = SubmitButton.Text;
             SubmitButton.Click += (_sender, _e) => SubmitButton_Click(dp, CourseID);
-            button1.Click += (_sender, _e) => button1_Click(dp, CourseID);
         }
 
         private void SearchBoxPlaceHolder()
@@ -102,8 +101,9 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
                 if (isEnrolled)
                 {
                     var today = DateTime.Today;
+                    var quiznumber = $"{quizNumber}-{studentId}";
                     var existingQuiz = dp.exams
-                        .FirstOrDefault(q => q.studentId == studentId && q.courseId == CourseID && q.examName == quizNumber.ToString() && DbFunctions.TruncateTime(q.examDate) == today);
+                        .Where(q => q.studentId == studentId && q.courseId == CourseID && q.examName == quiznumber).FirstOrDefault();
 
                     try
                     {
@@ -113,7 +113,7 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
                             {
                                 studentId = studentId,
                                 courseId = CourseID,
-                                examName = quizNumber.ToString(),
+                                examName = $"{quizNumber}-{studentId}",
                                 examDate = DateTime.Now,
                                 score = score
                             });
@@ -139,58 +139,6 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             else
             {
                 MessageBox.Show("Please enter a valid Student ID, Quiz Number, and Score.");
-            }
-        }
-
-        private void button1_Click(EducationCenterEntities dp, int CourseID)
-        {
-            var result = MessageBox.Show(
-                "Are you sure you want to mark all students for the quiz today?",
-                "Confirm Action",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            );
-            if (result == DialogResult.Yes)
-            {
-                try
-                {
-                    var today = DateTime.Today;
-                    var enrolledStudents = dp.enrollments
-                        .Where(e => e.courseId == CourseID)
-                        .Select(e => e.studentId)
-                        .ToList();
-
-                    foreach (var studentId in enrolledStudents)
-                    {
-                        if (int.TryParse(quizNumberBox.Text, out int quizNumber) && decimal.TryParse(scoreBox.Text, out decimal score))
-                        {
-                            var existingQuiz = dp.exams
-                                .FirstOrDefault(q => q.studentId == studentId && q.courseId == CourseID && q.examName == quizNumber.ToString() && DbFunctions.TruncateTime(q.examDate) == today);
-
-                            if (existingQuiz == null)
-                            {
-                                dp.exams.Add(new exams
-                                {
-                                    studentId = studentId,
-                                    courseId = CourseID,
-                                    examName = quizNumber.ToString(),
-                                    examDate = DateTime.Now,
-                                    score = score
-                                });
-                            }
-                        }
-                    }
-                    dp.SaveChanges();
-                    MessageBox.Show("All students have been marked for the quiz today.");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"An error occurred while marking quizzes: {ex.Message}");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Operation cancelled. No changes were made.");
             }
         }
     }

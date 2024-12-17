@@ -413,24 +413,56 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
 
         private void addStudent()
         {
-            s.studentName = txtName.Text;
+            try
+            {
+                try
+                {
+                    var emailAddress = new System.Net.Mail.MailAddress(txtEmail.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("Please enter a valid email address.", "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-            s.studentEmail = txtEmail.Text;
+                if (!System.Text.RegularExpressions.Regex.IsMatch(txtPhone.Text, @"^\d{11}$"))
+                {
+                    MessageBox.Show("Phone number must be exactly 11 digits.", "Invalid Phone Number", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-            s.studentAddress = txtAddress.Text;
+                if (dp.students.Any(s => s.studentEmail == txtEmail.Text))
+                {
+                    MessageBox.Show("A student with this email already exists.", "Duplicate Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
 
-            s.studentPhone = txtPhone.Text;
+                var newStudent = new students
+                {
+                    studentName = txtName.Text.Trim(),
+                    studentEmail = txtEmail.Text.Trim(),
+                    studentAddress = txtAddress.Text.Trim(),
+                    studentPhone = txtPhone.Text.Trim()
+                };
 
-            dp.students.Add(s);
+                dp.students.Add(newStudent);
+                dp.SaveChanges();
 
-            dp.SaveChanges();
-            
-            MessageBox.Show("Student Saved Successfully");
+                MessageBox.Show("Student Saved Successfully.", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-            dgvStudent.DataSource = dp.students.ToList();
-
-            LoadStudentData();
+                dgvStudent.DataSource = dp.students.ToList();
+                txtName.Clear();
+                txtEmail.Clear();
+                txtAddress.Clear();
+                txtPhone.Clear();
+                txtName.Focus();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
+
 
         private void ClearStudentTextBox()
         {
@@ -467,34 +499,73 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
 
         private void btnEdit_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(txtSearch.Text, out int id))
+            try
             {
+                if (string.IsNullOrWhiteSpace(txtName.Text) ||
+                    string.IsNullOrWhiteSpace(txtEmail.Text) ||
+                    string.IsNullOrWhiteSpace(txtAddress.Text) ||
+                    string.IsNullOrWhiteSpace(txtPhone.Text))
+                {
+                    MessageBox.Show("All fields are required. Please fill in all details.", "Validation Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                students s = dp.students.FirstOrDefault(x => x.studentId == id);
+                try
+                {
+                    var emailAddress = new System.Net.Mail.MailAddress(txtEmail.Text);
+                }
+                catch
+                {
+                    MessageBox.Show("Please enter a valid email address.", "Invalid Email", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                s.studentName = txtName.Text;
+                if (!System.Text.RegularExpressions.Regex.IsMatch(txtPhone.Text, @"^\d{11}$"))
+                {
+                    MessageBox.Show("Phone number must be exactly 11 digits.", "Invalid Phone Number", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                s.studentEmail = txtEmail.Text;
+                if (int.TryParse(txtSearch.Text, out int id))
+                {
+                    students s = dp.students.FirstOrDefault(x => x.studentId == id);
 
-                s.studentAddress = txtAddress.Text;
+                    if (s != null)
+                    {
+                        if (dp.students.Any(st => st.studentEmail == txtEmail.Text && st.studentId != id))
+                        {
+                            MessageBox.Show("A student with this email already exists.", "Duplicate Email", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            return;
+                        }
 
-                s.studentPhone = txtPhone.Text;
+                        s.studentName = txtName.Text.Trim();
+                        s.studentEmail = txtEmail.Text.Trim();
+                        s.studentAddress = txtAddress.Text.Trim();
+                        s.studentPhone = txtPhone.Text.Trim();
 
-                dp.SaveChanges();
+                        dp.SaveChanges();
 
-                dgvStudent.DataSource = dp.students.ToList();
+                        dgvStudent.DataSource = dp.students.ToList();
+                        Reset();
 
-                Reset();
-
-                MessageBox.Show("Data Edited Successfully");
-
-                
+                        MessageBox.Show("Data Edited Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Student not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a valid student ID to search.", "Invalid Input", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("No Data to Edit");
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void resetBtn_Click(object sender, EventArgs e)
         {
@@ -503,34 +574,45 @@ namespace EducationalCenterFinal.Admin.Staff.StudentManage
 
         private void btnDelete_Click(object sender, EventArgs e)
         {
-
-            var selectedRow = dgvStudent.SelectedRows[0];
-
-            int studentid = int.Parse(selectedRow.Cells["ID"].Value.ToString());
-
-            var student = dp.students.SingleOrDefault(s => s.studentId == studentid);
-
-            if (student != null)
+            try
             {
+                if (dgvStudent.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Please select a student to delete.", "Selection Error", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
 
-                dp.students.Remove(student);
+                var selectedRow = dgvStudent.SelectedRows[0];
+                int studentId = int.Parse(selectedRow.Cells["ID"].Value.ToString());
 
-                dp.SaveChanges();
+                var student = dp.students.SingleOrDefault(s => s.studentId == studentId);
 
-                dgvStudent.DataSource = dp.students.ToList();
+                if (student != null)
+                {
+                    var confirmResult = MessageBox.Show("Are you sure you want to delete this student?", "Confirm Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-                Reset();
+                    if (confirmResult == DialogResult.Yes)
+                    {
+                        dp.students.Remove(student);
+                        dp.SaveChanges();
 
-                MessageBox.Show("Data Deleted Successfully");
-               
-               
+                        dgvStudent.DataSource = dp.students.ToList();
+                        Reset();
+
+                        MessageBox.Show("Data Deleted Successfully", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Student not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("No Data to Delete");
+                MessageBox.Show($"Error: {ex.Message}", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-       
+
         private void dgvStudent_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             

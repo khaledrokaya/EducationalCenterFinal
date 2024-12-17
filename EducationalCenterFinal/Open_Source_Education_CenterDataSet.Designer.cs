@@ -46,27 +46,27 @@ namespace EducationalCenterFinal {
         
         private usersDataTable tableusers;
         
-        private global::System.Data.DataRelation relationFK__attendanc__cours__5AEE82B9;
+        private global::System.Data.DataRelation relationFK_attendance_courseId;
         
-        private global::System.Data.DataRelation relationFK__attendanc__stude__59FA5E80;
+        private global::System.Data.DataRelation relationFK_attendance_studentId;
         
-        private global::System.Data.DataRelation relationFK__courses__teacher__5165187F;
+        private global::System.Data.DataRelation relationFK_courses_teacherId;
         
-        private global::System.Data.DataRelation relationFK__enrollmen__cours__6383C8BA;
+        private global::System.Data.DataRelation relationFK_enrollments_courseId;
         
-        private global::System.Data.DataRelation relationFK__enrollmen__stude__628FA481;
+        private global::System.Data.DataRelation relationFK_enrollments_studentId;
         
-        private global::System.Data.DataRelation relationFK__exams__courseId__5535A963;
+        private global::System.Data.DataRelation relationFK_exams_courseId;
         
-        private global::System.Data.DataRelation relationFK__exams__studentId__5629CD9C;
+        private global::System.Data.DataRelation relationFK_exams_studentId;
         
-        private global::System.Data.DataRelation relationFK__payments__course__5FB337D6;
+        private global::System.Data.DataRelation relationFK_payments_courseId;
         
-        private global::System.Data.DataRelation relationFK__payments__studen__5EBF139D;
+        private global::System.Data.DataRelation relationFK_payments_studentId;
         
-        private global::System.Data.DataRelation relationFK__staff__userId__47DBAE45;
+        private global::System.Data.DataRelation relationFK_staff_userId;
         
-        private global::System.Data.DataRelation relationFK__teachers__userId__4AB81AF0;
+        private global::System.Data.DataRelation relationFK_teachers_userId;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
@@ -456,17 +456,17 @@ namespace EducationalCenterFinal {
                     this.tableusers.InitVars();
                 }
             }
-            this.relationFK__attendanc__cours__5AEE82B9 = this.Relations["FK__attendanc__cours__5AEE82B9"];
-            this.relationFK__attendanc__stude__59FA5E80 = this.Relations["FK__attendanc__stude__59FA5E80"];
-            this.relationFK__courses__teacher__5165187F = this.Relations["FK__courses__teacher__5165187F"];
-            this.relationFK__enrollmen__cours__6383C8BA = this.Relations["FK__enrollmen__cours__6383C8BA"];
-            this.relationFK__enrollmen__stude__628FA481 = this.Relations["FK__enrollmen__stude__628FA481"];
-            this.relationFK__exams__courseId__5535A963 = this.Relations["FK__exams__courseId__5535A963"];
-            this.relationFK__exams__studentId__5629CD9C = this.Relations["FK__exams__studentId__5629CD9C"];
-            this.relationFK__payments__course__5FB337D6 = this.Relations["FK__payments__course__5FB337D6"];
-            this.relationFK__payments__studen__5EBF139D = this.Relations["FK__payments__studen__5EBF139D"];
-            this.relationFK__staff__userId__47DBAE45 = this.Relations["FK__staff__userId__47DBAE45"];
-            this.relationFK__teachers__userId__4AB81AF0 = this.Relations["FK__teachers__userId__4AB81AF0"];
+            this.relationFK_attendance_courseId = this.Relations["FK_attendance_courseId"];
+            this.relationFK_attendance_studentId = this.Relations["FK_attendance_studentId"];
+            this.relationFK_courses_teacherId = this.Relations["FK_courses_teacherId"];
+            this.relationFK_enrollments_courseId = this.Relations["FK_enrollments_courseId"];
+            this.relationFK_enrollments_studentId = this.Relations["FK_enrollments_studentId"];
+            this.relationFK_exams_courseId = this.Relations["FK_exams_courseId"];
+            this.relationFK_exams_studentId = this.Relations["FK_exams_studentId"];
+            this.relationFK_payments_courseId = this.Relations["FK_payments_courseId"];
+            this.relationFK_payments_studentId = this.Relations["FK_payments_studentId"];
+            this.relationFK_staff_userId = this.Relations["FK_staff_userId"];
+            this.relationFK_teachers_userId = this.Relations["FK_teachers_userId"];
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -499,50 +499,50 @@ namespace EducationalCenterFinal {
             base.Tables.Add(this.tableteachers);
             this.tableusers = new usersDataTable();
             base.Tables.Add(this.tableusers);
-            this.relationFK__attendanc__cours__5AEE82B9 = new global::System.Data.DataRelation("FK__attendanc__cours__5AEE82B9", new global::System.Data.DataColumn[] {
+            this.relationFK_attendance_courseId = new global::System.Data.DataRelation("FK_attendance_courseId", new global::System.Data.DataColumn[] {
                         this.tablecourses.courseIdColumn}, new global::System.Data.DataColumn[] {
                         this.tableattendance.courseIdColumn}, false);
-            this.Relations.Add(this.relationFK__attendanc__cours__5AEE82B9);
-            this.relationFK__attendanc__stude__59FA5E80 = new global::System.Data.DataRelation("FK__attendanc__stude__59FA5E80", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK_attendance_courseId);
+            this.relationFK_attendance_studentId = new global::System.Data.DataRelation("FK_attendance_studentId", new global::System.Data.DataColumn[] {
                         this.tablestudents.studentIdColumn}, new global::System.Data.DataColumn[] {
                         this.tableattendance.studentIdColumn}, false);
-            this.Relations.Add(this.relationFK__attendanc__stude__59FA5E80);
-            this.relationFK__courses__teacher__5165187F = new global::System.Data.DataRelation("FK__courses__teacher__5165187F", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK_attendance_studentId);
+            this.relationFK_courses_teacherId = new global::System.Data.DataRelation("FK_courses_teacherId", new global::System.Data.DataColumn[] {
                         this.tableteachers.teacherIdColumn}, new global::System.Data.DataColumn[] {
                         this.tablecourses.teacherIdColumn}, false);
-            this.Relations.Add(this.relationFK__courses__teacher__5165187F);
-            this.relationFK__enrollmen__cours__6383C8BA = new global::System.Data.DataRelation("FK__enrollmen__cours__6383C8BA", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK_courses_teacherId);
+            this.relationFK_enrollments_courseId = new global::System.Data.DataRelation("FK_enrollments_courseId", new global::System.Data.DataColumn[] {
                         this.tablecourses.courseIdColumn}, new global::System.Data.DataColumn[] {
                         this.tableenrollments.courseIdColumn}, false);
-            this.Relations.Add(this.relationFK__enrollmen__cours__6383C8BA);
-            this.relationFK__enrollmen__stude__628FA481 = new global::System.Data.DataRelation("FK__enrollmen__stude__628FA481", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK_enrollments_courseId);
+            this.relationFK_enrollments_studentId = new global::System.Data.DataRelation("FK_enrollments_studentId", new global::System.Data.DataColumn[] {
                         this.tablestudents.studentIdColumn}, new global::System.Data.DataColumn[] {
                         this.tableenrollments.studentIdColumn}, false);
-            this.Relations.Add(this.relationFK__enrollmen__stude__628FA481);
-            this.relationFK__exams__courseId__5535A963 = new global::System.Data.DataRelation("FK__exams__courseId__5535A963", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK_enrollments_studentId);
+            this.relationFK_exams_courseId = new global::System.Data.DataRelation("FK_exams_courseId", new global::System.Data.DataColumn[] {
                         this.tablecourses.courseIdColumn}, new global::System.Data.DataColumn[] {
                         this.tableexams.courseIdColumn}, false);
-            this.Relations.Add(this.relationFK__exams__courseId__5535A963);
-            this.relationFK__exams__studentId__5629CD9C = new global::System.Data.DataRelation("FK__exams__studentId__5629CD9C", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK_exams_courseId);
+            this.relationFK_exams_studentId = new global::System.Data.DataRelation("FK_exams_studentId", new global::System.Data.DataColumn[] {
                         this.tablestudents.studentIdColumn}, new global::System.Data.DataColumn[] {
                         this.tableexams.studentIdColumn}, false);
-            this.Relations.Add(this.relationFK__exams__studentId__5629CD9C);
-            this.relationFK__payments__course__5FB337D6 = new global::System.Data.DataRelation("FK__payments__course__5FB337D6", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK_exams_studentId);
+            this.relationFK_payments_courseId = new global::System.Data.DataRelation("FK_payments_courseId", new global::System.Data.DataColumn[] {
                         this.tablecourses.courseIdColumn}, new global::System.Data.DataColumn[] {
                         this.tablepayments.courseIdColumn}, false);
-            this.Relations.Add(this.relationFK__payments__course__5FB337D6);
-            this.relationFK__payments__studen__5EBF139D = new global::System.Data.DataRelation("FK__payments__studen__5EBF139D", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK_payments_courseId);
+            this.relationFK_payments_studentId = new global::System.Data.DataRelation("FK_payments_studentId", new global::System.Data.DataColumn[] {
                         this.tablestudents.studentIdColumn}, new global::System.Data.DataColumn[] {
                         this.tablepayments.studentIdColumn}, false);
-            this.Relations.Add(this.relationFK__payments__studen__5EBF139D);
-            this.relationFK__staff__userId__47DBAE45 = new global::System.Data.DataRelation("FK__staff__userId__47DBAE45", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK_payments_studentId);
+            this.relationFK_staff_userId = new global::System.Data.DataRelation("FK_staff_userId", new global::System.Data.DataColumn[] {
                         this.tableusers.userIdColumn}, new global::System.Data.DataColumn[] {
                         this.tablestaff.userIdColumn}, false);
-            this.Relations.Add(this.relationFK__staff__userId__47DBAE45);
-            this.relationFK__teachers__userId__4AB81AF0 = new global::System.Data.DataRelation("FK__teachers__userId__4AB81AF0", new global::System.Data.DataColumn[] {
+            this.Relations.Add(this.relationFK_staff_userId);
+            this.relationFK_teachers_userId = new global::System.Data.DataRelation("FK_teachers_userId", new global::System.Data.DataColumn[] {
                         this.tableusers.userIdColumn}, new global::System.Data.DataColumn[] {
                         this.tableteachers.userIdColumn}, false);
-            this.Relations.Add(this.relationFK__teachers__userId__4AB81AF0);
+            this.Relations.Add(this.relationFK_teachers_userId);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1101,7 +1101,7 @@ namespace EducationalCenterFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public attendanceRow AddattendanceRow(studentsRow parentstudentsRowByFK__attendanc__stude__59FA5E80, coursesRow parentcoursesRowByFK__attendanc__cours__5AEE82B9, System.DateTime attendanceDate, bool isPresent) {
+            public attendanceRow AddattendanceRow(studentsRow parentstudentsRowByFK_attendance_studentId, coursesRow parentcoursesRowByFK_attendance_courseId, System.DateTime attendanceDate, bool isPresent) {
                 attendanceRow rowattendanceRow = ((attendanceRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1109,11 +1109,11 @@ namespace EducationalCenterFinal {
                         null,
                         attendanceDate,
                         isPresent};
-                if ((parentstudentsRowByFK__attendanc__stude__59FA5E80 != null)) {
-                    columnValuesArray[1] = parentstudentsRowByFK__attendanc__stude__59FA5E80[0];
+                if ((parentstudentsRowByFK_attendance_studentId != null)) {
+                    columnValuesArray[1] = parentstudentsRowByFK_attendance_studentId[0];
                 }
-                if ((parentcoursesRowByFK__attendanc__cours__5AEE82B9 != null)) {
-                    columnValuesArray[2] = parentcoursesRowByFK__attendanc__cours__5AEE82B9[0];
+                if ((parentcoursesRowByFK_attendance_courseId != null)) {
+                    columnValuesArray[2] = parentcoursesRowByFK_attendance_courseId[0];
                 }
                 rowattendanceRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowattendanceRow);
@@ -1458,7 +1458,7 @@ namespace EducationalCenterFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public coursesRow AddcoursesRow(string courseName, string Description, string WorkOn, System.TimeSpan beginning, decimal NoOfHours, teachersRow parentteachersRowByFK__courses__teacher__5165187F, decimal price) {
+            public coursesRow AddcoursesRow(string courseName, string Description, string WorkOn, System.TimeSpan beginning, decimal NoOfHours, teachersRow parentteachersRowByFK_courses_teacherId, decimal price) {
                 coursesRow rowcoursesRow = ((coursesRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -1469,8 +1469,8 @@ namespace EducationalCenterFinal {
                         NoOfHours,
                         null,
                         price};
-                if ((parentteachersRowByFK__courses__teacher__5165187F != null)) {
-                    columnValuesArray[6] = parentteachersRowByFK__courses__teacher__5165187F[0];
+                if ((parentteachersRowByFK_courses_teacherId != null)) {
+                    columnValuesArray[6] = parentteachersRowByFK_courses_teacherId[0];
                 }
                 rowcoursesRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowcoursesRow);
@@ -1542,7 +1542,6 @@ namespace EducationalCenterFinal {
                 this.columncourseName.MaxLength = 30;
                 this.columnDescription.MaxLength = 100;
                 this.columnWorkOn.MaxLength = 20;
-                this.columnteacherId.AllowDBNull = false;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1776,17 +1775,17 @@ namespace EducationalCenterFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public enrollmentsRow AddenrollmentsRow(studentsRow parentstudentsRowByFK__enrollmen__stude__628FA481, coursesRow parentcoursesRowByFK__enrollmen__cours__6383C8BA) {
+            public enrollmentsRow AddenrollmentsRow(studentsRow parentstudentsRowByFK_enrollments_studentId, coursesRow parentcoursesRowByFK_enrollments_courseId) {
                 enrollmentsRow rowenrollmentsRow = ((enrollmentsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
                         null,
                         null};
-                if ((parentstudentsRowByFK__enrollmen__stude__628FA481 != null)) {
-                    columnValuesArray[1] = parentstudentsRowByFK__enrollmen__stude__628FA481[0];
+                if ((parentstudentsRowByFK_enrollments_studentId != null)) {
+                    columnValuesArray[1] = parentstudentsRowByFK_enrollments_studentId[0];
                 }
-                if ((parentcoursesRowByFK__enrollmen__cours__6383C8BA != null)) {
-                    columnValuesArray[2] = parentcoursesRowByFK__enrollmen__cours__6383C8BA[0];
+                if ((parentcoursesRowByFK_enrollments_courseId != null)) {
+                    columnValuesArray[2] = parentcoursesRowByFK_enrollments_courseId[0];
                 }
                 rowenrollmentsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowenrollmentsRow);
@@ -2104,7 +2103,7 @@ namespace EducationalCenterFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public examsRow AddexamsRow(string examName, coursesRow parentcoursesRowByFK__exams__courseId__5535A963, System.DateTime examDate, decimal score, studentsRow parentstudentsRowByFK__exams__studentId__5629CD9C) {
+            public examsRow AddexamsRow(string examName, coursesRow parentcoursesRowByFK_exams_courseId, System.DateTime examDate, decimal score, studentsRow parentstudentsRowByFK_exams_studentId) {
                 examsRow rowexamsRow = ((examsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2113,11 +2112,11 @@ namespace EducationalCenterFinal {
                         examDate,
                         score,
                         null};
-                if ((parentcoursesRowByFK__exams__courseId__5535A963 != null)) {
-                    columnValuesArray[2] = parentcoursesRowByFK__exams__courseId__5535A963[0];
+                if ((parentcoursesRowByFK_exams_courseId != null)) {
+                    columnValuesArray[2] = parentcoursesRowByFK_exams_courseId[0];
                 }
-                if ((parentstudentsRowByFK__exams__studentId__5629CD9C != null)) {
-                    columnValuesArray[5] = parentstudentsRowByFK__exams__studentId__5629CD9C[0];
+                if ((parentstudentsRowByFK_exams_studentId != null)) {
+                    columnValuesArray[5] = parentstudentsRowByFK_exams_studentId[0];
                 }
                 rowexamsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowexamsRow);
@@ -2437,7 +2436,7 @@ namespace EducationalCenterFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public paymentsRow AddpaymentsRow(studentsRow parentstudentsRowByFK__payments__studen__5EBF139D, coursesRow parentcoursesRowByFK__payments__course__5FB337D6, System.DateTime paymentDate, bool isPaid) {
+            public paymentsRow AddpaymentsRow(studentsRow parentstudentsRowByFK_payments_studentId, coursesRow parentcoursesRowByFK_payments_courseId, System.DateTime paymentDate, bool isPaid) {
                 paymentsRow rowpaymentsRow = ((paymentsRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -2445,11 +2444,11 @@ namespace EducationalCenterFinal {
                         null,
                         paymentDate,
                         isPaid};
-                if ((parentstudentsRowByFK__payments__studen__5EBF139D != null)) {
-                    columnValuesArray[1] = parentstudentsRowByFK__payments__studen__5EBF139D[0];
+                if ((parentstudentsRowByFK_payments_studentId != null)) {
+                    columnValuesArray[1] = parentstudentsRowByFK_payments_studentId[0];
                 }
-                if ((parentcoursesRowByFK__payments__course__5FB337D6 != null)) {
-                    columnValuesArray[2] = parentcoursesRowByFK__payments__course__5FB337D6[0];
+                if ((parentcoursesRowByFK_payments_courseId != null)) {
+                    columnValuesArray[2] = parentcoursesRowByFK_payments_courseId[0];
                 }
                 rowpaymentsRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowpaymentsRow);
@@ -3131,7 +3130,7 @@ namespace EducationalCenterFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public staffRow AddstaffRow(string staffName, string staffEmail, string staffPhone, string staffAddress, string role, decimal staffSalary, usersRow parentusersRowByFK__staff__userId__47DBAE45) {
+            public staffRow AddstaffRow(string staffName, string staffEmail, string staffPhone, string staffAddress, string role, decimal staffSalary, usersRow parentusersRowByFK_staff_userId) {
                 staffRow rowstaffRow = ((staffRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -3142,8 +3141,8 @@ namespace EducationalCenterFinal {
                         role,
                         staffSalary,
                         null};
-                if ((parentusersRowByFK__staff__userId__47DBAE45 != null)) {
-                    columnValuesArray[7] = parentusersRowByFK__staff__userId__47DBAE45[0];
+                if ((parentusersRowByFK_staff_userId != null)) {
+                    columnValuesArray[7] = parentusersRowByFK_staff_userId[0];
                 }
                 rowstaffRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowstaffRow);
@@ -3808,7 +3807,7 @@ namespace EducationalCenterFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public teachersRow AddteachersRow(usersRow parentusersRowByFK__teachers__userId__4AB81AF0, string teacherName, string teacherSpecialization, string teacherEmail, string teacherPhone) {
+            public teachersRow AddteachersRow(usersRow parentusersRowByFK_teachers_userId, string teacherName, string teacherSpecialization, string teacherEmail, string teacherPhone) {
                 teachersRow rowteachersRow = ((teachersRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         null,
@@ -3817,8 +3816,8 @@ namespace EducationalCenterFinal {
                         teacherSpecialization,
                         teacherEmail,
                         teacherPhone};
-                if ((parentusersRowByFK__teachers__userId__4AB81AF0 != null)) {
-                    columnValuesArray[1] = parentusersRowByFK__teachers__userId__4AB81AF0[0];
+                if ((parentusersRowByFK_teachers_userId != null)) {
+                    columnValuesArray[1] = parentusersRowByFK_teachers_userId[0];
                 }
                 rowteachersRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowteachersRow);
@@ -4466,10 +4465,10 @@ namespace EducationalCenterFinal {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public coursesRow coursesRow {
                 get {
-                    return ((coursesRow)(this.GetParentRow(this.Table.ParentRelations["FK__attendanc__cours__5AEE82B9"])));
+                    return ((coursesRow)(this.GetParentRow(this.Table.ParentRelations["FK_attendance_courseId"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__attendanc__cours__5AEE82B9"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_attendance_courseId"]);
                 }
             }
             
@@ -4477,10 +4476,10 @@ namespace EducationalCenterFinal {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public studentsRow studentsRow {
                 get {
-                    return ((studentsRow)(this.GetParentRow(this.Table.ParentRelations["FK__attendanc__stude__59FA5E80"])));
+                    return ((studentsRow)(this.GetParentRow(this.Table.ParentRelations["FK_attendance_studentId"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__attendanc__stude__59FA5E80"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_attendance_studentId"]);
                 }
             }
             
@@ -4601,7 +4600,12 @@ namespace EducationalCenterFinal {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public int teacherId {
                 get {
-                    return ((int)(this[this.tablecourses.teacherIdColumn]));
+                    try {
+                        return ((int)(this[this.tablecourses.teacherIdColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'teacherId\' in table \'courses\' is DBNull.", e);
+                    }
                 }
                 set {
                     this[this.tablecourses.teacherIdColumn] = value;
@@ -4628,10 +4632,10 @@ namespace EducationalCenterFinal {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public teachersRow teachersRow {
                 get {
-                    return ((teachersRow)(this.GetParentRow(this.Table.ParentRelations["FK__courses__teacher__5165187F"])));
+                    return ((teachersRow)(this.GetParentRow(this.Table.ParentRelations["FK_courses_teacherId"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__courses__teacher__5165187F"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_courses_teacherId"]);
                 }
             }
             
@@ -4685,6 +4689,18 @@ namespace EducationalCenterFinal {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsteacherIdNull() {
+                return this.IsNull(this.tablecourses.teacherIdColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetteacherIdNull() {
+                this[this.tablecourses.teacherIdColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IspriceNull() {
                 return this.IsNull(this.tablecourses.priceColumn);
             }
@@ -4698,44 +4714,44 @@ namespace EducationalCenterFinal {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public attendanceRow[] GetattendanceRows() {
-                if ((this.Table.ChildRelations["FK__attendanc__cours__5AEE82B9"] == null)) {
+                if ((this.Table.ChildRelations["FK_attendance_courseId"] == null)) {
                     return new attendanceRow[0];
                 }
                 else {
-                    return ((attendanceRow[])(base.GetChildRows(this.Table.ChildRelations["FK__attendanc__cours__5AEE82B9"])));
+                    return ((attendanceRow[])(base.GetChildRows(this.Table.ChildRelations["FK_attendance_courseId"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public enrollmentsRow[] GetenrollmentsRows() {
-                if ((this.Table.ChildRelations["FK__enrollmen__cours__6383C8BA"] == null)) {
+                if ((this.Table.ChildRelations["FK_enrollments_courseId"] == null)) {
                     return new enrollmentsRow[0];
                 }
                 else {
-                    return ((enrollmentsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__enrollmen__cours__6383C8BA"])));
+                    return ((enrollmentsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_enrollments_courseId"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public examsRow[] GetexamsRows() {
-                if ((this.Table.ChildRelations["FK__exams__courseId__5535A963"] == null)) {
+                if ((this.Table.ChildRelations["FK_exams_courseId"] == null)) {
                     return new examsRow[0];
                 }
                 else {
-                    return ((examsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__exams__courseId__5535A963"])));
+                    return ((examsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_exams_courseId"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public paymentsRow[] GetpaymentsRows() {
-                if ((this.Table.ChildRelations["FK__payments__course__5FB337D6"] == null)) {
+                if ((this.Table.ChildRelations["FK_payments_courseId"] == null)) {
                     return new paymentsRow[0];
                 }
                 else {
-                    return ((paymentsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__payments__course__5FB337D6"])));
+                    return ((paymentsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_payments_courseId"])));
                 }
             }
         }
@@ -4791,10 +4807,10 @@ namespace EducationalCenterFinal {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public coursesRow coursesRow {
                 get {
-                    return ((coursesRow)(this.GetParentRow(this.Table.ParentRelations["FK__enrollmen__cours__6383C8BA"])));
+                    return ((coursesRow)(this.GetParentRow(this.Table.ParentRelations["FK_enrollments_courseId"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__enrollmen__cours__6383C8BA"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_enrollments_courseId"]);
                 }
             }
             
@@ -4802,10 +4818,10 @@ namespace EducationalCenterFinal {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public studentsRow studentsRow {
                 get {
-                    return ((studentsRow)(this.GetParentRow(this.Table.ParentRelations["FK__enrollmen__stude__628FA481"])));
+                    return ((studentsRow)(this.GetParentRow(this.Table.ParentRelations["FK_enrollments_studentId"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__enrollmen__stude__628FA481"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_enrollments_studentId"]);
                 }
             }
         }
@@ -4899,10 +4915,10 @@ namespace EducationalCenterFinal {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public coursesRow coursesRow {
                 get {
-                    return ((coursesRow)(this.GetParentRow(this.Table.ParentRelations["FK__exams__courseId__5535A963"])));
+                    return ((coursesRow)(this.GetParentRow(this.Table.ParentRelations["FK_exams_courseId"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__exams__courseId__5535A963"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_exams_courseId"]);
                 }
             }
             
@@ -4910,10 +4926,10 @@ namespace EducationalCenterFinal {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public studentsRow studentsRow {
                 get {
-                    return ((studentsRow)(this.GetParentRow(this.Table.ParentRelations["FK__exams__studentId__5629CD9C"])));
+                    return ((studentsRow)(this.GetParentRow(this.Table.ParentRelations["FK_exams_studentId"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__exams__studentId__5629CD9C"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_exams_studentId"]);
                 }
             }
             
@@ -5008,10 +5024,10 @@ namespace EducationalCenterFinal {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public coursesRow coursesRow {
                 get {
-                    return ((coursesRow)(this.GetParentRow(this.Table.ParentRelations["FK__payments__course__5FB337D6"])));
+                    return ((coursesRow)(this.GetParentRow(this.Table.ParentRelations["FK_payments_courseId"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__payments__course__5FB337D6"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_payments_courseId"]);
                 }
             }
             
@@ -5019,10 +5035,10 @@ namespace EducationalCenterFinal {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public studentsRow studentsRow {
                 get {
-                    return ((studentsRow)(this.GetParentRow(this.Table.ParentRelations["FK__payments__studen__5EBF139D"])));
+                    return ((studentsRow)(this.GetParentRow(this.Table.ParentRelations["FK_payments_studentId"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__payments__studen__5EBF139D"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_payments_studentId"]);
                 }
             }
             
@@ -5280,10 +5296,10 @@ namespace EducationalCenterFinal {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public usersRow usersRow {
                 get {
-                    return ((usersRow)(this.GetParentRow(this.Table.ParentRelations["FK__staff__userId__47DBAE45"])));
+                    return ((usersRow)(this.GetParentRow(this.Table.ParentRelations["FK_staff_userId"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__staff__userId__47DBAE45"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_staff_userId"]);
                 }
             }
             
@@ -5408,44 +5424,44 @@ namespace EducationalCenterFinal {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public attendanceRow[] GetattendanceRows() {
-                if ((this.Table.ChildRelations["FK__attendanc__stude__59FA5E80"] == null)) {
+                if ((this.Table.ChildRelations["FK_attendance_studentId"] == null)) {
                     return new attendanceRow[0];
                 }
                 else {
-                    return ((attendanceRow[])(base.GetChildRows(this.Table.ChildRelations["FK__attendanc__stude__59FA5E80"])));
+                    return ((attendanceRow[])(base.GetChildRows(this.Table.ChildRelations["FK_attendance_studentId"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public enrollmentsRow[] GetenrollmentsRows() {
-                if ((this.Table.ChildRelations["FK__enrollmen__stude__628FA481"] == null)) {
+                if ((this.Table.ChildRelations["FK_enrollments_studentId"] == null)) {
                     return new enrollmentsRow[0];
                 }
                 else {
-                    return ((enrollmentsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__enrollmen__stude__628FA481"])));
+                    return ((enrollmentsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_enrollments_studentId"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public examsRow[] GetexamsRows() {
-                if ((this.Table.ChildRelations["FK__exams__studentId__5629CD9C"] == null)) {
+                if ((this.Table.ChildRelations["FK_exams_studentId"] == null)) {
                     return new examsRow[0];
                 }
                 else {
-                    return ((examsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__exams__studentId__5629CD9C"])));
+                    return ((examsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_exams_studentId"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public paymentsRow[] GetpaymentsRows() {
-                if ((this.Table.ChildRelations["FK__payments__studen__5EBF139D"] == null)) {
+                if ((this.Table.ChildRelations["FK_payments_studentId"] == null)) {
                     return new paymentsRow[0];
                 }
                 else {
-                    return ((paymentsRow[])(base.GetChildRows(this.Table.ChildRelations["FK__payments__studen__5EBF139D"])));
+                    return ((paymentsRow[])(base.GetChildRows(this.Table.ChildRelations["FK_payments_studentId"])));
                 }
             }
         }
@@ -5549,10 +5565,10 @@ namespace EducationalCenterFinal {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public usersRow usersRow {
                 get {
-                    return ((usersRow)(this.GetParentRow(this.Table.ParentRelations["FK__teachers__userId__4AB81AF0"])));
+                    return ((usersRow)(this.GetParentRow(this.Table.ParentRelations["FK_teachers_userId"])));
                 }
                 set {
-                    this.SetParentRow(value, this.Table.ParentRelations["FK__teachers__userId__4AB81AF0"]);
+                    this.SetParentRow(value, this.Table.ParentRelations["FK_teachers_userId"]);
                 }
             }
             
@@ -5595,11 +5611,11 @@ namespace EducationalCenterFinal {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public coursesRow[] GetcoursesRows() {
-                if ((this.Table.ChildRelations["FK__courses__teacher__5165187F"] == null)) {
+                if ((this.Table.ChildRelations["FK_courses_teacherId"] == null)) {
                     return new coursesRow[0];
                 }
                 else {
-                    return ((coursesRow[])(base.GetChildRows(this.Table.ChildRelations["FK__courses__teacher__5165187F"])));
+                    return ((coursesRow[])(base.GetChildRows(this.Table.ChildRelations["FK_courses_teacherId"])));
                 }
             }
         }
@@ -5721,22 +5737,22 @@ namespace EducationalCenterFinal {
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public staffRow[] GetstaffRows() {
-                if ((this.Table.ChildRelations["FK__staff__userId__47DBAE45"] == null)) {
+                if ((this.Table.ChildRelations["FK_staff_userId"] == null)) {
                     return new staffRow[0];
                 }
                 else {
-                    return ((staffRow[])(base.GetChildRows(this.Table.ChildRelations["FK__staff__userId__47DBAE45"])));
+                    return ((staffRow[])(base.GetChildRows(this.Table.ChildRelations["FK_staff_userId"])));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public teachersRow[] GetteachersRows() {
-                if ((this.Table.ChildRelations["FK__teachers__userId__4AB81AF0"] == null)) {
+                if ((this.Table.ChildRelations["FK_teachers_userId"] == null)) {
                     return new teachersRow[0];
                 }
                 else {
-                    return ((teachersRow[])(base.GetChildRows(this.Table.ChildRelations["FK__teachers__userId__4AB81AF0"])));
+                    return ((teachersRow[])(base.GetChildRows(this.Table.ChildRelations["FK_teachers_userId"])));
                 }
             }
         }
@@ -6941,7 +6957,7 @@ SELECT attendanceId, studentId, courseId, attendanceDate, isPresent FROM attenda
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[courses] WHERE (([courseId] = @Original_courseId) AND ([courseName] = @Original_courseName) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)) AND ((@IsNull_WorkOn = 1 AND [WorkOn] IS NULL) OR ([WorkOn] = @Original_WorkOn)) AND ((@IsNull_beginning = 1 AND [beginning] IS NULL) OR ([beginning] = @Original_beginning)) AND ((@IsNull_NoOfHours = 1 AND [NoOfHours] IS NULL) OR ([NoOfHours] = @Original_NoOfHours)) AND ([teacherId] = @Original_teacherId) AND ((@IsNull_price = 1 AND [price] IS NULL) OR ([price] = @Original_price)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[courses] WHERE (([courseId] = @Original_courseId) AND ([courseName] = @Original_courseName) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)) AND ((@IsNull_WorkOn = 1 AND [WorkOn] IS NULL) OR ([WorkOn] = @Original_WorkOn)) AND ((@IsNull_beginning = 1 AND [beginning] IS NULL) OR ([beginning] = @Original_beginning)) AND ((@IsNull_NoOfHours = 1 AND [NoOfHours] IS NULL) OR ([NoOfHours] = @Original_NoOfHours)) AND ((@IsNull_teacherId = 1 AND [teacherId] IS NULL) OR ([teacherId] = @Original_teacherId)) AND ((@IsNull_price = 1 AND [price] IS NULL) OR ([price] = @Original_price)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_courseId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "courseId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_courseName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "courseName", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -6953,6 +6969,7 @@ SELECT attendanceId, studentId, courseId, attendanceDate, isPresent FROM attenda
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_beginning", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "beginning", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NoOfHours", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NoOfHours", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NoOfHours", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 4, 2, "NoOfHours", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_teacherId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "teacherId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_teacherId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "teacherId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_price", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "price", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -6970,7 +6987,7 @@ SELECT courseId, courseName, Description, WorkOn, beginning, NoOfHours, teacherI
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "price", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[courses] SET [courseName] = @courseName, [Description] = @Description, [WorkOn] = @WorkOn, [beginning] = @beginning, [NoOfHours] = @NoOfHours, [teacherId] = @teacherId, [price] = @price WHERE (([courseId] = @Original_courseId) AND ([courseName] = @Original_courseName) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)) AND ((@IsNull_WorkOn = 1 AND [WorkOn] IS NULL) OR ([WorkOn] = @Original_WorkOn)) AND ((@IsNull_beginning = 1 AND [beginning] IS NULL) OR ([beginning] = @Original_beginning)) AND ((@IsNull_NoOfHours = 1 AND [NoOfHours] IS NULL) OR ([NoOfHours] = @Original_NoOfHours)) AND ([teacherId] = @Original_teacherId) AND ((@IsNull_price = 1 AND [price] IS NULL) OR ([price] = @Original_price)));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[courses] SET [courseName] = @courseName, [Description] = @Description, [WorkOn] = @WorkOn, [beginning] = @beginning, [NoOfHours] = @NoOfHours, [teacherId] = @teacherId, [price] = @price WHERE (([courseId] = @Original_courseId) AND ([courseName] = @Original_courseName) AND ((@IsNull_Description = 1 AND [Description] IS NULL) OR ([Description] = @Original_Description)) AND ((@IsNull_WorkOn = 1 AND [WorkOn] IS NULL) OR ([WorkOn] = @Original_WorkOn)) AND ((@IsNull_beginning = 1 AND [beginning] IS NULL) OR ([beginning] = @Original_beginning)) AND ((@IsNull_NoOfHours = 1 AND [NoOfHours] IS NULL) OR ([NoOfHours] = @Original_NoOfHours)) AND ((@IsNull_teacherId = 1 AND [teacherId] IS NULL) OR ([teacherId] = @Original_teacherId)) AND ((@IsNull_price = 1 AND [price] IS NULL) OR ([price] = @Original_price)));
 SELECT courseId, courseName, Description, WorkOn, beginning, NoOfHours, teacherId, price FROM courses WHERE (courseId = @courseId)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@courseName", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "courseName", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -6990,6 +7007,7 @@ SELECT courseId, courseName, Description, WorkOn, beginning, NoOfHours, teacherI
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_beginning", global::System.Data.SqlDbType.Time, 0, global::System.Data.ParameterDirection.Input, 0, 0, "beginning", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_NoOfHours", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "NoOfHours", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_NoOfHours", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 4, 2, "NoOfHours", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
+            this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_teacherId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "teacherId", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_teacherId", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "teacherId", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@IsNull_price", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "price", global::System.Data.DataRowVersion.Original, true, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_price", global::System.Data.SqlDbType.Decimal, 0, global::System.Data.ParameterDirection.Input, 18, 2, "price", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -7071,7 +7089,7 @@ SELECT courseId, courseName, Description, WorkOn, beginning, NoOfHours, teacherI
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Delete, true)]
-        public virtual int Delete(int Original_courseId, string Original_courseName, string Original_Description, string Original_WorkOn, global::System.Nullable<global::System.TimeSpan> Original_beginning, global::System.Nullable<decimal> Original_NoOfHours, int Original_teacherId, global::System.Nullable<decimal> Original_price) {
+        public virtual int Delete(int Original_courseId, string Original_courseName, string Original_Description, string Original_WorkOn, global::System.Nullable<global::System.TimeSpan> Original_beginning, global::System.Nullable<decimal> Original_NoOfHours, global::System.Nullable<int> Original_teacherId, global::System.Nullable<decimal> Original_price) {
             this.Adapter.DeleteCommand.Parameters[0].Value = ((int)(Original_courseId));
             if ((Original_courseName == null)) {
                 throw new global::System.ArgumentNullException("Original_courseName");
@@ -7111,14 +7129,21 @@ SELECT courseId, courseName, Description, WorkOn, beginning, NoOfHours, teacherI
                 this.Adapter.DeleteCommand.Parameters[8].Value = ((object)(1));
                 this.Adapter.DeleteCommand.Parameters[9].Value = global::System.DBNull.Value;
             }
-            this.Adapter.DeleteCommand.Parameters[10].Value = ((int)(Original_teacherId));
-            if ((Original_price.HasValue == true)) {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(0));
-                this.Adapter.DeleteCommand.Parameters[12].Value = ((decimal)(Original_price.Value));
+            if ((Original_teacherId.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[11].Value = ((int)(Original_teacherId.Value));
             }
             else {
-                this.Adapter.DeleteCommand.Parameters[11].Value = ((object)(1));
-                this.Adapter.DeleteCommand.Parameters[12].Value = global::System.DBNull.Value;
+                this.Adapter.DeleteCommand.Parameters[10].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[11].Value = global::System.DBNull.Value;
+            }
+            if ((Original_price.HasValue == true)) {
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(0));
+                this.Adapter.DeleteCommand.Parameters[13].Value = ((decimal)(Original_price.Value));
+            }
+            else {
+                this.Adapter.DeleteCommand.Parameters[12].Value = ((object)(1));
+                this.Adapter.DeleteCommand.Parameters[13].Value = global::System.DBNull.Value;
             }
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.DeleteCommand.Connection.State;
             if (((this.Adapter.DeleteCommand.Connection.State & global::System.Data.ConnectionState.Open) 
@@ -7140,7 +7165,7 @@ SELECT courseId, courseName, Description, WorkOn, beginning, NoOfHours, teacherI
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, true)]
-        public virtual int Insert(string courseName, string Description, string WorkOn, global::System.Nullable<global::System.TimeSpan> beginning, global::System.Nullable<decimal> NoOfHours, int teacherId, global::System.Nullable<decimal> price) {
+        public virtual int Insert(string courseName, string Description, string WorkOn, global::System.Nullable<global::System.TimeSpan> beginning, global::System.Nullable<decimal> NoOfHours, global::System.Nullable<int> teacherId, global::System.Nullable<decimal> price) {
             if ((courseName == null)) {
                 throw new global::System.ArgumentNullException("courseName");
             }
@@ -7171,7 +7196,12 @@ SELECT courseId, courseName, Description, WorkOn, beginning, NoOfHours, teacherI
             else {
                 this.Adapter.InsertCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            this.Adapter.InsertCommand.Parameters[5].Value = ((int)(teacherId));
+            if ((teacherId.HasValue == true)) {
+                this.Adapter.InsertCommand.Parameters[5].Value = ((int)(teacherId.Value));
+            }
+            else {
+                this.Adapter.InsertCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
             if ((price.HasValue == true)) {
                 this.Adapter.InsertCommand.Parameters[6].Value = ((decimal)(price.Value));
             }
@@ -7204,7 +7234,7 @@ SELECT courseId, courseName, Description, WorkOn, beginning, NoOfHours, teacherI
                     string WorkOn, 
                     global::System.Nullable<global::System.TimeSpan> beginning, 
                     global::System.Nullable<decimal> NoOfHours, 
-                    int teacherId, 
+                    global::System.Nullable<int> teacherId, 
                     global::System.Nullable<decimal> price, 
                     int Original_courseId, 
                     string Original_courseName, 
@@ -7212,7 +7242,7 @@ SELECT courseId, courseName, Description, WorkOn, beginning, NoOfHours, teacherI
                     string Original_WorkOn, 
                     global::System.Nullable<global::System.TimeSpan> Original_beginning, 
                     global::System.Nullable<decimal> Original_NoOfHours, 
-                    int Original_teacherId, 
+                    global::System.Nullable<int> Original_teacherId, 
                     global::System.Nullable<decimal> Original_price, 
                     int courseId) {
             if ((courseName == null)) {
@@ -7245,7 +7275,12 @@ SELECT courseId, courseName, Description, WorkOn, beginning, NoOfHours, teacherI
             else {
                 this.Adapter.UpdateCommand.Parameters[4].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(teacherId));
+            if ((teacherId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[5].Value = ((int)(teacherId.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[5].Value = global::System.DBNull.Value;
+            }
             if ((price.HasValue == true)) {
                 this.Adapter.UpdateCommand.Parameters[6].Value = ((decimal)(price.Value));
             }
@@ -7291,16 +7326,23 @@ SELECT courseId, courseName, Description, WorkOn, beginning, NoOfHours, teacherI
                 this.Adapter.UpdateCommand.Parameters[15].Value = ((object)(1));
                 this.Adapter.UpdateCommand.Parameters[16].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[17].Value = ((int)(Original_teacherId));
-            if ((Original_price.HasValue == true)) {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(0));
-                this.Adapter.UpdateCommand.Parameters[19].Value = ((decimal)(Original_price.Value));
+            if ((Original_teacherId.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[18].Value = ((int)(Original_teacherId.Value));
             }
             else {
-                this.Adapter.UpdateCommand.Parameters[18].Value = ((object)(1));
-                this.Adapter.UpdateCommand.Parameters[19].Value = global::System.DBNull.Value;
+                this.Adapter.UpdateCommand.Parameters[17].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[18].Value = global::System.DBNull.Value;
             }
-            this.Adapter.UpdateCommand.Parameters[20].Value = ((int)(courseId));
+            if ((Original_price.HasValue == true)) {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(0));
+                this.Adapter.UpdateCommand.Parameters[20].Value = ((decimal)(Original_price.Value));
+            }
+            else {
+                this.Adapter.UpdateCommand.Parameters[19].Value = ((object)(1));
+                this.Adapter.UpdateCommand.Parameters[20].Value = global::System.DBNull.Value;
+            }
+            this.Adapter.UpdateCommand.Parameters[21].Value = ((int)(courseId));
             global::System.Data.ConnectionState previousConnectionState = this.Adapter.UpdateCommand.Connection.State;
             if (((this.Adapter.UpdateCommand.Connection.State & global::System.Data.ConnectionState.Open) 
                         != global::System.Data.ConnectionState.Open)) {
@@ -7321,7 +7363,7 @@ SELECT courseId, courseName, Description, WorkOn, beginning, NoOfHours, teacherI
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
         [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
-        public virtual int Update(string courseName, string Description, string WorkOn, global::System.Nullable<global::System.TimeSpan> beginning, global::System.Nullable<decimal> NoOfHours, int teacherId, global::System.Nullable<decimal> price, int Original_courseId, string Original_courseName, string Original_Description, string Original_WorkOn, global::System.Nullable<global::System.TimeSpan> Original_beginning, global::System.Nullable<decimal> Original_NoOfHours, int Original_teacherId, global::System.Nullable<decimal> Original_price) {
+        public virtual int Update(string courseName, string Description, string WorkOn, global::System.Nullable<global::System.TimeSpan> beginning, global::System.Nullable<decimal> NoOfHours, global::System.Nullable<int> teacherId, global::System.Nullable<decimal> price, int Original_courseId, string Original_courseName, string Original_Description, string Original_WorkOn, global::System.Nullable<global::System.TimeSpan> Original_beginning, global::System.Nullable<decimal> Original_NoOfHours, global::System.Nullable<int> Original_teacherId, global::System.Nullable<decimal> Original_price) {
             return this.Update(courseName, Description, WorkOn, beginning, NoOfHours, teacherId, price, Original_courseId, Original_courseName, Original_Description, Original_WorkOn, Original_beginning, Original_NoOfHours, Original_teacherId, Original_price, Original_courseId);
         }
     }

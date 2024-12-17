@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="ff046f578c5d45ddb31472ca1a76dbf9" Name="Diagram1">
-        <EntityTypeShape EntityType="Open_Source_Education_CenterModel.C__EFMigrationsHistory" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
+      <Diagram DiagramId="598b45aa519e4f31b88a16ee78277541" Name="Diagram1">
+        <EntityTypeShape EntityType="Open_Source_Education_CenterModel.C__EFMigrationsHistory" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Open_Source_Education_CenterModel.attendance" Width="1.5" PointX="7.5" PointY="9.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Open_Source_Education_CenterModel.courses" Width="1.5" PointX="5.25" PointY="9.125" IsExpanded="true" />
         <EntityTypeShape EntityType="Open_Source_Education_CenterModel.enrollments" Width="1.5" PointX="7.5" PointY="6.875" IsExpanded="true" />
@@ -13,20 +13,20 @@
         <EntityTypeShape EntityType="Open_Source_Education_CenterModel.payments" Width="1.5" PointX="7.5" PointY="13.625" IsExpanded="true" />
         <EntityTypeShape EntityType="Open_Source_Education_CenterModel.question" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="Open_Source_Education_CenterModel.staff" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Open_Source_Education_CenterModel.students" Width="1.5" PointX="5.25" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Open_Source_Education_CenterModel.students" Width="1.5" PointX="5.25" PointY="5.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Open_Source_Education_CenterModel.teachers" Width="1.5" PointX="3" PointY="9.5" IsExpanded="true" />
         <EntityTypeShape EntityType="Open_Source_Education_CenterModel.users" Width="1.5" PointX="0.75" PointY="7.75" IsExpanded="true" />
-        <AssociationConnector Association="Open_Source_Education_CenterModel.FK__attendanc__cours__5AEE82B9" ManuallyRouted="false" />
-        <AssociationConnector Association="Open_Source_Education_CenterModel.FK__attendanc__stude__59FA5E80" ManuallyRouted="false" />
-        <AssociationConnector Association="Open_Source_Education_CenterModel.FK__courses__teacher__5165187F" ManuallyRouted="false" />
-        <AssociationConnector Association="Open_Source_Education_CenterModel.FK__enrollmen__cours__6383C8BA" ManuallyRouted="false" />
-        <AssociationConnector Association="Open_Source_Education_CenterModel.FK__exams__courseId__5535A963" ManuallyRouted="false" />
-        <AssociationConnector Association="Open_Source_Education_CenterModel.FK__payments__course__5FB337D6" ManuallyRouted="false" />
-        <AssociationConnector Association="Open_Source_Education_CenterModel.FK__enrollmen__stude__628FA481" ManuallyRouted="false" />
-        <AssociationConnector Association="Open_Source_Education_CenterModel.FK__exams__studentId__5629CD9C" ManuallyRouted="false" />
-        <AssociationConnector Association="Open_Source_Education_CenterModel.FK__payments__studen__5EBF139D" ManuallyRouted="false" />
-        <AssociationConnector Association="Open_Source_Education_CenterModel.FK__staff__userId__47DBAE45" ManuallyRouted="false" />
-        <AssociationConnector Association="Open_Source_Education_CenterModel.FK__teachers__userId__4AB81AF0" ManuallyRouted="false" />
+        <AssociationConnector Association="Open_Source_Education_CenterModel.FK_attendance_courseId" ManuallyRouted="false" />
+        <AssociationConnector Association="Open_Source_Education_CenterModel.FK_attendance_studentId" ManuallyRouted="false" />
+        <AssociationConnector Association="Open_Source_Education_CenterModel.FK_courses_teacherId" ManuallyRouted="false" />
+        <AssociationConnector Association="Open_Source_Education_CenterModel.FK_enrollments_courseId" ManuallyRouted="false" />
+        <AssociationConnector Association="Open_Source_Education_CenterModel.FK_exams_courseId" ManuallyRouted="false" />
+        <AssociationConnector Association="Open_Source_Education_CenterModel.FK_payments_courseId" ManuallyRouted="false" />
+        <AssociationConnector Association="Open_Source_Education_CenterModel.FK_enrollments_studentId" ManuallyRouted="false" />
+        <AssociationConnector Association="Open_Source_Education_CenterModel.FK_exams_studentId" ManuallyRouted="false" />
+        <AssociationConnector Association="Open_Source_Education_CenterModel.FK_payments_studentId" ManuallyRouted="false" />
+        <AssociationConnector Association="Open_Source_Education_CenterModel.FK_staff_userId" ManuallyRouted="false" />
+        <AssociationConnector Association="Open_Source_Education_CenterModel.FK_teachers_userId" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

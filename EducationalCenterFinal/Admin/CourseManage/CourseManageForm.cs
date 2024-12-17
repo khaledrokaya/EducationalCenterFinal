@@ -179,23 +179,13 @@ namespace EducationalCenterFinal.Admin.CourseManage
                 T_ID = c.teacherId,
 
                 Price = c.price
-
-               
-               
-
-
-   
-
-
             });
             if (filterId.HasValue)
             {
                 courses = courses.Where(c => c.ID == filterId.Value);
             }
-          
 
             dataGridView1.DataSource = courses.ToList();
-
 
             styleDataGridView();
         }
@@ -379,56 +369,104 @@ namespace EducationalCenterFinal.Admin.CourseManage
             }
             addData();
         }
+
         private void addData()
         {
-
-            courses c_add = new courses();
-
-            c_add.teacherId = int.Parse(textBox4.Text);
-
-            c_add.courseName = textBox2.Text;
-
-            c_add.Description = textBox8.Text;
-
-            c_add.WorkOn = textBox7.Text;
-
-            c_add.price = decimal.Parse(textBox5.Text);
-
-            c_add.NoOfHours = decimal.Parse(textBox6.Text);
-
-            if (TimeSpan.TryParse(textBox1.Text, out TimeSpan beginningTime))
+            try
             {
-               
-                if (beginningTime >= TimeSpan.FromHours(8) && beginningTime <= TimeSpan.FromHours(22))
+                courses c_add = new courses();
+
+                if (string.IsNullOrWhiteSpace(textBox4.Text))
                 {
-                    c_add.beginning = beginningTime;
+                    c_add.teacherId = null;
+                }
+                else if (int.TryParse(textBox4.Text, out int teacherId))
+                {
+                    c_add.teacherId = teacherId;
                 }
                 else
                 {
-                    MessageBox.Show("Beginning time must be between 08:00:00 and 22:00:00.");
+                    MessageBox.Show("Teacher ID must be a valid number or left empty.");
                     return;
                 }
-               
+
+                if (!string.IsNullOrWhiteSpace(textBox2.Text))
+                {
+                    c_add.courseName = textBox2.Text;
+                }
+                else
+                {
+                    MessageBox.Show("Course name cannot be empty.");
+                    return;
+                }
+
+                c_add.Description = textBox8.Text;
+
+                string[] validDays = { "fri", "sat", "sun", "mon", "tus", "wed", "thu" };
+                if (!string.IsNullOrWhiteSpace(textBox7.Text) &&
+                    validDays.Contains(textBox7.Text.Trim().ToLower()))
+                {
+                    c_add.WorkOn = textBox7.Text.Trim().ToLower();
+                }
+                else
+                {
+                    MessageBox.Show("Invalid WorkOn value. It must be one of: fri, sat, sun, mon, tus, wed, thu.");
+                    return;
+                }
+
+                if (decimal.TryParse(textBox5.Text, out decimal price))
+                {
+                    c_add.price = price;
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a valid price.");
+                    return;
+                }
+
+                if (decimal.TryParse(textBox6.Text, out decimal noOfHours))
+                {
+                    c_add.NoOfHours = noOfHours;
+                }
+                else
+                {
+                    MessageBox.Show("Please enter a valid number of hours.");
+                    return;
+                }
+
+                if (TimeSpan.TryParse(textBox1.Text, out TimeSpan beginningTime))
+                {
+                    if (beginningTime >= TimeSpan.FromHours(8) && beginningTime <= TimeSpan.FromHours(22))
+                    {
+                        c_add.beginning = beginningTime;
+                    }
+                    else
+                    {
+                        MessageBox.Show("Beginning time must be between 08:00:00 and 22:00:00.");
+                        return;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Invalid format: Beginning time must be a valid time between 08:00:00 and 22:00:00.");
+                    return;
+                }
+
+                dp.courses.Add(c_add);
+                dp.SaveChanges();
+
+                MessageBox.Show("Course Data Saved Successfully");
+
+                LoadCourseData();
+                dataGridView1.DataSource = dp.courses.ToList();
+                resetForm();
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Invalid Format : Beginning time must be between 08:00:00 and 22:00:00.");
-                return;
+                MessageBox.Show($"An error occurred: {ex.Message}");
             }
- 
-            dp.courses.Add(c_add);
-
-            dp.SaveChanges();
-
-            MessageBox.Show("Course Data Saved Successfully");
-
-            LoadCourseData();
-
-            dataGridView1.DataSource = dp.courses.ToList();
-
-            resetForm();
-
         }
+
         private void resetForm()
         {
             textBox2.Text = "";
@@ -457,42 +495,115 @@ namespace EducationalCenterFinal.Admin.CourseManage
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(textBox4.Text, out int teacherId))
+            try
             {
-                courses x = dp.courses.FirstOrDefault(m => m.teacherId == teacherId);
-
-                if (x != null)
+                if (dataGridView1.SelectedRows.Count > 0 &&
+                    int.TryParse(dataGridView1.SelectedRows[0].Cells[0].Value.ToString(), out int courseId))
                 {
-                    x.teacherId = int.Parse(textBox4.Text);
+                    var courseToEdit = dp.courses.FirstOrDefault(m => m.courseId == courseId);
 
-                    x.courseName = textBox2.Text;
+                    if (courseToEdit != null)
+                    {
+                        if (string.IsNullOrWhiteSpace(textBox4.Text))
+                        {
+                            courseToEdit.teacherId = null;
+                        }
+                        else if (int.TryParse(textBox4.Text, out int teacherId))
+                        {
+                            courseToEdit.teacherId = teacherId;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Teacher ID must be a valid number or left empty.");
+                            return;
+                        }
 
-                    x.Description = textBox8.Text;
+                        if (!string.IsNullOrWhiteSpace(textBox2.Text))
+                        {
+                            courseToEdit.courseName = textBox2.Text;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Course name cannot be empty.");
+                            return;
+                        }
 
-                    x.WorkOn = textBox7.Text;
+                        courseToEdit.Description = textBox8.Text;
 
-                    x.beginning = TimeSpan.Parse(textBox1.Text);
+                        string[] validDays = { "fri", "sat", "sun", "mon", "tus", "wed", "thu" };
+                        if (!string.IsNullOrWhiteSpace(textBox7.Text) &&
+                            validDays.Contains(textBox7.Text.Trim().ToLower()))
+                        {
+                            courseToEdit.WorkOn = textBox7.Text.Trim().ToLower();
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid WorkOn value. It must be one of: fri, sat, sun, mon, tus, wed, thu.");
+                            return;
+                        }
 
-                    x.price = decimal.Parse(textBox5.Text);
+                        if (TimeSpan.TryParse(textBox1.Text, out TimeSpan beginningTime))
+                        {
+                            if (beginningTime >= TimeSpan.FromHours(8) && beginningTime <= TimeSpan.FromHours(22))
+                            {
+                                courseToEdit.beginning = beginningTime;
+                            }
+                            else
+                            {
+                                MessageBox.Show("Beginning time must be between 08:00:00 and 22:00:00.");
+                                return;
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Invalid format for beginning time.");
+                            return;
+                        }
 
-                    x.NoOfHours = decimal.Parse(textBox6.Text);
+                        if (decimal.TryParse(textBox5.Text, out decimal price))
+                        {
+                            courseToEdit.price = price;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please enter a valid price.");
+                            return;
+                        }
 
-                    button1.Enabled = false;
+                        if (decimal.TryParse(textBox6.Text, out decimal noOfHours))
+                        {
+                            courseToEdit.NoOfHours = noOfHours;
+                        }
+                        else
+                        {
+                            MessageBox.Show("Please enter a valid number of hours.");
+                            return;
+                        }
 
-                    dp.SaveChanges();
+                        dp.SaveChanges();
 
-                    MessageBox.Show("Course Data is Edited");
+                        MessageBox.Show("Course Data Edited Successfully");
 
-                    LoadCourseData();
-
-                    dataGridView1.DataSource = dp.teachers.ToList();
-
-
-                    resetForm();
-
+                        LoadCourseData();
+                        dataGridView1.DataSource = dp.courses.ToList();
+                        resetForm();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Course not found.");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Please select a valid course to edit.");
                 }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
         }
+
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
@@ -656,34 +767,57 @@ namespace EducationalCenterFinal.Admin.CourseManage
             button1.Enabled = true;
         }
 
-       
-
         private void deleteButton()
         {
-
-
-                var selectedRow = dataGridView1.SelectedRows[0];
-                int courseId = int.Parse(selectedRow.Cells[0].Value.ToString());
-
-                var course = dp.courses.SingleOrDefault(c => c.courseId == courseId);
-
-                if (course != null)
+            try
+            {
+                if (dataGridView1.SelectedRows.Count > 0)
                 {
-                    dp.courses.Remove(course);
+                    var selectedRow = dataGridView1.SelectedRows[0];
 
-                    dp.SaveChanges();
+                    if (int.TryParse(selectedRow.Cells[0].Value.ToString(), out int courseId))
+                    {
+                        var course = dp.courses.SingleOrDefault(c => c.courseId == courseId);
 
-                    MessageBox.Show("Course deleted successfully.");
+                        if (course != null)
+                        {
+                            var confirmResult = MessageBox.Show(
+                                "Are you sure you want to delete this course?",
+                                "Confirm Deletion",
+                                MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Warning);
 
-                    LoadCourseData();
+                            if (confirmResult == DialogResult.Yes)
+                            {
+                                dp.courses.Remove(course);
+                                dp.SaveChanges();
+
+                                MessageBox.Show("Course deleted successfully.");
+
+                                LoadCourseData();
+                            }
+                        }
+                        else
+                        {
+                            MessageBox.Show("Course not found.");
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show("Invalid course ID.");
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Course not found.");
+                    MessageBox.Show("Please select one row to delete.");
                 }
-            
-           
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"An error occurred: {ex.Message}");
+            }
         }
+
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -708,7 +842,7 @@ namespace EducationalCenterFinal.Admin.CourseManage
 
                 string hour = row.Cells[5].Value.ToString();
 
-                string teacherid = row.Cells[6].Value.ToString();
+                string teacherid = row.Cells[6].Value?.ToString();
 
                 textBox4.Text = teacherid;
 

@@ -288,29 +288,45 @@ namespace EducationalCenterFinal.Admin.EmployeeManage
                     MessageBox.Show("Please fill in all fields.");
                     return;
                 }
+
                 if (!int.TryParse(textBoxes[0].Text.Trim(), out int userID))
                 {
-                    throw new Exception("Invalid User ID.");
+                    throw new Exception("Invalid User ID. It must be a number.");
                 }
+
+                if (!int.TryParse(textBoxes[5].Text.Trim(), out int staffSalary))
+                {
+                    throw new Exception("Invalid Salary. It must be an integer.");
+                }
+
+                string phoneNumber = textBoxes[6].Text.Trim();
+                if (phoneNumber.Length != 11 || !phoneNumber.All(char.IsDigit))
+                {
+                    throw new Exception("Invalid Phone Number. It must contain exactly 11 digits.");
+                }
+
                 string staffEmail = textBoxes[2].Text.Trim();
                 var existingEmployee = dp.staff
                     .FirstOrDefault(e => e.userId == userID || e.staffEmail == staffEmail);
                 if (existingEmployee != null)
                 {
-                    throw new Exception("Employee with this U_ID or Email already exists.");
+                    throw new Exception("Employee with this User ID or Email already exists.");
                 }
+
                 var newEmployee = new staff
                 {
-                    userId = int.Parse(textBoxes[0].Text.Trim()),
+                    userId = userID,
                     staffName = textBoxes[1].Text.Trim(),
-                    staffEmail = textBoxes[2].Text.Trim(),
+                    staffEmail = staffEmail,
                     role = textBoxes[3].Text.Trim(),
                     staffAddress = textBoxes[4].Text.Trim(),
-                    staffSalary = decimal.Parse(textBoxes[5].Text.Trim()),
-                    staffPhone = textBoxes[6].Text.Trim()
+                    staffSalary = staffSalary,
+                    staffPhone = phoneNumber
                 };
+
                 dp.staff.Add(newEmployee);
                 dp.SaveChanges();
+
                 MessageBox.Show("Employee added successfully.");
                 LoadEmployeeData();
                 ResetFields();
@@ -330,38 +346,63 @@ namespace EducationalCenterFinal.Admin.EmployeeManage
                     MessageBox.Show("Please select one employee to edit.");
                     return;
                 }
+
                 var selectedRow = dataGridView1.SelectedRows[0];
                 int employeeId = int.Parse(selectedRow.Cells["ID"].Value.ToString());
                 var employee = dp.staff.SingleOrDefault(s => s.staffId == employeeId);
+
+                if (employee == null)
+                {
+                    MessageBox.Show("Employee not found.");
+                    return;
+                }
+
                 if (employee.userId != int.Parse(textBoxes[0].Text.Trim()))
                 {
                     MessageBox.Show("User_ID cannot be edited.");
                     return;
                 }
-                if (employee != null)
+
+                if (string.IsNullOrWhiteSpace(textBoxes[1].Text) ||
+                    string.IsNullOrWhiteSpace(textBoxes[2].Text) ||
+                    string.IsNullOrWhiteSpace(textBoxes[3].Text) ||
+                    string.IsNullOrWhiteSpace(textBoxes[4].Text) ||
+                    string.IsNullOrWhiteSpace(textBoxes[5].Text) ||
+                    string.IsNullOrWhiteSpace(textBoxes[6].Text))
                 {
-                    employee.userId = int.Parse(textBoxes[0].Text.Trim());
-                    employee.staffName = textBoxes[1].Text.Trim();
-                    employee.staffEmail = textBoxes[2].Text.Trim();
-                    employee.role = textBoxes[3].Text.Trim();
-                    employee.staffAddress = textBoxes[4].Text.Trim();
-                    employee.staffSalary = decimal.Parse(textBoxes[5].Text.Trim());
-                    employee.staffPhone = textBoxes[6].Text.Trim();
-                    dp.SaveChanges();
-                    MessageBox.Show("Employee updated successfully.");
-                    LoadEmployeeData();
-                    ResetFields();
+                    MessageBox.Show("Please fill in all fields.");
+                    return;
                 }
-                else
+
+                if (!decimal.TryParse(textBoxes[5].Text.Trim(), out decimal staffSalary))
                 {
-                    MessageBox.Show("Employee not found.");
+                    MessageBox.Show("Invalid Salary. It must be an integer.");
+                    return;
                 }
+
+                string phoneNumber = textBoxes[6].Text.Trim();
+                if (phoneNumber.Length != 11 || !phoneNumber.All(char.IsDigit))
+                {
+                    MessageBox.Show("Invalid Phone Number. It must contain exactly 11 digits.");
+                    return;
+                }
+                employee.staffName = textBoxes[1].Text.Trim();
+                employee.staffEmail = textBoxes[2].Text.Trim();
+                employee.role = textBoxes[3].Text.Trim();
+                employee.staffAddress = textBoxes[4].Text.Trim();
+                employee.staffSalary = staffSalary;
+                employee.staffPhone = phoneNumber;
+                dp.SaveChanges();
+                MessageBox.Show("Employee updated successfully.");
+                LoadEmployeeData();
+                ResetFields();
             }
             catch (Exception ex)
             {
                 MessageBox.Show($"Error: {ex.Message}");
             }
         }
+
 
         private void ResetFields()
         {

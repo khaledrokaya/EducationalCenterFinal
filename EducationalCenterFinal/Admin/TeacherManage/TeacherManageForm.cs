@@ -13,6 +13,7 @@ using System.Data.Common;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Timers;
 using System.Windows.Forms;
@@ -334,32 +335,71 @@ namespace EducationalCenterFinal.Admin.TeacherManage
 
         private void addData()
         {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(textBox5.Text) ||
+                    string.IsNullOrWhiteSpace(textBox1.Text) ||
+                    string.IsNullOrWhiteSpace(textBox3.Text) ||
+                    string.IsNullOrWhiteSpace(textBox2.Text) ||
+                    string.IsNullOrWhiteSpace(textBox4.Text))
+                {
+                    MessageBox.Show("Please fill in all fields.");
+                    return;
+                }
 
-            teachers t_add = new teachers();
+                if (!int.TryParse(textBox5.Text.Trim(), out int userId))
+                {
+                    MessageBox.Show("Invalid User ID. It must be an integer.");
+                    return;
+                }
 
-            t_add.userId = int.Parse(textBox5.Text);
+                var existingTeacher = dp.teachers.FirstOrDefault(t =>
+                    t.userId == userId || t.teacherEmail == textBox2.Text.Trim());
 
-            t_add.teacherName = textBox1.Text;
+                if (existingTeacher != null)
+                {
+                    MessageBox.Show("A teacher with this User ID or Email already exists.");
+                    return;
+                }
 
-            t_add.teacherSpecialization = textBox3.Text;
+                string phoneNumber = textBox4.Text.Trim();
+                if (phoneNumber.Length != 11 || !phoneNumber.All(char.IsDigit))
+                {
+                    MessageBox.Show("Invalid Phone Number. It must contain exactly 11 digits.");
+                    return;
+                }
 
-            t_add.teacherEmail = textBox2.Text;
+                if (!Regex.IsMatch(textBox2.Text.Trim(), @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+                {
+                    MessageBox.Show("Invalid Email format.");
+                    return;
+                }
 
-            t_add.teacherPhone = textBox4.Text;
+                teachers t_add = new teachers
+                {
+                    userId = userId,
+                    teacherName = textBox1.Text.Trim(),
+                    teacherSpecialization = textBox3.Text.Trim(),
+                    teacherEmail = textBox2.Text.Trim(),
+                    teacherPhone = phoneNumber
+                };
 
+                dp.teachers.Add(t_add);
+                dp.SaveChanges();
 
-            dp.teachers.Add(t_add);
+                MessageBox.Show("Teacher saved successfully.");
 
-            dp.SaveChanges();
+                LoadTeacherData();
+                dataGridView1.DataSource = dp.teachers.ToList();
 
-            MessageBox.Show("Teacher Saved Successfully");
-
-            LoadTeacherData();
-
-            dataGridView1.DataSource = dp.teachers.ToList();
-
-            resetForm();
+                resetForm();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
         }
+
 
         private void resetForm()
         {
@@ -394,41 +434,74 @@ namespace EducationalCenterFinal.Admin.TeacherManage
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (int.TryParse(textBox5.Text, out int userId))
+            try
             {
-                teachers t = dp.teachers.FirstOrDefault(x => x.userId == userId);
-
-                if (t != null)
+                if (!int.TryParse(textBox5.Text.Trim(), out int userId))
                 {
-                    t.userId = int.Parse(textBox5.Text);
-
-                    t.teacherName = textBox1.Text;
-
-                    t.teacherSpecialization = textBox3.Text;
-
-                    t.teacherEmail = textBox2.Text;
-
-                    t.teacherPhone = textBox4.Text;
-
-
-                    button1.Enabled = false;
-
-                    dp.SaveChanges();
-
-                    MessageBox.Show("Data Is Edited");
-
-                    LoadTeacherData();
-
-                    dataGridView1.DataSource = dp.teachers.ToList();
-
-
-                    resetForm();
-
+                    MessageBox.Show("Invalid User ID. It must be an integer.");
+                    return;
                 }
-               
+
+                teachers t = dp.teachers.FirstOrDefault(x => x.userId == userId);
+                if (t == null)
+                {
+                    MessageBox.Show("Teacher not found.");
+                    return;
+                }
+
+                if (string.IsNullOrWhiteSpace(textBox1.Text) ||
+                    string.IsNullOrWhiteSpace(textBox3.Text) ||
+                    string.IsNullOrWhiteSpace(textBox2.Text) ||
+                    string.IsNullOrWhiteSpace(textBox4.Text))
+                {
+                    MessageBox.Show("Please fill in all fields.");
+                    return;
+                }
+
+                string phoneNumber = textBox4.Text.Trim();
+                if (phoneNumber.Length != 11 || !phoneNumber.All(char.IsDigit))
+                {
+                    MessageBox.Show("Invalid Phone Number. It must contain exactly 11 digits.");
+                    return;
+                }
+
+                string email = textBox2.Text.Trim();
+                if (!Regex.IsMatch(email, @"^[^@\s]+@[^@\s]+\.[^@\s]+$"))
+                {
+                    MessageBox.Show("Invalid Email format.");
+                    return;
+                }
+
+                var existingTeacher = dp.teachers
+                    .FirstOrDefault(x => x.teacherEmail == email && x.userId != userId);
+
+                if (existingTeacher != null)
+                {
+                    MessageBox.Show("A teacher with this email already exists.");
+                    return;
+                }
+
+                t.teacherName = textBox1.Text.Trim();
+                t.teacherSpecialization = textBox3.Text.Trim();
+                t.teacherEmail = email;
+                t.teacherPhone = phoneNumber;
+
+                dp.SaveChanges();
+
+                MessageBox.Show("Teacher data has been updated successfully.");
+
+                LoadTeacherData();
+                dataGridView1.DataSource = dp.teachers.ToList();
+                resetForm();
+
+                button1.Enabled = false;
             }
-            
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
         }
+
 
         private void textBox1_search_TextChanged(object sender, EventArgs e)
         {
@@ -581,16 +654,38 @@ namespace EducationalCenterFinal.Admin.TeacherManage
 
         private void deleteButton()
         {
+            try
+            {
+                if (dataGridView1.SelectedRows.Count == 0)
+                {
+                    MessageBox.Show("Please select a teacher to delete.");
+                    return;
+                }
+
                 var selectedRow = dataGridView1.SelectedRows[0];
 
-                int teacherId = int.Parse(selectedRow.Cells[0].Value.ToString());
+                if (!int.TryParse(selectedRow.Cells[0].Value?.ToString(), out int teacherId))
+                {
+                    MessageBox.Show("Invalid Teacher ID.");
+                    return;
+                }
+
+                var confirmation = MessageBox.Show(
+                    "Are you sure you want to delete this teacher?",
+                    "Confirm Deletion",
+                    MessageBoxButtons.YesNo,
+                    MessageBoxIcon.Warning
+                );
+
+                if (confirmation == DialogResult.No)
+                {
+                    return;
+                }
 
                 var teacher = dp.teachers.SingleOrDefault(t => t.teacherId == teacherId);
-
                 if (teacher != null)
                 {
                     dp.teachers.Remove(teacher);
-
                     dp.SaveChanges();
 
                     MessageBox.Show("Teacher deleted successfully.");
@@ -601,8 +696,13 @@ namespace EducationalCenterFinal.Admin.TeacherManage
                 {
                     MessageBox.Show("Teacher not found.");
                 }
-            
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Error: {ex.Message}");
+            }
         }
+
 
         private void dataGridView1_CellClick(object sender, DataGridViewCellEventArgs e)
         {

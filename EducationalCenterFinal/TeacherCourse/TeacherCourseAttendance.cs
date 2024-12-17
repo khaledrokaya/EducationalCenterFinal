@@ -16,7 +16,6 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
             SubmitButton.Text = "Mark";
             this.Text = SubmitButton.Text;
             SubmitButton.Click += (_sender, _e) => SubmitButton_Click(dp, CourseID);
-            button1.Click += (_sender, _e) => button1_Click(dp, CourseID);
         }
 
         private void SearchBoxPlaceHolder()
@@ -92,53 +91,5 @@ namespace EducationalCenterFinal.Admin.Staff.StaffCoursesManage
                 MessageBox.Show("Please enter a valid Student ID.");
             }
         }
-
-        private void button1_Click(EducationCenterEntities dp, int CourseID)
-        {
-            var result = MessageBox.Show(
-                "Are you sure you want to mark all remaining students as absent for today?",
-                "Confirm Action",
-                MessageBoxButtons.YesNo,
-                MessageBoxIcon.Warning
-            );
-            if (result == DialogResult.Yes)
-            {
-                try
-                {
-                    var today = DateTime.Today;
-                    var enrolledStudents = dp.enrollments
-                        .Where(e => e.courseId == CourseID)
-                        .Select(e => e.studentId)
-                        .ToList();
-                    foreach (var studentId in enrolledStudents)
-                    {
-                        var existingAttendance = dp.attendance
-                            .FirstOrDefault(a => a.studentId == studentId && a.courseId == CourseID && DbFunctions.TruncateTime(a.attendanceDate) == today);
-
-                        if (existingAttendance == null)
-                        {
-                            dp.attendance.Add(new attendance
-                            {
-                                studentId = studentId,
-                                courseId = CourseID,
-                                attendanceDate = DateTime.Now,
-                                isPresent = false
-                            });
-                        }
-                    }
-                    dp.SaveChanges();
-                    MessageBox.Show("All absent students have been marked as not present for today.");
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show($"An error occurred while marking absent students: {ex.Message}");
-                }
-            }
-            else
-            {
-                MessageBox.Show("Operation cancelled. No changes were made.");
-            }
-        }
-
     }
 }
